@@ -1,0 +1,6 @@
+cassandra-driver
+docopt
+flake8
+prettytable
+requests
+pyopenssl

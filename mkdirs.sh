@@ -21,6 +21,8 @@ touch data/postal/readme.md
 touch data/graph/npm/readme.md
 touch data/graph/amtrak/readme.md
 
+mkdir -p docs 
+
 mkdir -p code/dotnet
 mkdir -p code/java
 mkdir -p code/java_spring
@@ -32,15 +34,14 @@ touch code/java_spring/readme.md
 touch code/node/readme.md
 touch code/python/readme.md
 
+mkdir -p dbs/cassandra/ddl
 mkdir -p dbs/graph/v1
 mkdir -p dbs/graph/v2
+mkdir -p dbs/mongo/ddl
+touch dbs/cassandra/readme.md
 touch dbs/graph/readme.md
 touch dbs/graph/v1/readme.md
 touch dbs/graph/v2/readme.md
-
-mkdir -p dbs/cassandra/ddl
-mkdir -p dbs/mongo/ddl
-touch dbs/cassandra/readme.md
 touch dbs/mongo/readme.md
 
 mkdir -p functions

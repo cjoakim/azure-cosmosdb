@@ -1,0 +1,9 @@
+# Chris Joakim, Microsoft, 2020/10/09
+# These libraries are sorted alphabetically
+
+arrow
+azure-cosmos==4.0.0
+docopt
+faker
+pytest
+requests

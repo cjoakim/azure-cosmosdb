@@ -1,0 +1,33 @@
+{
+  "plants": [
+    {
+      "active_ind": "active",
+      "city_name": "Lowgap",
+      "country_cd": "US",
+      "doctype": "plant",
+      "id": "10965",
+      "location": {
+        "coordinates": [
+          -80.82397,
+          36.516657
+        ],
+        "type": "Point"
+      },
+      "pk": "Lowgap",
+      "plant_address": "454 Gross Rapid Gardens",
+      "plant_manager": "Tyler Dillon",
+      "plant_name": "Lowgap",
+      "postal_cd": "27024",
+      "products": [
+        "Product_28",
+        "Component_72",
+        "Product_15",
+        "Component_36",
+        "Component_71"
+      ],
+      "state_abbrv": "NC",
+      "updated_at": 1602357200
+    }
+  ],
+  "updated_at": 1602357200
+}

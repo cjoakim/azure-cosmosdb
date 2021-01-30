@@ -1,0 +1,98 @@
+{
+  "name": "@babel/runtime-corejs2",
+  "dist-tags": {
+    "latest": "7.5.5"
+  },
+  "versions": [
+    "7.0.0-beta.56",
+    "7.0.0-rc.0",
+    "7.0.0-rc.1",
+    "7.0.0-rc.2",
+    "7.0.0-rc.3",
+    "7.0.0-rc.4",
+    "7.0.0",
+    "7.1.1",
+    "7.1.2",
+    "7.1.5",
+    "7.2.0",
+    "7.3.0",
+    "7.3.1",
+    "7.3.4",
+    "7.4.0",
+    "7.4.2",
+    "7.4.3",
+    "7.4.4",
+    "7.4.5",
+    "7.5.0",
+    "7.5.1",
+    "7.5.2",
+    "7.5.3",
+    "7.5.4",
+    "7.5.5"
+  ],
+  "time": {
+    "created": "2018-08-04T01:03:15.050Z",
+    "7.0.0-beta.56": "2018-08-04T01:03:15.170Z",
+    "modified": "2019-07-17T21:21:35.077Z",
+    "7.0.0-rc.0": "2018-08-09T15:56:32.045Z",
+    "7.0.0-rc.1": "2018-08-09T20:06:28.524Z",
+    "7.0.0-rc.2": "2018-08-21T19:22:29.625Z",
+    "7.0.0-rc.3": "2018-08-24T18:06:27.392Z",
+    "7.0.0-rc.4": "2018-08-27T16:42:32.110Z",
+    "7.0.0": "2018-08-27T21:41:49.710Z",
+    "7.1.1": "2018-09-28T20:02:51.646Z",
+    "7.1.2": "2018-09-28T22:19:45.932Z",
+    "7.1.5": "2018-11-06T22:21:29.707Z",
+    "7.2.0": "2018-12-03T19:01:57.401Z",
+    "7.3.0": "2019-01-21T21:41:48.486Z",
+    "7.3.1": "2019-01-22T07:13:49.800Z",
+    "7.3.4": "2019-02-25T18:35:29.924Z",
+    "7.4.0": "2019-03-19T20:44:44.961Z",
+    "7.4.2": "2019-03-21T10:17:29.516Z",
+    "7.4.3": "2019-04-02T19:56:00.311Z",
+    "7.4.4": "2019-04-26T21:04:15.911Z",
+    "7.4.5": "2019-05-21T17:45:44.993Z",
+    "7.5.0": "2019-07-04T12:58:08.221Z",
+    "7.5.1": "2019-07-06T08:12:48.885Z",
+    "7.5.2": "2019-07-08T19:51:16.613Z",
+    "7.5.3": "2019-07-09T14:47:26.033Z",
+    "7.5.4": "2019-07-09T18:56:42.131Z",
+    "7.5.5": "2019-07-17T21:21:32.591Z"
+  },
+  "maintainers": [
+    "danez <daniel@tschinder.de>",
+    "existentialism <bng412@gmail.com>",
+    "hzoo <hi@henryzoo.com>",
+    "loganfsmyth <loganfsmyth@gmail.com>",
+    "nicolo-ribaudo <nicolo.ribaudo@gmail.com>"
+  ],
+  "description": "babel's modular runtime helpers with core-js@2 polyfilling",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-runtime-corejs2"
+  },
+  "author": "Sebastian McKenzie <sebmck@gmail.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "version": "7.5.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "regenerator-runtime": "^0.13.2"
+  },
+  "devDependencies": {
+    "@babel/helpers": "^7.5.5"
+  },
+  "gitHead": "0407f034f09381b95e9cabefbf6b176c76485a43",
+  "dist": {
+    "integrity": "sha512-FYATQVR00NSNi7mUfpPDp7E8RYMXDuO8gaix7u/w3GekfUinKgX1AcTxs7SoiEmoEW9mbpjrwqWSW6zCmw5h8A==",
+    "shasum": "c3214c08ef20341af4187f1c9fbdc357fbec96b2",
+    "tarball": "https://registry.npmjs.org/@babel/runtime-corejs2/-/runtime-corejs2-7.5.5.tgz",
+    "fileCount": 241,
+    "unpackedSize": 104235,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdL5FdCRA9TVsSAnZWagAAgUEP/1KsY9ocM7E1MveTSSHh\nzPpu6WEYs1ncxv86UICs84HnViDMV+ZKnyA/ADojUPnbYfk+rW9Lp3OWRyWA\nsDE3DYun+sn8GTv22jCkyBU7h4cfQQ9oN5RPAIgk1j3DT+kaiDHdVskpqVNJ\nXCkrrJtHH5bXylwIco6wpRRgAXkSeoRTGOYLHaCvUtzO0X2qIQp0J15PQsEp\na/Wds2Zm+4YORnlVhix1Pxvij3rzs7a7ga2wtLb9GbHuV+ZXwCNQOlcCio6b\nS0wdVPvFsf30YEQmHFRACtw5BtfrHWN2Bzr/0We4DKOMdgFpFj9RoXq742Hb\noDdkhKKKG19hKJppk0HjZMRP1/nPvZm8OzUvOz8aeTWmIf/iozbtBxqlHNw7\nyeW2sqCSrKuHMGtTAcoFG30l5rs1B/hJJPQktIVq161VynpFbBxBCsPuDJvO\nE885qmWMPV+EN6YE5srjiIny6bXGFzxSNnDECBES9sm/ZGMmVxvex3ifkr1D\n6mVERnHj3rygb/iFIanQ6iPTJwc/kRtymvLbyC+2ogpouARb7F8CTvGw5aL4\nOqwBklbnPFkfyGoQyiXP5nez+3exs81YZyUN6I+zipJTwq1XAy7qn9QZBlWY\nxPY6dxv/YZEbuNZd0XkmubXNjzQQZPSAYztgPoxygBHsONQZmdk10uXhYxYZ\n7igI\r\n=ek6j\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "directories": {}
+}

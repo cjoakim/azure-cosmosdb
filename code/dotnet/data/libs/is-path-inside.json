@@ -1,0 +1,76 @@
+{
+  "name": "is-path-inside",
+  "description": "Check if a path is inside another path",
+  "dist-tags": {
+    "latest": "3.0.1"
+  },
+  "versions": [
+    "0.1.0",
+    "1.0.0",
+    "1.0.1",
+    "2.0.0",
+    "2.1.0",
+    "3.0.0",
+    "3.0.1"
+  ],
+  "maintainers": [
+    "sindresorhus <sindresorhus@gmail.com>"
+  ],
+  "time": {
+    "modified": "2019-07-05T16:04:05.590Z",
+    "created": "2014-06-20T22:19:18.874Z",
+    "0.1.0": "2014-06-20T22:19:18.874Z",
+    "1.0.0": "2014-08-14T09:47:01.189Z",
+    "1.0.1": "2017-11-30T10:34:52.892Z",
+    "2.0.0": "2018-03-22T15:30:24.655Z",
+    "2.1.0": "2019-04-15T16:33:19.419Z",
+    "3.0.0": "2019-07-05T04:31:59.865Z",
+    "3.0.1": "2019-07-05T16:04:02.853Z"
+  },
+  "homepage": "https://github.com/sindresorhus/is-path-inside#readme",
+  "keywords": [
+    "path",
+    "inside",
+    "folder",
+    "directory",
+    "dir",
+    "file",
+    "resolve"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sindresorhus/is-path-inside.git"
+  },
+  "author": "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/is-path-inside/issues"
+  },
+  "license": "MIT",
+  "readmeFilename": "readme.md",
+  "users": {
+    "recursion_excursion": true,
+    "rocket0191": true
+  },
+  "version": "3.0.1",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "xo && ava && tsd"
+  },
+  "devDependencies": {
+    "ava": "^2.1.0",
+    "tsd": "^0.7.2",
+    "xo": "^0.24.0"
+  },
+  "gitHead": "cc9e12dcb78ec83e6769916f9e3347aea197378d",
+  "dist": {
+    "integrity": "sha512-CKstxrctq1kUesU6WhtZDbYKzzYBuRH0UYInAVrkc/EYdB9ltbfE0gOoayG9nhohG6447sOOVGhHqsdmBvkbNg==",
+    "shasum": "7417049ed551d053ab82bba3fdd6baa6b3a81e89",
+    "tarball": "https://registry.npmjs.org/is-path-inside/-/is-path-inside-3.0.1.tgz",
+    "fileCount": 5,
+    "unpackedSize": 3916,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdH3TzCRA9TVsSAnZWagAAc6IQAJWclEx67R7S5cs4qTJk\ndO01mY1h6nOm0GgjbJ1F7b1/ZW0zBMp2n+9+0qTRBHM926PscvCKP5A5TSHY\nGcY4lqoYYh86Bxiz3YHssaOeQpXxSCRwxkCMvhBqJDVonv5LksOT5/ODC8uf\nAwgtFci1lpX2j5hP9xWERH6/MuP6yP6rWbf0/n7aLx/i5N85cuCam7zBph0C\n89Ci8ZBP8s4JcSelktGSfK9uGPk4OduZkw/R0vlYyo1DAYrsX/r1TsrtCqMs\ncNpkGizrkxMoIaisZgCwiabh92bvXBUhKUBFW123RMzGnqix07eMSDjAxmJ5\ndPBSJhHmlYfD1lUpvUXwUZu496m6dnNeNwz2JnzrKlXzZiSnbj9nDZYNM6Xi\ncq28Fcr+HW0HZJwU3Hb1yRidjUagJ7ECcTyAH7dEDnBW/tPQgufWG3cdhYr+\n6DUN3gEect7xXzRpVrtnfZezzMUp+mly7FDTuGMj/JB2Waq66ig4TiFdBqBS\nhDpjG1bpqQLdpWvV8eDxKeHGLClEbjndMHWdgJWWH7Vwm7E1MKHzfDkL+xh7\nkRGlMyLliEJEucF+ttt6lP/QoKxsp7niTktgsipjE74ERvQ5Nm4NbfN7vnf0\n9sTqMd/2dXvj+gEXm2FRdJm7FbQwOHxUF8GPx8yhPdD5T5WOpdRWEOYF4r1K\neer/\r\n=T6t8\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "directories": {}
+}

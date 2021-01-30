@@ -1,0 +1,137 @@
+{
+  "name": "pretty-bytes",
+  "description": "Convert bytes to a human readable string: 1337 → 1.34 kB",
+  "dist-tags": {
+    "latest": "5.3.0"
+  },
+  "versions": [
+    "0.1.0",
+    "0.1.1",
+    "0.1.2",
+    "1.0.0",
+    "1.0.1",
+    "1.0.2",
+    "1.0.3",
+    "1.0.4",
+    "2.0.0",
+    "2.0.1",
+    "3.0.0",
+    "3.0.1",
+    "4.0.0",
+    "4.0.1",
+    "4.0.2",
+    "5.0.0",
+    "5.1.0",
+    "5.2.0",
+    "5.3.0"
+  ],
+  "maintainers": [
+    "sindresorhus <sindresorhus@gmail.com>"
+  ],
+  "time": {
+    "modified": "2019-07-26T20:25:33.327Z",
+    "created": "2014-02-09T17:27:09.124Z",
+    "0.1.0": "2014-02-09T17:27:09.124Z",
+    "0.1.1": "2014-04-30T22:44:08.892Z",
+    "0.1.2": "2014-07-18T20:32:46.962Z",
+    "1.0.0": "2014-08-09T23:23:25.480Z",
+    "1.0.1": "2014-08-12T23:32:04.210Z",
+    "1.0.2": "2014-12-07T16:39:39.287Z",
+    "1.0.3": "2015-02-16T17:58:54.915Z",
+    "1.0.4": "2015-03-25T10:52:34.667Z",
+    "2.0.0": "2015-05-20T21:05:29.095Z",
+    "2.0.1": "2015-05-21T16:20:35.196Z",
+    "3.0.0": "2015-12-17T22:06:07.468Z",
+    "3.0.1": "2016-02-05T02:18:46.539Z",
+    "4.0.0": "2016-08-26T21:56:59.553Z",
+    "4.0.1": "2016-08-27T15:02:23.847Z",
+    "4.0.2": "2016-08-28T10:50:03.722Z",
+    "5.0.0": "2018-05-06T19:14:44.879Z",
+    "5.1.0": "2018-06-07T15:14:27.969Z",
+    "5.2.0": "2019-04-24T03:27:35.924Z",
+    "5.3.0": "2019-07-26T20:25:30.480Z"
+  },
+  "readmeFilename": "readme.md",
+  "users": {
+    "jamescostian": true,
+    "maxogden": true,
+    "kikobeats": true,
+    "quanlong": true,
+    "taterbase": true,
+    "pedroparra": true,
+    "jerkovicl": true,
+    "itonyyo": true,
+    "allain": true,
+    "theodor.lindekaer": true,
+    "lokua": true,
+    "pluma": true,
+    "nichoth": true,
+    "sqrtthree": true,
+    "jlertle": true,
+    "martinkock": true,
+    "danielbankhead": true,
+    "mkoc": true,
+    "abdihaikal": true,
+    "recursion_excursion": true,
+    "noyobo": true,
+    "rochejul": true,
+    "h0ward": true,
+    "rocket0191": true,
+    "ognjen.jevremovic": true,
+    "scytalezero": true,
+    "ccastelli": true,
+    "kytart": true,
+    "zuojiang": true,
+    "vboctor": true,
+    "jalik": true
+  },
+  "homepage": "https://github.com/sindresorhus/pretty-bytes#readme",
+  "keywords": [
+    "pretty",
+    "bytes",
+    "byte",
+    "filesize",
+    "size",
+    "file",
+    "human",
+    "humanized",
+    "readable",
+    "si",
+    "data",
+    "locale",
+    "localization",
+    "localized"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sindresorhus/pretty-bytes.git"
+  },
+  "author": "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/pretty-bytes/issues"
+  },
+  "license": "MIT",
+  "version": "5.3.0",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "test": "xo && NODE_ICU_DATA=node_modules/full-icu ava && tsd"
+  },
+  "devDependencies": {
+    "ava": "^1.4.1",
+    "full-icu": "^1.2.1",
+    "tsd": "^0.7.2",
+    "xo": "^0.24.0"
+  },
+  "gitHead": "50f9fdb6bdddf968eb476dfdff02ab19b1ee7ade",
+  "dist": {
+    "integrity": "sha512-hjGrh+P926p4R4WbaB6OckyRtO0F0/lQBiT+0gnxjV+5kjPBrfVBFCsCLbMqVQeydvIoouYTCmmEURiH3R1Bdg==",
+    "shasum": "f2849e27db79fb4d6cfe24764fc4134f165989f2",
+    "tarball": "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.3.0.tgz",
+    "fileCount": 5,
+    "unpackedSize": 7584,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdO2G7CRA9TVsSAnZWagAAqRQP+QGhO/UvItEZCt3uT195\n0YLoI9gdkBMWfcF62KyKsEoHbcO5r6C4dAaWVTyjULq0v5dJQI4BphzMR1Av\nowfWuaI318sGmpdIdZI8bK+zEneqSPDRIOe2ALwCotPu38vVIYRg+tmsSXtW\nAnraiJhSMXhtmgsh1E6F72fSENvMfhNAwi/2RHKsWxnDdDopeERY7deFkOzN\nHVnDLC/c64U7SuIN+3+azfga6oYxbEe5JXJgr4BgdbfEFC5EnhbyYj59Kdx9\nXlhly7F7RSUPm86syWBLsRq0mszq8aNbN1cEkGyueB4wow0ErIK/flAaewar\nMkOUmldJnkXiz5fSgRxxW+84QeyK0+VENrahryUSE5l1StuG7S3/OB3azsJ4\nYXBwP7SrYWGcoB9tQFAu4ztgNPb17TdGb/h/UVYOet0MZSBsm4haV0kVd/Mm\nWj3rBtWGi2bIHZ7iqfwtssgqK+e+X10iJFVyaBJ2dhDZmaKVbYvhHebFV9N9\n/TQ3ZKs9/atvU92dIWQ+KbxmHEny5XUz+Hktc2NV7MX+h+Qg2dO8wk1lAsJE\nLDb8ERMfJulOoU6cJsQtdeBvzg4bNIbibCi4uaZM7aIE4NAdiQasZIw+72N9\nsUefmRk/GsjnRghFVKFgcXy+Kp0Mq6ZX6znMTfXFW75qixXUQDyqYwlR/dQu\n80YC\r\n=JOje\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "directories": {}
+}

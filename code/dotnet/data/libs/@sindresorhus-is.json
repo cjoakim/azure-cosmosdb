@@ -1,0 +1,164 @@
+{
+  "name": "@sindresorhus/is",
+  "description": "Type check values",
+  "dist-tags": {
+    "latest": "1.0.0"
+  },
+  "versions": [
+    "0.1.0",
+    "0.2.0",
+    "0.2.1",
+    "0.3.0",
+    "0.4.0",
+    "0.5.0",
+    "0.6.0",
+    "0.7.0",
+    "0.8.0",
+    "0.9.0",
+    "0.10.0",
+    "0.11.0",
+    "0.12.0",
+    "0.13.0",
+    "0.14.0",
+    "0.15.0",
+    "0.16.0",
+    "0.17.0",
+    "0.17.1",
+    "1.0.0"
+  ],
+  "maintainers": [
+    "sindresorhus <sindresorhus@gmail.com>"
+  ],
+  "time": {
+    "modified": "2019-06-30T08:25:54.622Z",
+    "created": "2017-09-21T17:54:29.643Z",
+    "0.1.0": "2017-09-21T17:54:29.643Z",
+    "0.2.0": "2017-09-29T03:22:58.510Z",
+    "0.2.1": "2017-10-05T04:21:48.204Z",
+    "0.3.0": "2017-10-11T09:51:14.974Z",
+    "0.4.0": "2017-10-21T19:28:29.768Z",
+    "0.5.0": "2017-11-07T03:23:52.189Z",
+    "0.6.0": "2017-11-19T20:18:18.050Z",
+    "0.7.0": "2017-12-11T20:40:22.859Z",
+    "0.8.0": "2018-04-03T17:10:13.482Z",
+    "0.9.0": "2018-05-04T05:31:15.672Z",
+    "0.10.0": "2018-07-05T16:33:40.901Z",
+    "0.11.0": "2018-07-10T09:56:50.311Z",
+    "0.12.0": "2018-09-28T06:36:14.674Z",
+    "0.13.0": "2018-11-02T12:10:40.889Z",
+    "0.14.0": "2018-12-13T16:00:08.390Z",
+    "0.15.0": "2019-02-03T19:55:51.371Z",
+    "0.16.0": "2019-05-04T09:15:03.794Z",
+    "0.17.0": "2019-05-13T04:08:48.018Z",
+    "0.17.1": "2019-05-21T09:49:11.963Z",
+    "1.0.0": "2019-06-30T08:25:52.005Z"
+  },
+  "homepage": "https://github.com/sindresorhus/is#readme",
+  "keywords": [
+    "type",
+    "types",
+    "is",
+    "check",
+    "checking",
+    "validate",
+    "validation",
+    "utility",
+    "util",
+    "typeof",
+    "instanceof",
+    "object",
+    "assert",
+    "assertion",
+    "test",
+    "kind",
+    "primitive",
+    "verify",
+    "compare",
+    "typescript",
+    "typeguards",
+    "types"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sindresorhus/is.git"
+  },
+  "author": "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/is/issues"
+  },
+  "license": "MIT",
+  "readmeFilename": "readme.md",
+  "users": {
+    "joelwallis": true,
+    "styfle": true,
+    "pl0x": true
+  },
+  "version": "1.0.0",
+  "main": "dist",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "build": "del dist && tsc",
+    "test": "xo && ava",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@sindresorhus/tsconfig": "^0.4.0",
+    "@types/jsdom": "^12.2.4",
+    "@types/node": "^12.0.10",
+    "@types/zen-observable": "^0.8.0",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "ava": "^2.1.0",
+    "del-cli": "^2.0.0",
+    "eslint-config-xo-typescript": "^0.15.0",
+    "jsdom": "^15.0.0",
+    "rxjs": "^6.4.0",
+    "tempy": "^0.3.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.4.1",
+    "xo": "^0.24.0",
+    "zen-observable": "^0.8.8"
+  },
+  "types": "dist",
+  "sideEffects": false,
+  "ava": {
+    "babel": false,
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "xo": {
+    "extends": "xo-typescript",
+    "extensions": [
+      "ts"
+    ],
+    "globals": [
+      "BigInt",
+      "BigInt64Array",
+      "BigUint64Array"
+    ],
+    "rules": {
+      "import/first": "off",
+      "import/newline-after-import": "off",
+      "@typescript-eslint/promise-function-async": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/explicit-function-return-type": "off"
+    }
+  },
+  "gitHead": "e358e44dd5212b8083082727ce0cada959fb2248",
+  "dist": {
+    "integrity": "sha512-3rlOB53XCVO7LfjXFx4bCGrZPPjkgYD7pP0E/yo4d57H32aYqD/QNmeXcVnx7CM5SxGScwl2P0b1kCDYZgNWqw==",
+    "shasum": "4f475ff3f32b0a309b7faffd33328e93d7953330",
+    "tarball": "https://registry.npmjs.org/@sindresorhus/is/-/is-1.0.0.tgz",
+    "fileCount": 6,
+    "unpackedSize": 43168,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdGHIQCRA9TVsSAnZWagAAfLMP/jGp6AIw0FfIgG2L8wNi\nze8Q//ZSIRPdGF5VTfeoNRP5fvUL+Y8mA5zAZyRNu1RZwuXWODeyz2+YAB6b\nRJeA6bsrSTf/XNVnA5vGMaTNGFjgiS8okeIUupqw3057fSc8A2zqVG+SN9/O\nDpwa54HDPqcsPasPUANTjqKMkNPtjVIHfYO3qPGvKiK78R8ZXytdeasGHTug\nmRX8lepnc1rPHyiQzRSPXKgctaSfkhXCNADI0nVIMoUylIczHH6I4vudackZ\nD6wLJH1fwNOPnw07hoeN/+W3xpWtTsfryvPkWxMt4/dnAvqUGBs6GysgirOm\n2kS2rBKJefYYrRx471LOJc6e7BNRruWOS+vcX1ROLdfwrIrxw9aQKwAE98wX\nDmjM4z7Kv18HfQYtX6OamCAXLMQQ3zxnZdVrySiCjSbXvusWZpAXZMvnMbCo\niloQfAKSbwADj9XrFTQlGUVdmEuYHgEnux+M+flUt3cVdPHDy5D0TD8JU+PK\n4Ils7LcWAOMQJCUoQ3TkcamnwGYIhi7QaZu9R+T1WbJolfJ8Q1Sd+RJxtzkA\nHP89M7TBjlnBq9PiL6QRr5u0VaLnTrAJLu/+RvlXcyLb4DU24zlGtTQjqHtn\nnOWKB/BmgqMf4T5acT+UdcQ/Wo82gbv0/0eIjlbsxPfKllxMk+I6u1c13wCT\nJ4qb\r\n=acVK\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "directories": {}
+}

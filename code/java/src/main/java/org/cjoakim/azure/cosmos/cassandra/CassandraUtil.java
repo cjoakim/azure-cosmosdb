@@ -159,28 +159,3 @@ public class CassandraUtil implements EnvVarNames {
 	}
 
 }
-
-//Output 11/20 eod:
-//CassandraUtil#main start...
-//uri:    cjoakimcosmoscass.cassandra.cosmos.azure.com
-//user:   cjoakimcosmoscass
-//pass:   KhU4iXUEKfH0xm49Yr3jveIIHcwxZ16BbhQPAFz4ocVmXhqquE8wrAqFAljw8UOePgbWUAAsDcyBEfxiYlPCVw==
-//port:   10350
-//javaHome:         /System/Volumes/Data/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
-//keyStoreFilename: /System/Volumes/Data/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home/lib/security/cacerts
-//keyStore:    java.security.KeyStore@1c0c4101
-//kmf:    javax.net.ssl.KeyManagerFactory@4e763144
-//tmf:    javax.net.ssl.TrustManagerFactory@7dce6012
-//sc:    javax.net.ssl.SSLContext@78c239be
-//sslOptions:    com.datastax.driver.core.RemoteEndpointAwareJdkSSLOptions@6c3b0c16
-//SLF4J: Class path contains multiple SLF4J bindings.
-//SLF4J: Found binding in [jar:file:/Users/cjoakim/.m2/repository/org/apache/logging/log4j/log4j-slf4j-impl/2.14.0/log4j-slf4j-impl-2.14.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-//SLF4J: Found binding in [jar:file:/Users/cjoakim/.m2/repository/org/slf4j/slf4j-simple/1.7.28/slf4j-simple-1.7.28.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-//SLF4J: Found binding in [jar:file:/Users/cjoakim/.m2/repository/org/apache/activemq/activemq-all/5.16.0/activemq-all-5.16.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-//SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
-//SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
-//cluster:    com.datastax.driver.core.Cluster@5b1ceec1
-//session:    com.datastax.driver.core.SessionManager@569a28fb
-//cu.session: com.datastax.driver.core.SessionManager@569a28fb
-//done
-

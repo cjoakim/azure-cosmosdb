@@ -35,12 +35,6 @@ __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
 __version__ = "2020.11.24"
 
-# config = {
-#     'username': 'cjoakimcosmoscass',
-#     'password': 'KhU4iXUEKfH0xm49Yr3jveIIHcwxZ16BbhQPAFz4ocVmXhqquE8wrAqFAljw8UOePgbWUAAsDcyBEfxiYlPCVw==',
-#     'contactPoint': 'cjoakimcosmoscass.cassandra.cosmos.azure.com',
-#     'port':'10350'
-# }
 
 cluster, session = None, None
 

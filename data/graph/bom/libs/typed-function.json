@@ -1,0 +1,123 @@
+{
+  "name": "typed-function",
+  "description": "Type checking for JavaScript functions",
+  "dist-tags": {
+    "latest": "1.1.1"
+  },
+  "versions": [
+    "0.3.1",
+    "0.4.0",
+    "0.5.0",
+    "0.6.0",
+    "0.6.1",
+    "0.6.2",
+    "0.6.3",
+    "0.7.0",
+    "0.8.0",
+    "0.8.1",
+    "0.8.2",
+    "0.8.3",
+    "0.9.0",
+    "0.10.0",
+    "0.10.1",
+    "0.10.2",
+    "0.10.3",
+    "0.10.4",
+    "0.10.5",
+    "0.10.6",
+    "0.10.7",
+    "1.0.0",
+    "1.0.1",
+    "1.0.2",
+    "1.0.3",
+    "1.0.4",
+    "1.1.0",
+    "1.1.1"
+  ],
+  "maintainers": [
+    "josdejong <wjosdejong@gmail.com>"
+  ],
+  "time": {
+    "modified": "2019-08-22T14:19:08.583Z",
+    "created": "2014-11-05T13:44:09.393Z",
+    "0.3.1": "2014-11-05T13:44:09.393Z",
+    "0.4.0": "2014-12-17T15:53:06.904Z",
+    "0.5.0": "2015-01-07T13:31:17.293Z",
+    "0.6.0": "2015-01-16T08:17:30.189Z",
+    "0.6.1": "2015-02-07T12:27:29.158Z",
+    "0.6.2": "2015-02-26T20:48:10.688Z",
+    "0.6.3": "2015-03-08T13:59:13.959Z",
+    "0.7.0": "2015-04-17T18:53:05.750Z",
+    "0.8.0": "2015-05-09T12:47:04.068Z",
+    "0.8.1": "2015-05-09T14:32:39.315Z",
+    "0.8.2": "2015-05-09T19:05:10.022Z",
+    "0.8.3": "2015-05-16T09:14:46.653Z",
+    "0.9.0": "2015-05-17T18:39:24.965Z",
+    "0.10.0": "2015-07-26T17:37:24.127Z",
+    "0.10.1": "2015-07-27T20:24:00.836Z",
+    "0.10.2": "2015-10-04T11:35:29.830Z",
+    "0.10.3": "2015-10-07T19:33:12.671Z",
+    "0.10.4": "2016-04-09T09:49:01.335Z",
+    "0.10.5": "2016-11-18T11:29:26.881Z",
+    "0.10.6": "2017-11-18T19:17:15.048Z",
+    "0.10.7": "2018-01-24T12:25:09.379Z",
+    "1.0.0": "2018-02-20T19:50:38.275Z",
+    "1.0.1": "2018-02-21T10:15:22.286Z",
+    "1.0.2": "2018-03-17T19:16:19.972Z",
+    "1.0.3": "2018-03-17T19:29:22.652Z",
+    "1.0.4": "2018-07-04T10:21:40.948Z",
+    "1.1.0": "2018-07-28T19:17:19.445Z",
+    "1.1.1": "2019-08-22T14:19:04.539Z"
+  },
+  "homepage": "https://github.com/josdejong/typed-function",
+  "keywords": [
+    "typed",
+    "function",
+    "arguments",
+    "compose",
+    "types"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josdejong/typed-function.git"
+  },
+  "contributors": [
+    "Luke Gumbley (https://github.com/luke-gumbley)"
+  ],
+  "author": "Jos de Jong <wjosdejong@gmail.com> (https://github.com/josdejong)",
+  "bugs": {
+    "url": "https://github.com/josdejong/typed-function/issues"
+  },
+  "readmeFilename": "README.md",
+  "version": "1.1.1",
+  "dependencies": {},
+  "devDependencies": {
+    "benchmark": "2.1.4",
+    "istanbul": "0.4.5",
+    "mocha": "5.2.0",
+    "pad-right": "0.2.2",
+    "uglify-js": "3.4.3",
+    "brace-expansion": "1.1.11"
+  },
+  "comment": "brace-expansion is installed because an old insecure version is used by one of the dev depencencies (under istanbul)",
+  "main": "./typed-function",
+  "scripts": {
+    "build": "uglifyjs typed-function.js -o typed-function.min.js -c -m",
+    "test": "mocha test --recursive",
+    "coverage": "istanbul cover _mocha -- test --recursive; echo \"\nCoverage report is available at ./coverage/lcov-report/index.html\"",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "engines": {
+    "node": ">= 6"
+  },
+  "gitHead": "675c8f26a6b47f56f779ddd05e066caed8b65ded",
+  "dist": {
+    "integrity": "sha512-RbN7MaTQBZLJYzDENHPA0nUmWT0Ex80KHItprrgbTPufYhIlTePvCXZxyQK7wgn19FW5bnuaBIKcBb5mRWjB1Q==",
+    "shasum": "a1316187ec3628c9e219b91ca96918660a10138e",
+    "tarball": "https://registry.npmjs.org/typed-function/-/typed-function-1.1.1.tgz",
+    "fileCount": 32,
+    "unpackedSize": 144612,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdXqRZCRA9TVsSAnZWagAAcNsP/3v1cZMDQaXTmvSgOIuf\nPnRpvwIKaG7mFcpBBmVIUvu3s5OnAZKUoBC5Hvt8rn5PEYJz80AEBeGB8OkH\nVZLQnjelso1yUzPfcIbbq0B41jyqoFrZtXTGvfgUOTpVQpJsIDPxCMzqGC+i\nJ6nMhMA3r4s/q52N5n6im22kBVxpj7SpqpGZUdrDcjv0OGseAKLXfSEdQLP8\nBVI1iEpq0sNiKWQqLabc7X06BJ706I8WaOzgAtvhCmzRu8jjrlmtDvPQAcOG\nLbNyNzXH+0yGdg4CLozUKJy7PkfjonNqjaC4ZMmZzJKSnxMqy3h0sIYNTqfN\nYbYZK5AZUxcgf9eRacJhf7RzocCkqhFLShHPpU/Y3pvgL3dOXSELdqbWeEJH\n47GUrZXgJeIC5MFZWzkodgrzNwfOQgzQL6Y2Z+CWcsJtlYLMhRTgDhzjz799\nihp0iwHf3yLVj7hw+11Aky95PiQyXEm8e9KZBQ/0q7RG3SDkcdjhMfr/FdEd\n1hRKX0PvjFfn5bgeH+JxnXphKB1VLt17qrlzzj3QunVdtNX/vDsvBVou6P7t\n0EtL7ZsK7r/kCqcSlYiULTlDL/TgnOu9F++dIm5Q9JB9HjWwJmNdliOPPmXq\ne9PixazQrOeYdPEjmTlecSb9SWeDbRd3ZbFT8rKFdU84knejtKAFX3VZ7kvb\nDm92\r\n=xKpV\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "directories": {}
+}

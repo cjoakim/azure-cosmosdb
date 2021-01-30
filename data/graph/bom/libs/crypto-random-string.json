@@ -1,0 +1,81 @@
+{
+  "name": "crypto-random-string",
+  "description": "Generate a cryptographically strong random string",
+  "dist-tags": {
+    "latest": "3.0.1"
+  },
+  "versions": [
+    "1.0.0",
+    "2.0.0",
+    "3.0.0",
+    "3.0.1"
+  ],
+  "maintainers": [
+    "sindresorhus <sindresorhus@gmail.com>"
+  ],
+  "time": {
+    "modified": "2019-06-17T09:12:29.861Z",
+    "created": "2016-11-14T04:14:44.263Z",
+    "1.0.0": "2016-11-14T04:14:44.263Z",
+    "2.0.0": "2019-04-09T19:49:44.165Z",
+    "3.0.0": "2019-05-08T13:01:11.451Z",
+    "3.0.1": "2019-06-17T09:12:26.665Z"
+  },
+  "homepage": "https://github.com/sindresorhus/crypto-random-string#readme",
+  "keywords": [
+    "random",
+    "string",
+    "text",
+    "id",
+    "identifier",
+    "slug",
+    "salt",
+    "crypto",
+    "strong",
+    "secure",
+    "hex"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sindresorhus/crypto-random-string.git"
+  },
+  "author": "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/crypto-random-string/issues"
+  },
+  "license": "MIT",
+  "readmeFilename": "readme.md",
+  "users": {
+    "rocket0191": true,
+    "heartnett": true,
+    "jon_shen": true,
+    "ackhub": true,
+    "shivayl": true,
+    "td3": true
+  },
+  "version": "3.0.1",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "xo && ava && tsd"
+  },
+  "dependencies": {
+    "type-fest": "^0.5.2"
+  },
+  "devDependencies": {
+    "ava": "^2.1.0",
+    "tsd": "^0.7.3",
+    "xo": "^0.24.0"
+  },
+  "gitHead": "bf79cb61af7ca36a61d92247e1ac5d76f9f57664",
+  "dist": {
+    "integrity": "sha512-dUL0cJ4PBLanJGJQBHQUkvZ3C4q13MXzl54oRqAIiJGiNkOZ4JDwkg/SBo7daGghzlJv16yW1p/4lIQukmbedA==",
+    "shasum": "29d7dc759d577a768afb3b7b2765dd9bd7ffe36a",
+    "tarball": "https://registry.npmjs.org/crypto-random-string/-/crypto-random-string-3.0.1.tgz",
+    "fileCount": 5,
+    "unpackedSize": 8186,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdB1l7CRA9TVsSAnZWagAACeMP/0pJQxhjkUqJWuDZpHwp\n0OoVYJCIWXfRkSp8eLE2tIhUBSliRuD2Gjw5ktQ08MpzKZ+3mhnv3WAhgcyj\nKIX/SqL9sT7J7t8HAEdcTQoif3K1MJzoqVHes/HCbjSwlx3gv1/PfReiYWyT\noEgU9BKI4wLOAo6FgXDbJ8u9FCNSXs6q7VnpiplOtO1ZP6qql5z1B3Dlzvmb\nQ5mr6aw9HPFgQ6Ob/7dctTSB37spln08yixYRWHDKC7GvlwYKMqV+uPpgkTE\nQ0pxbEdPh+NyqY6ZAJupUDS18Cfk+VUdQouFMmwGj7E5ynqzc4KCwdRWKiId\nm6hdHoy49hZaXiFSbGN1Nvc6uYwWphZLi989yIqOefkq24FSBzf6bYD1Yu6P\n0ADhSsD5envsgBoB5NNra3yXA1E7l1YRctX3Zs5itKS1/078tP3hxzvgzzd5\nTvPmQUgAlLFtNqFzKfRjQmCcUcEo0rxEgWkNHYu3xXWOs2Y1CmZoKCrgchgg\n7Wdqk1AEbbtNWeCY6mDiZu34kn/wy0cxq97KlZvhF5hB93H56qBmPAwaHpFT\nqj819ulnPXDNVWR8AHnyxjZfdmBH+daSNUGZZskQbG9zoum6etttEKGBRi2F\nTTDnZtAY1kEM812FMWkcGZKcYhS3H8J/6vguSpkTtl50+eRSV95t3DrVV5ad\naCX2\r\n=Pzb1\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "directories": {}
+}

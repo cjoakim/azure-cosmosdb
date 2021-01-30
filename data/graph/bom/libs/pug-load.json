@@ -1,0 +1,76 @@
+{
+  "name": "pug-load",
+  "description": "The Pug loader is responsible for loading the depenendencies of a given Pug file.",
+  "dist-tags": {
+    "latest": "2.0.12"
+  },
+  "versions": [
+    "1.0.3",
+    "2.0.0",
+    "2.0.1",
+    "2.0.2",
+    "2.0.3",
+    "2.0.4",
+    "2.0.5",
+    "2.0.6",
+    "2.0.7",
+    "2.0.8",
+    "2.0.9",
+    "2.0.10",
+    "2.0.11",
+    "2.0.12"
+  ],
+  "maintainers": [
+    "timothygu <timothygu99@gmail.com>"
+  ],
+  "time": {
+    "modified": "2019-06-18T09:45:06.637Z",
+    "created": "2016-05-04T01:38:54.632Z",
+    "1.0.3": "2016-05-04T01:38:54.632Z",
+    "2.0.0": "2016-05-15T11:58:54.672Z",
+    "2.0.1": "2016-08-24T01:22:02.737Z",
+    "2.0.2": "2016-08-24T01:25:45.690Z",
+    "2.0.3": "2016-08-24T18:58:13.015Z",
+    "2.0.4": "2017-01-24T01:07:16.614Z",
+    "2.0.5": "2017-02-04T12:40:35.045Z",
+    "2.0.6": "2017-04-18T00:36:26.399Z",
+    "2.0.7": "2017-06-02T12:33:31.512Z",
+    "2.0.8": "2017-08-01T15:53:45.749Z",
+    "2.0.9": "2017-09-06T15:28:08.370Z",
+    "2.0.10": "2018-03-06T13:12:35.622Z",
+    "2.0.11": "2018-03-08T16:32:36.405Z",
+    "2.0.12": "2019-06-18T09:45:04.144Z"
+  },
+  "keywords": [
+    "pug"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pugjs/pug/tree/master/packages/pug-load"
+  },
+  "author": "ForbesLindesay",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "users": {
+    "paulkolesnyk": true
+  },
+  "version": "2.0.12",
+  "dependencies": {
+    "object-assign": "^4.1.0",
+    "pug-walk": "^1.1.8"
+  },
+  "devDependencies": {
+    "pug-lexer": "^4.1.0",
+    "pug-parser": "^5.0.1"
+  },
+  "gitHead": "1bdf628a70fda7a0d840c52f3abce54b1c6b0130",
+  "dist": {
+    "integrity": "sha512-UqpgGpyyXRYgJs/X60sE6SIf8UBsmcHYKNaOccyVLEuT6OPBIMo6xMPhoJnqtB3Q3BbO4Z3Bjz5qDsUWh4rXsg==",
+    "shasum": "d38c85eb85f6e2f704dea14dcca94144d35d3e7b",
+    "tarball": "https://registry.npmjs.org/pug-load/-/pug-load-2.0.12.tgz",
+    "fileCount": 5,
+    "unpackedSize": 9185,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdCLKgCRA9TVsSAnZWagAAXDUP/2JQ8wGTsC+Wi3Y86X/j\nSMUyLtAFjvX/OPuzRG/rFPjM1oA+tCT7Bv2Gk3WuQABUdygvFOfElMI+j0O5\nC54RWumAut55OLZfOsXiRjFGzPHhb3G/Ns0m/5+NZOJHDojLjTu23xBez3pt\nYAiHfYPJzeJx/CR/1NS6IIoX75XyiRA4jvEWmbc6H94Wkg32b2lILVfjAaZN\nWY9Po1bvhO5E4tbejlLCHI5HsUO5aTren5Iz1X909V8blTdmqco3s++ezwPE\nWk+cB/at9fPwm7mMwUWU+h7Pq2Ryn5oyOX0onaTY4TSK3zL6NI+cUGDFx3KS\n6KWLAc94VmJejzdtzaz6cTHMYLZkHm8q1rrNs+X27zPCxs/lCDyzkDYT/WOU\ntIkCKIvMjhkPYxajddMdsIGgB1UiTBwZYSrTory7eiACZt8VPK+GczTlWHLL\n4xaBj7TSWSSXtUItZRd4P/Kf/QBCdx+C4NEzLIMptKkOsmoL/loQlo0IBJSa\nUt4ueYGiQ+7n4Okdv9hcbUkbStnZs/qX5jCIMarhEhAw7BtnxWvJJNyd0OQN\nO2PXGqAo5TER/lzXK2d/BspbCfkz8njHLNWabIkjji28tnRfbHIw9D8Sdnuy\n9io/ebukFUNAe7FdKumcrhfkbnvo7IviVzyO7s5z2PIY79Jfp4HY+afJ2uUw\n8DKe\r\n=l/Wt\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "directories": {}
+}

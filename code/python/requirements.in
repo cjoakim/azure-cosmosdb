@@ -1,0 +1,44 @@
+# Chris Joakim, Microsoft, 2020/09/10
+# These libraries are sorted alphabetically
+# See venv.sh for: pip install azure-storage-file-datalake --pre
+
+Jinja2
+SQLAlchemy
+arrow
+azure-cognitiveservices-anomalydetector
+azure-cognitiveservices-formrecognizer
+azure-cognitiveservices-inkrecognizer
+azure-cognitiveservices-language-luis
+azure-cognitiveservices-speech
+azure-cognitiveservices-vision-computervision
+azure-cognitiveservices-vision-face
+azure-cosmos==4.0.0
+#azure-cosmos==3.1.2
+azure-eventhub
+azure-iot-device
+azure-storage-blob
+azure-storage-file-datalake
+dask[dataframe]
+docopt
+flake8
+m26
+matplotlib
+mysql-connector-python
+nltk
+numpy
+openpyxl
+pandas
+pdfminer.six
+psutil
+psycopg2-binary
+pyarrow
+pylint
+pymongo
+pyodbc
+pytest
+pytest-cov
+redis
+requests
+scikit-learn
+scipy
+tqdm

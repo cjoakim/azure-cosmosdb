@@ -1,0 +1,402 @@
+[
+  {
+    "rank": "1",
+    "name": "Hartsfield–Jackson Atlanta International Airport",
+    "location": "Atlanta Georgia",
+    "country": "United States",
+    "iata": "ATL",
+    "passengers": "103902992"
+  },
+  {
+    "rank": "2",
+    "name": "Beijing Capital International Airport",
+    "location": "Chaoyang-Shunyi Beijing",
+    "country": "China",
+    "iata": "PEK",
+    "passengers": "95786442"
+  },
+  {
+    "rank": "3",
+    "name": "Dubai International Airport",
+    "location": "Garhoud Dubai",
+    "country": "United Arab Emirates",
+    "iata": "DXB",
+    "passengers": "88242099"
+  },
+  {
+    "rank": "4",
+    "name": "Tokyo Haneda Airport",
+    "location": "Ōta Tokyo",
+    "country": "Japan",
+    "iata": "HND",
+    "passengers": "85408975"
+  },
+  {
+    "rank": "5",
+    "name": "Los Angeles International Airport",
+    "location": "Los Angeles California",
+    "country": "United States",
+    "iata": "LAX",
+    "passengers": "84557968"
+  },
+  {
+    "rank": "6",
+    "name": "O'Hare International Airport",
+    "location": "Chicago Illinois",
+    "country": "United States",
+    "iata": "ORD",
+    "passengers": "79828183"
+  },
+  {
+    "rank": "7",
+    "name": "London Heathrow Airport",
+    "location": "Hillingdon London",
+    "country": "United Kingdom",
+    "iata": "LHR",
+    "passengers": "78014598"
+  },
+  {
+    "rank": "8",
+    "name": "Hong Kong International Airport",
+    "location": "Chek Lap Kok Hong Kong",
+    "country": "China",
+    "iata": "HKG",
+    "passengers": "72665078"
+  },
+  {
+    "rank": "9",
+    "name": "Shanghai Pudong International Airport",
+    "location": "Pudong Shanghai",
+    "country": "China",
+    "iata": "PVG",
+    "passengers": "70001237"
+  },
+  {
+    "rank": "10",
+    "name": "Paris-Charles de Gaulle Airport",
+    "location": "Roissy-en-France Île-de-France",
+    "country": "France",
+    "iata": "CDG",
+    "passengers": "69471442"
+  },
+  {
+    "rank": "11",
+    "name": "Amsterdam Airport Schiphol",
+    "location": "Haarlemmermeer North Holland",
+    "country": "The Netherlands",
+    "iata": "AMS",
+    "passengers": "68515425"
+  },
+  {
+    "rank": "12",
+    "name": "Dallas/Fort Worth International Airport",
+    "location": "Dallas-Fort Worth Texas",
+    "country": "United States",
+    "iata": "DFW",
+    "passengers": "67092194"
+  },
+  {
+    "rank": "13",
+    "name": "Guangzhou Baiyun International Airport",
+    "location": "Baiyun-Huadu Guangzhou Guangdong",
+    "country": "China",
+    "iata": "CAN",
+    "passengers": "65887473"
+  },
+  {
+    "rank": "14",
+    "name": "Frankfurt Airport",
+    "location": "Frankfurt Hesse",
+    "country": "Germany",
+    "iata": "FRA",
+    "passengers": "64500386"
+  },
+  {
+    "rank": "15",
+    "name": "Istanbul Atatürk Airport",
+    "location": "Yeşilköy Istanbul",
+    "country": "Turkey",
+    "iata": "IST",
+    "passengers": "63859785"
+  },
+  {
+    "rank": "16",
+    "name": "Indira Gandhi International Airport",
+    "location": "Delhi",
+    "country": "India",
+    "iata": "DEL",
+    "passengers": "63451503"
+  },
+  {
+    "rank": "17",
+    "name": "Soekarno-Hatta International Airport",
+    "location": "Tangerang Banten",
+    "country": "Indonesia",
+    "iata": "CGK",
+    "passengers": "63015620"
+  },
+  {
+    "rank": "18",
+    "name": "Singapore Changi Airport",
+    "location": "Changi",
+    "country": "Singapore",
+    "iata": "SIN",
+    "passengers": "62219573"
+  },
+  {
+    "rank": "19",
+    "name": "Seoul Incheon International Airport",
+    "location": "Incheon",
+    "country": "Republic of Korea",
+    "iata": "ICN",
+    "passengers": "62157834"
+  },
+  {
+    "rank": "20",
+    "name": "Denver International Airport",
+    "location": "Denver Colorado",
+    "country": "United States",
+    "iata": "DEN",
+    "passengers": "61379396"
+  },
+  {
+    "rank": "21",
+    "name": "Suvarnabhumi Airport",
+    "location": "Bang Phli Samut Prakan",
+    "country": "Thailand",
+    "iata": "BKK",
+    "passengers": "60860557"
+  },
+  {
+    "rank": "22",
+    "name": "John F. Kennedy International Airport",
+    "location": "Queens New York New York",
+    "country": "United States",
+    "iata": "JFK",
+    "passengers": "59392500"
+  },
+  {
+    "rank": "23",
+    "name": "Kuala Lumpur International Airport",
+    "location": "Sepang Selangor",
+    "country": "Malaysia",
+    "iata": "KUL",
+    "passengers": "58558440"
+  },
+  {
+    "rank": "24",
+    "name": "San Francisco International Airport",
+    "location": "San Mateo County California",
+    "country": "United States",
+    "iata": "SFO",
+    "passengers": "55822129"
+  },
+  {
+    "rank": "25",
+    "name": "Madrid Barajas Airport",
+    "location": "Barajas Madrid",
+    "country": "Spain",
+    "iata": "MAD",
+    "passengers": "53386075"
+  },
+  {
+    "rank": "26",
+    "name": "Chengdu Shuangliu International Airport",
+    "location": "Shuangliu-Wuhou Chengdu Sichuan",
+    "country": "China",
+    "iata": "CTU",
+    "passengers": "49801693"
+  },
+  {
+    "rank": "27",
+    "name": "McCarran International Airport",
+    "location": "Las Vegas Nevada",
+    "country": "United States",
+    "iata": "LAS",
+    "passengers": "48566803"
+  },
+  {
+    "rank": "28",
+    "name": "Barcelona–El Prat Airport",
+    "location": "Barcelona",
+    "country": "Spain",
+    "iata": "BCN",
+    "passengers": "47262826"
+  },
+  {
+    "rank": "29",
+    "name": "Chhatrapati Shivaji International Airport",
+    "location": "Mumbai Maharashtra",
+    "country": "India",
+    "iata": "BOM",
+    "passengers": "47204259"
+  },
+  {
+    "rank": "30",
+    "name": "Toronto Pearson International Airport",
+    "location": "Mississauga Ontario",
+    "country": "Canada",
+    "iata": "YYZ",
+    "passengers": "47054696"
+  },
+  {
+    "rank": "31",
+    "name": "Seattle-Tacoma International Airport",
+    "location": "SeaTac Washington",
+    "country": "United States",
+    "iata": "SEA",
+    "passengers": "46934194"
+  },
+  {
+    "rank": "32",
+    "name": "Charlotte Douglas International Airport",
+    "location": "Charlotte North Carolina",
+    "country": "United States",
+    "iata": "CLT",
+    "passengers": "45909899"
+  },
+  {
+    "rank": "33",
+    "name": "London Gatwick Airport",
+    "location": "Crawley West Sussex",
+    "country": "United Kingdom",
+    "iata": "LGW",
+    "passengers": "45561694"
+  },
+  {
+    "rank": "34",
+    "name": "Shenzhen Bao'an International Airport",
+    "location": "Bao'an Shenzhen Guangdong",
+    "country": "China",
+    "iata": "SZX",
+    "passengers": "45558409"
+  },
+  {
+    "rank": "35",
+    "name": "Taiwan Taoyuan International Airport",
+    "location": "Dayuan Taoyuan",
+    "country": "Taiwan",
+    "iata": "TPE",
+    "passengers": "44878703"
+  },
+  {
+    "rank": "36",
+    "name": "Benito Juárez International Airport",
+    "location": "Venustiano Carranza Mexico City",
+    "country": "Mexico",
+    "iata": "MEX",
+    "passengers": "44732418"
+  },
+  {
+    "rank": "37",
+    "name": "Kunming Changshui International Airport",
+    "location": "Guandu Kunming Yunnan",
+    "country": "China",
+    "iata": "KMG",
+    "passengers": "44729736"
+  },
+  {
+    "rank": "38",
+    "name": "Munich Airport",
+    "location": "Freising Bavaria",
+    "country": "Germany",
+    "iata": "MUC",
+    "passengers": "44577241"
+  },
+  {
+    "rank": "39",
+    "name": "Orlando International Airport",
+    "location": "Orlando Florida",
+    "country": "United States",
+    "iata": "MCO",
+    "passengers": "44511265"
+  },
+  {
+    "rank": "40",
+    "name": "Miami International Airport",
+    "location": "Miami-Dade County Florida",
+    "country": "United States",
+    "iata": "MIA",
+    "passengers": "44071313"
+  },
+  {
+    "rank": "41",
+    "name": "Phoenix Sky Harbor International Airport",
+    "location": "Phoenix Arizona",
+    "country": "United States",
+    "iata": "PHX",
+    "passengers": "43921670"
+  },
+  {
+    "rank": "42",
+    "name": "Sydney Kingsford-Smith Airport",
+    "location": "Mascot Sydney New South Wales",
+    "country": "Australia",
+    "iata": "SYD",
+    "passengers": "43410355"
+  },
+  {
+    "rank": "43",
+    "name": "Newark Liberty International Airport",
+    "location": "Newark New Jersey",
+    "country": "United States",
+    "iata": "EWR",
+    "passengers": "43393499"
+  },
+  {
+    "rank": "44",
+    "name": "Ninoy Aquino International Airport",
+    "location": "Pasay/Parañaque Metro Manila",
+    "country": "Philippines",
+    "iata": "MNL",
+    "passengers": "42022484"
+  },
+  {
+    "rank": "45",
+    "name": "Shanghai Hongqiao International Airport",
+    "location": "Changning-Minhang Shanghai",
+    "country": "China",
+    "iata": "SHA",
+    "passengers": "41884059"
+  },
+  {
+    "rank": "46",
+    "name": "Xi'an Xianyang International Airport",
+    "location": "Weicheng Xianyang Shaanxi",
+    "country": "China",
+    "iata": "XIY",
+    "passengers": "41857406"
+  },
+  {
+    "rank": "47",
+    "name": "Leonardo da Vinci–Fiumicino Airport",
+    "location": "Fiumicino Lazio",
+    "country": "Italy",
+    "iata": "FCO",
+    "passengers": "40968756"
+  },
+  {
+    "rank": "48",
+    "name": "George Bush Intercontinental Airport",
+    "location": "Houston Texas",
+    "country": "United States",
+    "iata": "IAH",
+    "passengers": "40696189"
+  },
+  {
+    "rank": "49",
+    "name": "Narita International Airport",
+    "location": "Narita Chiba",
+    "country": "Japan",
+    "iata": "NRT",
+    "passengers": "40631193"
+  },
+  {
+    "rank": "50",
+    "name": "Sheremetyevo International Airport",
+    "location": "Northern Administrative Okrug Moscow",
+    "country": "Russia",
+    "iata": "SVO",
+    "passengers": "40092806"
+  }
+]

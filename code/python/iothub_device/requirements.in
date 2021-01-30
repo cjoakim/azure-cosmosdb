@@ -1,9 +1,0 @@
-# Python/pip requirements
-# Chris Joakim, Microsoft, 2020/10/24
-
-azure-iot-hub
-azure-iot-device
-
-arrow
-docopt
-requests

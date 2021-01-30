@@ -4,6 +4,9 @@
 # in this app, and is "sourced" by the other scripts in this repo.
 # Chris Joakim, Microsoft, 2021/01/30
 
+# NOTE: PLEASE EDIT ACCOUNT AND RESOURCE-GROUP VALUES IN THIS FILE 
+# IF YOU CLONE AND USE THIS REPO (i.e. - rename cjoakim to your name)
+
 # ===
 
 export subscription=$AZURE_SUBSCRIPTION_ID
@@ -34,7 +37,7 @@ export cosmos_mongo_acct_name="cjoakimcosmosmongo"
 export cosmos_mongo_acct_consistency="Session"    # {BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong}
 export cosmos_mongo_acct_kind="MongoDB"  # {GlobalDocumentDB, MongoDB, Parse}
 export cosmos_mongo_dbname="dev"
-export cosmos_mongo_airports_collname="transportation_nodes"
+export cosmos_mongo_airports_collname="airports"
 export cosmos_mongo_airports_shard="pk"
 export cosmos_mongo_airports_ru="1000"
 #

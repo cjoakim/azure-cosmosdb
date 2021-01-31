@@ -1,6 +1,6 @@
 # azure-cosmosdb
 
-A collection CosmosDB related code, artifacts, and presentations.
+A collection CosmosDB related [code](code/), artifacts, and presentations.
 
 ## CosmosDB
 

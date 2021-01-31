@@ -1,15 +1,18 @@
 """
 Usage:
-    source ../app-config.sh
     python cosmos_sql.py load_airports dev airports
     python cosmos_sql.py load_amtrak dev amtrak
+    -
     python cosmos_sql.py truncate_container dev airports
     python cosmos_sql.py truncate_container dev amtrak
+    -
     python cosmos_sql.py named_query dev airports clt-airport
     python cosmos_sql.py named_query dev amtrak all
     python cosmos_sql.py named_query dev amtrak nc-amtrak-stations
+    -
     python cosmos_sql.py point_query dev airports CLT 035094c9-59c7-4019-b66c-1a2e4cc12147
     python cosmos_sql.py point_query dev airports CLT 035094c9-59c7-4019-b66c-1a2e4cc12147 --upsert
+    -
     python cosmos_sql.py geo_query dev airports <longitude> <latitude> <meters>
     python cosmos_sql.py geo_query dev airports -80.84309935569763 35.22718156801215 10000
     python cosmos_sql.py geo_query dev amtrak -80.84309935569763 35.22718156801215 10000

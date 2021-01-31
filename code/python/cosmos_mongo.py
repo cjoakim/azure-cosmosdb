@@ -1,6 +1,5 @@
 """
 Usage:
-    source ../app-config.sh
     python cosmos_geo.py load_cosmos_mongo /Users/cjoakim/github/cj-data/airports/us_airports.json
     python cosmos_geo.py query_cosmos_mongo 
 """
@@ -8,7 +7,7 @@ Usage:
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2020.09.25"
+__version__ = "2021.01.31"
 
 import json
 import os

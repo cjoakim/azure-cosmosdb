@@ -108,11 +108,12 @@ AZURE_COSMOSDB_SQLDB_URI
 <p align="center"><img src="presentations/img/azure-spx-20190427a.jpg" width="95%"></p>
 
 - Senior Cloud Solution Architect at Microsoft
-- Specializing in Data & AI, and CosmosDB
-- 30-years of AppDev experience
+- Specializing in Data & AI, and **CosmosDB**
+- 30+ years of AppDev experience
+- 5-years of Azure Architect experience at Microsoft
 - chjoakim@microsoft.com
-- @cjoakim
 - https://www.linkedin.com/in/chris-joakim-4859b89/
 - https://www.youracclaim.com/users/christopher-joakim/badges
+- https://twitter.com/cjoakim?lang=en
 - https://cjoakim.github.io
-- Based in Charlotte, NC
+- Based in Charlotte, NC, USA

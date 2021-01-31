@@ -2,17 +2,20 @@
 
 # Bash script with AZ CLI to automate the creation/deletion of my
 # Azure Cosmos/Mongo DB.
-# Chris Joakim, 2021/01/30
+# Chris Joakim, 2021/01/31
 #
 # See https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest
 # See https://docs.microsoft.com/en-us/azure/cosmos-db/scripts/cli/mongodb/create
 
-# az login
+# See az_cli_login.sh - your terminal needs to be logged-in to Azure, and set to the appropriate subscription.
 
 source ../env.sh
 
 arg_count=$#
 processed=0
+
+echo 'creating output directory (git ignored)...'
+mkdir -p data/output/
 
 delete() {
     processed=1
@@ -47,6 +50,7 @@ create() {
 
     create_db   
     create_collections
+    info
 }
 
 recreate_all() {
@@ -89,13 +93,13 @@ create_db() {
 
 create_collections() {
     processed=1
-    echo 'creating cosmos collection: '$cosmos_mongo_airports_collname
+    echo 'creating cosmos collection: airports'
     az cosmosdb mongodb collection create \
         --resource-group $cosmos_mongo_rg \
         --account-name $cosmos_mongo_acct_name \
         --database-name $cosmos_mongo_dbname \
-        --name $cosmos_mongo_airports_collname \
-        --shard $cosmos_mongo_airports_shard \
+        --name 'airports' \
+        --shard 'pk' \
         --throughput $cosmos_mongo_airports_ru \
         > data/output/cosmos_mongo_db_create_airports.json
 

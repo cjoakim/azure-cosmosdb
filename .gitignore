@@ -1,3 +1,8 @@
+## cj
+
+automation/az/data/output/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

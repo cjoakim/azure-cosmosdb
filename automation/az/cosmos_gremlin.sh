@@ -7,12 +7,15 @@
 # See https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest
 # See https://docs.microsoft.com/en-us/azure/cosmos-db/scripts/cli/gremlin/create
 
-# az login
+# See az_cli_login.sh - your terminal needs to be logged-in to Azure, and set to the appropriate subscription.
 
 source ../env.sh
 
 arg_count=$#
 processed=0
+
+echo 'creating output directory (git ignored)...'
+mkdir -p data/output/
 
 delete() {
     processed=1
@@ -46,6 +49,7 @@ create() {
 
     create_db   
     create_graphs
+    info
 }
 
 recreate_all() {
@@ -85,23 +89,23 @@ create_db() {
 
 create_graphs() {
     processed=1
-    echo 'creating cosmos graph: '$cosmos_gremlin_airports_collname
+    echo 'creating cosmos graph; npm'
     az cosmosdb gremlin graph create \
         --resource-group $cosmos_gremlin_rg \
         --account-name $cosmos_gremlin_acct_name \
         --database-name $cosmos_gremlin_dbname \
-        --name $cosmos_gremlin_npm_graphname \
-        --partition-key-path $cosmos_gremlin_npm_pk \
+        --name 'npm' \
+        --partition-key-path '/pk' \
         --throughput $cosmos_gremlin_npm_ru \
         > data/output/cosmos_gremlin_db_create_npm.json
 
-    echo 'creating cosmos graph: '$cosmos_gremlin_views_graphname
+    echo 'creating cosmos graph: views'
     az cosmosdb gremlin graph create \
         --resource-group $cosmos_gremlin_rg \
         --account-name $cosmos_gremlin_acct_name \
         --database-name $cosmos_gremlin_dbname \
-        --name $cosmos_gremlin_views_graphname \
-        --partition-key-path $cosmos_gremlin_views_pk \
+        --name 'views' \
+        --partition-key-path '/pk' \
         --throughput $cosmos_gremlin_views_ru \
         > data/output/cosmos_gremlin_db_create_views.json
 }
@@ -128,8 +132,6 @@ info() {
         --name $cosmos_gremlin_acct_name \
         --type connection-strings \
         > data/output/cosmos_gremlin_db_connection_strings.json
-
-    # This command has been deprecated and will be removed in a future release. Use 'cosmosdb keys list' instead.
 }
 
 display_usage() {

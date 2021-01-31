@@ -2,16 +2,19 @@
 
 # Bash script with AZ CLI to automate the creation/deletion of my
 # Azure Cosmos/SQL DB.
-# Chris Joakim, 2021/01/30
+# Chris Joakim, 2021/01/31
 #
 # See https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest
 
-# az login
+# See az_cli_login.sh - your terminal needs to be logged-in to Azure, and set to the appropriate subscription.
 
 source ../env.sh
 
 arg_count=$#
 processed=0
+
+echo 'creating output directory (git ignored)...'
+mkdir -p data/output/
 
 delete() {
     processed=1
@@ -46,6 +49,7 @@ create() {
 
     create_db   
     create_collections
+    info
 }
 
 recreate_all() {
@@ -87,7 +91,7 @@ create_db() {
 
 create_collections() {
     processed=1
-    echo 'creating cosmos collection: '$cosmos_sql_airports_collname
+    echo 'creating cosmos collection: airports'
     az cosmosdb sql container create \
         --resource-group $cosmos_sql_rg \
         --account-name $cosmos_sql_acct_name \
@@ -97,6 +101,7 @@ create_collections() {
         --partition-key-path /pk \
         > data/output/cosmos_sql_db_create_airports.json
 
+    echo 'creating cosmos collection: amtrak'
     az cosmosdb sql container create \
         --resource-group $cosmos_sql_rg \
         --account-name $cosmos_sql_acct_name \
@@ -135,8 +140,6 @@ info() {
         --name $cosmos_sql_acct_name \
         --type connection-strings \
         > data/output/cosmos_sql_db_connection_strings.json
-
-    # This command has been deprecated and will be removed in a future release. Use 'cosmosdb keys list' instead.
 }
 
 display_usage() {

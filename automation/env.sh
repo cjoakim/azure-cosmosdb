@@ -19,8 +19,8 @@ export appinsights_rg="cjoakimappinsights"
 export appinsights_name="cjoakimappinsights"
 #
 export cosmos_gremlin_region=$primary_region
-export cosmos_gremlin_rg="cjoakimcosmosgremlin31"
-export cosmos_gremlin_acct_name="cjoakimcosmosgremlin31"
+export cosmos_gremlin_rg="cjoakimcosmosgremlin"
+export cosmos_gremlin_acct_name="cjoakimcosmosgremlin"
 export cosmos_gremlin_acct_kind="GlobalDocumentDB"  # {GlobalDocumentDB, MongoDB, Parse}
 export cosmos_gremlin_dbname="dev"
 export cosmos_gremlin_npm_ru="400"
@@ -28,16 +28,16 @@ export cosmos_gremlin_views_ru="400"
 #
 export cosmos_mongo_region=$primary_region
 export cosmos_mongo_locations=""
-export cosmos_mongo_rg="cjoakimcosmosmongo31"
-export cosmos_mongo_acct_name="cjoakimcosmosmongo31"
+export cosmos_mongo_rg="cjoakimcosmosmongo"
+export cosmos_mongo_acct_name="cjoakimcosmosmongo"
 export cosmos_mongo_acct_consistency="Session"    # {BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong}
 export cosmos_mongo_acct_kind="MongoDB"  # {GlobalDocumentDB, MongoDB, Parse}
 export cosmos_mongo_dbname="dev"
 export cosmos_mongo_airports_ru="400"
 #
 export cosmos_sql_region=$primary_region
-export cosmos_sql_rg="cjoakimcosmossql31"
-export cosmos_sql_acct_name="cjoakimcosmossql31"
+export cosmos_sql_rg="cjoakimcosmossql"
+export cosmos_sql_acct_name="cjoakimcosmossql"
 export cosmos_sql_acct_consistency="Session"    # {BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong}
 export cosmos_sql_acct_kind="GlobalDocumentDB"  # {GlobalDocumentDB, MongoDB, Parse}
 export cosmos_sql_dbname="dev"

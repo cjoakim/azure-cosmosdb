@@ -1,6 +1,6 @@
 # azure-cosmosdb
 
-A collection CosmosDB related [code](code/), artifacts, and presentations.
+A collection of CosmosDB related [code](code/), [links](links.md), and [presentations](presentations/).
 
 ## CosmosDB
 
@@ -101,3 +101,18 @@ AZURE_COSMOSDB_SQLDB_PREF_REGIONS=East US
 AZURE_COSMOSDB_SQLDB_RG
 AZURE_COSMOSDB_SQLDB_URI
 ```
+
+
+## About Chris
+
+<p align="center"><img src="presentations/img/azure-spx-20190427a.jpg" width="95%"></p>
+
+- Senior Cloud Solution Architect at Microsoft
+- Specializing in Data & AI, and CosmosDB
+- 30-years of AppDev experience
+- chjoakim@microsoft.com
+- @cjoakim
+- https://www.linkedin.com/in/chris-joakim-4859b89/
+- https://www.youracclaim.com/users/christopher-joakim/badges
+- https://cjoakim.github.io
+- Based in Charlotte, NC

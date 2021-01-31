@@ -4,7 +4,7 @@ A collection CosmosDB related code, artifacts, and presentations.
 
 ## CosmosDB
 
-<p align="center"><img src="presentations/img/azure-cosmos-db-gray.png"></p>
+<p align="center"><img src="presentations/img/azure-cosmos-db-gray.png" width="95%"></p>
 
 ---
 

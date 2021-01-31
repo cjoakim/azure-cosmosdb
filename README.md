@@ -10,35 +10,44 @@ A collection CosmosDB related code, artifacts, and presentations.
 
 ## Directory Structure of this Repo
 
+
 ```
+    Directory                Status
+    ---------                ------
+
 ├── automation               Azure ARM and az CLI deployment scripts
-│   ├── arm
-│   └── az
+│   ├── arm                  todo
+│   └── az                   implemented
 ├── code                     CosmosDB SDK programming examples in each language
-│   ├── dotnet
-│   ├── java
-│   ├── java_spring
-│   ├── node
-│   └── python
+│   ├── dotnet               implemented
+│   ├── java                 implemented
+│   ├── java_spring          todo
+│   ├── node                 todo
+│   └── python               implemented
 ├── data                     Common data files used across this repo
 │   ├── airports
 │   ├── amtrak
 │   ├── graph
-│   │   ├── amtrak
-│   │   └── bom
-│   └── postal
+│   │   ├── amtrak  
+│   │       ├── gremlin               
+│   │   └── bom              
+│   │       ├── gremlin      
+│   │       └── libs         
+│   └── postal               
 ├── dbs                      CosmosDB DBMS-Specific files
 │   ├── cassandra
 │   ├── graph
-│   └── mongo
+│   └── mongo                implemented
 ├── docs
-├── functions
-├── live_data_migrator
-├── notebooks
-├── presentations
-├── server_side              CosmosDB Stored Prodedures, Triggers, UDFs
-└── synapse_pyspark
+├── functions                implemented
+├── live_data_migrator       todo
+├── notebooks                todo
+├── presentations            wip
+├── server_side              Stored Prodedures, Triggers, UDF examples in js/ directory
+└── synapse_pyspark          todo
 ```
+
+This repo is a **work in progress; not all of the above are implemented at this time**.
 
 ## Environment Variables used in this Repo
 

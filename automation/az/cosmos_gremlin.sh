@@ -108,6 +108,16 @@ create_graphs() {
         --partition-key-path '/pk' \
         --throughput $cosmos_gremlin_views_ru \
         > data/output/cosmos_gremlin_db_create_views.json
+
+    echo 'creating cosmos graph: amtrak'
+    az cosmosdb gremlin graph create \
+        --resource-group $cosmos_gremlin_rg \
+        --account-name $cosmos_gremlin_acct_name \
+        --database-name $cosmos_gremlin_dbname \
+        --name 'amtrak' \
+        --partition-key-path '/pk' \
+        --throughput $cosmos_gremlin_amtrak_ru \
+        > data/output/cosmos_gremlin_db_create_amtrak.json
 }
 
 info() {

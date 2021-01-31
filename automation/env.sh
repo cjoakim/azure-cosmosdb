@@ -25,15 +25,16 @@ export cosmos_gremlin_acct_kind="GlobalDocumentDB"  # {GlobalDocumentDB, MongoDB
 export cosmos_gremlin_dbname="dev"
 export cosmos_gremlin_npm_ru="400"
 export cosmos_gremlin_views_ru="400"
+export cosmos_gremlin_amtrak_ru="400"
 #
 export cosmos_mongo_region=$primary_region
-export cosmos_mongo_locations=""
 export cosmos_mongo_rg="cjoakimcosmosmongo"
 export cosmos_mongo_acct_name="cjoakimcosmosmongo"
 export cosmos_mongo_acct_consistency="Session"    # {BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong}
 export cosmos_mongo_acct_kind="MongoDB"  # {GlobalDocumentDB, MongoDB, Parse}
 export cosmos_mongo_dbname="dev"
 export cosmos_mongo_airports_ru="400"
+export cosmos_mongo_amtrak_ru="400"
 #
 export cosmos_sql_region=$primary_region
 export cosmos_sql_rg="cjoakimcosmossql"

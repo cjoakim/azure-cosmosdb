@@ -3,9 +3,7 @@
 # Load and query the CosmosDB/Mongo airports collection, and open a
 # mongo CLI shell at Azure CosmosDB/Mongo.
 #
-# Chris Joakim, Microsoft, 2020/10/06
-
-source ../app-config.sh
+# Chris Joakim, Microsoft, 2021/01/31
 
 ./mongo_import.sh azure_airports
 

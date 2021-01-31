@@ -2,9 +2,7 @@
 
 # Bash script to open a mongo CLI pointing to either localhost or Azure.
 #
-# Chris Joakim, Microsoft, 2020/10/06
-
-source ../app-config.sh
+# Chris Joakim, Microsoft, 2021/01/31
 
 if [ "$1" == 'local' ]
 then 

@@ -36,6 +36,8 @@ create() {
         --subscription $subscription \
         > data/output/cosmos_mongo_rg_create.json
 
+    sleep 10
+
     echo 'creating cosmos acct: '$cosmos_mongo_acct_name
     az cosmosdb create \
         --name $cosmos_mongo_acct_name \
@@ -48,8 +50,11 @@ create() {
         --capabilities EnableMongo \
         > data/output/cosmos_mongo_acct_create.json
 
-    create_db   
+    sleep 20
+    create_db
+    sleep 20   
     create_collections
+    sleep 20
     info
 }
 
@@ -99,11 +104,20 @@ create_collections() {
         --account-name $cosmos_mongo_acct_name \
         --database-name $cosmos_mongo_dbname \
         --name 'airports' \
-        --shard 'pk' \
+        --shard 'iata_code' \
         --throughput $cosmos_mongo_airports_ru \
         > data/output/cosmos_mongo_db_create_airports.json
 
         # --idx @cosmos_mongo_airports_index_policy.json \
+
+    az cosmosdb mongodb collection create \
+        --resource-group $cosmos_mongo_rg \
+        --account-name $cosmos_mongo_acct_name \
+        --database-name $cosmos_mongo_dbname \
+        --name 'amtrak' \
+        --shard 'pk' \
+        --throughput $cosmos_mongo_amtrak_ru \
+        > data/output/cosmos_mongo_db_create_amtrak.json
 }
 
 info() {

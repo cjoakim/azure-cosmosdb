@@ -5,9 +5,7 @@
 # $ ./mongo_query.sh local_airports
 # $ ./mongo_query.sh azure_airports
 #
-# Chris Joakim, Microsoft, 2020/04/04
-
-source ../app-config.sh
+# Chris Joakim, Microsoft, 2021/01/31
 
 if [ "$1" == 'local_airports' ]
 then 

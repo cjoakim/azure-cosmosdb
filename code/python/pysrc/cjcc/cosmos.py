@@ -14,20 +14,6 @@ import azure.cosmos.documents as documents
 import azure.cosmos.exceptions as exceptions
 import azure.cosmos.partition_key as partition_key
 
-# pip install azure-cosmos
-# https://pypi.org/project/azure-cosmos/
-# https://github.com/Azure/azure-cosmos-python
-# https://docs.microsoft.com/bs-latn-ba/azure/cosmos-db/sql-api-python-samples
-# https://github.com/Azure/azure-cosmos-python/blob/master/samples/CollectionManagement/Program.py
-
-# SDK version 4.0.0, May 20 2020
-# https://azuresdkdocs.blob.core.windows.net/$web/python/azure-cosmos/4.0.0/azure.cosmos.html
-# https://docs.microsoft.com/en-us/python/api/azure-cosmos/?view=azure-python
-# https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-sdk-python
-# https://azure.github.io/azure-sdk-for-python/
-# https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos
-# x-ms-request-charge
-
 REQUEST_CHARGE_HEADER = 'x-ms-request-charge'
 ACTIVITY_ID_HEADER    = 'x-ms-activity-id'
 
@@ -215,36 +201,3 @@ class Cosmos(object):
             return self._record_diagnostics.headers[ACTIVITY_ID_HEADER]
         else:
             return None
-
-
-# Example dict from method record_diagnostics_headers_dict:
-# {
-#   "Cache-Control": "no-store, no-cache",
-#   "Content-Location": "https://cjoakimcosmossql-eastus.documents.azure.com/dbs/dev/colls/test/docs/ba5f31cf-7f74-4534-964f-8b36b4dc26cd/",
-#   "Content-Type": "application/json",
-#   "Date": "Thu, 04 Jun 2020 16:25:28 GMT",
-#   "Pragma": "no-cache",
-#   "Server": "Microsoft-HTTPAPI/2.0",
-#   "Strict-Transport-Security": "max-age=31536000",
-#   "Transfer-Encoding": "chunked",
-#   "etag": "\"7d00094d-0000-0100-0000-5ed920780000\"",
-#   "lsn": "14",
-#   "x-ms-activity-id": "19ae0802-6d2e-4cba-b534-5a8b1a1ec502",
-#   "x-ms-alt-content-path": "dbs/dev/colls/test",
-#   "x-ms-content-path": "YtUbAOWiNQE=",
-#   "x-ms-cosmos-item-llsn": "14",
-#   "x-ms-cosmos-llsn": "14",
-#   "x-ms-gatewayversion": "version=2.11.0",
-#   "x-ms-global-Committed-lsn": "14",
-#   "x-ms-item-lsn": "14",
-#   "x-ms-last-state-change-utc": "Thu, 04 Jun 2020 11:35:30.048 GMT",
-#   "x-ms-number-of-read-regions": "0",
-#   "x-ms-request-charge": "1",
-#   "x-ms-resource-quota": "documentSize=10240;documentsSize=10485760;documentsCount=-1;collectionSize=10485760;",
-#   "x-ms-resource-usage": "documentSize=0;documentsSize=2;documentsCount=3;collectionSize=3;",
-#   "x-ms-schemaversion": "1.9",
-#   "x-ms-serviceversion": "version=2.11.0.0",
-#   "x-ms-session-token": "0:-1#14",
-#   "x-ms-transport-request-id": "2",
-#   "x-ms-xp-role": "1"
-# }

@@ -3,16 +3,22 @@ Usage:
     source ../app-config.sh
     python cosmos_sql.py load_airports dev airports
     python cosmos_sql.py load_amtrak dev amtrak
-    python cosmos_sql.py truncate_container_per_criteria dev airports all
-    python cosmos_sql.py truncate_container_per_criteria dev amtrak all
-    python cosmos_sql.py query dev amtrak all
-    python cosmos_sql.py query dev amtrak nc_amtrak_stations
+    python cosmos_sql.py truncate_container dev airports
+    python cosmos_sql.py truncate_container dev amtrak
+    python cosmos_sql.py named_query dev airports clt-airport
+    python cosmos_sql.py named_query dev amtrak all
+    python cosmos_sql.py named_query dev amtrak nc-amtrak-stations
+    python cosmos_sql.py point_query dev airports CLT 035094c9-59c7-4019-b66c-1a2e4cc12147
+    python cosmos_sql.py point_query dev airports CLT 035094c9-59c7-4019-b66c-1a2e4cc12147 --upsert
+    python cosmos_sql.py geo_query dev airports <longitude> <latitude> <meters>
+    python cosmos_sql.py geo_query dev airports -80.84309935569763 35.22718156801215 10000
+    python cosmos_sql.py geo_query dev amtrak -80.84309935569763 35.22718156801215 10000
 """
 
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2020.09.25"
+__version__ = "2021.01.31"
 
 import json
 import os
@@ -29,7 +35,8 @@ from pysrc.cjcc.env import Env
 # Define Named-Queries here for ease of CLI use:
 named_queries = dict()
 named_queries['all'] = 'select * from c'
-named_queries['nc_amtrak_stations'] = 'select * from c where c.state = "NC"'
+named_queries['nc-amtrak-stations'] = 'select * from c where c.state = "NC"'
+named_queries['clt-airport'] = "select * from c where c.pk = 'CLT'"
 
 def initialize_cosmos():
     opts = dict()
@@ -42,7 +49,8 @@ def load_airports(dbname, cname):
     dbproxy = c.set_db(dbname)
     ctrproxy = c.set_container(cname)
 
-    infile = '/Users/cjoakim/github/cj-data/airports/us_airports.json'
+    data_dir = os.environ['AZURE_COSMOSDB_DATA_DIR']
+    infile = '{}/airports/us_airports.json'.format(data_dir)
     items = read_json(infile)
 
     for idx, obj in enumerate(items):
@@ -66,8 +74,9 @@ def load_amtrak(dbname, cname):
     c.set_container(cname)
     do_upsert = True
 
-    infile = '/Users/cjoakim/github/cj-data/trains/amtrak/Amtrak_Merged_Stations_Routes.json'
-    data = read_json(infile)
+    data_dir = os.environ['AZURE_COSMOSDB_DATA_DIR']
+    infile = '{}/amtrak/amtrak_merged_stations_routes.json'.format(data_dir)
+    data   = read_json(infile)
     stations = dict_as_list(data['stations'])
     routes   = data['routes']
     graph    = data['adjacent_stations']
@@ -95,7 +104,7 @@ def load_amtrak(dbname, cname):
                 if do_upsert:
                     result = c.upsert_doc(obj)
                     print(result)
-                    #c.print_last_request_charge()
+                    c.print_last_request_charge()
 
     route_names = sorted(routes.keys())
     for idx, route_name in enumerate(route_names):
@@ -107,6 +116,7 @@ def load_amtrak(dbname, cname):
         if do_upsert:
             result = c.upsert_doc(obj)
             print(result)
+            c.print_last_request_charge()
 
     graph_keys = sorted(graph.keys())
     for idx, graph_key in enumerate(graph_keys):
@@ -126,14 +136,15 @@ def load_amtrak(dbname, cname):
         if do_upsert:
             result = c.upsert_doc(obj)
             print(result)
+            c.print_last_request_charge()
 
-def query(dbname, cname, query_name):
+def named_query(dbname, cname, query_name):
     c = initialize_cosmos()
     c.set_db(dbname)
     c.set_container(cname)
     sql = named_queries[query_name]
     epoch = int(time.time())
-    outfile = 'tmp/{}-{}.json'.format(query_name, epoch)
+    outfile = 'tmp/named-query-{}-{}.json'.format(query_name, epoch)
     print('{} -> {}'.format(query_name, sql))
     documents = list()
     query_results = c.query_container(cname, sql, True, 10000)
@@ -143,11 +154,63 @@ def query(dbname, cname, query_name):
         for doc in query_results:
             documents.append(doc)
         print('{} documents returned'.format(len(documents)))
+        c.print_last_request_charge()
         write_obj_as_json_file(outfile, documents)
 
-def truncate_container_per_criteria(dbname, cname, criteria='all'):
-    print('truncate_container_per_select; db: {}, container: {}, criteria: {}'.format(
-        dbname, cname, criteria))
+def point_query(dbname, cname, pk, id):
+    c = initialize_cosmos()
+    c.set_db(dbname)
+    c.set_container(cname)
+    sql = "select * from c where c.pk = '{}' and c.id = '{}'".format(pk, id)
+    epoch = int(time.time())
+    outfile = 'tmp/point-query-{}-{}-{}-{}-{}.json'.format(dbname, cname, pk, id, epoch)
+    print(sql)
+    documents = list()
+    query_results = c.query_container(cname, sql, True, 3)
+    if query_results == None:
+        print('no query results')
+    else:
+        for doc in query_results:
+            documents.append(doc)
+        print('{} documents returned'.format(len(documents)))
+        c.print_last_request_charge()
+        write_obj_as_json_file(outfile, documents)
+
+    if flag_cli_arg('--upsert'):
+        for idx, doc in enumerate(documents):
+            if idx < 1:
+                epoch = time.time()
+                outfile = 'tmp/point-query-{}-{}-{}-{}-{}-upsert.json'.format(dbname, cname, pk, id, int(epoch))
+                doc['epoch'] = epoch
+                result = c.upsert_doc(doc)
+                c.print_last_request_charge()
+                write_obj_as_json_file(outfile, result)
+
+def geo_query(dbname, cname, lng, lat, meters):
+    c = initialize_cosmos()
+    c.set_db(dbname)
+    c.set_container(cname)
+    location = dict()
+    location['type'] = 'Point'
+    location['coordinates'] = [ float(lng), float(lat)]
+    template = "select * from c where ST_DISTANCE(c.location, {}) < {}"
+    sql = template.format(json.dumps(location), meters)
+    epoch = int(time.time())
+    outfile = 'tmp/geo-query-{}.json'.format(epoch)
+    print(sql)
+    documents = list()
+    query_results = c.query_container(cname, sql, True, 1000)
+    if query_results == None:
+        print('no query results')
+    else:
+        for doc in query_results:
+            documents.append(doc)
+        print('{} documents returned'.format(len(documents)))
+        c.print_last_request_charge()
+        write_obj_as_json_file(outfile, documents)
+
+def truncate_container(dbname, cname):
+    print('truncate_container; db: {}, container: {}'.format(dbname, cname))
     c = initialize_cosmos()
     dbproxy = c.set_db(dbname)
     ctrproxy = c.set_container(cname)
@@ -169,6 +232,14 @@ def truncate_container_per_criteria(dbname, cname, criteria='all'):
     for doc in selected_documents:
         print('deleting doc: {}'.format(doc))
         c.delete_doc(doc, doc['pk'])
+        c.print_last_request_charge()
+
+def flag_cli_arg(flag):
+    bool = False
+    for arg in sys.argv:
+        if arg == flag:
+            bool = True
+    return bool
 
 def dict_as_list(d):
     items = list()
@@ -207,17 +278,31 @@ if __name__ == "__main__":
             cname  = sys.argv[3]
             load_amtrak(dbname, cname)
 
-        elif func == 'query':
+        elif func == 'named_query':
             dbname = sys.argv[2]
             cname  = sys.argv[3]
             query_name = sys.argv[4]
-            query(dbname, cname, query_name)
+            named_query(dbname, cname, query_name)
 
-        elif func == 'truncate_container_per_criteria':
+        elif func == 'point_query':
             dbname = sys.argv[2]
             cname  = sys.argv[3]
-            crit   = sys.argv[4]
-            truncate_container_per_criteria(dbname, cname, crit)
+            pk     = sys.argv[4]
+            id     = sys.argv[5]
+            point_query(dbname, cname, pk, id)
+
+        elif func == 'geo_query':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            lng    = sys.argv[4]
+            lat    = sys.argv[5]
+            meters = sys.argv[6]
+            geo_query(dbname, cname, lng, lat, meters)
+
+        elif func == 'truncate_container':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            truncate_container(dbname, cname)
 
         else:
             print_options('Error: invalid function: {}'.format(func))

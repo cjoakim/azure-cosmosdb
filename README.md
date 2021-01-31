@@ -1,8 +1,14 @@
 # azure-cosmosdb
 
-A collection CosmosDB related code, artifacts, presentations
+A collection CosmosDB related code, artifacts, and presentations.
 
-## Directory Structure
+## CosmosDB
+
+<p align="center"><img src="presentations/img/azure-cosmos-db-gray.png"></p>
+
+---
+
+## Directory Structure of this Repo
 
 ```
 ├── automation               Azure ARM and az CLI deployment scripts
@@ -34,10 +40,12 @@ A collection CosmosDB related code, artifacts, presentations
 └── synapse_pyspark
 ```
 
-## Environment Variables
+## Environment Variables used in this Repo
 
 I use system environment variables for all configuration in this repository;
 never use hard-coded values in your code and source-controlled files.
+
+These environment variable names are **my personal conventions, and not required by Azure CosmosDB**.
 
 ```
 AZURE_SUBSCRIPTION_ID                <-- Your Azure Subscription ID

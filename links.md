@@ -1,67 +1,67 @@
 # azure-cosmosdb links
 
+A collection of CosmosDB-related links that I find useful.
+
+## CosmosDB General
+
+- [Documentation Home](https://docs.microsoft.com/en-us/azure/cosmos-db/)
+- [Partitioning and Horizontal Scaling](https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview)
+- [Request Units](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units)
+- [Autoscale](https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale)
+- [Consistency Levels](https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels)
+- [Blog](https://devblogs.microsoft.com/cosmosdb/)
 
 ---
 
 ## APIs and Features
 
-### SQL
+### CosmosDB SQL 
 
-- 
-- 
-- 
-- 
-- 
-- 
-- [Partitioning](https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview)
+- [Modeling](https://docs.microsoft.com/en-us/azure/cosmos-db/modeling-data)
+- [SQL Syntax](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started)
 - [Indexing](https://docs.microsoft.com/en-us/azure/cosmos-db/index-overview)
-- [Autoscale](https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale)
-- [Blog](https://devblogs.microsoft.com/cosmosdb/)
+- [Stored procedures, triggers, UDFs](https://docs.microsoft.com/en-us/azure/cosmos-db/stored-procedures-triggers-udfs)
+- [Geospatial and GeoJSON](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-geospatial-intro)
+- [Bulk Executor Library](https://docs.microsoft.com/en-us/azure/cosmos-db/bulk-executor-overview)
 
-### Mongo 
+### CosmosDB Mongo 
 
-- 
+- [https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction)
 - 
 - [MongoDB Indexing](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-indexing)
 - [MongoDB 3.6 Support](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support-36)
-- 
-- 
+- [Change streams](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-change-streams?tabs=javascript)
 
-### Graph/Gremlin
+#### Open-Source Mongo Libraries
 
-- 
-- 
-- 
-- 
-- 
-- 
+- [pymongo @ PyPI](https://pypi.org/project/pymongo/)
+- [pymongo docs](https://pymongo.readthedocs.io/en/stable/)
+- [mongoose @ npm](https://www.npmjs.com/package/mongoose)
 
-### Cassandra
+### CosmosDB Graph/Gremlin
 
-- 
-- 
-- 
-- 
-- 
-- 
+- [Intro to Gremlin API in Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/graph-introduction)
+- [Apache TinkerPop Project](http://tinkerpop.apache.org/)
+- [Practical Gremlin: An Apache TinkerPop Tutorial](http://kelvinlawrence.net/book/Gremlin-Graph-Guide.html)
+
+### CosmosDB Cassandra
+
+- [Intro to the Azure Cosmos DB Cassandra API](https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-introduction)
 
 ### Change Feed
 
-- 
-- 
-- 
-- 
-- 
-- 
+- [Change Feed in Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed)
+- [Change Feed with Azure Functions](https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed-functions)
+- [Change Feed with Azure Cosmos DB .NET SDK Version 3](https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed-processor)
 
 ### Synapse Link
 
-- 
-- 
-- 
-- 
-- 
-- 
+- [What is Azure Synapse Link?](https://docs.microsoft.com/en-us/azure/cosmos-db/synapse-link)
+- [Architecture Diagram](https://docs.microsoft.com/en-us/azure/cosmos-db/media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
+
+## Azure Cosmos DB Live Data Migrator
+
+- [Live Data Migrator](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)
 
 ### Other
 

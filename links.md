@@ -76,39 +76,32 @@
 
 ### Dotnet
 
-- 
-- 
-- 
-- 
-- 
-- 
+- [NET SDK v3 for SQL API](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-sdk-dotnet-standard)
+- [Microsoft.Azure.Cosmos @ NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)
+- [azure-cosmos-dotnet-v3 GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure.Cosmos package docs](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/cosmosdb/client?view=azure-dotnet)
+- [Sample .NET console app](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-get-started)
+- [EF Core Azure Cosmos DB Provider](https://docs.microsoft.com/en-us/ef/core/providers/cosmos/?tabs=dotnet-core-cli#get-started)
 
 ### Java 
 
-- 
-- 
-- 
-- 
-- 
-- 
+- [Java SDK for SQL API](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-sdk-java)
+- [azure-documentdb @ maven.org](https://search.maven.org/search?q=g:com.microsoft.azure%20AND%20a:azure-documentdb)
+- [com.microsoft.azure.documentdb package docs](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb?view=azure-java-stable)
+- [V4 SDK Sample App](https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-java?tabs=sync)
+- [Java on Azure Learning Path](https://docs.microsoft.com/en-us/learn/paths/java-on-azure/?WT.mc_id=java-11777-judubois)
 
 ### Java/Spring
 
-- 
-- 
-- 
-- 
-- 
-- 
+- [Spring Data and CosmosDB](https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb)
+- [Spring Boot Starter](https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)
 
 ### Node
 
-- 
-- 
-- 
-- 
-- 
-- 
+- [Node.js SDK for SQL API](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-sdk-node)
+- [@azure/cosmos @ npm](https://www.npmjs.com/package/@azure/cosmos)
+- [@azure/cosmos package docs](https://docs.microsoft.com/en-us/javascript/api/%40azure/cosmos/?preserve-view=true&view=azure-node-latest)
+- [Code Samples](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-nodejs-samples)
 
 ### Python
 

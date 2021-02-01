@@ -9,6 +9,10 @@ A collection of CosmosDB-related links that I find useful.
 - [Request Units](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units)
 - [Autoscale](https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale)
 - [Consistency Levels](https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels)
+- [Jupyter Notebooks - Python and C#](https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-jupyter-notebooks)
+- [az CLI](https://docs.microsoft.com/en-us/cli/azure/cosmosdb?view=azure-cli-latest)
+- [Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator)
+- [Serverless](https://docs.microsoft.com/en-us/azure/cosmos-db/serverless)
 - [Blog](https://devblogs.microsoft.com/cosmosdb/)
 
 ---
@@ -27,7 +31,6 @@ A collection of CosmosDB-related links that I find useful.
 ### CosmosDB Mongo 
 
 - [https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction)
-- 
 - [MongoDB Indexing](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-indexing)
 - [MongoDB 3.6 Support](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support-36)
 - [Change streams](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-change-streams?tabs=javascript)

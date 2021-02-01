@@ -1,0 +1,23 @@
+﻿<Properties StartupConfiguration="{974671B6-A655-49FB-9A92-E2592E4CE213}|Default">
+  <MonoDevelop.Ide.ItemProperties.CosmosSqlChangeFeedV3 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CosmosSqlChangeFeedV3.cs">
+    <Files>
+      <File FileName="CosmosSqlChangeFeedV3.cs" Line="49" Column="74" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CosmosSqlChangeFeedV3" expanded="True">
+            <Node name="CosmosSqlChangeFeedV3" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -62,14 +62,10 @@ A collection of CosmosDB-related links that I find useful.
 - [What is Azure Synapse Link?](https://docs.microsoft.com/en-us/azure/cosmos-db/synapse-link)
 - [Architecture Diagram](https://docs.microsoft.com/en-us/azure/cosmos-db/media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
 
-## Azure Cosmos DB Live Data Migrator
-
-- [Live Data Migrator](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)
-
 ### Other
 
 - [Azure CosmosDB Data Migration Tool](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data)
-- [Azure CosmosDB Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator)
+- [Live Data Migrator](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)
 - [Azure Updates](https://azure.microsoft.com/en-us/updates/)
 - [Databricks CosmosDB Connector](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html)
 

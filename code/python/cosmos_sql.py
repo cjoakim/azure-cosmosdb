@@ -3,6 +3,10 @@ Usage:
     python cosmos_sql.py load_airports dev airports
     python cosmos_sql.py load_amtrak dev amtrak
     -
+    python cosmos_sql.py create_database dev2 
+    python cosmos_sql.py create_container dev2 airports 500
+    python cosmos_sql.py get_container_throughput dev2 airports
+    -
     python cosmos_sql.py truncate_container dev airports
     python cosmos_sql.py truncate_container dev amtrak
     -
@@ -140,6 +144,28 @@ def load_amtrak(dbname, cname):
             result = c.upsert_doc(obj)
             print(result)
             c.print_last_request_charge()
+
+def create_database(dbname):
+    c = initialize_cosmos()
+    dbproxy = c.set_db(dbname)
+    print(dbproxy)
+
+def create_container(dbname, cname, throughput):
+    c = initialize_cosmos()
+    dbproxy = c.set_db(dbname)
+    print(dbproxy)
+    ctrproxy = c.create_container(cname, '/pk', throughput)
+    print(dbproxy)
+
+def get_container_throughput(dbname, cname):
+    c = initialize_cosmos()
+    dbproxy = c.set_db(dbname)
+    ctrproxy = c.set_container(cname)
+    offer = c.get_container_offer(cname)
+    print(offer)
+    print(json.dumps(offer.properties, sort_keys=True, indent=2))
+    print(offer.offer_throughput)
+    #c.print_record_diagnostics()
 
 def named_query(dbname, cname, query_name):
     c = initialize_cosmos()
@@ -280,6 +306,21 @@ if __name__ == "__main__":
             dbname = sys.argv[2]
             cname  = sys.argv[3]
             load_amtrak(dbname, cname)
+
+        elif func == 'create_database':
+            dbname = sys.argv[2]
+            create_database(dbname)
+
+        elif func == 'create_container':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            throughput = int(sys.argv[4])
+            create_container(dbname, cname, throughput)
+
+        elif func == 'get_container_throughput':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            get_container_throughput(dbname, cname)
 
         elif func == 'named_query':
             dbname = sys.argv[2]

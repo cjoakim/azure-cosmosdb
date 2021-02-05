@@ -1,7 +1,9 @@
 ## cj
 
+
 automation/az/data/output/
 
+**/tmp/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

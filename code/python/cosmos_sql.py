@@ -6,6 +6,7 @@ Usage:
     python cosmos_sql.py create_database dev2 
     python cosmos_sql.py create_container dev2 airports 500
     python cosmos_sql.py get_container_throughput dev2 airports
+    python cosmos_sql.py set_container_throughput dev2 airports 400
     -
     python cosmos_sql.py truncate_container dev airports
     python cosmos_sql.py truncate_container dev amtrak
@@ -165,7 +166,15 @@ def get_container_throughput(dbname, cname):
     print(offer)
     print(json.dumps(offer.properties, sort_keys=True, indent=2))
     print(offer.offer_throughput)
-    #c.print_record_diagnostics()
+
+def set_container_throughput(dbname, cname, throughput):
+    c = initialize_cosmos()
+    dbproxy = c.set_db(dbname)
+    ctrproxy = c.set_container(cname)
+    offer = c.update_container_throughput(cname, throughput)
+    print(offer)
+    print(json.dumps(offer.properties, sort_keys=True, indent=2))
+    print(offer.offer_throughput)
 
 def named_query(dbname, cname, query_name):
     c = initialize_cosmos()
@@ -321,6 +330,12 @@ if __name__ == "__main__":
             dbname = sys.argv[2]
             cname  = sys.argv[3]
             get_container_throughput(dbname, cname)
+
+        elif func == 'set_container_throughput':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            throughput = int(sys.argv[4])
+            set_container_throughput(dbname, cname, throughput)
 
         elif func == 'named_query':
             dbname = sys.argv[2]

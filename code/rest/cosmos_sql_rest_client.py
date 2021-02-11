@@ -1,25 +1,24 @@
 """
-Usage:
-    python cosmos_rest_client.py list_databases
-    python cosmos_rest_client.py list_offers
-    python cosmos_rest_client.py get_database dev2
-    python cosmos_rest_client.py list_collections dev2
-    python cosmos_rest_client.py get_container dev2 airports
-    python cosmos_rest_client.py rfc_7231_date
-    python cosmos_rest_client.py ad_hoc
-"""
+Examples of using the CosmosDB REST API vs a SQL API account.
 
-# Links
-# https://docs.microsoft.com/en-us/rest/api/cosmos-db/
-# https://docs.microsoft.com/en-us/rest/api/cosmos-db/access-control-on-cosmosdb-resources
-# https://docs.microsoft.com/en-us/azure/azure-app-configuration/rest-api-authentication-hmac
+Usage:
+    python cosmos_sql_rest_client.py list_databases
+    python cosmos_sql_rest_client.py list_offers
+    python cosmos_sql_rest_client.py get_database dev2
+    python cosmos_sql_rest_client.py list_collections dev2
+    python cosmos_sql_rest_client.py get_container dev2 airports
+"""
 
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
 __version__ = "2021.02.11"
 
-# import binascii
+# Links
+# https://docs.microsoft.com/en-us/rest/api/cosmos-db/
+# https://docs.microsoft.com/en-us/rest/api/cosmos-db/access-control-on-cosmosdb-resources
+# https://docs.microsoft.com/en-us/azure/azure-app-configuration/rest-api-authentication-hmac
+
 import base64
 import hashlib
 import hmac

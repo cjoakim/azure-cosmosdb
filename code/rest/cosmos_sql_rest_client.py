@@ -7,6 +7,7 @@ Usage:
     python cosmos_sql_rest_client.py get_database dev2
     python cosmos_sql_rest_client.py list_collections dev2
     python cosmos_sql_rest_client.py get_container dev2 airports
+    python cosmos_sql_rest_client.py set_container_ru dev2 airports 600
 """
 
 __author__  = 'Chris Joakim'
@@ -38,11 +39,12 @@ COSMOS_REST_API_VERSION = '2018-12-31'  # '2015-12-16'
 class CosmosRestClient():
 
     def __init__(self):
-        self.u = None  # the current url
-        self.r = None  # the current requests response object
-        self.user_agent = {'User-agent': 'Mozilla/5.0'}
         self.cosmos_acct = os.environ['AZURE_COSMOSDB_SQLDB_ACCT'] 
         self.cosmos_key  = os.environ['AZURE_COSMOSDB_SQLDB_KEY'] 
+        self.token_type  = 'master'
+        self.token_version = '1.0'
+        # self.u = None  # the current url
+        # self.r = None  # the current requests response object
 
     def ad_hoc(self):
         print('ad_hoc')
@@ -50,24 +52,21 @@ class CosmosRestClient():
     def list_databases(self):
         print('list_databases')
         verb, resource_link = 'get', ''
-        headers = self.cosmos_rest_headers(
-            self.cosmos_key, 'master', '1.0', verb, 'dbs', resource_link)
+        headers = self.rest_headers(verb, 'dbs', resource_link)
         url = 'https://{}.documents.azure.com/dbs'.format(self.cosmos_acct)
         self.execute_http_request('list_databases', verb, url, headers)
 
     def list_offers(self):
         print('list_offers')
         verb, resource_link = 'get', ''
-        headers = self.cosmos_rest_headers(
-            self.cosmos_key, 'master', '1.0', verb, 'offers', resource_link)
+        headers = self.rest_headers(verb, 'offers', resource_link)
         url = 'https://{}.documents.azure.com/offers'.format(self.cosmos_acct)
         self.execute_http_request('list_offers', verb, url, headers)
 
     def get_database(self, dbname):
         print('get_database: {}'.format(dbname))
         verb, resource_link = 'get', 'dbs/{}'.format(dbname)
-        headers = self.cosmos_rest_headers(
-            self.cosmos_key, 'master', '1.0', verb, 'dbs', resource_link)
+        headers = self.rest_headers(verb, 'dbs', resource_link)
         url = 'https://{}.documents.azure.com/dbs/{}'.format(
             self.cosmos_acct, dbname)
         self.execute_http_request('get_database', verb, url, headers)
@@ -75,8 +74,7 @@ class CosmosRestClient():
     def list_collections(self, dbname):
         print('list_collections: {}'.format(dbname))
         verb, resource_link = 'get', 'dbs/{}'.format(dbname)
-        headers = self.cosmos_rest_headers(
-            self.cosmos_key, 'master', '1.0', verb, 'colls', resource_link)
+        headers = self.rest_headers(verb, 'colls', resource_link)
         url = 'https://{}.documents.azure.com/dbs/{}/colls'.format(
             self.cosmos_acct, dbname)
         self.execute_http_request('list_collections', verb, url, headers)
@@ -84,34 +82,15 @@ class CosmosRestClient():
     def get_container(self, dbname, cname):
         print('get_container: {} {}'.format(dbname, cname))
         verb, resource_link = 'get', 'dbs/{}/colls/{}'.format(dbname, cname)
-        headers = self.cosmos_rest_headers(
-            self.cosmos_key, 'master', '1.0', verb, 'colls', resource_link)
+        headers = self.rest_headers(verb, 'colls', resource_link)
         url = 'https://{}.documents.azure.com/dbs/{}/colls/{}'.format(
             self.cosmos_acct, dbname, cname)
         self.execute_http_request('get_container', verb, url, headers)
 
-    def cosmos_rest_headers(
-        self, cosmos_key, token_type, token_version, verb, resource_type, resource_link):
+    def set_container_ru(self, dbname, cname, ru):
+        print('set_container_ru: {} {} {}'.format(dbname, cname, ru))
 
-        # The parameters to this method look like this:
-        # get_container: dev2 airports
-        # cosmos_rest_headers, parameters:
-        # cosmos_key:    qyruLjQ ... secret ... ==
-        # token_type:    master
-        # token_version: 1.0
-        # verb:          get
-        # resource_type: colls
-        # resource_link: dbs/dev2/colls/airports
-
-        if False:
-            print('cosmos_rest_headers, parameters:')
-            print('cosmos_key:    {}'.format(cosmos_key))
-            print('token_type:    {}'.format(token_type))
-            print('token_version: {}'.format(token_version))
-            print('verb:          {}'.format(verb))
-            print('resource_type: {}'.format(resource_type))
-            print('resource_link: {}'.format(resource_link))
-
+    def rest_headers(self, verb, resource_type, resource_link):
         rfc_7231_dt = self.rfc_7231_date()
         string_to_sign = "{}\n{}\n{}\n{}\n\n".format(
             verb, resource_type, resource_link, rfc_7231_dt).lower()
@@ -125,11 +104,12 @@ class CosmosRestClient():
 
         # ---
 
-        decoded_secret = base64.b64decode(cosmos_key, validate=True)
+        decoded_secret = base64.b64decode(self.cosmos_key, validate=True)
         digest = hmac.new(decoded_secret,
             bytes(string_to_sign, 'utf-8'), hashlib.sha256).digest()
         signature = base64.b64encode(digest).decode('utf-8')
-        unencoded_auth = 'type={}&ver={}&sig={}'.format(token_type, token_version, signature)
+        unencoded_auth = 'type={}&ver={}&sig={}'.format(
+            self.token_type, self.token_version, signature)
         encoded_auth = urllib.parse.quote(unencoded_auth)
 
         headers = dict()
@@ -174,7 +154,7 @@ class CosmosRestClient():
                 resp_obj = json.loads(r.text)
                 print(json.dumps(resp_obj, sort_keys=False, indent=2))
                 print('response: {}'.format(r))
-                outfile = 'tmp/{}.json'.format(function_name)
+                outfile = 'tmp/{}_{}.json'.format(function_name, r.status_code)
                 self.write_json_file(resp_obj, outfile)
             except Exception as e:
                 print("exception processing http response".format(e))
@@ -230,6 +210,12 @@ if __name__ == "__main__":
             dbname = sys.argv[2]
             cname  = sys.argv[3]
             client.get_container(dbname, cname)
+
+        elif func == 'set_container_ru':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            ru     = int(sys.argv[4])
+            client.set_container_ru(dbname, cname, ru)
 
         else:
             print_options('Error: invalid function: {}'.format(func))

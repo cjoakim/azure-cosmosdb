@@ -3,13 +3,15 @@ Examples of using the CosmosDB REST API vs a SQL API account.
 
 Usage:
     python cosmos_sql_rest_client.py list_databases
+    python cosmos_sql_rest_client.py list_collections dev2
     python cosmos_sql_rest_client.py list_offers
     -
     python cosmos_sql_rest_client.py create_database dev 0
     python cosmos_sql_rest_client.py create_database dev3 4000
     python cosmos_sql_rest_client.py delete_database dev3
     python cosmos_sql_rest_client.py get_database dev2
-    python cosmos_sql_rest_client.py list_collections dev2
+    -
+    python cosmos_sql_rest_client.py create_container dev airports 500 /pk
     python cosmos_sql_rest_client.py get_container dev2 airports
     python cosmos_sql_rest_client.py set_container_ru dev2 airports 600
 """
@@ -106,6 +108,22 @@ class CosmosRestClient():
         url = 'https://{}.documents.azure.com/dbs/{}/colls'.format(
             self.cosmos_acct, dbname)
         self.execute_http_request('list_collections', verb, url, headers)
+
+    def create_container(self, dbname, cname, ru, pk):
+        # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/create-a-collection
+        print('create_container: {} {} {} {}'.format(dbname, cname, ru, pk))
+        verb, resource_link = 'post', 'dbs/{}'.format(dbname)
+        headers = self.rest_headers(verb, 'colls', resource_link)
+        body = RequestBody.create_container(cname, pk)
+        if ru > 0:
+            headers['x-ms-offer-throughput'] = str(ru)
+        url = 'https://{}.documents.azure.com/dbs/{}/colls'.format(
+            self.cosmos_acct, dbname)
+
+        print(json.dumps(headers, sort_keys=False, indent=2))
+        print(json.dumps(body, sort_keys=False, indent=2))
+        print(url)
+        self.execute_http_request('create_container', verb, url, headers, body)
 
     def get_container(self, dbname, cname):
         print('get_container: {} {}'.format(dbname, cname))
@@ -224,8 +242,14 @@ if __name__ == "__main__":
         elif func == 'list_databases':
             client.list_databases()
 
+        elif func == 'list_collections':
+            dbname = sys.argv[2]
+            client.list_collections(dbname)
+
         elif func == 'list_offers':
             client.list_offers()
+
+        # database operations 
 
         elif func == 'create_database':
             dbname = sys.argv[2]
@@ -240,9 +264,14 @@ if __name__ == "__main__":
             dbname = sys.argv[2]
             client.get_database(dbname)
 
-        elif func == 'list_collections':
+        # container operations 
+
+        elif func == 'create_container':
             dbname = sys.argv[2]
-            client.list_collections(dbname)
+            cname  = sys.argv[3]
+            ru     = int(sys.argv[4])
+            pk     = sys.argv[5]
+            client.create_container(dbname, cname, ru, pk)
 
         elif func == 'get_container':
             dbname = sys.argv[2]

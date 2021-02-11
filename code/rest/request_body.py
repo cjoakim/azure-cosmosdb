@@ -19,6 +19,15 @@ class RequestBody(object):
         template = cls.get_template('create_db.txt')
         return json.loads(cls.render(template, values))
 
+    @classmethod
+    def create_container(cls, cname, pk, indexing_type='default'):
+        values = dict()
+        values['cname'] = cname
+        values['pk'] = pk
+        tname = 'create_container_{}_indexing.txt'.format(indexing_type)
+        template = cls.get_template(tname)
+        return json.loads(cls.render(template, values))
+
     # class private methods 
 
     @classmethod

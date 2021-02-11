@@ -1,0 +1,26 @@
+{  
+  "id": "{{ cname }}",  
+  "indexingPolicy": {
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ]
+  },  
+  "partitionKey": {  
+    "paths": [  
+      "{{ pk }}"  
+    ],  
+    "kind": "Hash",
+     "Version": 2
+
+  }  
+}
+

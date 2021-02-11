@@ -13,6 +13,7 @@ Usage:
     -
     python cosmos_sql_rest_client.py create_container dev airports 500 /pk
     python cosmos_sql_rest_client.py get_container dev2 airports
+    python cosmos_sql_rest_client.py delete_container dev airports 
     python cosmos_sql_rest_client.py set_container_ru dev2 airports 600
 """
 
@@ -132,6 +133,15 @@ class CosmosRestClient():
         url = 'https://{}.documents.azure.com/dbs/{}/colls/{}'.format(
             self.cosmos_acct, dbname, cname)
         self.execute_http_request('get_container', verb, url, headers)
+
+    def delete_container(self, dbname, cname):
+        # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/delete-a-collection
+        print('delete_container: {} {}'.format(dbname, cname))
+        verb, resource_link = 'delete', 'dbs/{}/colls/{}'.format(dbname, cname)
+        headers = self.rest_headers(verb, 'colls', resource_link)
+        url = 'https://{}.documents.azure.com/dbs/{}/colls/{}'.format(
+            self.cosmos_acct, dbname, cname)
+        self.execute_http_request('delete_container', verb, url, headers)
 
     def set_container_ru(self, dbname, cname, ru):
         print('set_container_ru: {} {} {}'.format(dbname, cname, ru))
@@ -277,6 +287,11 @@ if __name__ == "__main__":
             dbname = sys.argv[2]
             cname  = sys.argv[3]
             client.get_container(dbname, cname)
+
+        elif func == 'delete_container':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            client.delete_container(dbname, cname)
 
         elif func == 'set_container_ru':
             dbname = sys.argv[2]

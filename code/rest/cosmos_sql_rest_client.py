@@ -7,7 +7,7 @@ Usage:
     -
     python cosmos_sql_rest_client.py create_database dev 0
     python cosmos_sql_rest_client.py create_database dev3 4000
-
+    python cosmos_sql_rest_client.py delete_database dev3
     python cosmos_sql_rest_client.py get_database dev2
     python cosmos_sql_rest_client.py list_collections dev2
     python cosmos_sql_rest_client.py get_container dev2 airports
@@ -82,6 +82,14 @@ class CosmosRestClient():
         print(body)
         url = 'https://{}.documents.azure.com/dbs'.format(self.cosmos_acct)
         self.execute_http_request('create_database', verb, url, headers, body)
+
+    def delete_database(self, dbname):
+        # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/delete-a-database
+        print('delete_database: {}'.format(dbname))
+        verb, resource_link = 'delete', 'dbs/{}'.format(dbname)
+        headers = self.rest_headers(verb, 'dbs', resource_link)
+        url = 'https://{}.documents.azure.com/dbs/{}'.format(self.cosmos_acct, dbname)
+        self.execute_http_request('delete_database', verb, url, headers)
 
     def get_database(self, dbname):
         print('get_database: {}'.format(dbname))
@@ -170,7 +178,7 @@ class CosmosRestClient():
             print('error; unexpected method value passed to invoke: {}'.format(method))
 
         print('response: {}'.format(r))
-        if r.status_code < 300:
+        if r.status_code in [200, 201]:  # not all responses return a JSON body
             try:
                 resp_obj = json.loads(r.text)
                 print(json.dumps(resp_obj, sort_keys=False, indent=2))
@@ -223,6 +231,10 @@ if __name__ == "__main__":
             dbname = sys.argv[2]
             autopilot_ru = int(sys.argv[3])
             client.create_database(dbname, autopilot_ru)
+
+        elif func == 'delete_database':
+            dbname = sys.argv[2]
+            client.delete_database(dbname)
 
         elif func == 'get_database':
             dbname = sys.argv[2]

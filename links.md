@@ -62,6 +62,10 @@ A collection of CosmosDB-related links that I find useful.
 - [What is Azure Synapse Link?](https://docs.microsoft.com/en-us/azure/cosmos-db/synapse-link)
 - [Architecture Diagram](https://docs.microsoft.com/en-us/azure/cosmos-db/media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
 
+### REST
+
+- [Azure CosmosDB/SQL REST API Reference](https://docs.microsoft.com/en-us/rest/api/cosmos-db/)
+
 ### Other
 
 - [Azure CosmosDB Data Migration Tool](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data)

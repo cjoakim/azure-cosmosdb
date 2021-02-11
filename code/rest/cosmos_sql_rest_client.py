@@ -4,6 +4,10 @@ Examples of using the CosmosDB REST API vs a SQL API account.
 Usage:
     python cosmos_sql_rest_client.py list_databases
     python cosmos_sql_rest_client.py list_offers
+    -
+    python cosmos_sql_rest_client.py create_database dev 0
+    python cosmos_sql_rest_client.py create_database dev3 4000
+
     python cosmos_sql_rest_client.py get_database dev2
     python cosmos_sql_rest_client.py list_collections dev2
     python cosmos_sql_rest_client.py get_container dev2 airports
@@ -32,6 +36,8 @@ import urllib.parse
 
 from datetime import datetime
 from docopt import docopt
+
+from request_body import RequestBody
 
 COSMOS_REST_API_VERSION = '2018-12-31'  # '2015-12-16'
 
@@ -63,6 +69,20 @@ class CosmosRestClient():
         url = 'https://{}.documents.azure.com/offers'.format(self.cosmos_acct)
         self.execute_http_request('list_offers', verb, url, headers)
 
+    def create_database(self, dbname, autopilot_ru):
+        # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/create-a-database
+        print('create_database: {} {}'.format(dbname, autopilot_ru))
+        verb, resource_link = 'post', ''
+        headers = self.rest_headers(verb, 'dbs', resource_link)
+        if autopilot_ru > 0:
+            settings = {"maxThroughput": autopilot_ru}
+            headers['x-ms-cosmos-offer-autopilot-settings'] = json.dumps(settings)
+        body = RequestBody.create_db(dbname)
+        print(headers)
+        print(body)
+        url = 'https://{}.documents.azure.com/dbs'.format(self.cosmos_acct)
+        self.execute_http_request('create_database', verb, url, headers, body)
+
     def get_database(self, dbname):
         print('get_database: {}'.format(dbname))
         verb, resource_link = 'get', 'dbs/{}'.format(dbname)
@@ -89,6 +109,7 @@ class CosmosRestClient():
 
     def set_container_ru(self, dbname, cname, ru):
         print('set_container_ru: {} {} {}'.format(dbname, cname, ru))
+        # TODO
 
     def rest_headers(self, verb, resource_type, resource_link):
         rfc_7231_dt = self.rfc_7231_date()
@@ -197,6 +218,11 @@ if __name__ == "__main__":
 
         elif func == 'list_offers':
             client.list_offers()
+
+        elif func == 'create_database':
+            dbname = sys.argv[2]
+            autopilot_ru = int(sys.argv[3])
+            client.create_database(dbname, autopilot_ru)
 
         elif func == 'get_database':
             dbname = sys.argv[2]

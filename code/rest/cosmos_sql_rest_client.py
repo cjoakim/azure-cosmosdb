@@ -2,23 +2,23 @@
 Examples of using the CosmosDB REST API vs a SQL API account.
 
 Usage:
+    - Databases:
     python cosmos_sql_rest_client.py list_databases
-    python cosmos_sql_rest_client.py list_collections dev
-    python cosmos_sql_rest_client.py list_offers
-    --
-    python cosmos_sql_rest_client.py associate_offers dev
-    -
     python cosmos_sql_rest_client.py create_database dev 0
-    python cosmos_sql_rest_client.py create_database dev3 4000
-    python cosmos_sql_rest_client.py delete_database dev3
+    python cosmos_sql_rest_client.py create_database dev2 4000
+    python cosmos_sql_rest_client.py delete_database dev2
     python cosmos_sql_rest_client.py get_database dev2
-    -
+    - Collections/Containers:
+    python cosmos_sql_rest_client.py list_collections dev
     python cosmos_sql_rest_client.py create_container dev airports 500 /pk
     python cosmos_sql_rest_client.py get_container dev airports
     python cosmos_sql_rest_client.py delete_container dev airports 
-    python cosmos_sql_rest_client.py set_container_ru dev airports 600
-    -
+    - Offers/Throughput:
+    python cosmos_sql_rest_client.py list_offers
     python cosmos_sql_rest_client.py get_offer 8jId
+    python cosmos_sql_rest_client.py associate_offers dev
+    python cosmos_sql_rest_client.py set_database_ru dev2 5000
+    python cosmos_sql_rest_client.py set_container_ru dev airports 600
 """
 
 __author__  = 'Chris Joakim'
@@ -200,6 +200,7 @@ class CosmosRestClient():
                     print('matched; type: {} name: {} self: {} offer id: {}'.format(t, n, s, o))
 
             self.write_json_file(associations, 'tmp/offer_associations.json')
+            return associations
 
     def get_offer(self, offer_id):
         print('get_offer: {}'.format(offer_id))
@@ -211,7 +212,30 @@ class CosmosRestClient():
 
     def set_container_ru(self, dbname, cname, ru):
         print('set_container_ru: {} {} {}'.format(dbname, cname, ru))
-        # TODO
+        associations = self.associate_offers(dbname)
+
+        for a in associations:
+            if (a['type'] == 'coll') and (a['name'] == cname):
+                offer = a['offer']
+                print(json.dumps(offer, sort_keys=False, indent=2))
+                offer['content']['offerThroughput'] = ru  # update the offer JSON with new RU 
+                print(json.dumps(offer, sort_keys=False, indent=2))
+                # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/replace-an-offer
+                offer_id = a['offer']['id']
+
+                resource = a['offer']['resource']
+                offerResourceId = a['offer']['offerResourceId']
+                id  = a['offer']['id']
+                rid = a['offer']['_rid']
+
+                body = RequestBody.replace_offer(ru, resource, offerResourceId, id, rid)
+                print(body)
+
+                verb, resource_link = 'put', '{}'.format(offer_id)
+                headers = self.rest_headers(verb, 'offers', resource_link)
+                url = 'https://{}.documents.azure.com/offers/{}'.format(
+                    self.cosmos_acct, offer_id)
+                return self.execute_http_request('replace_offer', verb, url, headers, body)
 
     def rest_headers(self, verb, resource_type, resource_link):
         rfc_7231_dt = self.rfc_7231_date()
@@ -315,21 +339,10 @@ if __name__ == "__main__":
         elif func == 'rfc_7231_date':
             print(client.rfc_7231_date())
 
+        # database operations 
+
         elif func == 'list_databases':
             client.list_databases()
-
-        elif func == 'list_collections':
-            dbname = sys.argv[2]
-            client.list_collections(dbname)
-
-        elif func == 'list_offers':
-            client.list_offers()
-
-        elif func == 'associate_offers':
-            dbname = sys.argv[2]
-            client.associate_offers(dbname)
-
-        # database operations 
 
         elif func == 'create_database':
             dbname = sys.argv[2]
@@ -345,6 +358,10 @@ if __name__ == "__main__":
             client.get_database(dbname)
 
         # container operations 
+
+        elif func == 'list_collections':
+            dbname = sys.argv[2]
+            client.list_collections(dbname)
 
         elif func == 'create_container':
             dbname = sys.argv[2]
@@ -363,11 +380,24 @@ if __name__ == "__main__":
             cname  = sys.argv[3]
             client.delete_container(dbname, cname)
 
-        # offer operations 
+        # offer/throughput operations 
+
+        elif func == 'list_offers':
+            client.list_offers()
 
         elif func == 'get_offer':
             id = sys.argv[2]
             client.get_offer(id)
+
+        elif func == 'associate_offers':
+            dbname = sys.argv[2]
+            client.associate_offers(dbname)
+
+        elif func == 'set_container_ru':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            ru     = int(sys.argv[4])
+            client.set_container_ru(dbname, cname, ru)
 
         else:
             print_options('Error: invalid function: {}'.format(func))

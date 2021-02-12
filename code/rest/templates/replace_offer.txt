@@ -1,0 +1,11 @@
+{   
+  "offerVersion": "V2",   
+  "offerType": "Invalid",   
+  "content": {   
+    "offerThroughput": {{ offerThroughput }}   
+  },   
+  "resource": "{{ resource }}",   
+  "offerResourceId": "{{ offerResourceId }}",   
+  "id": "{{ id }}",   
+  "_rid": "{{ rid }}"  
+}

@@ -28,6 +28,29 @@ class RequestBody(object):
         template = cls.get_template(tname)
         return json.loads(cls.render(template, values))
 
+    @classmethod
+    def replace_offer(cls, ru, resource, offerResourceId, id, rid):
+        values = dict()
+        values['offerThroughput'] = ru
+        values['resource'] = resource
+        values['offerResourceId'] = offerResourceId
+        values['id'] = id
+        values['rid'] = rid
+        tname = 'replace_offer.txt'
+        template = cls.get_template(tname)
+        return json.loads(cls.render(template, values))
+        # {   
+        #   "offerVersion": "V2",   
+        #   "offerType": "Invalid",   
+        #   "content": {   
+        #     "offerThroughput": {{ offerThroughput }}   
+        #   },   
+        #   "resource": "{{ resource }}",   
+        #   "offerResourceId": "{{ offerResourceId }}",   
+        #   "id": "{{ id }}",   
+        #   "_rid": "{{ rid }}",   
+        # }
+
     # class private methods 
 
     @classmethod

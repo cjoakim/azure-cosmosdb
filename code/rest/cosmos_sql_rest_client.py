@@ -17,14 +17,17 @@ Usage:
     python cosmos_sql_rest_client.py list_offers
     python cosmos_sql_rest_client.py get_offer 8jId
     python cosmos_sql_rest_client.py associate_offers dev
-    python cosmos_sql_rest_client.py set_database_autopilot_ru dev2 4100
+    python cosmos_sql_rest_client.py set_database_autopilot_ru dev2 5000
     python cosmos_sql_rest_client.py set_container_ru dev airports 600
+    -
+    python cosmos_sql_rest_client.py help
+    -
 """
 
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2021.02.11"
+__version__ = "2021.02.12"
 
 # Links
 # https://docs.microsoft.com/en-us/rest/api/cosmos-db/
@@ -63,17 +66,18 @@ class CosmosRestClient():
         print('ad_hoc')
 
     def list_databases(self):
+        # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-databases
         print('list_databases')
         verb, resource_link = 'get', ''
-        headers = self.rest_headers(verb, 'dbs', resource_link)
+        headers = self.__rest_headers(verb, 'dbs', resource_link)
         url = 'https://{}.documents.azure.com/dbs'.format(self.cosmos_acct)
-        return self.execute_http_request('list_databases', verb, url, headers)
+        return self.__execute_http_request('list_databases', verb, url, headers)
 
     def create_database(self, dbname, autopilot_ru):
         # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/create-a-database
         print('create_database: {} {}'.format(dbname, autopilot_ru))
         verb, resource_link = 'post', ''
-        headers = self.rest_headers(verb, 'dbs', resource_link)
+        headers = self.__rest_headers(verb, 'dbs', resource_link)
         if autopilot_ru > 0:
             settings = {"maxThroughput": autopilot_ru}
             headers['x-ms-cosmos-offer-autopilot-settings'] = json.dumps(settings)
@@ -81,37 +85,39 @@ class CosmosRestClient():
         print(headers)
         print(body)
         url = 'https://{}.documents.azure.com/dbs'.format(self.cosmos_acct)
-        return self.execute_http_request('create_database', verb, url, headers, body)
+        return self.__execute_http_request('create_database', verb, url, headers, body)
 
     def delete_database(self, dbname):
         # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/delete-a-database
         print('delete_database: {}'.format(dbname))
         verb, resource_link = 'delete', 'dbs/{}'.format(dbname)
-        headers = self.rest_headers(verb, 'dbs', resource_link)
+        headers = self.__rest_headers(verb, 'dbs', resource_link)
         url = 'https://{}.documents.azure.com/dbs/{}'.format(self.cosmos_acct, dbname)
-        return self.execute_http_request('delete_database', verb, url, headers)
+        return self.__execute_http_request('delete_database', verb, url, headers)
 
     def get_database(self, dbname):
+        # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/delete-a-database
         print('get_database: {}'.format(dbname))
         verb, resource_link = 'get', 'dbs/{}'.format(dbname)
-        headers = self.rest_headers(verb, 'dbs', resource_link)
+        headers = self.__rest_headers(verb, 'dbs', resource_link)
         url = 'https://{}.documents.azure.com/dbs/{}'.format(
             self.cosmos_acct, dbname)
-        return self.execute_http_request('get_database', verb, url, headers)
+        return self.__execute_http_request('get_database', verb, url, headers)
 
     def list_collections(self, dbname):
+        # https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-collections
         print('list_collections: {}'.format(dbname))
         verb, resource_link = 'get', 'dbs/{}'.format(dbname)
-        headers = self.rest_headers(verb, 'colls', resource_link)
+        headers = self.__rest_headers(verb, 'colls', resource_link)
         url = 'https://{}.documents.azure.com/dbs/{}/colls'.format(
             self.cosmos_acct, dbname)
-        return self.execute_http_request('list_collections', verb, url, headers)
+        return self.__execute_http_request('list_collections', verb, url, headers)
 
     def create_container(self, dbname, cname, ru, pk):
         # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/create-a-collection
         print('create_container: {} {} {} {}'.format(dbname, cname, ru, pk))
         verb, resource_link = 'post', 'dbs/{}'.format(dbname)
-        headers = self.rest_headers(verb, 'colls', resource_link)
+        headers = self.__rest_headers(verb, 'colls', resource_link)
         body = RequestBody.create_container(cname, pk)
         if ru > 0:
             headers['x-ms-offer-throughput'] = str(ru)
@@ -121,32 +127,33 @@ class CosmosRestClient():
         print(json.dumps(headers, sort_keys=False, indent=2))
         print(json.dumps(body, sort_keys=False, indent=2))
         print(url)
-        return self.execute_http_request('create_container', verb, url, headers, body)
+        return self.__execute_http_request('create_container', verb, url, headers, body)
 
     def get_container(self, dbname, cname):
+        # https://docs.microsoft.com/en-us/rest/api/cosmos-db/get-a-collection
         print('get_container: {} {}'.format(dbname, cname))
         verb, resource_link = 'get', 'dbs/{}/colls/{}'.format(dbname, cname)
-        headers = self.rest_headers(verb, 'colls', resource_link)
+        headers = self.__rest_headers(verb, 'colls', resource_link)
         url = 'https://{}.documents.azure.com/dbs/{}/colls/{}'.format(
             self.cosmos_acct, dbname, cname)
-        return self.execute_http_request('get_container', verb, url, headers)
+        return self.__execute_http_request('get_container', verb, url, headers)
 
     def delete_container(self, dbname, cname):
         # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/delete-a-collection
         print('delete_container: {} {}'.format(dbname, cname))
         verb, resource_link = 'delete', 'dbs/{}/colls/{}'.format(dbname, cname)
-        headers = self.rest_headers(verb, 'colls', resource_link)
+        headers = self.__rest_headers(verb, 'colls', resource_link)
         url = 'https://{}.documents.azure.com/dbs/{}/colls/{}'.format(
             self.cosmos_acct, dbname, cname)
-        return self.execute_http_request('delete_container', verb, url, headers)
+        return self.__execute_http_request('delete_container', verb, url, headers)
 
     def list_offers(self):
         # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/querying-offers
         print('list_offers')
         verb, resource_link = 'get', ''
-        headers = self.rest_headers(verb, 'offers', resource_link)
+        headers = self.__rest_headers(verb, 'offers', resource_link)
         url = 'https://{}.documents.azure.com/offers'.format(self.cosmos_acct)
-        return self.execute_http_request('list_offers', verb, url, headers)
+        return self.__execute_http_request('list_offers', verb, url, headers)
 
     def associate_offers(self, dname):
         # Execute three REST calls to obtain info on offers, db, and colls
@@ -159,9 +166,9 @@ class CosmosRestClient():
         if r.status_code == 200:
             print('info has been gathered for offers, db, colls; now associating...')
             # these 3 files should now exist, created above.  load them into memory.
-            offers = self.load_json_file('tmp/list_offers_200.json')
-            db     = self.load_json_file('tmp/get_database_200.json')
-            colls  = self.load_json_file('tmp/list_collections_200.json')
+            offers = self.__load_json_file('tmp/list_offers_200.json')
+            db     = self.__load_json_file('tmp/get_database_200.json')
+            colls  = self.__load_json_file('tmp/list_collections_200.json')
 
             associations = list()
             assoc = dict()
@@ -199,16 +206,17 @@ class CosmosRestClient():
                     o = assoc['offer']['id']
                     print('matched; type: {} name: {} self: {} offer id: {}'.format(t, n, s, o))
 
-            self.write_json_file(associations, 'tmp/offer_associations.json')
+            self.__write_json_file(associations, 'tmp/offer_associations.json')
             return associations
 
     def get_offer(self, offer_id):
+        # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/get-an-offer
         print('get_offer: {}'.format(offer_id))
         verb, resource_link = 'get', '{}'.format(offer_id)
-        headers = self.rest_headers(verb, 'offers', resource_link)
+        headers = self.__rest_headers(verb, 'offers', resource_link)
         url = 'https://{}.documents.azure.com/offers/{}'.format(
             self.cosmos_acct, offer_id)
-        return self.execute_http_request('get_offer', verb, url, headers)
+        return self.__execute_http_request('get_offer', verb, url, headers)
 
     def set_database_autopilot_ru(self, dbname, ru):
         print('set_database_autopilot_ru: {} {}'.format(dbname, ru))
@@ -230,10 +238,10 @@ class CosmosRestClient():
                     ru, resource, offerResourceId, id, rid)
                 print(body)
                 verb, resource_link = 'put', '{}'.format(offer_id)
-                headers = self.rest_headers(verb, 'offers', resource_link)
+                headers = self.__rest_headers(verb, 'offers', resource_link)
                 url = 'https://{}.documents.azure.com/offers/{}'.format(
                     self.cosmos_acct, offer_id)
-                return self.execute_http_request('replace_offer', verb, url, headers, body)
+                return self.__execute_http_request('replace_offer', verb, url, headers, body)
 
     def set_container_ru(self, dbname, cname, ru):
         print('set_container_ru: {} {} {}'.format(dbname, cname, ru))
@@ -254,13 +262,15 @@ class CosmosRestClient():
                 body = RequestBody.replace_container_offer(ru, resource, offerResourceId, id, rid)
                 print(body)
                 verb, resource_link = 'put', '{}'.format(offer_id)
-                headers = self.rest_headers(verb, 'offers', resource_link)
+                headers = self.__rest_headers(verb, 'offers', resource_link)
                 url = 'https://{}.documents.azure.com/offers/{}'.format(
                     self.cosmos_acct, offer_id)
-                return self.execute_http_request('replace_offer', verb, url, headers, body)
+                return self.__execute_http_request('replace_offer', verb, url, headers, body)
 
-    def rest_headers(self, verb, resource_type, resource_link):
-        rfc_7231_dt = self.rfc_7231_date()
+    # private methods 
+
+    def __rest_headers(self, verb, resource_type, resource_link):
+        rfc_7231_dt = self.__rfc_7231_date()
         string_to_sign = "{}\n{}\n{}\n{}\n\n".format(
             verb, resource_type, resource_link, rfc_7231_dt).lower()
         print("string_to_sign:\n---\n{}---".format(string_to_sign))
@@ -287,22 +297,13 @@ class CosmosRestClient():
         headers['x-ms-date'] = rfc_7231_dt
         return headers
 
-    def rfc_7231_date(self):
+    def __rfc_7231_date(self):
         # Return the current timestamp in the following format:
         # Tue, 01 Nov 1994 08:12:31 GMT
         # Tue, 09 Feb 2021 15:59:00 GMT
         return datetime.utcnow().strftime('%a, %d %b %Y %H:%M:00 GMT')
 
-    # def rfc_7231_date_with_arrow(self):
-        # Return the current timestamp in the following format:
-        # Tue, 01 Nov 1994 08:12:31 GMT
-        # Tue, 09 Feb 2021 15:59:00 GMT
-        # now   = arrow.utcnow()
-        # part1 = now.format('ddd, DD MMM YYYY HH:mm:ss')
-        # part2 = 'GMT'
-        # return '{} {}'.format(part1, part2)
-
-    def execute_http_request(self, function_name, method, url, headers={}, json_body={}):
+    def __execute_http_request(self, function_name, method, url, headers={}, json_body={}):
         print('===')
         print("invoke: {} {} {}\nheaders: {}\nbody: {}".format(function_name, method.upper(), url, headers, json_body))
         print('---')
@@ -324,7 +325,7 @@ class CosmosRestClient():
                 print(json.dumps(resp_obj, sort_keys=False, indent=2))
                 print('response: {}'.format(r))
                 outfile = 'tmp/{}_{}.json'.format(function_name, r.status_code)
-                self.write_json_file(resp_obj, outfile)
+                self.__write_json_file(resp_obj, outfile)
             except Exception as e:
                 print("exception processing http response".format(e))
                 print(r.text)
@@ -332,11 +333,11 @@ class CosmosRestClient():
             print(r.text)
         return r
 
-    def load_json_file(self, infile):
+    def __load_json_file(self, infile):
         with open(infile, 'rt') as json_file:
             return json.loads(str(json_file.read()))
 
-    def write_json_file(self, obj, outfile):
+    def __write_json_file(self, obj, outfile):
         with open(outfile, 'wt') as f:
             f.write(json.dumps(obj, sort_keys=False, indent=2))
             print('file written: {}'.format(outfile))
@@ -359,7 +360,7 @@ if __name__ == "__main__":
             client.ad_hoc()
 
         elif func == 'rfc_7231_date':
-            print(client.rfc_7231_date())
+            print(client.__rfc_7231_date())
 
         # database operations 
 
@@ -425,6 +426,9 @@ if __name__ == "__main__":
             cname  = sys.argv[3]
             ru     = int(sys.argv[4])
             client.set_container_ru(dbname, cname, ru)
+
+        elif func == 'help':
+            print_options('')
 
         else:
             print_options('Error: invalid function: {}'.format(func))

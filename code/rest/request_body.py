@@ -1,7 +1,7 @@
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2021.02.11"
+__version__ = "2021.02.12"
 
 import json
 import os
@@ -16,8 +16,8 @@ class RequestBody(object):
     def create_db(cls, dbname):
         values = dict()
         values['dbname'] = dbname
-        template = cls.get_template('create_db.txt')
-        return json.loads(cls.render(template, values))
+        template = cls.__get_template('create_db.txt')
+        return json.loads(cls.__render(template, values))
 
     @classmethod
     def create_container(cls, cname, pk, indexing_type='default'):
@@ -25,8 +25,8 @@ class RequestBody(object):
         values['cname'] = cname
         values['pk'] = pk
         tname = 'create_container_{}_indexing.txt'.format(indexing_type)
-        template = cls.get_template(tname)
-        return json.loads(cls.render(template, values))
+        template = cls.__get_template(tname)
+        return json.loads(cls.__render(template, values))
 
     @classmethod
     def replace_database_autopilot_offer(cls, ru, resource, offerResourceId, id, rid):
@@ -37,8 +37,8 @@ class RequestBody(object):
         values['id'] = id
         values['rid'] = rid
         tname = 'replace_db_autopilot_offer.txt'
-        template = cls.get_template(tname)
-        return json.loads(cls.render(template, values))
+        template = cls.__get_template(tname)
+        return json.loads(cls.__render(template, values))
 
     @classmethod
     def replace_container_offer(cls, ru, resource, offerResourceId, id, rid):
@@ -49,23 +49,23 @@ class RequestBody(object):
         values['id'] = id
         values['rid'] = rid
         tname = 'replace_container_offer.txt'
-        template = cls.get_template(tname)
-        return json.loads(cls.render(template, values))
+        template = cls.__get_template(tname)
+        return json.loads(cls.__render(template, values))
 
     # class private methods 
 
     @classmethod
-    def get_template(cls, name):
+    def __get_template(cls, name):
         root_dir = os.getcwd()
         filename = 'templates/{}'.format(name)
-        return cls.get_jinja2_env(root_dir).get_template(filename)
+        return cls.__get_jinja2_env(root_dir).get_template(filename)
 
     @classmethod
-    def render(cls, template, values):
+    def __render(cls, template, values):
         return template.render(values)
 
     @classmethod
-    def get_jinja2_env(cls, root_dir):
+    def __get_jinja2_env(cls, root_dir):
         print('get_jinja2_env root_dir: {}'.format(root_dir))
         return jinja2.Environment(
             loader = jinja2.FileSystemLoader(

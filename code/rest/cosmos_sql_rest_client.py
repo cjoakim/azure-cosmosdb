@@ -17,7 +17,7 @@ Usage:
     python cosmos_sql_rest_client.py list_offers
     python cosmos_sql_rest_client.py get_offer 8jId
     python cosmos_sql_rest_client.py associate_offers dev
-    python cosmos_sql_rest_client.py set_database_ru dev2 5000
+    python cosmos_sql_rest_client.py set_database_autopilot_ru dev2 4100
     python cosmos_sql_rest_client.py set_container_ru dev airports 600
 """
 
@@ -210,6 +210,31 @@ class CosmosRestClient():
             self.cosmos_acct, offer_id)
         return self.execute_http_request('get_offer', verb, url, headers)
 
+    def set_database_autopilot_ru(self, dbname, ru):
+        print('set_database_autopilot_ru: {} {}'.format(dbname, ru))
+        associations = self.associate_offers(dbname)
+
+        for a in associations:
+            if (a['type'] == 'db') and (a['name'] == dbname):
+                offer = a['offer']
+                print(json.dumps(offer, sort_keys=False, indent=2))
+                offer['content']['offerThroughput'] = ru  # update the offer JSON with new RU 
+                print(json.dumps(offer, sort_keys=False, indent=2))
+                # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/replace-an-offer
+                offer_id = a['offer']['id']
+                resource = a['offer']['resource']
+                offerResourceId = a['offer']['offerResourceId']
+                id  = a['offer']['id']
+                rid = a['offer']['_rid']
+                body = RequestBody.replace_database_autopilot_offer(
+                    ru, resource, offerResourceId, id, rid)
+                print(body)
+                verb, resource_link = 'put', '{}'.format(offer_id)
+                headers = self.rest_headers(verb, 'offers', resource_link)
+                url = 'https://{}.documents.azure.com/offers/{}'.format(
+                    self.cosmos_acct, offer_id)
+                return self.execute_http_request('replace_offer', verb, url, headers, body)
+
     def set_container_ru(self, dbname, cname, ru):
         print('set_container_ru: {} {} {}'.format(dbname, cname, ru))
         associations = self.associate_offers(dbname)
@@ -222,15 +247,12 @@ class CosmosRestClient():
                 print(json.dumps(offer, sort_keys=False, indent=2))
                 # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/replace-an-offer
                 offer_id = a['offer']['id']
-
                 resource = a['offer']['resource']
                 offerResourceId = a['offer']['offerResourceId']
                 id  = a['offer']['id']
                 rid = a['offer']['_rid']
-
-                body = RequestBody.replace_offer(ru, resource, offerResourceId, id, rid)
+                body = RequestBody.replace_container_offer(ru, resource, offerResourceId, id, rid)
                 print(body)
-
                 verb, resource_link = 'put', '{}'.format(offer_id)
                 headers = self.rest_headers(verb, 'offers', resource_link)
                 url = 'https://{}.documents.azure.com/offers/{}'.format(
@@ -392,6 +414,11 @@ if __name__ == "__main__":
         elif func == 'associate_offers':
             dbname = sys.argv[2]
             client.associate_offers(dbname)
+
+        elif func == 'set_database_autopilot_ru':
+            dbname = sys.argv[2]
+            ru     = int(sys.argv[3])
+            client.set_database_autopilot_ru(dbname,ru)
 
         elif func == 'set_container_ru':
             dbname = sys.argv[2]

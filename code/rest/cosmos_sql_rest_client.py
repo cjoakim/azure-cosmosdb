@@ -149,7 +149,7 @@ class CosmosRestClient():
         return self.execute_http_request('list_offers', verb, url, headers)
 
     def associate_offers(self, dname):
-        # Execute three REST calls to obtain info on offers, db, colls
+        # Execute three REST calls to obtain info on offers, db, and colls
         r = self.list_offers()
         if r.status_code == 200:
             r = self.get_database(dbname)
@@ -157,17 +157,49 @@ class CosmosRestClient():
             r = self.list_collections(dbname)
 
         if r.status_code == 200:
-            print('info gathered for offers, db, colls...')
-            # then these 3 files exist
-            # tmp/list_offers_200.json
-            # tmp/get_database_200.json
-            # tmp/list_collections_200.json
+            print('info has been gathered for offers, db, colls; now associating...')
+            # these 3 files should now exist, created above.  load them into memory.
             offers = self.load_json_file('tmp/list_offers_200.json')
             db     = self.load_json_file('tmp/get_database_200.json')
             colls  = self.load_json_file('tmp/list_collections_200.json')
-            print('offers: {}'.format(offers))
-            print('db: {}'.format(db))
-            print('colls: {}'.format(colls))
+
+            associations = list()
+            assoc = dict()
+            assoc['type'] = 'db'
+            assoc['rid']  = db['_rid'] 
+            assoc['self'] = db['_self'] 
+            assoc['name'] = dbname
+            associations.append(assoc)
+
+            for coll in colls['DocumentCollections']:
+                assoc = dict()
+                assoc['type'] = 'coll'
+                assoc['rid']  = coll['_rid'] 
+                assoc['self'] = coll['_self'] 
+                assoc['name'] = coll['id'] 
+                associations.append(assoc)
+
+            for offer in offers['Offers']:
+                data = dict()
+                data['type'] = 'offer'
+                data['id']  = offer['id']
+                data['rid'] = offer['resource']
+                data['offer'] = offer
+
+                for assoc in associations:
+                    if data['rid'] == assoc['self']:
+                        assoc['offer'] = offer
+
+            # simple report in terminal
+            for assoc in associations:
+                if 'offer' in assoc.keys():
+                    t = assoc['type']
+                    n = assoc['name']
+                    s = assoc['self']
+                    o = assoc['offer']['id']
+                    print('matched; type: {} name: {} self: {} offer id: {}'.format(t, n, s, o))
+
+            self.write_json_file(associations, 'tmp/offer_associations.json')
 
     def get_offer(self, offer_id):
         print('get_offer: {}'.format(offer_id))

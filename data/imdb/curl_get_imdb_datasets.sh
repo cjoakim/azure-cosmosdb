@@ -48,4 +48,7 @@ gunzip name.basics.tsv.gz
 wc name.basics.tsv
 # 10713450 73652513 639294242 name.basics.tsv
 
+head -10000 name.basics.tsv > name.basics.mini.tsv
+wc name.basics.mini.tsv
+
 echo 'done'

@@ -6,6 +6,7 @@ automation/az/data/output/
 data/imdb/name*
 data/imdb/*.gz
 data/imdb/*.tsv
+data/imdb/*.json
 
 **/tmp/
 

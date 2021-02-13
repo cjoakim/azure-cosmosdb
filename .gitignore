@@ -3,6 +3,8 @@
 
 automation/az/data/output/
 
+code/python/transformed*
+
 data/imdb/name*
 data/imdb/*.gz
 data/imdb/*.tsv

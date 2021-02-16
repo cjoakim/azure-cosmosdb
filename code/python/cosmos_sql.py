@@ -3,8 +3,8 @@ Usage:
     python cosmos_sql.py load_airports <db> <container> <start-index> <count> 
     python cosmos_sql.py load_airports dev airports  0 10
     python cosmos_sql.py load_airports dev airports 10 10
-    python cosmos_sql.py load_amtrak <db> <container> <start-index> <count> 
-    python cosmos_sql.py load_amtrak dev amtrak  0 999999
+    -
+    python cosmos_sql.py load_amtrak dev amtrak
     -
     python cosmos_sql.py create_database dev2 
     python cosmos_sql.py create_container dev2 airports 500
@@ -93,35 +93,32 @@ def load_amtrak(dbname, cname):
     stations = dict_as_list(data['stations'])
     routes   = data['routes']
     graph    = data['adjacent_stations']
-    loaded_count = 0
 
     for idx, obj in enumerate(stations):
         obj_keys = obj.keys()
         if 'id' in obj_keys:
             del obj['id']
 
-        if idx >= start_idx:
-            if loaded_count < count:
-                if 'station_code' in obj_keys:
-                    obj['pk'] = obj['station_code']
-                    obj['doctype'] = 'station'
-                    if 'lat' in obj_keys:
-                        if 'lng' in obj_keys:
-                            loc = dict()
-                            loc['type'] = 'Point'
-                            lat, lng = float(obj['lat']), float(obj['lng'])
-                            loc['coordinates'] = [ lng, lat ]
-                            del obj['lat']
-                            del obj['lng']
-                            obj['location'] = loc 
-                if len(obj['pk'].strip()) > 2:
-                    loaded_count = loaded_count + 1
-                    obj['epoch'] = time.time()
-                    print(json.dumps(obj, sort_keys=False, indent=2))
-                    if do_upsert:
-                        result = c.upsert_doc(obj)
-                        print(result)
-                        c.print_last_request_charge()
+            if 'station_code' in obj_keys:
+                obj['pk'] = obj['station_code']
+                obj['doctype'] = 'station'
+                if 'lat' in obj_keys:
+                    if 'lng' in obj_keys:
+                        loc = dict()
+                        loc['type'] = 'Point'
+                        lat, lng = float(obj['lat']), float(obj['lng'])
+                        loc['coordinates'] = [ lng, lat ]
+                        del obj['lat']
+                        del obj['lng']
+                        obj['location'] = loc 
+            if len(obj['pk'].strip()) > 2:
+                loaded_count = loaded_count + 1
+                obj['epoch'] = time.time()
+                print(json.dumps(obj, sort_keys=False, indent=2))
+                if do_upsert:
+                    result = c.upsert_doc(obj)
+                    print(result)
+                    c.print_last_request_charge()
 
     route_names = sorted(routes.keys())
     for idx, route_name in enumerate(route_names):
@@ -325,9 +322,7 @@ if __name__ == "__main__":
         elif func == 'load_amtrak':
             dbname = sys.argv[2]
             cname  = sys.argv[3]
-            start_idx = int(sys.argv[4])
-            count = int(sys.argv[5])
-            load_amtrak(dbname, cname, start_idx, count)
+            load_amtrak(dbname, cname)
 
         elif func == 'create_database':
             dbname = sys.argv[2]

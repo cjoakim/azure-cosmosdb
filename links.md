@@ -61,6 +61,7 @@ A collection of CosmosDB-related links that I find useful.
 
 - [What is Azure Synapse Link?](https://docs.microsoft.com/en-us/azure/cosmos-db/synapse-link)
 - [Architecture Diagram](https://docs.microsoft.com/en-us/azure/cosmos-db/media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
+- [Configure Synapse Link](https://docs.microsoft.com/en-us/azure/cosmos-db/configure-synapse-link)
 
 ### REST
 

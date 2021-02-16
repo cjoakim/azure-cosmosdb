@@ -1,7 +1,10 @@
 """
 Usage:
-    python cosmos_sql.py load_airports dev airports
-    python cosmos_sql.py load_amtrak dev amtrak
+    python cosmos_sql.py load_airports <db> <container> <start-index> <count> 
+    python cosmos_sql.py load_airports dev airports  0 10
+    python cosmos_sql.py load_airports dev airports 10 10
+    python cosmos_sql.py load_amtrak <db> <container> <start-index> <count> 
+    python cosmos_sql.py load_amtrak dev amtrak  0 999999
     -
     python cosmos_sql.py create_database dev2 
     python cosmos_sql.py create_container dev2 airports 500
@@ -26,7 +29,7 @@ Usage:
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2021.01.31"
+__version__ = "2021.02.16"
 
 import json
 import os
@@ -52,7 +55,7 @@ def initialize_cosmos():
     opts['key'] = Env.var('AZURE_COSMOSDB_SQLDB_KEY')
     return Cosmos(opts)
 
-def load_airports(dbname, cname):
+def load_airports(dbname, cname, start_idx, count):
     c = initialize_cosmos()
     dbproxy = c.set_db(dbname)
     ctrproxy = c.set_container(cname)
@@ -60,21 +63,23 @@ def load_airports(dbname, cname):
     data_dir = os.environ['AZURE_COSMOSDB_DATA_DIR']
     infile = '{}/airports/us_airports.json'.format(data_dir)
     items = read_json(infile)
+    loaded_count = 0
 
     for idx, obj in enumerate(items):
         obj_keys = obj.keys()
         if 'id' in obj_keys:
             del obj['id']
-        if idx < 10_000:
-            if 'iata_code' in obj_keys:
-                obj['pk'] = obj['iata_code']
-
-            if len(obj['pk'].strip()) > 2:
-                obj['epoch'] = time.time()
-                print(json.dumps(obj, sort_keys=False, indent=2))
-                result = c.upsert_doc(obj)
-                print(result)
-                c.print_last_request_charge()
+        if idx >= start_idx:
+            if loaded_count < count:
+                if 'iata_code' in obj_keys:
+                    obj['pk'] = obj['iata_code']
+                if len(obj['pk'].strip()) > 2:
+                    loaded_count = loaded_count + 1
+                    obj['epoch'] = time.time()
+                    print(json.dumps(obj, sort_keys=False, indent=2))
+                    result = c.upsert_doc(obj)
+                    print(result)
+                    c.print_last_request_charge()
 
 def load_amtrak(dbname, cname):
     c = initialize_cosmos()
@@ -88,31 +93,35 @@ def load_amtrak(dbname, cname):
     stations = dict_as_list(data['stations'])
     routes   = data['routes']
     graph    = data['adjacent_stations']
+    loaded_count = 0
 
     for idx, obj in enumerate(stations):
         obj_keys = obj.keys()
         if 'id' in obj_keys:
             del obj['id']
-        if idx < 10_000:
-            if 'station_code' in obj_keys:
-                obj['pk'] = obj['station_code']
-                obj['doctype'] = 'station'
-                if 'lat' in obj_keys:
-                    if 'lng' in obj_keys:
-                        loc = dict()
-                        loc['type'] = 'Point'
-                        lat, lng = float(obj['lat']), float(obj['lng'])
-                        loc['coordinates'] = [ lng, lat ]
-                        del obj['lat']
-                        del obj['lng']
-                        obj['location'] = loc 
-            if len(obj['pk'].strip()) > 2:
-                obj['epoch'] = time.time()
-                print(json.dumps(obj, sort_keys=False, indent=2))
-                if do_upsert:
-                    result = c.upsert_doc(obj)
-                    print(result)
-                    c.print_last_request_charge()
+
+        if idx >= start_idx:
+            if loaded_count < count:
+                if 'station_code' in obj_keys:
+                    obj['pk'] = obj['station_code']
+                    obj['doctype'] = 'station'
+                    if 'lat' in obj_keys:
+                        if 'lng' in obj_keys:
+                            loc = dict()
+                            loc['type'] = 'Point'
+                            lat, lng = float(obj['lat']), float(obj['lng'])
+                            loc['coordinates'] = [ lng, lat ]
+                            del obj['lat']
+                            del obj['lng']
+                            obj['location'] = loc 
+                if len(obj['pk'].strip()) > 2:
+                    loaded_count = loaded_count + 1
+                    obj['epoch'] = time.time()
+                    print(json.dumps(obj, sort_keys=False, indent=2))
+                    if do_upsert:
+                        result = c.upsert_doc(obj)
+                        print(result)
+                        c.print_last_request_charge()
 
     route_names = sorted(routes.keys())
     for idx, route_name in enumerate(route_names):
@@ -309,12 +318,16 @@ if __name__ == "__main__":
         if func == 'load_airports':
             dbname = sys.argv[2]
             cname  = sys.argv[3]
-            load_airports(dbname, cname)
+            start_idx = int(sys.argv[4])
+            count = int(sys.argv[5])
+            load_airports(dbname, cname, start_idx, count)
 
         elif func == 'load_amtrak':
             dbname = sys.argv[2]
             cname  = sys.argv[3]
-            load_amtrak(dbname, cname)
+            start_idx = int(sys.argv[4])
+            count = int(sys.argv[5])
+            load_amtrak(dbname, cname, start_idx, count)
 
         elif func == 'create_database':
             dbname = sys.argv[2]

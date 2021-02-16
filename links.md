@@ -70,6 +70,7 @@ A collection of CosmosDB-related links that I find useful.
 ### Other
 
 - [Azure CosmosDB Data Migration Tool](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data)
+- [Azure DMS with Mongo](https://docs.microsoft.com/en-us/azure/dms/tutorial-mongodb-cosmos-db-online)
 - [Live Data Migrator](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)
 - [Azure Updates](https://azure.microsoft.com/en-us/updates/)
 - [Databricks CosmosDB Connector](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html)

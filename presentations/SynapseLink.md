@@ -8,10 +8,6 @@
 
 <p align="center"><img src="img/synapse-analytics-cosmos-db-architecture.png"></p>
 
----
-
-<p align="center"><img src="img/synapse-analytics-cosmos-db-architecture.png"></p>
-
 
 ---
 
@@ -88,3 +84,59 @@ last_request_charge: 11.62 activity: 053bace6-bf7a-411a-b3d9-17b339ba584a
 last_request_charge: 11.62 activity: 6c16391b-a889-4f2b-a6c4-80e05725337b
 (cosmosdb) [~/github/azure-cosmosdb/code/python]$
 ```
+
+## PySpark Notebook in Azure Synapse to Read the Analytical Column Store
+
+#### Cell 1 
+
+```
+# Read from Cosmos DB analytical store into a Spark DataFrame (df) and display 10 rows.
+df = spark.read\
+    .format("cosmos.olap")\
+    .option("spark.synapse.linkedService", "CosmosDbDev")\
+    .option("spark.cosmos.container", "airports")\
+    .load()
+display(df.limit(10))
+```
+
+#### Cell 2 
+
+```
+# display the observed schema of the observed dataframe 
+df.printSchema()
+
+root
+ |-- _rid: string (nullable = true)
+ |-- _ts: long (nullable = true)
+ |-- name: string (nullable = true)
+ |-- city: string (nullable = true)
+ |-- country: string (nullable = true)
+ |-- iata_code: string (nullable = true)
+ |-- latitude: string (nullable = true)
+ |-- longitude: string (nullable = true)
+ |-- altitude: string (nullable = true)
+ |-- timezone_num: string (nullable = true)
+ |-- timezone_code: string (nullable = true)
+ |-- location: struct (nullable = true)
+ |    |-- type: string (nullable = true)
+ |    |-- coordinates: array (nullable = true)
+ |    |    |-- element: double (containsNull = true)
+ |-- pk: string (nullable = true)
+ |-- epoch: double (nullable = true)
+ |-- id: string (nullable = true)
+ |-- _etag: string (nullable = true)
+```
+
+#### Cell 3 
+
+```
+# Count the rows of the dataframe
+df.count()
+
+1473
+```
+
+#### Cell 4
+
+<p align="center"><img src="img/azure-synapse-pyspark-notebook.png"></p>
+

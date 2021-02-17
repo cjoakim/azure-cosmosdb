@@ -75,7 +75,7 @@ def load_airports(dbname, cname, start_idx, count):
                     obj['pk'] = obj['iata_code']
                 if len(obj['pk'].strip()) > 2:
                     loaded_count = loaded_count + 1
-                    obj['epoch'] = time.time()
+                    obj['epoch'] = int(time.time())
                     print(json.dumps(obj, sort_keys=False, indent=2))
                     result = c.upsert_doc(obj)
                     print(result)
@@ -113,7 +113,7 @@ def load_amtrak(dbname, cname):
                         obj['location'] = loc 
             if len(obj['pk'].strip()) > 2:
                 loaded_count = loaded_count + 1
-                obj['epoch'] = time.time()
+                obj['epoch'] = int(time.time())
                 print(json.dumps(obj, sort_keys=False, indent=2))
                 if do_upsert:
                     result = c.upsert_doc(obj)
@@ -125,7 +125,7 @@ def load_amtrak(dbname, cname):
         obj = routes[route_name]
         obj['pk'] = route_name
         obj['doctype'] = 'route'
-        obj['epoch'] = time.time()
+        obj['epoch'] = int(time.time())
         print(json.dumps(obj, sort_keys=False, indent=2))
         if do_upsert:
             result = c.upsert_doc(obj)
@@ -145,7 +145,7 @@ def load_amtrak(dbname, cname):
         obj['station_code_2'] = code2
         obj['station_name_2'] = data['stations'][code2]['station_name']
         obj['distance'] = graph[graph_key]
-        obj['epoch'] = time.time()
+        obj['epoch'] = int(time.time())
         print(json.dumps(obj, sort_keys=False, indent=2))
         if do_upsert:
             result = c.upsert_doc(obj)
@@ -223,7 +223,7 @@ def point_query(dbname, cname, pk, id):
     if flag_cli_arg('--upsert'):
         for idx, doc in enumerate(documents):
             if idx < 1:
-                epoch = time.time()
+                epoch = int(time.time())
                 outfile = 'tmp/point-query-{}-{}-{}-{}-{}-upsert.json'.format(dbname, cname, pk, id, int(epoch))
                 doc['epoch'] = epoch
                 result = c.upsert_doc(doc)

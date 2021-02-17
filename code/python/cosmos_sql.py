@@ -213,13 +213,15 @@ def point_query(dbname, cname, pk, id):
     start_epoch = time.time()
     query_results = c.query_container(cname, sql, True, 3)
     elapsed_epoch = time.time() - start_epoch
-    print('elapsed ms: {}'.format(elapsed_epoch))
-    
+    print('elapsed seconds: {}'.format(elapsed_epoch))
+
     if query_results == None:
         print('no query results')
     else:
         for doc in query_results:
             documents.append(doc)
+            elapsed_epoch = time.time() - start_epoch
+            print('elapsed seconds: {}'.format(elapsed_epoch))
         print('{} documents returned'.format(len(documents)))
         c.print_last_request_charge()
         write_obj_as_json_file(outfile, documents)

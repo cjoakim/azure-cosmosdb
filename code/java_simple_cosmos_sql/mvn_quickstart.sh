@@ -10,8 +10,8 @@
 # mvn archetype:generate --help
 
 mvn archetype:generate \
-    -DgroupId="org.cjoakim.azure" \
-    -DartifactId="cosmos.sql" \
+    -DgroupId="org.cjoakim.azure.cosmos.sql" \
+    -DartifactId="sample" \
     -Dversion="1.0" \
     -DarchetypeGroupId="org.apache.maven.archetypes" \
     -DarchetypeArtifactId="maven-archetype-quickstart" \

@@ -18,8 +18,9 @@ Usage:
     python cosmos_sql.py named_query dev amtrak all
     python cosmos_sql.py named_query dev amtrak nc-amtrak-stations
     -
-    python cosmos_sql.py point_query dev airports CLT 035094c9-59c7-4019-b66c-1a2e4cc12147
-    python cosmos_sql.py point_query dev airports CLT 035094c9-59c7-4019-b66c-1a2e4cc12147 --upsert
+    python cosmos_sql.py point_read dev airports SFO 895014e0-1d52-40f6-8ae2-f9dcb0119961
+    python cosmos_sql.py point_read dev airports CLT 035094c9-59c7-4019-b66c-1a2e4cc12147
+    python cosmos_sql.py point_read dev airports CLT 035094c9-59c7-4019-b66c-1a2e4cc12147 --upsert
     -
     python cosmos_sql.py geo_query dev airports <longitude> <latitude> <meters>
     python cosmos_sql.py geo_query dev airports -80.84309935569763 35.22718156801215 10000
@@ -29,7 +30,7 @@ Usage:
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2021.02.16"
+__version__ = "2021.02.19"
 
 import json
 import os
@@ -201,7 +202,7 @@ def named_query(dbname, cname, query_name):
         c.print_last_request_charge()
         write_obj_as_json_file(outfile, documents)
 
-def point_query(dbname, cname, pk, id):
+def point_read(dbname, cname, pk, id):
     c = initialize_cosmos()
     c.set_db(dbname)
     c.set_container(cname)
@@ -210,21 +211,38 @@ def point_query(dbname, cname, pk, id):
     outfile = 'tmp/point-query-{}-{}-{}-{}-{}.json'.format(dbname, cname, pk, id, epoch)
     print(sql)
     documents = list()
-    start_epoch = time.time()
-    query_results = c.query_container(cname, sql, True, 3)
-    elapsed_epoch = time.time() - start_epoch
-    print('elapsed seconds: {}'.format(elapsed_epoch))
+
+    # execute the query
+    query_start_epoch = time.time()
+    query_results     = c.query_container(cname, sql, True, 3)
+    query_end_epoch   = time.time()
 
     if query_results == None:
         print('no query results')
     else:
+        # iterate the results, collect into a list
         for doc in query_results:
             documents.append(doc)
-            elapsed_epoch = time.time() - start_epoch
-            print('elapsed seconds: {}'.format(elapsed_epoch))
-        print('{} documents returned'.format(len(documents)))
+        iterate_end_epoch = time.time()
+
         c.print_last_request_charge()
         write_obj_as_json_file(outfile, documents)
+
+        query_elapsed_seconds = query_end_epoch - query_start_epoch
+        query_elapsed_ms      = query_elapsed_seconds * 1000.0
+
+        query_and_iterate_elapsed_seconds = iterate_end_epoch - query_start_epoch
+        query_and_iterate_elapsed_ms      = query_and_iterate_elapsed_seconds * 1000.0
+
+        print(json.dumps(documents, sort_keys=True, indent=2))
+
+        print('c.query_container:')
+        print('  query_start_epoch:                 {}'.format(query_start_epoch))
+        print('  query_end_epoch:                   {}'.format(query_end_epoch))
+        print('  query_elapsed_seconds:             {}'.format(query_elapsed_seconds))
+        print('  query_elapsed_ms:                  {}'.format(query_elapsed_ms))
+        print('  query_and_iterate_elapsed_seconds: {}'.format(query_and_iterate_elapsed_seconds))
+        print('  query_and_iterate_elapsed_ms:      {}'.format(query_and_iterate_elapsed_ms))
 
     if flag_cli_arg('--upsert'):
         for idx, doc in enumerate(documents):
@@ -357,12 +375,12 @@ if __name__ == "__main__":
             query_name = sys.argv[4]
             named_query(dbname, cname, query_name)
 
-        elif func == 'point_query':
+        elif func == 'point_read':
             dbname = sys.argv[2]
             cname  = sys.argv[3]
             pk     = sys.argv[4]
             id     = sys.argv[5]
-            point_query(dbname, cname, pk, id)
+            point_read(dbname, cname, pk, id)
 
         elif func == 'geo_query':
             dbname = sys.argv[2]

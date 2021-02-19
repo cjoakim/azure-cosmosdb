@@ -39,6 +39,8 @@ import java.util.stream.Collectors;
  */
 public class App 
 {
+    public static final double NANOSECONDS_PER_MILLISECONDS = 1000000;  // 1-million
+
     private static String cliFunction;
     private static String databaseName;
     private static String containerName;
@@ -112,17 +114,19 @@ public class App
         log("executeSqlQuery: " + sql);
         ArrayList<Object> resultObjects = new ArrayList<Object>();
 
-        long t1 = System.currentTimeMillis();
+        // https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/System.html#nanoTime()
+        // a nanosecond = one billionth of a second
+        long t1 = System.nanoTime();
 
         CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
         CosmosPagedIterable<Object> airports =
             container.queryItems(sql, options, Object.class);
-        long t2 = System.currentTimeMillis();
+        long t2 = System.nanoTime();
 
         if (airports.iterator().hasNext()) {
             resultObjects.add(airports.iterator().next());
         }
-        long t3 = System.currentTimeMillis();
+        long t3 = System.nanoTime();
 
         for (Object a : resultObjects) {
             System.out.println(a.getClass().getName());
@@ -135,8 +139,8 @@ public class App
             }
             //System.out.println(String.format("Airport: (%s,%s,%s)", a.pk, a.id, a.timezone_num));
         }
-        System.out.println("query items elapsed ms: " + (t2 - t1));
-        System.out.println("iterate items elapsed ms: " + (t3 - t1));
+        System.out.println("query items elapsed ms: " + msDiff(t1, t2));
+        System.out.println("iterate items elapsed ms: " + msDiff(t1, t3));
         return resultObjects;
     }
 
@@ -222,5 +226,10 @@ public class App
     private static synchronized String envVar(String name) {
 
         return System.getenv().get(name);
+    }
+
+    private static synchronized double msDiff(long nano1, long nano2) {
+
+        return (nano2 - nano1) / NANOSECONDS_PER_MILLISECONDS;
     }
 }

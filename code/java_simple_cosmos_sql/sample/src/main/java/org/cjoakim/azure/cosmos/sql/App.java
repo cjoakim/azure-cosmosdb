@@ -7,9 +7,8 @@ import com.azure.cosmos.CosmosContainer;
 import com.azure.cosmos.CosmosDatabase;
 import com.azure.cosmos.CosmosException;
 
-// import com.azure.cosmos.examples.common.AccountSettings;
-// import com.azure.cosmos.examples.common.Families;
-// import com.azure.cosmos.examples.common.Family;
+import org.cjoakim.azure.cosmos.sql.model.Airport;
+import org.cjoakim.azure.cosmos.sql.model.Location;
 
 import com.azure.cosmos.models.CosmosContainerProperties;
 import com.azure.cosmos.models.CosmosContainerResponse;
@@ -20,10 +19,8 @@ import com.azure.cosmos.models.CosmosQueryRequestOptions;
 import com.azure.cosmos.models.PartitionKey;
 import com.azure.cosmos.models.ThroughputProperties;
 
-// import com.azure.cosmos.util.CosmosPagedIterable;
+import com.azure.cosmos.util.CosmosPagedIterable;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
@@ -40,11 +37,6 @@ import java.util.stream.Collectors;
  */
 public class App 
 {
-    protected static Logger logger = LoggerFactory.getLogger(App.class);
-    // http://www.slf4j.org/manual.html
-    // http://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html
-    // https://logging.apache.org/log4j/2.x/manual/configuration.html
-
     private static String cliFunction;
     private static String databaseName;
     private static String containerName;
@@ -52,7 +44,6 @@ public class App
     private static CosmosClient    client;
     private static CosmosDatabase  database;
     private static CosmosContainer container;
-
 
     /**
      * 
@@ -110,6 +101,34 @@ public class App
         getDatabase();
         getContainer();
 
+        String sql = String.format("select * from c where c.pk ='%s' and c.id = '%s'", pk, id);
+        ArrayList<Airport> results = executeSqlQuery(sql);
+
+    }
+
+    private static ArrayList<Airport> executeSqlQuery(String sql) {
+
+        log("executeSqlQuery: " + sql);
+        ArrayList<Airport> resultObjects = new ArrayList<Airport>();
+
+        long t1 = System.currentTimeMillis();
+
+        CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
+        CosmosPagedIterable<Airport> airports =
+            container.queryItems(sql, options, Airport.class);
+        long t2 = System.currentTimeMillis();
+
+        if (airports.iterator().hasNext()) {
+            resultObjects.add(airports.iterator().next());
+        }
+        long t3 = System.currentTimeMillis();
+
+        for (Airport a : resultObjects) {
+            System.out.println(String.format("Airport: (%s,%s)", a.getPk(), a.getId()));
+        }
+        System.out.println("query items elapsed ms: " + (t2 - t1));
+        System.out.println("iterate items elapsed ms: " + (t3 - t1));
+        return resultObjects;
     }
 
     private static CosmosClient createCosmosClient() {

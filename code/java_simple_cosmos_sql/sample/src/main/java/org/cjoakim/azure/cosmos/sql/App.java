@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 
 /**
  * 
- * Chris Joakim, Microsoft, 2021/02/18
+ * Chris Joakim, Microsoft, 2021/02/19
  * 
  * See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-java-sdk-samples
  *
@@ -41,6 +41,9 @@ import java.util.stream.Collectors;
 public class App 
 {
     protected static Logger logger = LoggerFactory.getLogger(App.class);
+    // http://www.slf4j.org/manual.html
+    // http://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html
+    // https://logging.apache.org/log4j/2.x/manual/configuration.html
 
     private static String cliFunction;
     private static String databaseName;
@@ -68,7 +71,9 @@ public class App
 
                 switch (cliFunction) {
                     case "point_read":
-                        pointRead();
+                        String pk = args[3];
+                        String id = args[4];
+                        pointRead(pk, id);
                         break;
     
                     default:
@@ -76,18 +81,18 @@ public class App
                 }
             }
             catch (Exception e) {
-                logger.error(String.format("Cosmos getStarted failed with %s", e));
+                log(String.format("Cosmos getStarted failed with %s", e));
                 e.printStackTrace();
             }
             finally {
                 if (client != null) {
                     try {
                         client.close();
-                        logger.info("CosmosClient closed");
+                        log("CosmosClient closed");
                         System.exit(0);
                     }
                     catch (Exception e2) {
-                        logger.error("ERROR closing CosmosClient");
+                        log("ERROR closing CosmosClient");
                         e2.printStackTrace();
                     }
                 }
@@ -98,17 +103,12 @@ public class App
         }
     }
 
-    private static void pointRead() throws Exception {
+    private static void pointRead(String pk, String id) throws Exception {
 
-        logger.info("pointRead");
+        log(String.format("pointRead; pk: %s id: %s", pk, id));
         client = createCosmosClient();
-        logger.info(client.toString());
-
         getDatabase();
-        logger.info(database.toString());
-
         getContainer();
-        logger.info(container.toString());
 
     }
 
@@ -118,9 +118,9 @@ public class App
         String uri    = envVar("AZURE_COSMOSDB_SQLDB_URI");
         String key    = envVar("AZURE_COSMOSDB_SQLDB_KEY");
         String region = envVar("AZURE_COSMOSDB_SQLDB_PREF_REGION");
-        logger.info("uri:    " + uri);
-        logger.info("key:    " + key);
-        logger.info("region: " + region);
+        log("uri:     " + uri);
+        log("key len: " + key.length());
+        log("region:  " + region);
 
         ArrayList<String> prefRegions = new ArrayList<String>();
         prefRegions.add(region);  // we could add more regions here
@@ -136,24 +136,24 @@ public class App
                 .buildClient();
 
         long t2 = System.currentTimeMillis();
-        logger.info("createCosmosClient ms: " + (t2 - t1));
+        log("createCosmosClient ms: " + (t2 - t1));
         return client;
     }
 
     private static void getDatabase() throws Exception {
 
-        logger.info("getDatabase: " + databaseName);
+        log("getDatabase: " + databaseName);
         long t1 = System.currentTimeMillis();
         CosmosDatabaseResponse databaseResponse = 
             client.createDatabaseIfNotExists(databaseName);
         database = client.getDatabase(databaseResponse.getProperties().getId());
         long t2 = System.currentTimeMillis();
-        logger.info("getDatabase ms: " + (t2 - t1));
+        log("getDatabase ms: " + (t2 - t1));
     }
 
     private static void getContainer() throws Exception {
 
-        logger.info("getContainer: " + containerName);
+        log("getContainer: " + containerName);
         long t1 = System.currentTimeMillis();
         CosmosContainerProperties containerProperties =
             new CosmosContainerProperties(containerName, "/pk");
@@ -163,13 +163,13 @@ public class App
             database.createContainerIfNotExists(containerProperties, throughputProperties);
         container = database.getContainer(containerResponse.getProperties().getId());
         long t2 = System.currentTimeMillis();
-        logger.info("getContainer ms: " + (t2 - t1));
+        log("getContainer ms: " + (t2 - t1));
     }
 
     private static void displayCommandLineArgs(String[] args) {
 
         for (int i = 0; i < args.length; i++) {
-            logger.info("arg: " + i + " -> " + args[i]);
+            log("arg: " + i + " -> " + args[i]);
         }
     }
 
@@ -181,8 +181,14 @@ public class App
         }
         System.out.println("Command-line samples; see run.sh");
         System.out.println("  point_read <db> <container> <pk> <id>");
+        System.out.println("  point_read dev airports SFO 895014e0-1d52-40f6-8ae2-f9dcb0119961");
         System.out.println("  query <db> <container> <query-id>");
         System.out.println("");
+    }
+
+    private static void log(String msg) {
+
+        System.out.println(msg);
     }
 
     private static synchronized String envVar(String name) {

@@ -1,6 +1,8 @@
 ## cj
 
 **/.factorypath
+**/.idea/
+**/*.iml
 
 automation/az/data/output/
 

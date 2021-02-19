@@ -248,6 +248,15 @@ def point_read(dbname, cname, pk, id):
         print('  query_and_iterate_elapsed_ms:      {}'.format(query_and_iterate_elapsed_ms))
         print('  document count:                    {}'.format(len(documents)))
 
+        # point_read - db: dev container: airports pk: SFO id: 895014e0-1d52-40f6-8ae2-f9dcb0119961
+        #   query_start_epoch:                 1613768797.837489
+        #   query_end_epoch:                   1613768797.8375525
+        #   query_elapsed_seconds:             6.365776062011719e-05
+        #   query_elapsed_ms:                  0.06365776062011719
+        #   query_and_iterate_elapsed_seconds: 0.02965998649597168
+        #   query_and_iterate_elapsed_ms:      29.65998649597168
+        #   document count:                    1
+
     if flag_cli_arg('--upsert'):
         for idx, doc in enumerate(documents):
             if idx < 1:

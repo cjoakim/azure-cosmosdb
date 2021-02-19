@@ -188,6 +188,29 @@ public class App
         return resultObjects;
     }
 
+    //    executeQuery: select * from c where c.pk ='SFO' and c.id = '895014e0-1d52-40f6-8ae2-f9dcb0119961'
+    //    key: name -> San Francisco Intl
+    //    key: city -> San Francisco
+    //    key: country -> United States
+    //    key: iata_code -> SFO
+    //    key: latitude -> 37.618972
+    //    key: longitude -> -122.374889
+    //    key: altitude -> 13
+    //    key: timezone_num -> -8
+    //    key: timezone_code -> America/Los_Angeles
+    //    key: location -> {type=Point, coordinates=[-122.374889, 37.618972]}
+    //    key: pk -> SFO
+    //    key: epoch -> 1.613579310177537E9
+    //    key: id -> 895014e0-1d52-40f6-8ae2-f9dcb0119961
+    //    key: _rid -> 5IsfAOHCY-RfAAAAAAAAAA==
+    //    key: _self -> dbs/5IsfAA==/colls/5IsfAOHCY-Q=/docs/5IsfAOHCY-RfAAAAAAAAAA==/
+    //    key: _etag -> "0e002cdc-0000-0100-0000-602d442e0000"
+    //    key: _attachments -> attachments/
+    //    key: _ts -> 1613579310
+    //    query items elapsed ms: 0.071701
+    //    iterate items elapsed ms: 21.623364
+    //    CosmosClient closed
+
     private static void logResponseObject(Object obj) {
 
         try {

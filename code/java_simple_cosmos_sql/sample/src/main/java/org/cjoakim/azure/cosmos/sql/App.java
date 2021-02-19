@@ -18,21 +18,18 @@ import com.azure.cosmos.models.ThroughputProperties;
 
 import com.azure.cosmos.util.CosmosPagedIterable;
 
-
-import java.time.Duration;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.stream.Collectors;
+// import java.util.List;
+// import java.util.stream.Collectors;
 
 /**
  * 
  * Chris Joakim, Microsoft, 2021/02/19
  * 
  * See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-java-sdk-samples
- *
+ * See https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/latest/index.html
  */
 public class App 
 {
@@ -60,7 +57,11 @@ public class App
                     case "point_read":
                         String pk = args[3];
                         String id = args[4];
-                        pointRead(pk, id);
+                        int count = 1;
+                        if (args.length > 5) {
+                            count = Integer.parseInt(args[5]);
+                        }
+                        pointRead(pk, id, count);
                         break;
     
                     default:
@@ -90,14 +91,19 @@ public class App
         }
     }
 
-    private static void pointRead(String pk, String id) throws Exception {
+    private static void pointRead(String pk, String id, int count) throws Exception {
 
         log(String.format("pointRead; pk: %s id: %s", pk, id));
         client = createCosmosClient();
         getDatabase();
         getContainer();
-        String sql = String.format("select * from c where c.pk ='%s' and c.id = '%s'", pk, id);
-        ArrayList<Object> results = executeQuery(sql);
+
+        for (int i = 0; i < count; i++) {
+            String sql = String.format("select * from c where c.pk ='%s' and c.id = '%s'", pk, id);
+            ArrayList<Object> results = executeQuery(sql);
+//            sql = String.format("select c.pk, c.id, c.name, c.iata_code from c where c.pk ='%s' and c.id = '%s'", pk, id);
+//            executeQuery(sql);
+        }
     }
 
     private static CosmosClient createCosmosClient() {
@@ -164,12 +170,13 @@ public class App
         long t1 = System.nanoTime();
 
         CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
-        CosmosPagedIterable<Object> airports =
+        CosmosPagedIterable<Object> items =
                 container.queryItems(sql, options, Object.class);
         long t2 = System.nanoTime();
 
-        if (airports.iterator().hasNext()) {
-            resultObjects.add(airports.iterator().next());
+        Iterator it = items.iterator();
+        if (it.hasNext()) {
+            resultObjects.add(it.next());
         }
         long t3 = System.nanoTime();
 

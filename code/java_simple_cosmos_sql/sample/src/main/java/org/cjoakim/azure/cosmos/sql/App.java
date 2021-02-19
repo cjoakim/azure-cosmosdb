@@ -8,7 +8,7 @@ import com.azure.cosmos.CosmosDatabase;
 import com.azure.cosmos.CosmosException;
 
 import org.cjoakim.azure.cosmos.sql.model.Airport;
-import org.cjoakim.azure.cosmos.sql.model.Location;
+//import org.cjoakim.azure.cosmos.sql.model.Location;
 
 import com.azure.cosmos.models.CosmosContainerProperties;
 import com.azure.cosmos.models.CosmosContainerResponse;
@@ -25,6 +25,8 @@ import com.azure.cosmos.util.CosmosPagedIterable;
 import java.time.Duration;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -102,20 +104,19 @@ public class App
         getContainer();
 
         String sql = String.format("select * from c where c.pk ='%s' and c.id = '%s'", pk, id);
-        ArrayList<Airport> results = executeSqlQuery(sql);
-
+        ArrayList<Object> results = executeSqlQuery(sql);
     }
 
-    private static ArrayList<Airport> executeSqlQuery(String sql) {
+    private static ArrayList<Object> executeSqlQuery(String sql) {
 
         log("executeSqlQuery: " + sql);
-        ArrayList<Airport> resultObjects = new ArrayList<Airport>();
+        ArrayList<Object> resultObjects = new ArrayList<Object>();
 
         long t1 = System.currentTimeMillis();
 
         CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
-        CosmosPagedIterable<Airport> airports =
-            container.queryItems(sql, options, Airport.class);
+        CosmosPagedIterable<Object> airports =
+            container.queryItems(sql, options, Object.class);
         long t2 = System.currentTimeMillis();
 
         if (airports.iterator().hasNext()) {
@@ -123,8 +124,16 @@ public class App
         }
         long t3 = System.currentTimeMillis();
 
-        for (Airport a : resultObjects) {
-            System.out.println(String.format("Airport: (%s,%s)", a.getPk(), a.getId()));
+        for (Object a : resultObjects) {
+            System.out.println(a.getClass().getName());
+            LinkedHashMap hash = (LinkedHashMap) a;
+            Iterator it = hash.keySet().iterator();
+            while (it.hasNext()) {
+                Object key = it.next();
+                System.out.println(key);
+                System.out.println(hash.get(key));
+            }
+            //System.out.println(String.format("Airport: (%s,%s,%s)", a.pk, a.id, a.timezone_num));
         }
         System.out.println("query items elapsed ms: " + (t2 - t1));
         System.out.println("iterate items elapsed ms: " + (t3 - t1));

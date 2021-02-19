@@ -7,9 +7,6 @@ import com.azure.cosmos.CosmosContainer;
 import com.azure.cosmos.CosmosDatabase;
 import com.azure.cosmos.CosmosException;
 
-import org.cjoakim.azure.cosmos.sql.model.Airport;
-//import org.cjoakim.azure.cosmos.sql.model.Location;
-
 import com.azure.cosmos.models.CosmosContainerProperties;
 import com.azure.cosmos.models.CosmosContainerResponse;
 import com.azure.cosmos.models.CosmosDatabaseResponse;
@@ -49,11 +46,6 @@ public class App
     private static CosmosDatabase  database;
     private static CosmosContainer container;
 
-    /**
-     * 
-     * point_read <db> <container> <pk> <id>
-     * query <db> <container> <query-id>
-     */
     public static void main(String[] args)
     {
         displayCommandLineArgs(args);
@@ -104,44 +96,8 @@ public class App
         client = createCosmosClient();
         getDatabase();
         getContainer();
-
         String sql = String.format("select * from c where c.pk ='%s' and c.id = '%s'", pk, id);
-        ArrayList<Object> results = executeSqlQuery(sql);
-    }
-
-    private static ArrayList<Object> executeSqlQuery(String sql) {
-
-        log("executeSqlQuery: " + sql);
-        ArrayList<Object> resultObjects = new ArrayList<Object>();
-
-        // https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/System.html#nanoTime()
-        // a nanosecond = one billionth of a second
-        long t1 = System.nanoTime();
-
-        CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
-        CosmosPagedIterable<Object> airports =
-            container.queryItems(sql, options, Object.class);
-        long t2 = System.nanoTime();
-
-        if (airports.iterator().hasNext()) {
-            resultObjects.add(airports.iterator().next());
-        }
-        long t3 = System.nanoTime();
-
-        for (Object a : resultObjects) {
-            System.out.println(a.getClass().getName());
-            LinkedHashMap hash = (LinkedHashMap) a;
-            Iterator it = hash.keySet().iterator();
-            while (it.hasNext()) {
-                Object key = it.next();
-                System.out.println(key);
-                System.out.println(hash.get(key));
-            }
-            //System.out.println(String.format("Airport: (%s,%s,%s)", a.pk, a.id, a.timezone_num));
-        }
-        System.out.println("query items elapsed ms: " + msDiff(t1, t2));
-        System.out.println("iterate items elapsed ms: " + msDiff(t1, t3));
-        return resultObjects;
+        ArrayList<Object> results = executeQuery(sql);
     }
 
     private static CosmosClient createCosmosClient() {
@@ -157,7 +113,7 @@ public class App
         ArrayList<String> prefRegions = new ArrayList<String>();
         prefRegions.add(region);  // we could add more regions here
 
-        long t1 = System.currentTimeMillis();
+        long t1 = System.nanoTime();
 
         CosmosClient client = new CosmosClientBuilder()
                 .endpoint(uri)
@@ -167,26 +123,26 @@ public class App
                 .contentResponseOnWriteEnabled(true)
                 .buildClient();
 
-        long t2 = System.currentTimeMillis();
-        log("createCosmosClient ms: " + (t2 - t1));
+        long t2 = System.nanoTime();
+        log("createCosmosClient ms: " + msDiff(t1, t2));
         return client;
     }
 
     private static void getDatabase() throws Exception {
 
         log("getDatabase: " + databaseName);
-        long t1 = System.currentTimeMillis();
+        long t1 = System.nanoTime();
         CosmosDatabaseResponse databaseResponse = 
             client.createDatabaseIfNotExists(databaseName);
         database = client.getDatabase(databaseResponse.getProperties().getId());
-        long t2 = System.currentTimeMillis();
-        log("getDatabase ms: " + (t2 - t1));
+        long t2 = System.nanoTime();
+        log("getDatabase ms: " + msDiff(t1, t2));
     }
 
     private static void getContainer() throws Exception {
 
         log("getContainer: " + containerName);
-        long t1 = System.currentTimeMillis();
+        long t1 = System.nanoTime();
         CosmosContainerProperties containerProperties =
             new CosmosContainerProperties(containerName, "/pk");
         ThroughputProperties throughputProperties = 
@@ -194,8 +150,51 @@ public class App
         CosmosContainerResponse containerResponse = 
             database.createContainerIfNotExists(containerProperties, throughputProperties);
         container = database.getContainer(containerResponse.getProperties().getId());
-        long t2 = System.currentTimeMillis();
-        log("getContainer ms: " + (t2 - t1));
+        long t2 = System.nanoTime();
+        log("getContainer ms: " + msDiff(t1, t2));
+    }
+
+    private static ArrayList<Object> executeQuery(String sql) {
+
+        log("executeQuery: " + sql);
+        ArrayList<Object> resultObjects = new ArrayList<Object>();
+
+        // https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/System.html#nanoTime()
+        // a nanosecond = one billionth of a second
+        long t1 = System.nanoTime();
+
+        CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
+        CosmosPagedIterable<Object> airports =
+                container.queryItems(sql, options, Object.class);
+        long t2 = System.nanoTime();
+
+        if (airports.iterator().hasNext()) {
+            resultObjects.add(airports.iterator().next());
+        }
+        long t3 = System.nanoTime();
+
+        for (Object obj: resultObjects) {
+            logResponseObject(obj);
+        }
+        System.out.println("query items elapsed ms: " + msDiff(t1, t2));
+        System.out.println("iterate items elapsed ms: " + msDiff(t1, t3));
+        return resultObjects;
+    }
+
+    private static void logResponseObject(Object obj) {
+
+        try {
+            LinkedHashMap hash = (LinkedHashMap) obj;
+            Iterator it = hash.keySet().iterator();
+            while (it.hasNext()) {
+                Object key = it.next();
+                Object val = hash.get(key);
+                System.out.println(String.format("key: %s -> %s", key, val));
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void displayCommandLineArgs(String[] args) {
@@ -203,6 +202,21 @@ public class App
         for (int i = 0; i < args.length; i++) {
             log("arg: " + i + " -> " + args[i]);
         }
+    }
+
+    private static synchronized String envVar(String name) {
+
+        return System.getenv().get(name);
+    }
+
+    private static synchronized double msDiff(long nano1, long nano2) {
+
+        return (nano2 - nano1) / NANOSECONDS_PER_MILLISECONDS;
+    }
+
+    private static void log(String msg) {
+
+        System.out.println(msg);
     }
 
     private static void displayCommandLineOptions(String msg) {
@@ -216,20 +230,5 @@ public class App
         System.out.println("  point_read dev airports SFO 895014e0-1d52-40f6-8ae2-f9dcb0119961");
         System.out.println("  query <db> <container> <query-id>");
         System.out.println("");
-    }
-
-    private static void log(String msg) {
-
-        System.out.println(msg);
-    }
-
-    private static synchronized String envVar(String name) {
-
-        return System.getenv().get(name);
-    }
-
-    private static synchronized double msDiff(long nano1, long nano2) {
-
-        return (nano2 - nano1) / NANOSECONDS_PER_MILLISECONDS;
     }
 }

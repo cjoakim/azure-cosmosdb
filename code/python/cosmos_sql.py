@@ -212,6 +212,8 @@ def point_read(dbname, cname, pk, id):
     print(sql)
     documents = list()
 
+    #c.query_container(cname, "select * from c where c.pk = 'NOT_THERE'", True, 3)
+
     # execute the query
     query_start_epoch = time.time()
     query_results     = c.query_container(cname, sql, True, 3)
@@ -236,13 +238,14 @@ def point_read(dbname, cname, pk, id):
 
         print(json.dumps(documents, sort_keys=True, indent=2))
 
-        print('c.query_container:')
+        print('point_read - db: {} container: {} pk: {} id: {}'.format(dbname, cname, pk, id))
         print('  query_start_epoch:                 {}'.format(query_start_epoch))
         print('  query_end_epoch:                   {}'.format(query_end_epoch))
         print('  query_elapsed_seconds:             {}'.format(query_elapsed_seconds))
         print('  query_elapsed_ms:                  {}'.format(query_elapsed_ms))
         print('  query_and_iterate_elapsed_seconds: {}'.format(query_and_iterate_elapsed_seconds))
         print('  query_and_iterate_elapsed_ms:      {}'.format(query_and_iterate_elapsed_ms))
+        print('  document count:                    {}'.format(len(documents)))
 
     if flag_cli_arg('--upsert'):
         for idx, doc in enumerate(documents):

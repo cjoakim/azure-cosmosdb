@@ -41,11 +41,14 @@ class Cosmos(object):
     def set_db(self, dbname):
         try:
             self.reset_record_diagnostics()
-            self._dbname = dbname
-            self._dbproxy = self._client.create_database(
-                id=dbname,
-                populate_query_metrics=self._query_metrics,
-                response_hook=self._record_diagnostics)
+            if self._dbname == dbname:
+                pass
+            else:
+                self._dbproxy = self._client.create_database(
+                    id=dbname,
+                    populate_query_metrics=self._query_metrics,
+                    response_hook=self._record_diagnostics)
+                self._dbname = dbname
         except:
             self._dbproxy = self._client.get_database_client(database=dbname)
         return self._dbproxy
@@ -73,8 +76,12 @@ class Cosmos(object):
 
     def set_container(self, cname):
         self.reset_record_diagnostics()
-        self._ctrproxy = self._dbproxy.get_container_client(cname)
-        # <class 'azure.cosmos.container.ContainerProxy'>
+        if self._cname == cname:
+            pass
+        else:
+            self._ctrproxy = self._dbproxy.get_container_client(cname)
+            self._cname = cname
+            # <class 'azure.cosmos.container.ContainerProxy'>
         return self._ctrproxy
 
     def update_container_throughput(self, cname, throughput):

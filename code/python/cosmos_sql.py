@@ -212,11 +212,12 @@ def point_read(dbname, cname, pk, id):
     print(sql)
     documents = list()
 
-    #c.query_container(cname, "select * from c where c.pk = 'NOT_THERE'", True, 3)
+    # priming read to set c to the container, just for this perf test
+    c.query_container(cname, sql, False, 3)
 
     # execute the query
     query_start_epoch = time.time()
-    query_results     = c.query_container(cname, sql, True, 3)
+    query_results     = c.query_container(cname, sql, False, 3)
     query_end_epoch   = time.time()
 
     if query_results == None:
@@ -236,7 +237,7 @@ def point_read(dbname, cname, pk, id):
         query_and_iterate_elapsed_seconds = iterate_end_epoch - query_start_epoch
         query_and_iterate_elapsed_ms      = query_and_iterate_elapsed_seconds * 1000.0
 
-        print(json.dumps(documents, sort_keys=True, indent=2))
+        print(json.dumps(documents, sort_keys=False, indent=2))
 
         print('point_read - db: {} container: {} pk: {} id: {}'.format(dbname, cname, pk, id))
         print('  query_start_epoch:                 {}'.format(query_start_epoch))

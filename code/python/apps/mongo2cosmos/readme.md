@@ -20,8 +20,8 @@
 
 - **Import the transformed mongoexport files into CosmosDB**
   - One approach is to use the **mongoimport** utility
-  - Another approach is to use **Azure Data Factory**\
-  - Another approach is to use a programming language to load CosmosDB from the transformed mongoexport files
+  - Another approach is to use **Azure Data Factory** (see screen shots below)
+  - Another approach is to use a programming language SDK to load CosmosDB from the transformed mongoexport files (DotNet, Java, Python/pymongo, Node, etc)
 
 
 ---

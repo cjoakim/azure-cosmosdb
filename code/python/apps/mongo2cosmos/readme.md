@@ -13,10 +13,37 @@
   - Simple and fast Python code can be used for this
     - Read the source mongoexport file
     - Add the pk and doctype attributes
+    - Do other transformations as necessary
     - Produce a mongoexport file in the format for the target database
     - Repeat as necessary for each collection and mongoexport file
     - Yes, use code generation
 
 - **Import the transformed mongoexport files into CosmosDB**
   - One approach is to use the **mongoimport** utility
-  - Another approach is to use **Azure Data Factory**
+  - Another approach is to use **Azure Data Factory**\
+  - Another approach is to use a programming language to load CosmosDB from the transformed mongoexport files
+
+
+---
+
+### Azure Data Factory (ADF)
+
+The following are screen-shots of creating and executing an ADF Copy job.
+
+<p align="center"><img src="img/adf-job-created.png"></p>
+
+---
+
+<p align="center"><img src="img/adf-job-deployed.png"></p>
+
+---
+
+<p align="center"><img src="img/adf-copy-running.png"></p>
+
+---
+
+<p align="center"><img src="img/adf-job-in-progress-details.png"></p>
+
+---
+
+<p align="center"><img src="img/adf-docs-in-cosmosdb.png"></p>

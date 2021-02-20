@@ -1,5 +1,4 @@
 """
-
 This Python script reads an IMDb TSV file and produces an output file in
 mongoexport format, to simulate an export from a "source" database.
 

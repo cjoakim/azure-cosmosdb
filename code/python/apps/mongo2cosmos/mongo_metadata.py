@@ -1,5 +1,4 @@
 """
-
 Point this utility at the "source" database to be migrated, to obtain
 the list of its collections.
 

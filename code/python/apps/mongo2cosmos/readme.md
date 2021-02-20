@@ -36,20 +36,30 @@
 
 The following are screen-shots of creating and executing an ADF Copy job.
 
+#### Create the ADF Copy Job
+
 <p align="center"><img src="img/adf-job-created.png"></p>
 
 ---
+
+#### ADF Copy Job is Deployed
 
 <p align="center"><img src="img/adf-job-deployed.png"></p>
 
 ---
 
+#### ADF Copy Job Running
+
 <p align="center"><img src="img/adf-copy-running.png"></p>
 
 ---
 
+#### ADF Copy Job Running - click into Details
+
 <p align="center"><img src="img/adf-job-in-progress-details.png"></p>
 
 ---
+
+#### View Documents in CosmosDB as the Job is Running
 
 <p align="center"><img src="img/adf-docs-in-cosmosdb.png"></p>

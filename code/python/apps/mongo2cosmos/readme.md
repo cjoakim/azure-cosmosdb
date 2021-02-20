@@ -28,6 +28,11 @@
     - See **wrangle_imdb.sh** and **wrangle_imdb.py** which reads the IMDb TSV files and transforms them into a working mongoexport format
     - Using this IMDb data simulates a large customer database
 
+- **Create the CosmosDB Target Database, Collections, Indexes**
+  - Create the CosmosDB account, database, and set the shared throughput (Azure Portal)
+  - Execute generated scripts to create the collections and indexes
+  - See examples: **mongo_init.sh** and **mongo/azure_init.ddl**
+
 - **Import the transformed mongoexport files into CosmosDB**
   - One approach is to use the **mongoimport** utility
     - See **mongo_load.sh**

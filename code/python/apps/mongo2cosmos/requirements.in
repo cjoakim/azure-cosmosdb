@@ -1,0 +1,10 @@
+# Chris Joakim, Microsoft, 2021/02/20
+# These libraries are sorted alphabetically
+
+arrow
+azure-cosmos
+azure-storage-blob
+azure-storage-file-datalake
+docopt
+flake8
+pymongo

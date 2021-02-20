@@ -6,7 +6,8 @@
 
 automation/az/data/output/
 
-code/python/transformed*
+code/python/apps/mongo2cosmos/data/imdb/*.tsv
+code/python/apps/mongo2cosmos/data/mongo/*.json
 
 data/imdb/name*
 data/imdb/*.gz

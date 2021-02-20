@@ -77,3 +77,63 @@ The following are screen-shots of creating and executing an ADF Copy job.
 #### View Documents in CosmosDB as the Job is Running
 
 <p align="center"><img src="img/adf-docs-in-cosmosdb.png"></p>
+
+---
+
+#### ADF Copy Job Completed Successfully
+
+Note the exact record count, 1,699,998.  ADF is solid.
+
+<p align="center"><img src="img/adf-job-completed.png"></p>
+
+---
+
+#### Connect to CosmosDB with the mongo shell program to verify
+
+
+```
+$ ./mongo_shell.sh azure
+```
+
+```
+MongoDB server version: 3.6.0
+
+globaldb:PRIMARY> show dbs
+dev      0.000GB
+migrate  0.000GB
+
+globaldb:PRIMARY> use migrate
+switched to db migrate
+
+globaldb:PRIMARY> show collections
+combined
+name_basics
+title_basics
+
+globaldb:PRIMARY> db.combined.count()
+1699998
+
+globaldb:PRIMARY> db.combined.findOne()
+{
+	"_id" : "603111acbeea9dc5cb886b0d",
+	"seq" : 2205,
+	"nconst" : "nm0002207",
+	"primaryName" : "Richard Franklin",
+	"birthYear" : "1948",
+	"deathYear" : "2007",
+	"primaryProfession" : [
+		"director",
+		"producer",
+		"writer"
+	],
+	"knownForTitles" : [
+		"tt0080453",
+		"tt0078067",
+		"tt0091415",
+		"tt0113337"
+	],
+	"pk" : "nm0002207",
+	"doctype" : "name_basics"
+}
+globaldb:PRIMARY>
+```

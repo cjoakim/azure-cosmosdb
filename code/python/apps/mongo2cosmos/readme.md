@@ -3,7 +3,7 @@
 ## Process
 
 - Extract the **metadata** about the source MongoDB database
-  - See mongo_metadata.py
+  - See **mongo_metadata.py**
 
 - **Generate** shell scripts and other code from the above metadata
   - Generate mongoexport script(s) from source database
@@ -17,12 +17,16 @@
     - Produce a mongoexport file in the format for the target database
     - Repeat as necessary for each collection and mongoexport file
     - Yes, use code generation
+  - See **transform_mongoexports.py** and **transform_mongoexports.sh**
 
 - **Import the transformed mongoexport files into CosmosDB**
   - One approach is to use the **mongoimport** utility
     - See **mongo_load.sh**
   - Another approach is to use **Azure Data Factory**
     - See screen shots below
+    - Source is the transformed mongoexport file(s) in **Azure Blob Storage**
+      - [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)
+    - Target is the CosmosDB/Mongo database collection
   - Another approach is to use a programming language SDK to load CosmosDB from the transformed mongoexport files (DotNet, Java, Python/pymongo, Node, etc)
 
 

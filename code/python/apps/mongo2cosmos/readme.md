@@ -19,6 +19,12 @@
     - Yes, use code generation
   - See **transform_mongoexports.py** and **transform_mongoexports.sh**
 
+  - Note: this repo uses **IMDb** as large dataset for testing purposes
+    - This is a large public domain dataset
+    - Download the data with script data/imdb/curl_get_imdb_datasets.sh
+    - See **wrangle_imdb.sh** and **wrangle_imdb.py** which reads the IMDb TSV files and transforms them into a working mongoexport format
+    - Using this IMDb data simulates a large customer database
+
 - **Import the transformed mongoexport files into CosmosDB**
   - One approach is to use the **mongoimport** utility
     - See **mongo_load.sh**

@@ -24,15 +24,15 @@ echo 'done'
 #
 # $ ./transform_mongoexports.sh
 # transform: name_basics -> data/mongo/name_basics_small_source.json -> data/mongo/name_basics_small_target.json
-# xform_rule: name_basics
-# infile:     data/mongo/name_basics_small_source.json
-# outfile:    data/mongo/name_basics_small_target.json
-# elapsed:    10.8701651096344
+# doctype:  name_basics
+# infile:   data/mongo/name_basics_small_source.json
+# outfile:  data/mongo/name_basics_small_target.json
+# elapsed:  11.292340993881226
 # transform: title_basics -> data/mongo/title_basics_small_source.json -> data/mongo/title_basics_small_target.json
-# xform_rule: title_basics
-# infile:     data/mongo/title_basics_small_source.json
-# outfile:    data/mongo/title_basics_small_target.json
-# elapsed:    8.407235145568848
+# doctype:  title_basics
+# infile:   data/mongo/title_basics_small_source.json
+# outfile:  data/mongo/title_basics_small_target.json
+# elapsed:  8.48729681968689
 # {
 #   "_id": "603111b6076315a46b2fd611",
 #   "seq": 1,
@@ -61,6 +61,7 @@ echo 'done'
 #     "Documentary",
 #     "Short"
 #   ],
-#   "pk": "tt0000001"
+#   "pk": "tt0000001",
+#   "doctype": "title_basics"
 # }
 # done

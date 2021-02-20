@@ -3,7 +3,7 @@ This Python script reads a "source" mongoexport file and transforms it into
 the format required for loading into the "target" database.
 
 Usage:
-    python transform_mongoexports.py transform <xform-rule> <infile> <outfile>
+    python transform_mongoexports.py transform <doctype> <infile> <outfile>
     python transform_mongoexports.py transform name_basics  data/mongo/name_basics_small_source.json  data/mongo/name_basics_small_target.json
     python transform_mongoexports.py transform title_basics data/mongo/title_basics_small_source.json data/mongo/title_basics_small_target.json
 """
@@ -24,8 +24,8 @@ from docopt import docopt
 from os.path import abspath
 from bson.objectid import ObjectId
 
-def transform(xform_rule, infile, outfile):
-    print('transform: {} -> {} -> {}'.format(rule, infile, outfile))
+def transform(doctype, infile, outfile):
+    print('transform: {} -> {} -> {}'.format(doctype, infile, outfile))
     start_time = time.time()
     it = text_file_iterator(infile)
 
@@ -36,29 +36,31 @@ def transform(xform_rule, infile, outfile):
 
             # Reformatting logic; delete the _id, add pk, convert two attributes to arrays
 
-            if xform_rule == 'name_basics':
-                xform_name_basics(doc)
-            elif xform_rule == 'title_basics':
-                xform_title_basics(doc)
+            if doctype == 'name_basics':
+                xform_name_basics(doc, doctype)
+            elif doctype == 'title_basics':
+                xform_title_basics(doc, doctype)
             else:
                 pass  # no transformation needed
 
             out.write(json.dumps(doc))
             out.write("\n")
 
-    print('xform_rule: {}'.format(xform_rule))
-    print('infile:     {}'.format(infile))
-    print('outfile:    {}'.format(outfile))
-    print('elapsed:    {}'.format(time.time() - start_time))
+    print('doctype:  {}'.format(doctype))
+    print('infile:   {}'.format(infile))
+    print('outfile:  {}'.format(outfile))
+    print('elapsed:  {}'.format(time.time() - start_time))
 
-def xform_name_basics(doc):
+def xform_name_basics(doc, doctype):
     # add pk, convert two attributes to arrays
     doc['pk'] = doc['nconst']
+    doc['doctype'] = doctype
     doc['primaryProfession'] = doc['primaryProfession'].split(',')
     doc['knownForTitles'] = doc['knownForTitles'].split(',')
 
-def xform_title_basics(doc):
+def xform_title_basics(doc, doctype):
     doc['pk'] = doc['tconst']
+    doc['doctype'] = doctype
     doc['genres'] = doc['genres'].split(',')
 
 def text_file_iterator(infile):
@@ -77,10 +79,10 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         func = sys.argv[1].lower()
         if func == 'transform':
-            rule = sys.argv[2]
-            infile = sys.argv[3]
+            doctype = sys.argv[2]
+            infile  = sys.argv[3]
             outfile = sys.argv[4]
-            transform(rule, infile, outfile)
+            transform(doctype, infile, outfile)
         else:
             print_options('Error: invalid function: {}'.format(func))
     else:

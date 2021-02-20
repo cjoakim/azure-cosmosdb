@@ -90,7 +90,6 @@ Note the exact record count, 1,699,998.  ADF is solid.
 
 #### Connect to CosmosDB with the mongo shell program to verify
 
-
 ```
 $ ./mongo_shell.sh azure
 ```
@@ -136,4 +135,21 @@ globaldb:PRIMARY> db.combined.findOne()
 	"doctype" : "name_basics"
 }
 globaldb:PRIMARY>
+```
+
+---
+
+## Environment Variables
+
+This repo uses the following environment variables; configuration isn't hard-coded
+in the scripts or code.
+
+```
+AZURE_COSMOSDB_MONGODB_CONN_STRING= ... see Azure Portal for value ...
+AZURE_COSMOSDB_MONGODB_DBNAME=migrate
+AZURE_COSMOSDB_MONGODB_HOST=cjoakimcosmosmongo.mongo.cosmos.azure.com
+AZURE_COSMOSDB_MONGODB_PASS=... see Azure Portal for value ...
+AZURE_COSMOSDB_MONGODB_PORT=10255
+AZURE_COSMOSDB_MONGODB_USER=cjoakimcosmosmongo
+MONGODB_LOCAL_URL=localhost:27017/dev
 ```

@@ -186,29 +186,44 @@ public class App
         System.out.println("iterate items elapsed milliseconds: " + msDiff(t1, t3));
         return resultObjects;
     }
+        // Results captured on UVM 2/22:
+        //    executeQuery: select * from c where c.pk ='SFO' and c.id = '895014e0-1d52-40f6-8ae2-f9dcb0119961'
+        //    key: name -> San Francisco Intl
+        //    key: city -> San Francisco
+        //    key: country -> United States
+        //    key: iata_code -> SFO
+        //    key: latitude -> 37.618972
+        //    key: longitude -> -122.374889
+        //    key: altitude -> 13
+        //    key: timezone_num -> -8
+        //    key: timezone_code -> America/Los_Angeles
+        //    key: location -> {type=Point, coordinates=[-122.374889, 37.618972]}
+        //    key: pk -> SFO
+        //    key: epoch -> 1.613579310177537E9
+        //    key: id -> 895014e0-1d52-40f6-8ae2-f9dcb0119961
+        //    key: _rid -> 5IsfAOHCY-RfAAAAAAAAAA==
+        //    key: _self -> dbs/5IsfAA==/colls/5IsfAOHCY-Q=/docs/5IsfAOHCY-RfAAAAAAAAAA==/
+        //    key: _etag -> "0e002cdc-0000-0100-0000-602d442e0000"
+        //    key: _attachments -> attachments/
+        //    key: _ts -> 1613579310
+        //    query items elapsed milliseconds: 0.0496
+        //    iterate items elapsed milliseconds: 17.972255
+        //    CosmosClient closed
 
-    //    executeQuery: select * from c where c.pk ='SFO' and c.id = '895014e0-1d52-40f6-8ae2-f9dcb0119961'
-    //    key: name -> San Francisco Intl
-    //    key: city -> San Francisco
-    //    key: country -> United States
-    //    key: iata_code -> SFO
-    //    key: latitude -> 37.618972
-    //    key: longitude -> -122.374889
-    //    key: altitude -> 13
-    //    key: timezone_num -> -8
-    //    key: timezone_code -> America/Los_Angeles
-    //    key: location -> {type=Point, coordinates=[-122.374889, 37.618972]}
-    //    key: pk -> SFO
-    //    key: epoch -> 1.613579310177537E9
-    //    key: id -> 895014e0-1d52-40f6-8ae2-f9dcb0119961
-    //    key: _rid -> 5IsfAOHCY-RfAAAAAAAAAA==
-    //    key: _self -> dbs/5IsfAA==/colls/5IsfAOHCY-Q=/docs/5IsfAOHCY-RfAAAAAAAAAA==/
-    //    key: _etag -> "0e002cdc-0000-0100-0000-602d442e0000"
-    //    key: _attachments -> attachments/
-    //    key: _ts -> 1613579310
-    //    query items elapsed milliseconds: 0.071701
-    //    iterate items elapsed milliseconds: 21.623364
-    //    CosmosClient closed
+        // Results captured on UVM 2/22, grepped for millis:
+        //    createCosmosClient milliseconds: 3250.045701
+        //    getDatabase milliseconds: 678.990411
+        //    getContainer milliseconds: 71.742525
+        //    query items elapsed milliseconds: 5.265046
+        //    iterate items elapsed milliseconds: 373.150048
+        //    query items elapsed milliseconds: 0.081
+        //    iterate items elapsed milliseconds: 28.181345
+        //    query items elapsed milliseconds: 0.329103
+        //    iterate items elapsed milliseconds: 20.864682
+        //    query items elapsed milliseconds: 0.0451
+        //    iterate items elapsed milliseconds: 45.835298
+        //    query items elapsed milliseconds: 0.073901
+        //    iterate items elapsed milliseconds: 48.22492
 
     private static void logResponseObject(Object obj) {
 

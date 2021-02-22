@@ -272,7 +272,6 @@ class CosmosRestClient():
     def get_document(self, dbname, cname, pk, doc_id):
         # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/get-a-document
         print('get_document: {} {} {} {}'.format(dbname, cname, pk, id))
-
         verb = 'get'
         resource_link = 'dbs/{}/colls/{}/docs/{}'.format(dbname, cname, doc_id)
         #resource_link = doc_id
@@ -326,6 +325,8 @@ class CosmosRestClient():
         print('===')
         print("invoke: {} {} {}\nheaders: {}\nbody: {}".format(function_name, method.upper(), url, headers, json_body))
         print('---')
+        start_epoch = time.time()
+
         if method == 'get':
             r = requests.get(url=url, headers=headers)
         elif method == 'post':
@@ -337,7 +338,9 @@ class CosmosRestClient():
         else:
             print('error; unexpected method value passed to invoke: {}'.format(method))
 
-        print('response: {}'.format(r))
+        end_epoch = time.time()
+        elapsed = end_epoch - start_epoch
+        print('response: {}  elapsed seconds: {}'.format(r, elapsed))
         if r.status_code in [200, 201]:  # not all responses return a JSON body
             try:
                 resp_obj = json.loads(r.text)

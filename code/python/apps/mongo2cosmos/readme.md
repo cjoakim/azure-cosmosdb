@@ -46,6 +46,83 @@
 
 ---
 
+### mongoexport transformations
+
+#### 
+
+Execute the transformation job.  1.7m rows in under approx 20 seconds.
+
+```
+$  wc -l data/mongo/name_basics_small_source.json
+  999999 data/mongo/name_basics_small_source.json
+
+$ wc -l data/mongo/title_basics_small_source.json
+  699999 data/mongo/title_basics_small_source.json
+
+$ ./transform_mongoexports.sh
+
+transform: name_basics -> data/mongo/name_basics_small_source.json -> data/mongo/name_basics_small_target.json
+doctype:  name_basics
+infile:   data/mongo/name_basics_small_source.json
+outfile:  data/mongo/name_basics_small_target.json
+elapsed:  11.50761604309082
+
+transform: title_basics -> data/mongo/title_basics_small_source.json -> data/mongo/title_basics_small_target.json
+doctype:  title_basics
+infile:   data/mongo/title_basics_small_source.json
+outfile:  data/mongo/title_basics_small_target.json
+elapsed:  8.83965516090393
+```
+
+#### Example of original/source file; pretty-printed first row
+
+```
+$ head -1 data/mongo/name_basics_small_source.json | jq 
+
+{
+  "_id": "603111acbeea9dc5cb886271",
+  "seq": 1,
+  "nconst": "nm0000001",
+  "primaryName": "Fred Astaire",
+  "birthYear": "1899",
+  "deathYear": "1987",
+  "primaryProfession": "soundtrack,actor,miscellaneous",
+  "knownForTitles": "tt0053137,tt0072308,tt0031983,tt0050419"
+}
+```
+
+#### Example of transformed file; pretty-printed first row
+
+Transformation add the **pk** and **doctype** attributes, delimited strings become arrays.
+
+```
+$ head -1 data/mongo/name_basics_small_target.json | jq 
+
+{
+  "_id": "603111acbeea9dc5cb886271",
+  "seq": 1,
+  "nconst": "nm0000001",
+  "primaryName": "Fred Astaire",
+  "birthYear": "1899",
+  "deathYear": "1987",
+  "primaryProfession": [
+    "soundtrack",
+    "actor",
+    "miscellaneous"
+  ],
+  "knownForTitles": [
+    "tt0053137",
+    "tt0072308",
+    "tt0031983",
+    "tt0050419"
+  ],
+  "pk": "nm0000001",
+  "doctype": "name_basics"
+}
+```
+
+---
+
 ### Azure Data Factory (ADF)
 
 The following are screen-shots of creating and executing an ADF Copy job.

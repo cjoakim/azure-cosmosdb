@@ -2,7 +2,7 @@
 
     <description>
         Ant script to create a zip file backup of this project.
-        Chris Joakim, 2021/01/30
+        Chris Joakim, 2021/02/22
         ant -f backup.xml
     </description>
 
@@ -41,7 +41,7 @@
         </description>
 
         <tstamp>
-            <format property="_backupTstamp" pattern="yyyyMMdd-HHmm" />
+            <format property="_backupTstamp" pattern="yyyyMMdd-HHmmss" />
         </tstamp>
 
         <property name="_zipFilename"

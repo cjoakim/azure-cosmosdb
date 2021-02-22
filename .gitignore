@@ -9,6 +9,20 @@ automation/az/data/output/
 code/python/apps/mongo2cosmos/data/imdb/*.tsv
 code/python/apps/mongo2cosmos/data/mongo/*.json
 
+code/python/apps/*/bin/
+code/python/apps/*/include
+code/python/apps/*/lib64
+code/python/apps/*/pyvenv.cfg
+code/python/apps/*/lib64
+code/python/apps/*/man
+
+code/python/bin/
+code/python/include/
+code/python/lib64
+code/python/pyvenv.cfg
+code/python/man/
+code/python/share/
+
 data/imdb/name*
 data/imdb/*.gz
 data/imdb/*.tsv

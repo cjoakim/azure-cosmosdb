@@ -269,8 +269,22 @@ class CosmosRestClient():
                     self.cosmos_acct, offer_id)
                 return self.__execute_http_request('replace_offer', verb, url, headers, body)
 
-    def get_document(self, dbname, cname, pk, id):
+    def get_document(self, dbname, cname, pk, doc_id):
+        # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/get-a-document
         print('get_document: {} {} {} {}'.format(dbname, cname, pk, id))
+
+        verb = 'get'
+        resource_link = 'dbs/{}/colls/{}/docs/{}'.format(dbname, cname, doc_id)
+        #resource_link = doc_id
+        headers = self.__rest_headers(verb, 'docs', resource_link)
+        headers['x-ms-documentdb-partitionkey'] = '["{}"]'.format(pk)
+        url = 'https://{}.documents.azure.com/dbs/{}/colls/{}/docs/{}'.format(
+            self.cosmos_acct, dbname, cname, doc_id)
+        # https://cjoakimcosmossql.documents.azure.com/dbs/dev/colls/airports/docs/895014e0-1d52-40f6-8ae2-f9dcb0119961
+        return self.__execute_http_request('get_document', verb, url, headers)
+
+
+        # https://{databaseaccount}.documents.azure.com/dbs/{db-id}/colls/{coll-id}/docs/{doc-id}
 
     # private methods 
 
@@ -436,8 +450,8 @@ if __name__ == "__main__":
             dbname = sys.argv[2]
             cname  = sys.argv[3]
             pk     = sys.argv[4]
-            id     = sys.argv[5]
-            client.get_document(dbname, cname, pk, id)
+            doc_id = sys.argv[5]
+            client.get_document(dbname, cname, pk, doc_id)
 
         elif func == 'help':
             print_options('')

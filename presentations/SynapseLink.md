@@ -138,5 +138,15 @@ df.count()
 
 #### Cell 4
 
-<p align="center"><img src="img/azure-synapse-pyspark-notebook.png"></p>
+```
+from pyspark.sql.functions import col
 
+timezone_offsets = [-8, -7, -6, -5]
+df2 = df.dropna(subset=['iata_code'])
+df3 = df2.select('_ts', 'epoch', 'city', 'name', 'altitude') \
+    .where(col('timezone_num').isin(timezone_offsets)) \
+    .sort(col('_ts').desc())
+display(df.limit(10))
+```
+
+<p align="center"><img src="img/azure-synapse-pyspark-notebook.png"></p>

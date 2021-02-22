@@ -19,7 +19,7 @@
     - Produce a mongoexport file in the format for the target database
     - Repeat as necessary for each collection and mongoexport file
     - Yes, use code generation
-  - See **transform_mongoexports.py** and **transform_mongoexports.sh**
+  - See **transform_mongoexports.sh** and **transform_mongoexports.py**
     - Transform a 1-million row file in under 12-seconds
 
   - Note: this repo uses **IMDb** as large dataset for testing purposes
@@ -50,7 +50,8 @@
 
 #### 
 
-Execute the transformation job.  1.7m rows in under approx 20 seconds.
+Execute the transformation job.  1.7m rows in 20.34 seconds.
+See **transform_mongoexports.sh** and **transform_mongoexports.py**
 
 ```
 $  wc -l data/mongo/name_basics_small_source.json
@@ -119,6 +120,18 @@ $ head -1 data/mongo/name_basics_small_target.json | jq
   "pk": "nm0000001",
   "doctype": "name_basics"
 }
+```
+
+---
+
+### mongoimport
+
+Use **--numInsertionWorkers** and **--batchSize 24** to throttle throughput.
+
+```
+mongoimport --db migrate --collection title_basics \
+    --file data/mongo/title_basics_mini_target.json \
+    --numInsertionWorkers 1 --batchSize 24 
 ```
 
 ---

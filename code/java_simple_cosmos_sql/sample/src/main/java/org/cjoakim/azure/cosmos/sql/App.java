@@ -26,7 +26,7 @@ import java.util.LinkedHashMap;
 
 /**
  * 
- * Chris Joakim, Microsoft, 2021/02/19
+ * Chris Joakim, Microsoft, 2021/02/22
  * 
  * See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-java-sdk-samples
  * See https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/latest/index.html
@@ -91,19 +91,19 @@ public class App
         }
     }
 
-    private static void pointRead(String pk, String id, int count) throws Exception {
+    private static ArrayList<Object> pointRead(String pk, String id, int count) throws Exception {
 
         log(String.format("pointRead; pk: %s id: %s", pk, id));
         client = createCosmosClient();
         getDatabase();
         getContainer();
+        ArrayList<Object> results = null;
 
         for (int i = 0; i < count; i++) {
             String sql = String.format("select * from c where c.pk ='%s' and c.id = '%s'", pk, id);
-            ArrayList<Object> results = executeQuery(sql);
-//            sql = String.format("select c.pk, c.id, c.name, c.iata_code from c where c.pk ='%s' and c.id = '%s'", pk, id);
-//            executeQuery(sql);
+            results = executeQuery(sql);
         }
+        return results;
     }
 
     private static CosmosClient createCosmosClient() {
@@ -130,7 +130,7 @@ public class App
                 .buildClient();
 
         long t2 = System.nanoTime();
-        log("createCosmosClient ms: " + msDiff(t1, t2));
+        log("createCosmosClient milliseconds: " + msDiff(t1, t2));
         return client;
     }
 
@@ -142,7 +142,7 @@ public class App
             client.createDatabaseIfNotExists(databaseName);
         database = client.getDatabase(databaseResponse.getProperties().getId());
         long t2 = System.nanoTime();
-        log("getDatabase ms: " + msDiff(t1, t2));
+        log("getDatabase milliseconds: " + msDiff(t1, t2));
     }
 
     private static void getContainer() throws Exception {
@@ -157,7 +157,7 @@ public class App
             database.createContainerIfNotExists(containerProperties, throughputProperties);
         container = database.getContainer(containerResponse.getProperties().getId());
         long t2 = System.nanoTime();
-        log("getContainer ms: " + msDiff(t1, t2));
+        log("getContainer milliseconds: " + msDiff(t1, t2));
     }
 
     private static ArrayList<Object> executeQuery(String sql) {
@@ -166,16 +166,15 @@ public class App
         ArrayList<Object> resultObjects = new ArrayList<Object>();
 
         // https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/System.html#nanoTime()
-        // a nanosecond = one billionth of a second
-        long t1 = System.nanoTime();
+        long t1 = System.nanoTime();  // a nanosecond = one billionth of a second
 
         CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
         CosmosPagedIterable<Object> items =
-                container.queryItems(sql, options, Object.class);
+                container.queryItems(sql, null, Object.class);
         long t2 = System.nanoTime();
 
         Iterator it = items.iterator();
-        if (it.hasNext()) {
+        while (it.hasNext()) {
             resultObjects.add(it.next());
         }
         long t3 = System.nanoTime();
@@ -183,8 +182,8 @@ public class App
         for (Object obj: resultObjects) {
             logResponseObject(obj);
         }
-        System.out.println("query items elapsed ms: " + msDiff(t1, t2));
-        System.out.println("iterate items elapsed ms: " + msDiff(t1, t3));
+        System.out.println("query items elapsed milliseconds: " + msDiff(t1, t2));
+        System.out.println("iterate items elapsed milliseconds: " + msDiff(t1, t3));
         return resultObjects;
     }
 
@@ -207,8 +206,8 @@ public class App
     //    key: _etag -> "0e002cdc-0000-0100-0000-602d442e0000"
     //    key: _attachments -> attachments/
     //    key: _ts -> 1613579310
-    //    query items elapsed ms: 0.071701
-    //    iterate items elapsed ms: 21.623364
+    //    query items elapsed milliseconds: 0.071701
+    //    iterate items elapsed milliseconds: 21.623364
     //    CosmosClient closed
 
     private static void logResponseObject(Object obj) {

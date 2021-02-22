@@ -13,7 +13,7 @@ code/python/apps/*/bin/
 code/python/apps/*/include
 code/python/apps/*/lib64
 code/python/apps/*/pyvenv.cfg
-code/python/apps/*/lib64
+code/python/apps/*/share
 code/python/apps/*/man
 
 code/python/bin/

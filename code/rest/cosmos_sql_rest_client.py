@@ -20,6 +20,8 @@ Usage:
     python cosmos_sql_rest_client.py set_database_autopilot_ru dev2 5000
     python cosmos_sql_rest_client.py set_container_ru dev airports 600
     -
+    python cosmos_sql_rest_client.py get_document dev airports SFO 895014e0-1d52-40f6-8ae2-f9dcb0119961
+    -
     python cosmos_sql_rest_client.py help
     -
 """
@@ -27,7 +29,7 @@ Usage:
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2021.02.12"
+__version__ = "2021.02.22"
 
 # Links
 # https://docs.microsoft.com/en-us/rest/api/cosmos-db/
@@ -267,6 +269,9 @@ class CosmosRestClient():
                     self.cosmos_acct, offer_id)
                 return self.__execute_http_request('replace_offer', verb, url, headers, body)
 
+    def get_document(self, dbname, cname, pk, id):
+        print('get_document: {} {} {} {}'.format(dbname, cname, pk, id))
+
     # private methods 
 
     def __rest_headers(self, verb, resource_type, resource_link):
@@ -426,6 +431,13 @@ if __name__ == "__main__":
             cname  = sys.argv[3]
             ru     = int(sys.argv[4])
             client.set_container_ru(dbname, cname, ru)
+
+        elif func == 'get_document':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            pk     = sys.argv[4]
+            id     = sys.argv[5]
+            client.get_document(dbname, cname, pk, id)
 
         elif func == 'help':
             print_options('')

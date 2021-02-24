@@ -21,6 +21,7 @@ Usage:
     python cosmos_sql_rest_client.py set_container_ru dev airports 600
     -
     python cosmos_sql_rest_client.py get_document dev airports SFO 895014e0-1d52-40f6-8ae2-f9dcb0119961
+    python cosmos_sql_rest_client.py get_document dev airports PDT f9331886-a503-4fa7-b585-a134b24a5cdd
     -
     python cosmos_sql_rest_client.py help
     -

@@ -19,6 +19,7 @@ Usage:
     python cosmos_sql.py named_query dev amtrak nc-amtrak-stations
     -
     python cosmos_sql.py point_read dev airports SFO 895014e0-1d52-40f6-8ae2-f9dcb0119961
+    python cosmos_sql.py point_read dev airports PDT f9331886-a503-4fa7-b585-a134b24a5cdd
     python cosmos_sql.py point_read dev airports CLT 035094c9-59c7-4019-b66c-1a2e4cc12147
     python cosmos_sql.py point_read dev airports CLT 035094c9-59c7-4019-b66c-1a2e4cc12147 --upsert
     -

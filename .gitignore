@@ -23,6 +23,13 @@ code/python/pyvenv.cfg
 code/python/man/
 code/python/share/
 
+code/rest/bin/
+code/rest/include/
+code/rest/lib64
+code/rest/pyvenv.cfg
+code/rest/man/
+code/rest/share/
+
 data/imdb/name*
 data/imdb/*.gz
 data/imdb/*.tsv

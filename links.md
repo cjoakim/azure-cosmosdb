@@ -8,6 +8,7 @@ A collection of CosmosDB-related links that I find useful.
 - [Partitioning and Horizontal Scaling](https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview)
 - [Request Units](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units)
 - [Autoscale](https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale)
+- [Autoscale FAQ](https://docs.microsoft.com/en-us/azure/cosmos-db/autoscale-faq)
 - [Consistency Levels](https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels)
 - [Jupyter Notebooks - Python and C#](https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-jupyter-notebooks)
 - [az CLI](https://docs.microsoft.com/en-us/cli/azure/cosmosdb?view=azure-cli-latest)

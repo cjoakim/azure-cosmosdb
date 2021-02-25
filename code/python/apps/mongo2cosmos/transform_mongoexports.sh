@@ -2,12 +2,16 @@
 
 # Bash shell script to execute mongoexport file transformations fro
 # "source" to "target" database format.
-# Chris Joakim, Microsoft, 2021/02/20
+# Chris Joakim, Microsoft, 2021/02/25
+
+wc data/mongo/name_basics_small_source.json
 
 python transform_mongoexports.py transform \
     name_basics \
     data/mongo/name_basics_small_source.json \
     data/mongo/name_basics_small_target.json
+
+wc data/mongo/title_basics_small_source.json
 
 python transform_mongoexports.py transform \
     title_basics \

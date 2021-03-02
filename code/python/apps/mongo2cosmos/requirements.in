@@ -1,6 +1,7 @@
-# Chris Joakim, Microsoft, 2021/02/20
+# Chris Joakim, Microsoft, 2021/03/02
 # These libraries are sorted alphabetically
 
+Jinja2
 arrow
 azure-cosmos
 azure-storage-blob

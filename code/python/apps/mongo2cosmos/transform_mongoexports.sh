@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Bash shell script to execute mongoexport file transformations fro
+# Bash shell script to execute mongoexport file transformations from
 # "source" to "target" database format.
 # Chris Joakim, Microsoft, 2021/02/25
 

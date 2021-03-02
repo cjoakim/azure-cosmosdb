@@ -43,6 +43,33 @@
     - Target is the CosmosDB/Mongo database collection
   - Another approach is to use a programming language SDK to load CosmosDB from the transformed mongoexport files (DotNet, Java, Python/pymongo, Node, etc)
 
+---
+
+### metadata extract
+
+Use Python/pymongo to extract metadata about the source database -
+its collections, document counts, and indices.
+
+```
+$ python mongo_metadata.py read_db_metadata <conn-str-env-var> <db-name>
+$ python mongo_metadata.py read_db_metadata MONGODB_LOCAL_CONN_STR migrate
+```
+
+See example file data/meta/migrate_metadata.json
+
+---
+
+### metadata-driven script generation
+
+Use Python and Jinja templates to create mongoexport and transformation
+scripts from the extracted metadata.
+
+```
+$ python mongo_metadata.py generate_scripts migrate
+generate_scripts, dbname: migrate
+file written: generated/migrate_db_mongoexport.sh
+file written: generated/migrate_db_transform.sh
+```
 
 ---
 

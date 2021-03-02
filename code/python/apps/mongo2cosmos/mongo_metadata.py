@@ -63,7 +63,7 @@ def read_db_metadata(conn_str_env_var, dbname):
 
     jstr = json.dumps(metadata, sort_keys=False, indent=2)
     print(jstr)
-    outfile = 'data/mongo/{}_metadata.json'.format(dbname)
+    outfile = 'data/meta/{}_metadata.json'.format(dbname)
     write(outfile, jstr)
 
 def write(outfile, s, verbose=True):

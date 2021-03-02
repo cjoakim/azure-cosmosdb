@@ -45,6 +45,8 @@
 
 ---
 
+## Reference Implementation of this Process
+
 ### metadata extract
 
 Use Python/pymongo to extract metadata about the source database -
@@ -57,8 +59,6 @@ $ python mongo_metadata.py read_db_metadata MONGODB_LOCAL_CONN_STR migrate
 
 See example file data/meta/migrate_metadata.json
 
----
-
 ### metadata-driven script generation
 
 Use Python and Jinja templates to create mongoexport and transformation
@@ -70,8 +70,6 @@ generate_scripts, dbname: migrate
 file written: generated/migrate_db_mongoexport.sh
 file written: generated/migrate_db_transform.sh
 ```
-
----
 
 ### mongoexport transformations
 
@@ -149,8 +147,6 @@ $ head -1 data/mongo/name_basics_small_target.json | jq
 }
 ```
 
----
-
 ### mongoimport
 
 Use **--numInsertionWorkers** and **--batchSize 24** to throttle throughput.
@@ -161,8 +157,6 @@ mongoimport --db migrate --collection title_basics \
     --numInsertionWorkers 1 --batchSize 24 
 ```
 
----
-
 ### Azure Data Factory (ADF)
 
 The following are screen-shots of creating and executing an ADF Copy job.
@@ -171,39 +165,28 @@ The following are screen-shots of creating and executing an ADF Copy job.
 
 <p align="center"><img src="img/adf-job-created.png"></p>
 
----
-
 #### ADF Copy Job is Deployed
 
 <p align="center"><img src="img/adf-job-deployed.png"></p>
-
----
 
 #### ADF Copy Job Running
 
 <p align="center"><img src="img/adf-copy-running.png"></p>
 
----
 
 #### ADF Copy Job Running - click into Details
 
 <p align="center"><img src="img/adf-job-in-progress-details.png"></p>
 
----
-
 #### View Documents in CosmosDB as the Job is Running
 
 <p align="center"><img src="img/adf-docs-in-cosmosdb.png"></p>
-
----
 
 #### ADF Copy Job Completed Successfully
 
 Note the exact record count, 1,699,998.  ADF is solid.
 
 <p align="center"><img src="img/adf-job-completed.png"></p>
-
----
 
 #### Connect to CosmosDB with the mongo shell program to verify
 
@@ -254,8 +237,6 @@ globaldb:PRIMARY> db.combined.findOne()
 globaldb:PRIMARY>
 ```
 
----
-
 ## Environment Variables
 
 This repo uses the following environment variables; configuration isn't hard-coded
@@ -268,5 +249,7 @@ AZURE_COSMOSDB_MONGODB_HOST=cjoakimcosmosmongo.mongo.cosmos.azure.com
 AZURE_COSMOSDB_MONGODB_PASS=... see Azure Portal for value ...
 AZURE_COSMOSDB_MONGODB_PORT=10255
 AZURE_COSMOSDB_MONGODB_USER=cjoakimcosmosmongo
+
 MONGODB_LOCAL_URL=localhost:27017/dev
+MONGODB_LOCAL_CONN_STR=mongodb://localhost:27017/
 ```

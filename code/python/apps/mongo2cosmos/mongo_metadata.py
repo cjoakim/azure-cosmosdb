@@ -8,13 +8,14 @@ format required in the "target" Cosmos/Mongo database.
 
 Usage:
     python mongo_metadata.py read_db_metadata <conn-str-env-var> <db-name>
+    python mongo_metadata.py read_db_metadata MONGODB_LOCAL_CONN_STR migrate
     python mongo_metadata.py read_db_metadata AZURE_COSMOSDB_MONGODB_CONN_STRING dev
 """
 
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2021.02.20"
+__version__ = "2021.03.02"
 
 import json
 import os
@@ -47,22 +48,23 @@ def read_db_metadata(conn_str_env_var, dbname):
     metadata = dict()
     metadata['dbname']  = dbname
     metadata['env_var'] = conn_str_env_var
-    metadata['coll_names'] = coll_names
+    metadata['collections'] = list() 
 
-    jstr = json.dumps(metadata, sort_keys=True, indent=2)
+    for coll_name in coll_names:
+        coll_obj = db[coll_name]
+        coll_info = dict()
+        coll_info['name'] = coll_name 
+        coll_info['count'] = coll_obj.count_documents({})
+        coll_info['indexes'] = list()
+        for index in coll_obj.list_indexes():
+            coll_info['indexes'].append(index)
+
+    metadata['collections'].append(coll_info)
+
+    jstr = json.dumps(metadata, sort_keys=False, indent=2)
     print(jstr)
     outfile = 'data/mongo/{}_metadata.json'.format(dbname)
     write(outfile, jstr)
-
-    # Output:
-    # {
-    #   "coll_names": [
-    #     "amtrak",
-    #     "airports"
-    #   ],
-    #   "dbname": "dev",
-    #   "env_var": "AZURE_COSMOSDB_MONGODB_CONN_STRING"
-    # }
 
 def write(outfile, s, verbose=True):
     with open(outfile, 'w') as f:

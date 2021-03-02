@@ -57,7 +57,7 @@ $ python mongo_metadata.py read_db_metadata <conn-str-env-var> <db-name>
 $ python mongo_metadata.py read_db_metadata MONGODB_LOCAL_CONN_STR migrate
 ```
 
-See example file data/meta/migrate_metadata.json
+See example output file data/meta/migrate_metadata.json
 
 ### metadata-driven script generation
 

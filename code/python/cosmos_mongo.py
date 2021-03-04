@@ -2,9 +2,7 @@
 Usage:
     python cosmos_mongo.py load_airports_by_country 
     python cosmos_mongo.py point_read dev countries aruba 945d19ba-9ea0-4f12-a4d7-e0b864338a8a 10
-    python cosmos_mongo.py point_read dev countries aruba 6040d6a0b5e73e2fa3ec40fa 10
     python cosmos_mongo.py point_read dev countries united_states d3a493ac-4673-4279-ae64-838e4a36d245 10
-    python cosmos_mongo.py point_read dev countries united_states 6040d6a0b5e73e2fa3ec41d4 10
     python cosmos_mongo.py gather_points_for_reading dev countries
     python cosmos_mongo.py read_points dev countries data/cosmos_mongo_points.json
 """
@@ -145,12 +143,14 @@ def point_read(dbname, collname, pk, id, count):
     for n in range(0, count):
         query_start_epoch = time.time()
         result = coll.find_one(criteria)
+        id = result['id']
         query_end_epoch = time.time()
+        elapsed_ms = (query_end_epoch - query_start_epoch) * 1000.0
         if n == 0:
             print('result document:')
             print(json.dumps(result, sort_keys=False, indent=2))
             print('criteria: {}'.format(criteria))
-        print('elapsed:  {}'.format(query_end_epoch - query_start_epoch))
+        print('elapsed_ms: {}  id: {}'.format(elapsed_ms, id))
 
 def gather_points_for_reading(dbname, collname):
     conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']

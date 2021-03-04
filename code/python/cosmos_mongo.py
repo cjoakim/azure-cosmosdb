@@ -1,7 +1,8 @@
 """
 Usage:
-    python cosmos_geo.py load_cosmos_mongo /Users/cjoakim/github/cj-data/airports/us_airports.json
-    python cosmos_geo.py query_cosmos_mongo 
+    python cosmos_mongo.py load_cosmos_mongo /Users/cjoakim/github/cj-data/airports/us_airports.json
+    python cosmos_mongo.py load_airports_by_country 
+    python cosmos_mongo.py query_cosmos_mongo 
 """
 
 __author__  = 'Chris Joakim'
@@ -28,10 +29,42 @@ from pysrc.cjcc.mongo import Mongo
 
 # Top-Level CLI-invoked methods below
 
+def load_airports_by_country():
+    infile = 'data/airports_by_country.json'
+    countries = read_json(infile)
+    dbname, collname = 'dev', 'airports'
+
+    conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
+    print('conn_str: {}'.format(conn_str))
+
+    client = MongoClient(conn_str)
+    print('client: {}'.format(client))
+
+    db = client[dbname]
+    print('db: {}'.format(db))
+
+    coll = db[collname]
+    print('coll: {}'.format(coll))
+
+    for idx, key in enumerate(sorted(countries.keys())):
+        if idx < 9999:
+            try:
+                country = countries[key]
+                country['id'] = str(uuid.uuid4())
+                country['iata_code'] = key
+                print(country)
+                result = coll.insert_one(country)
+                print('result: {}'.format(result))
+                time.sleep(1)
+            except:
+                pass
+    us = coll.find_one({'pk': 'united_states'})
+    print('united_states: {}'.format(us))
+
 def load_cosmos_mongo(infile):
     airports = read_json(infile)
     conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
-    dbname, collname = 'dev', 'airports2'
+    dbname, collname = 'dev', 'airports'
 
     print('conn_str: {}'.format(conn_str))
 
@@ -112,10 +145,10 @@ if __name__ == "__main__":
         if func == 'load_cosmos_mongo':
             infile = sys.argv[2]
             load_cosmos_mongo(infile)
-
+        elif func == 'load_airports_by_country':
+            load_airports_by_country()
         elif func == 'query_cosmos_mongo':
             query_cosmos_mongo()
-
         else:
             print_options('Error: invalid function: {}'.format(func))
     else:

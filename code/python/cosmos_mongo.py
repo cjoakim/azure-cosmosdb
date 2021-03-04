@@ -178,9 +178,10 @@ def read_points(dbname, collname, infile):
 
         query_start_epoch = time.time()
         result = coll.find_one(criteria)
+        country = result['country']
         query_end_epoch = time.time()
         elapsed = query_end_epoch - query_start_epoch
-        country = result['country']
+        #country = result['country']
         size = len(json.dumps(result))
         if idx == 0:
             print('result document:')

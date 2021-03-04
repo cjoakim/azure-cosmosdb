@@ -2,7 +2,9 @@
 Usage:
     python cosmos_mongo.py load_airports_by_country 
     python cosmos_mongo.py point_read dev countries aruba 945d19ba-9ea0-4f12-a4d7-e0b864338a8a
+    python cosmos_mongo.py point_read dev countries aruba 6040d6a0b5e73e2fa3ec40fa
     python cosmos_mongo.py point_read dev countries united_states d3a493ac-4673-4279-ae64-838e4a36d245
+    python cosmos_mongo.py point_read dev countries united_states 6040d6a0b5e73e2fa3ec41d4
 """
 
 __author__  = 'Chris Joakim'

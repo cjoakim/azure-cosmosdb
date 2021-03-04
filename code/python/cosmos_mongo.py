@@ -1,10 +1,10 @@
 """
 Usage:
     python cosmos_mongo.py load_airports_by_country 
-    python cosmos_mongo.py point_read dev countries aruba 945d19ba-9ea0-4f12-a4d7-e0b864338a8a
-    python cosmos_mongo.py point_read dev countries aruba 6040d6a0b5e73e2fa3ec40fa
-    python cosmos_mongo.py point_read dev countries united_states d3a493ac-4673-4279-ae64-838e4a36d245
-    python cosmos_mongo.py point_read dev countries united_states 6040d6a0b5e73e2fa3ec41d4
+    python cosmos_mongo.py point_read dev countries aruba 945d19ba-9ea0-4f12-a4d7-e0b864338a8a 10
+    python cosmos_mongo.py point_read dev countries aruba 6040d6a0b5e73e2fa3ec40fa 10
+    python cosmos_mongo.py point_read dev countries united_states d3a493ac-4673-4279-ae64-838e4a36d245 10
+    python cosmos_mongo.py point_read dev countries united_states 6040d6a0b5e73e2fa3ec41d4 10
 """
 
 __author__  = 'Chris Joakim'
@@ -123,7 +123,7 @@ def query_cosmos_mongo():
     # for idx, result in enumerate(results):
     #     print('idx: {}  result: {}'.format(idx, result))
 
-def point_read(dbname, collname, pk, id):
+def point_read(dbname, collname, pk, id, count):
     conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
     print('conn_str: {}'.format(conn_str))
 
@@ -140,14 +140,15 @@ def point_read(dbname, collname, pk, id):
     criteria['pk'] = pk
     criteria['id'] = id
 
-    query_start_epoch = time.time()
-    result = coll.find_one(criteria)
-    query_end_epoch = time.time()
-
-    print('result document:')
-    print(json.dumps(result, sort_keys=False, indent=2))
-    print('criteria: {}'.format(criteria))
-    print('elapsed:  {}'.format(query_end_epoch - query_start_epoch))
+    for n in range(0, count):
+        query_start_epoch = time.time()
+        result = coll.find_one(criteria)
+        query_end_epoch = time.time()
+        if n == 0:
+            print('result document:')
+            print(json.dumps(result, sort_keys=False, indent=2))
+            print('criteria: {}'.format(criteria))
+        print('elapsed:  {}'.format(query_end_epoch - query_start_epoch))
 
 def amtrak_stations_as_list(stations_hash):
     items = list()
@@ -182,7 +183,8 @@ if __name__ == "__main__":
             cname  = sys.argv[3]
             pk = sys.argv[4]
             id = sys.argv[5]
-            point_read(dbname, cname, pk, id)
+            count = int(sys.argv[6])
+            point_read(dbname, cname, pk, id, count)
         else:
             print_options('Error: invalid function: {}'.format(func))
     else:

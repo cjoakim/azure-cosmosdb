@@ -180,14 +180,14 @@ def read_points(dbname, collname, infile):
         result = coll.find_one(criteria)
         country = result['country']
         query_end_epoch = time.time()
-        elapsed = query_end_epoch - query_start_epoch
+        elapsed_ms = (query_end_epoch - query_start_epoch) * 1000.0
         #country = result['country']
         size = len(json.dumps(result))
         if idx == 0:
             print('result document:')
             print(json.dumps(result, sort_keys=False, indent=2))
-        print('elapsed: {}  country: {}  size: {}'.format(
-            elapsed, country, size))
+        print('elapsed_ms: {}  country: {}  size: {}'.format(
+            elapsed_ms, country, size))
 
 def amtrak_stations_as_list(stations_hash):
     items = list()

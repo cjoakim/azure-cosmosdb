@@ -5,6 +5,8 @@ Usage:
     python cosmos_mongo.py point_read dev countries aruba 6040d6a0b5e73e2fa3ec40fa 10
     python cosmos_mongo.py point_read dev countries united_states d3a493ac-4673-4279-ae64-838e4a36d245 10
     python cosmos_mongo.py point_read dev countries united_states 6040d6a0b5e73e2fa3ec41d4 10
+    python cosmos_mongo.py gather_points_for_reading dev countries
+    python cosmos_mongo.py read_points dev countries data/cosmos_mongo_points.json
 """
 
 __author__  = 'Chris Joakim'
@@ -150,6 +152,42 @@ def point_read(dbname, collname, pk, id, count):
             print('criteria: {}'.format(criteria))
         print('elapsed:  {}'.format(query_end_epoch - query_start_epoch))
 
+def gather_points_for_reading(dbname, collname):
+    conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
+    client = MongoClient(conn_str)
+    db = client[dbname]
+    coll = db[collname]
+    results = list()
+    cursor = coll.find( { 'size': { '$gte': 1 } }, { 'pk': 1, 'size': 1, '_id': 1, 'id': 1 } )
+    for result in cursor:
+        print(result)
+        results.append(result)
+    write_obj_as_json_file('data/cosmos_mongo_points.json', results)
+
+def read_points(dbname, collname, infile):
+    conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
+    client = MongoClient(conn_str)
+    db = client[dbname]
+    coll = db[collname]
+
+    points_to_read = read_json(infile)
+    for idx, point in enumerate(points_to_read):
+        criteria = dict()
+        criteria['pk'] = point['pk']
+        criteria['id'] = point['id']
+
+        query_start_epoch = time.time()
+        result = coll.find_one(criteria)
+        query_end_epoch = time.time()
+        elapsed = query_end_epoch - query_start_epoch
+        country = result['country']
+        size = len(json.dumps(result))
+        if idx == 0:
+            print('result document:')
+            print(json.dumps(result, sort_keys=False, indent=2))
+        print('elapsed: {}  criteria: {}  country: {}  size: {}'.format(
+            elapsed, criteria, country, size))
+
 def amtrak_stations_as_list(stations_hash):
     items = list()
     keys = sorted(stations_hash.keys())
@@ -160,6 +198,12 @@ def amtrak_stations_as_list(stations_hash):
 def read_json(infile):
     with open(infile, 'rt') as f:
         return json.loads(f.read())
+
+def write_obj_as_json_file(outfile, obj):
+    txt = json.dumps(obj, sort_keys=True, indent=2)
+    with open(outfile, 'wt') as f:
+        f.write(txt)
+    print("file written: " + outfile)
 
 def print_options(msg):
     print(msg)
@@ -185,6 +229,15 @@ if __name__ == "__main__":
             id = sys.argv[5]
             count = int(sys.argv[6])
             point_read(dbname, cname, pk, id, count)
+        elif func == 'gather_points_for_reading':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            gather_points_for_reading(dbname, cname)
+        elif func == 'read_points':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            infile = sys.argv[4]
+            read_points(dbname, cname, infile)
         else:
             print_options('Error: invalid function: {}'.format(func))
     else:

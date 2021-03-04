@@ -6,6 +6,10 @@
 
 automation/az/data/output/
 
+code/java_simple_cosmos_sql/sample/.classpath
+code/java_simple_cosmos_sql/sample/.project
+code/java_simple_cosmos_sql/sample/.settings/
+
 code/python/apps/mongo2cosmos/data/imdb/*.tsv
 code/python/apps/mongo2cosmos/data/mongo/*.json
 

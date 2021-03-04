@@ -185,8 +185,8 @@ def read_points(dbname, collname, infile):
         if idx == 0:
             print('result document:')
             print(json.dumps(result, sort_keys=False, indent=2))
-        print('elapsed: {}  criteria: {}  country: {}  size: {}'.format(
-            elapsed, criteria, country, size))
+        print('elapsed: {}  country: {}  size: {}'.format(
+            elapsed, country, size))
 
 def amtrak_stations_as_list(stations_hash):
     items = list()

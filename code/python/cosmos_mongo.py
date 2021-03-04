@@ -1,14 +1,14 @@
 """
 Usage:
-    python cosmos_mongo.py load_cosmos_mongo /Users/cjoakim/github/cj-data/airports/us_airports.json
     python cosmos_mongo.py load_airports_by_country 
-    python cosmos_mongo.py query_cosmos_mongo 
+    python cosmos_mongo.py point_read dev countries aruba 945d19ba-9ea0-4f12-a4d7-e0b864338a8a
+    python cosmos_mongo.py point_read dev countries united_states d3a493ac-4673-4279-ae64-838e4a36d245
 """
 
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2021.01.31"
+__version__ = "2021.03.04"
 
 import json
 import os
@@ -32,7 +32,7 @@ from pysrc.cjcc.mongo import Mongo
 def load_airports_by_country():
     infile = 'data/airports_by_country.json'
     countries = read_json(infile)
-    dbname, collname = 'dev', 'airports'
+    dbname, collname = 'dev', 'countries'
 
     conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
     print('conn_str: {}'.format(conn_str))
@@ -121,6 +121,32 @@ def query_cosmos_mongo():
     # for idx, result in enumerate(results):
     #     print('idx: {}  result: {}'.format(idx, result))
 
+def point_read(dbname, collname, pk, id):
+    conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
+    print('conn_str: {}'.format(conn_str))
+
+    client = MongoClient(conn_str)
+    print('client: {}'.format(client))
+
+    db = client[dbname]
+    print('db: {}'.format(db))
+
+    coll = db[collname]
+    print('coll: {}'.format(coll))
+
+    criteria = dict()
+    criteria['pk'] = pk
+    criteria['id'] = id
+
+    query_start_epoch = time.time()
+    result = coll.find_one(criteria)
+    query_end_epoch = time.time()
+
+    print('result document:')
+    print(json.dumps(result, sort_keys=False, indent=2))
+    print('criteria: {}'.format(criteria))
+    print('elapsed:  {}'.format(query_end_epoch - query_start_epoch))
+
 def amtrak_stations_as_list(stations_hash):
     items = list()
     keys = sorted(stations_hash.keys())
@@ -149,7 +175,13 @@ if __name__ == "__main__":
             load_airports_by_country()
         elif func == 'query_cosmos_mongo':
             query_cosmos_mongo()
+        elif func == 'point_read':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            pk = sys.argv[4]
+            id = sys.argv[5]
+            point_read(dbname, cname, pk, id)
         else:
             print_options('Error: invalid function: {}'.format(func))
     else:
-            print_options('Error: no command-line args entered')
+        print_options('Error: no command-line args entered')

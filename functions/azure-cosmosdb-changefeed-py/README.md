@@ -79,6 +79,8 @@ The function "CosmosTrigger" was created successfully from the "Azure Cosmos DB 
 Specify your own leaseCollectionName, **connectionStringSetting**, databaseName, 
 and collectionName values.
 
+Note: file **function.json** should be "git ignored" as it contains your DB connection string.
+
 ```
 {
   "scriptFile": "__init__.py",
@@ -102,4 +104,26 @@ and collectionName values.
 Set the app_name to **cjoakimpyfunctions**, as created in Azure Portal
 per the above screen shots.
 
+
+#### Fetch the Settings from your Azure Functions App
+
+This enables you to run the app locally with the func CLI tools.
+
+```
+$ cd PyFunctionApp
+
+
+$ func azure functionapp fetch-app-settings <your-app-name>
+App Settings:
+Loading FUNCTIONS_EXTENSION_VERSION = *****
+Loading FUNCTIONS_WORKER_RUNTIME = *****
+Loading APPINSIGHTS_INSTRUMENTATIONKEY = *****
+Loading APPLICATIONINSIGHTS_CONNECTION_STRING = *****
+Loading AzureWebJobsStorage = *****
+
+Connection Strings:
+```
+
+Notice that file **local.settings.json** is now on your computer, and it includes
+the database connection string.  This file should be "git ignored".
 

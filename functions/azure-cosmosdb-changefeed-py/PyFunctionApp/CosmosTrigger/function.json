@@ -1,0 +1,15 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "COSMOSDB_CONN_STRING",
+      "databaseName": "dev",
+      "collectionName": "airports",
+      "createLeaseCollectionIfNotExists": true
+    }
+  ]
+}

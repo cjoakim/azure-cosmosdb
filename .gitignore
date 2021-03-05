@@ -39,7 +39,8 @@ data/imdb/*.gz
 data/imdb/*.tsv
 data/imdb/*.json
 
-functions/azure-cosmosdb-changefeed-py/PyFunctionApp/CosmosTrigger/function.json
+#functions/azure-cosmosdb-changefeed-py/PyFunctionApp/CosmosTrigger/function.json
+functions/azure-cosmosdb-changefeed-py/PyFunctionApp/local.settings.json
 
 **/tmp/
 

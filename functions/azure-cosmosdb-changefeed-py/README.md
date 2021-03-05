@@ -74,7 +74,8 @@ The function "CosmosTrigger" was created successfully from the "Azure Cosmos DB 
 
 #### Edit the function.json file
 
-Specify your own **connectionStringSetting** value.
+Specify your own leaseCollectionName, **connectionStringSetting**, databaseName, 
+and collectionName values.
 
 ```
 {

@@ -3,7 +3,7 @@
 # Deploy the Azure Function App containing the CosmosPlantsUpdate Function.
 # Chris Joakim, Microsoft, 2021/03/05
 
-app_name="cjoakimsynapse2f"
+app_name="cjoakimpyfunctions"
 
 echo 'publishing function app named: '$app_name
 

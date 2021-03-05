@@ -2,6 +2,8 @@
 
 ### Manually Provision the Function App in Azure Portal 
 
+Create a Functions App named, for example, **cjoakimpyfunctions**.
+
 <p align="center" width="95%">
   <img src="img/provision-function-1.png">
 </p>
@@ -94,3 +96,10 @@ and collectionName values.
   ]
 }
 ```
+
+#### Edit the deploy.sh script
+
+Set the app_name to **cjoakimpyfunctions**, as created in Azure Portal
+per the above screen shots.
+
+

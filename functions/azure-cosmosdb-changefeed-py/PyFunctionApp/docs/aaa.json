@@ -1,0 +1,20 @@
+{
+    "name": "aaa",
+    "city": "aaa",
+    "country": "United States",
+    "iata_code": "aaa",
+    "latitude": "39.6335556",
+    "longitude": "-86.8138056",
+    "altitude": "842",
+    "timezone_num": "-5",
+    "timezone_code": "America/New_York",
+    "location": {
+        "type": "Point",
+        "coordinates": [
+            -86.8138056,
+            39.6335556
+        ]
+    },
+    "pk": "aaa",
+    "epoch": 1613586600
+}

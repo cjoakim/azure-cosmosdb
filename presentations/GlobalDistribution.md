@@ -1,4 +1,4 @@
-# CosmosDB Global-Distribution
+# CosmosDB Global Distribution
 
 This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/GlobalDistribution.md 
 
@@ -18,13 +18,15 @@ This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/Glo
 - [Configure Automatic Failover](https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-manage-database-account#automatic-failover) of write-region
   - Choose from among 5 **Consistency Levels**
 
+### In Azure Portal 
+
 <p align="center"><img src="img/azure-portal-replicate-data-globally.png"></p>
 
 ---
 
 ## Consistency
 
-<p align="center"><img src="img/consistency.png"></p>
+<p align="center"><img src="img/consistency.png" width="75%"></p>
 
 - [Consistency Levels](https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels)
   - You can configure the **default consistency level** on your Azure Cosmos **account** at any time

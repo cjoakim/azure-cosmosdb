@@ -1,16 +1,30 @@
 # CosmosDB Global-Distribution
 
+This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/GlobalDistribution.md 
+
+## Demos
+
+- [Mark Brown Demo on GitHub](https://github.com/markjbrown/cosmos-global-distribution-demos)
+- [Mark Brown Demo Video](https://www.bing.com/videos/search?q=cosmos-global-distribution-demos+video+&&view=detail&mid=E20E6E3CF4E2A83C9A15E20E6E3CF4E2A83C9A15&&FORM=VRDGAR&ru=%2Fvideos%2Fsearch%3Fq%3Dcosmos-global-distribution-demos%2Bvideo%2B%26FORM%3DHDRSC4)
+
+---
+
+## Global Distribution, and Why?
+
+- [Global Distribution](https://docs.microsoft.com/en-us/azure/cosmos-db/distribute-data-globally)
+- Build highly available apps
+- Build highly responsive apps with low latency
+- Single or Multi-Region writes
+- [Configure Automatic Failover](https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-manage-database-account#automatic-failover) of write-region
+  - Choose from among 5 **Consistency Levels**
+
 <p align="center"><img src="img/azure-portal-replicate-data-globally.png"></p>
 
 ---
 
-## Topics
+## Consistency
 
-- [Global Distribution, and Why?](https://docs.microsoft.com/en-us/azure/cosmos-db/distribute-data-globally)
-  - Build highly available apps
-  - Build highly responsive apps with low latency
-  - [Configure Automatic Failover](https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-manage-database-account#automatic-failover)
-  - Choose from among 5 **Consistency Levels**
+<p align="center"><img src="img/consistency.png"></p>
 
 - [Consistency Levels](https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels)
   - You can configure the **default consistency level** on your Azure Cosmos **account** at any time
@@ -35,6 +49,10 @@
       - no ordering guarantee for reads
       - the replicas within the group will eventually converge
       - still very fast, seconds per my observations
+
+---
+
+## Conflict Resolution
 
 - [Conflict Resolution](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood#conflict-resolution)
   - Last-Write-Wins (LWW), based on the system-generated **_ts** (timestamp) attribute
@@ -64,8 +82,6 @@
 
 > It states that in case of **network partitioning (P)** in a distributed computer system, one has to choose between **availability (A)** and **consistency (C)** (as per the CAP theorem), but **else (E)**, even when the system is running normally in the absence of partitions, one has to choose between **latency (L)** and **consistency (C)**.
 
-- [Mark Brown Demo on GitHub](https://github.com/markjbrown/cosmos-global-distribution-demos)
-- [Mark Brown Demo Video](https://www.bing.com/videos/search?q=cosmos-global-distribution-demos+video+&&view=detail&mid=E20E6E3CF4E2A83C9A15E20E6E3CF4E2A83C9A15&&FORM=VRDGAR&ru=%2Fvideos%2Fsearch%3Fq%3Dcosmos-global-distribution-demos%2Bvideo%2B%26FORM%3DHDRSC4)
 
 ---
 

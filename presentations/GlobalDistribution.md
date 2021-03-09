@@ -22,7 +22,7 @@ This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/Glo
 
 > It states that in case of **network partitioning (P)** in a distributed computer system, one has to choose between **availability (A)** and **consistency (C)** (as per the CAP theorem), but **else (E)**, even when the system is running normally in the absence of partitions, one has to choose between **latency (L)** and **consistency (C)**.
 
-### In short, you can make tradeoffs according to your desired results
+### In short, you can make tradeoffs according to your system requirements
 
 ---
 

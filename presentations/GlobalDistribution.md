@@ -9,14 +9,31 @@ This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/Glo
 
 ---
 
+## Science
+
+- [CAP Theorem](img/cap_theorem.jpeg)
+  - **Consistency**: Every read receives the most recent write or an error
+  - **Availability** Every request receives a (non-error) response, without the guarantee that it contains the most recent write
+  - **Partition tolerance**: The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes
+  - Choose two of these three 
+
+- [PACELC](https://en.wikipedia.org/wiki/PACELC_theorem)
+  - An extension to the CAP Theorem
+
+> It states that in case of **network partitioning (P)** in a distributed computer system, one has to choose between **availability (A)** and **consistency (C)** (as per the CAP theorem), but **else (E)**, even when the system is running normally in the absence of partitions, one has to choose between **latency (L)** and **consistency (C)**.
+
+### In short, you can make tradeoffs according to your desired results
+
+---
+
 ## Global Distribution, and Why?
 
 - [Global Distribution](https://docs.microsoft.com/en-us/azure/cosmos-db/distribute-data-globally)
-- Build highly available apps
-- Build highly responsive apps with low latency
+- Build **highly available** apps
+- Build **highly responsive apps with low latency**
 - Single or Multi-Region writes
 - [Configure Automatic Failover](https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-manage-database-account#automatic-failover) of write-region
-  - Choose from among 5 **Consistency Levels**
+- Choose from among 5 **Consistency Levels**
 
 ### In Azure Portal 
 
@@ -26,11 +43,11 @@ This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/Glo
 
 ## Consistency
 
-<p align="center"><img src="img/consistency.png" width="75%"></p>
+<p align="center"><img src="img/consistency.png" width="70%"></p>
 
 ---
 
-<p align="center"><img src="img/consistency-levels.png" width="75%"></p>
+<p align="center"><img src="img/consistency-levels.png" width="70%"></p>
 
 ---
 
@@ -86,22 +103,6 @@ This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/Glo
 ---
 
 <p align="center"><img src="img/conflict-resolution-lww.png" width="75%"></p>
-
----
-
-## Science
-
-- [CAP Theorem](img/cap_theorem.jpeg)
-  - **Consistency**: Every read receives the most recent write or an error
-  - **Availability** Every request receives a (non-error) response, without the guarantee that it contains the most recent write
-  - **Partition tolerance**: The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes
-  - Choose two of these three 
-
-- [PACELC](https://en.wikipedia.org/wiki/PACELC_theorem)
-  - An extension to the CAP Theorem
-
-> It states that in case of **network partitioning (P)** in a distributed computer system, one has to choose between **availability (A)** and **consistency (C)** (as per the CAP theorem), but **else (E)**, even when the system is running normally in the absence of partitions, one has to choose between **latency (L)** and **consistency (C)**.
-
 
 ---
 

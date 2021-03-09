@@ -1,4 +1,4 @@
-# CosmosDB MultiMaster
+# CosmosDB Global-Distribution
 
 <p align="center"><img src="img/azure-portal-replicate-data-globally.png"></p>
 

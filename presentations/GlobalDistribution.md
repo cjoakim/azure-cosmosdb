@@ -83,6 +83,14 @@ This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/Glo
     - [Python SDK](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-sdk-python)
     - [REST](https://docs.microsoft.com/en-us/rest/api/cosmos-db/)
 
+---
+
+<p align="center"><img src="img/conflict-resolution-lww.png" width="75%"></p>
+
+---
+
+## Science
+
 - [CAP Theorem](img/cap_theorem.jpeg)
   - **Consistency**: Every read receives the most recent write or an error
   - **Availability** Every request receives a (non-error) response, without the guarantee that it contains the most recent write

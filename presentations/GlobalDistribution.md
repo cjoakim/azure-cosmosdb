@@ -28,9 +28,15 @@ This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/Glo
 
 <p align="center"><img src="img/consistency.png" width="75%"></p>
 
+---
+
+<p align="center"><img src="img/consistency-levels.png" width="75%"></p>
+
+---
+
 - [Consistency Levels](https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels)
   - You can configure the **default consistency level** on your Azure Cosmos **account** at any time
-  - The default consistency level can be overridden on individual operations via a SDK
+  - The default consistency level **can be overridden on individual operations** via a SDK
   - The Five Levels
     - **Strong**
       - Data written to a quorum in all regions synchronously
@@ -51,6 +57,10 @@ This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/Glo
       - no ordering guarantee for reads
       - the replicas within the group will eventually converge
       - still very fast, seconds per my observations
+
+---
+
+<p align="center"><img src="img/consistency-vs-throughput.png" width="75%"></p>
 
 ---
 

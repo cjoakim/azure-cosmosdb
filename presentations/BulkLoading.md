@@ -32,3 +32,10 @@ This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/Bul
 
 - [MongoDB Connector for Spark](See https://docs.mongodb.com/spark-connector/master/)
 
+## CosmosDB Scaling
+
+- Throughput allocated in **Request Units Per Second (RU)**
+- Autoscale - range of 10x.
+  - For example: 50,000 max to 5,000 low
+- Manual Scale - range of 100x ( maxHistoricalManualRu / 100 )
+  - For example: 5,000 to 500,000

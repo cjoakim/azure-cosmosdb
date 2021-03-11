@@ -1,5 +1,7 @@
 # CosmosDB Bulk Loading
 
+This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/BulkLoading.md
+
 ## Bulk Executor Library
 
 - [Bulk Executor Library](https://docs.microsoft.com/en-us/azure/cosmos-db/bulk-executor-overview)
@@ -15,6 +17,8 @@
 - [Copy Activity in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-cosmos-db)
 - Copy data from a source (i.e. - Azure Blob Storage) to a target (i.e. - Azure CosmosDB)
 - ADF leverages the above Bulk Executor Library
+- Copy to CosmosDB/SQL or CosmosDB/Mongo
+- [mongo2cosmos example in this repo](https://github.com/cjoakim/azure-cosmosdb/tree/main/code/python/apps/mongo2cosmos)
 
 ## Apache Spark to Azure CosmosDB/SQL connector
 

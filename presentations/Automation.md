@@ -3,16 +3,16 @@
 
 ## Summary
 
-- Azure Resource Manager, ARM - for a group of resources 
+- **Azure Resource Manager, ARM** - for a group of resources 
   - deploy the ARM template with PowerShell or az CLI
 
-- PowerShell cmdlets - deploy individual resources
+- **PowerShell cmdlets** - deploy individual resources
 
-- az CLI commands - deploy individual resources
+- **az CLI commands** - deploy individual resources
 
-- Bicep - new syntax that transpiles to ARM Templates
+- **Bicep** - new syntax that transpiles to ARM Templates
 
-- Azure DevOps - execute any of the above in a DevOps Pipeline
+- **Azure DevOps** - execute any of the above in a DevOps Pipeline
 
 ---
 

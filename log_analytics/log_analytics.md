@@ -1,13 +1,23 @@
 # Log Analytics
 
+This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/log_analytics/log_analytics.md
+
 ## Links
+
+### General
+
+- https://docs.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-tutorial
+- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor
+- https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade
+- https://github.com/microsoft/AzureMonitorCommunity
+
+### CosmosDB
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-resource-logs
 - https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-schema#service-specific-schemas
 - https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db
 - https://docs.microsoft.com/en-us/rest/api/cosmos-db/get-partition-key-ranges
 - https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-resource-logs
-- https://docs.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-tutorial
 
 ## CosmosDB/SQL Account Configuration
 
@@ -17,8 +27,10 @@
 
 ## Schema 
 
-- [Top-level common schema](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-schema)
-- [CosmosDB Schema]()https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db
+- [Top-Level Common schema](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-schema)
+- [Service-Specific Schemas](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-schema#service-specific-schemas)
+- [Azure CosmosDB Schema]()https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db
+- [Azure PostgreSQL Schema](https://docs.microsoft.com/en-us/azure/postgresql/concepts-server-logs#resource-logs)
 
 ### Tables
 
@@ -55,7 +67,63 @@ For example, using the PartitionKeyStatistics Category:
 ```
 AzureDiagnostics 
 | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics"
+
+AzureDiagnostics
+| where ResourceProvider =="MICROSOFT.DBFORPOSTGRESQL" 
 ```
+
+---
+
+
+
+## Basic Examples
+
+```
+AzureDiagnostics | count 
+AzureMetrics | count 
+```
+
+### Filter by Boolean expression: where
+
+```
+AzureMetrics
+| where TimeGenerated > datetime(03-21-2021) and TimeGenerated < datetime(03-21-2027)
+| where ResourceProvider == 'MICROSOFT.DOCUMENTDB'
+| where Resource == 'CJOAKIMCOSMOSSQL'
+```
+
+### Select a subset of columns: project
+
+```
+AzureMetrics
+| where TimeGenerated > datetime(03-21-2021) and TimeGenerated < datetime(03-21-2027)
+| where ResourceProvider == 'MICROSOFT.DOCUMENTDB'
+| where Resource == 'CJOAKIMCOSMOSSQL'
+| project TimeGenerated, Resource, MetricName
+```
+
+### Show n random rows: take
+
+```
+AzureMetrics
+| where TimeGenerated > datetime(03-21-2021) and TimeGenerated < datetime(03-21-2027)
+| where ResourceProvider == 'MICROSOFT.DOCUMENTDB'
+| where Resource == 'CJOAKIMCOSMOSSQL'
+| project TimeGenerated, Resource, MetricName
+| take 22
+```
+
+### Order results: sort, top
+
+```
+AzureMetrics
+| where TimeGenerated > datetime(03-21-2021) and TimeGenerated < datetime(03-21-2027)
+| where ResourceProvider == 'MICROSOFT.DOCUMENTDB'
+| where Resource == 'CJOAKIMCOSMOSSQL'
+| top 10 by TimeGenerated desc
+| project TimeGenerated, Resource, MetricName
+```
+
 
 ---
 
@@ -106,3 +174,14 @@ AzureDiagnostics
 ```
 
 
+---
+
+## Azure Log Analytics REST API
+
+See https://dev.loganalytics.io/ and AAD setup https://dev.loganalytics.io/documentation/Authorization/AAD-Setup
+
+### curl example
+
+```
+curl -X POST 'https://api.loganalytics.io/v1/workspaces/DEMO_WORKSPACE/query' -d '{"query": "AzureActivity | summarize count() by Category"}' -H 'x-api-key: DEMO_KEY' -H 'Content-Type: application/json'
+```

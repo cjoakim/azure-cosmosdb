@@ -74,10 +74,14 @@ AzureDiagnostics
 
 ---
 
-## Basic Kusto Examples
+## Basic Kusto Syntax
 
 - https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor
 - https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor
+- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor#date-and-time-operations
+- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor#string-operations
+- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor#aggregations
+- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor#joins
 
 ### Counting rows
 

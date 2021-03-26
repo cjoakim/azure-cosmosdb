@@ -17,20 +17,45 @@
 
 ## Schema 
 
+- [Top-level common schema](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-schema)
+- [CosmosDB Schema]()https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db
+
 ### Tables
 
+```
 AzureDiagnostics 
 AzureMetrics
+```
 
 ### Categories
 
+- [Microsoft.DocumentDB Categories](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-categories#microsoftdocumentdbdatabaseaccounts)
 
-PartitionKeyStatistics
-PartitionKeyRUConsumption
+```
+CassandraRequests
+ControlPlaneRequests
 DataPlaneRequests
+GremlinRequests
+MongoRequests
+PartitionKeyRUConsumption
+PartitionKeyStatistics
+QueryRuntimeStatistics
+```
 
+- [Microsoft.DBforPostgreSQL/servers Categories](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-categories#microsoftdbforpostgresqlservers)
+
+```
+PostgreSQLLogs
+QueryStoreRuntimeStatistics
+QueryStoreWaitStatistics
+```
+
+For example, using the PartitionKeyStatistics Category:
+
+```
 AzureDiagnostics 
 | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics"
+```
 
 ---
 

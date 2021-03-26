@@ -74,9 +74,12 @@ AzureDiagnostics
 
 ---
 
+## Basic Kusto Examples
 
+- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor
+- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor
 
-## Basic Examples
+### Counting rows
 
 ```
 AzureDiagnostics | count 
@@ -124,10 +127,75 @@ AzureMetrics
 | project TimeGenerated, Resource, MetricName
 ```
 
+### Compute derived columns: extend
+
+```
+...
+| extend FreeGigabytes = FreeMegabytes / 1000
+```
+
+### Aggregate groups of rows: summarize
+
+```
+AzureMetrics
+| where TimeGenerated > datetime(03-21-2021) and TimeGenerated < datetime(03-21-2027)
+| where ResourceProvider == 'MICROSOFT.DOCUMENTDB'
+| where Resource == 'CJOAKIMCOSMOSSQL'
+| project MetricName
+| summarize count() by MetricName
+```
+
+DataUsage, ServiceAvailability, ServerSideLatency, IndexUsage, DocumentQuota.
+AvailableStorage, DocumentCount, ProvisionedThroughput, TotalRequests, 
+ReplicationLatency
+
+### Summarize by scalar values, bin by time
+
+```
+...
+| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
+```
+
+### Display a chart or table: render
+
+```
+...
+| render timechart
+```
+
+### Work with multiple series
+
+```
+InsightsMetrics
+| where Computer startswith "DC"
+| where Namespace  == "Processor" and Name == "UtilizationPercentage"
+| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
+| render timechart
+```
+
+### Join data from two tables
+
+```
+VMComputer
+| distinct Computer, PhysicalMemoryMB
+| join kind=inner (
+    InsightsMetrics
+    | where Namespace == "Memory" and Name == "AvailableMB"
+    | project TimeGenerated, Computer, AvailableMemoryMB = Val
+) on Computer
+| project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
+```
+
+### Assign a result to a variable: let
+
+```
+let PhysicalComputer = VMComputer
+    | distinct Computer, PhysicalMemoryMB;
+```
 
 ---
 
-## Examples
+## CosmosDB Examples
 
 ```
 AzureDiagnostics 

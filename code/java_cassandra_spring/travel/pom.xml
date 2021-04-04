@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>org.cjoakim.azure.cosmos.cassandra</groupId>
 	<artifactId>travel</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>travel</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

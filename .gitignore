@@ -3,6 +3,10 @@
 **/.factorypath
 **/.idea/
 **/*.iml
+**/*.class
+
+**/target/
+
 
 automation/az/data/output/
 

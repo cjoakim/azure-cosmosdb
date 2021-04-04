@@ -101,13 +101,16 @@ $ python main.py load_container dev postalcodes2 data/postal_codes_us_filtered.c
 select * from c where c.pk = 'NH' and c.country_cd = 'US' and c.city_name = 'Manchester'
 ```
 
-The RU cost for this query is **3.03** in **postalcodes1** vs **2.83** in **postalcodes2**
+The RU cost for this query is **3.36** in **postalcodes1** vs **3.17** in **postalcodes2**
 
 
 ```
-select * from c where c.pk = 'NH' and c.country_cd = 'US' and c.city_name = 'Manchester' CONTAINS(c.city_name, "Man")
-order by c.pk, c.city_name
+select * from c where c.pk = 'NH' and c.country_cd = 'US' and CONTAINS(c.city_name, "Man") order by c.pk
 ```
+
+
+The RU cost for this query is **14.53** in **postalcodes1** vs **14.73** in **postalcodes2**
+
 
 ---
 

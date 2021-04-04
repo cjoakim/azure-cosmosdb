@@ -1,0 +1,29 @@
+# Chris Joakim, Microsoft, 2021/01/31
+# These libraries are sorted alphabetically
+
+Jinja2
+SQLAlchemy
+arrow
+azure-cosmos
+azure-eventhub
+azure-iot-device
+azure-storage-blob
+azure-storage-file-datalake
+docopt
+flake8
+matplotlib
+numpy
+openpyxl
+pandas
+psutil
+psycopg2-binary
+pyarrow
+pylint
+pymongo
+pyodbc
+pytest
+pytest-cov
+redis
+requests
+scikit-learn
+scipy

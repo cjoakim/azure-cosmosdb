@@ -3,12 +3,15 @@ Usage:
     python main.py load_container <db> <container> <infile> <start_idx> <count>
     python main.py load_container dev postalcodes1 data/postal_codes_us_filtered.csv 1000 99999
     python main.py load_container dev postalcodes2 data/postal_codes_us_filtered.csv 1000 99999
+    -
+    python main.py named_query dev postalcodes1 nh-us-manchester
+    python main.py named_query dev postalcodes1 nh-us-manchester-ordered-pk
 """
 
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2021.04.04"
+__version__ = "2021.04.05"
 
 import json
 import os
@@ -25,8 +28,28 @@ from pysrc.cjcc.env import Env
 # Define Named-Queries here for ease of CLI use:
 named_queries = dict()
 named_queries['all'] = 'select * from c'
-named_queries['nc-amtrak-stations'] = 'select * from c where c.state = "NC"'
-named_queries['clt-airport'] = "select * from c where c.pk = 'CLT'"
+named_queries['nh-us-manchester'] = "select * from c where c.pk = 'NH' and c.country_cd = 'US' and c.city_name = 'Manchester'"
+#named_queries['nh-us-manchester-ordered-pk'] = "select * from c where c.pk = 'NH' and c.country_cd = 'US' and c.city_name = 'Manchester' order by c.pk"
+named_queries['nh-us'] = """
+select * from c
+where c.pk = 'NH'
+  and c.country_cd = 'US' 
+order by c.latitude, c.longitude
+""".strip()
+
+named_queries['city-state'] = """
+select * from c
+where c.pk = 'NH'
+  and c.state_abbrv = 'NH'
+  and c.city_name = 'Manchester' 
+""".strip()
+
+named_queries['city-state-sorted'] = """
+select * from c
+  and c.state_abbrv = 'NH'
+  and c.city_name = 'Manchester' 
+order by c.latitude, c.longitude
+""".strip()
 
 def initialize_cosmos():
     opts = dict()
@@ -76,6 +99,25 @@ def load_container(dbname, cname, infile, start_idx, count):
                         except:
                             pass
 
+def named_query(dbname, cname, query_name):
+    c = initialize_cosmos()
+    c.set_db(dbname)
+    c.set_container(cname)
+    sql = named_queries[query_name]
+    epoch = int(time.time())
+    outfile = 'tmp/named-query-{}-{}.json'.format(query_name, epoch)
+    print('{} -> {}'.format(query_name, sql))
+    documents = list()
+    query_results = c.query_container(cname, sql, True, 10000)
+    if query_results == None:
+        print('no query results')
+    else:
+        for doc in query_results:
+            documents.append(doc)
+        print('{} documents returned'.format(len(documents)))
+        c.print_last_request_charge()
+        write_obj_as_json_file(outfile, documents)
+
 def text_file_iterator(infile):
     with open(infile, 'rt') as f:
         for line in f:
@@ -122,6 +164,12 @@ if __name__ == "__main__":
             start_idx = int(sys.argv[5])
             count     = int(sys.argv[6])
             load_container(dbname, cname, infile, start_idx, count)
+
+        elif func == 'named_query':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            query_name = sys.argv[4]
+            named_query(dbname, cname, query_name)
 
         else:
             print_options('Error: invalid function: {}'.format(func))

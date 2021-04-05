@@ -53,6 +53,8 @@ $ python main.py load_container dev postalcodes2 data/postal_codes_us_filtered.c
 
 ### postalcodes2 uses this custom indexing with compositeIndexes
 
+#### v1
+
 ```
 {  
     "automatic":true,
@@ -94,6 +96,88 @@ $ python main.py load_container dev postalcodes2 data/postal_codes_us_filtered.c
 }
 ```
 
+#### v2
+
+```
+{  
+    "automatic":true,
+    "indexingMode":"Consistent",
+    "includedPaths":[  
+        {  
+            "path":"/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "compositeIndexes":[  
+        [  
+            {  
+                "path":"/latitude",
+                "order":"descending"
+            },
+            {  
+                "path":"/longitude",
+                "order":"descending"
+            }
+        ]
+    ]
+}
+```
+
+#### v3
+
+```
+{  
+    "automatic":true,
+    "indexingMode":"Consistent",
+    "includedPaths":[  
+        {  
+            "path":"/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "compositeIndexes":[ 
+        [  
+            {  
+                "path":"/state_abbrv",
+                "order":"descending"
+            },
+            {  
+                "path":"/city_name",
+                "order":"descending"
+            }
+        ], 
+        [  
+            {  
+                "path":"/latitude",
+                "order":"descending"
+            },
+            {  
+                "path":"/longitude",
+                "order":"descending"
+            }
+        ],
+        [  
+            {  
+                "path":"/pk",
+                "order":"descending"
+            },
+            {  
+                "path":"/_ts",
+                "order":"descending"
+            }
+        ]
+    ]
+}
+```
+
 ### Queries
 
 
@@ -101,7 +185,7 @@ $ python main.py load_container dev postalcodes2 data/postal_codes_us_filtered.c
 select * from c where c.pk = 'NH' and c.country_cd = 'US' and c.city_name = 'Manchester'
 ```
 
-The RU cost for this query is **3.36** in **postalcodes1** vs **3.17** in **postalcodes2**
+The RU cost for this query is **3.33** in **postalcodes1** vs **3.13** in **postalcodes2**
 
 
 ```

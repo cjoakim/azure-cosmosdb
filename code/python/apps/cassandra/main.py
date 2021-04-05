@@ -3,6 +3,8 @@ Usage:
   python main.py create_airports_table
   python main.py load_airports_table
   python main.py query_all
+  python main.py query_by_country Belgium
+  python main.py query_by_country "United States"
   python main.py query_by_code CLT
   python main.py query_ad_hoc
 """
@@ -33,7 +35,7 @@ from ssl import PROTOCOL_TLSv1_2, SSLContext, CERT_NONE
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2020.11.24"
+__version__ = "2021.04.05"
 
 
 cluster, session = None, None
@@ -113,6 +115,22 @@ def create_keyspace_ddl(name):
     return s.replace('<','{').replace('>','}')
 
 def airports_table_ddl():
+    return """
+CREATE TABLE travel.airports(
+  "code"       text,
+  "name"       text,
+  "city"       text,
+  "country"    text,
+  "tz_name"    text,
+  "tz_num"     int,
+  "lat"        double,
+  "lon"        double,
+  "alt"        int,
+  PRIMARY KEY (country, code)
+);
+""".strip()
+
+def airports_table_ddl_v0():
     return """
 CREATE TABLE travel.airports(
   "code"       text,
@@ -212,9 +230,18 @@ def query_all():
         print(r)
     close()
 
+def query_by_country(country):
+    connect(True)
+    stmt = "SELECT * FROM travel.airports where country = '{}'".format(country)
+    print(stmt)
+    rs = session.execute(stmt) 
+    for r in rs:
+        print(r)
+    close()
+
 def query_by_code(code):
     connect(True)
-    stmt = "SELECT * FROM travel.airports where code = '{}'".format(code)
+    stmt = "SELECT * FROM travel.airports where code = '{}' ALLOW FILTERING".format(code)
     print(stmt)
     rs = session.execute(stmt) 
     for r in rs:
@@ -282,6 +309,9 @@ if __name__ == "__main__":
             load_airports_table()
         elif func == 'query_all':
             query_all()
+        elif func == 'query_by_country':
+            country = sys.argv[2]
+            query_by_country(country)
         elif func == 'query_by_code':
             code = sys.argv[2].upper()
             query_by_code(code)

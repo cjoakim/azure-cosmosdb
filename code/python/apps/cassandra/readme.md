@@ -5,6 +5,7 @@
 - Native: https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-introduction
 - MI: https://devblogs.microsoft.com/cosmosdb/preview-azure-managed-instance-for-apache-cassandra/
 - CCX: https://devblogs.microsoft.com/cosmosdb/announcing-live-data-migration-from-cassandra-to-azure-cosmos-db/
+- https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-support
 
 ## CQLSH
 
@@ -12,6 +13,10 @@
 - See **cqlsh_cosmos.sh** in this directory
 
 ### CREATE TABLE example
+
+```
+use travel
+```
 
 ```
 CREATE TABLE travel.airports(

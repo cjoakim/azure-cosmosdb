@@ -6,6 +6,7 @@
 - MI: https://devblogs.microsoft.com/cosmosdb/preview-azure-managed-instance-for-apache-cassandra/
 - CCX: https://devblogs.microsoft.com/cosmosdb/announcing-live-data-migration-from-cassandra-to-azure-cosmos-db/
 - https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-support
+- https://docs.microsoft.com/en-us/azure/managed-instance-apache-cassandra/compare-cosmosdb-managed-instance
 
 ## CQLSH
 

@@ -14,31 +14,25 @@
     "compositeIndexes": [
         [
             {
-                "path": "/city_name",
+                "path": "/accountNumber",
                 "order": "descending"
             },
             {
-                "path": "/postal_cd",
+                "path": "/type",
+                "order": "descending"
+            },
+            {
+                "path": "/addressType",
                 "order": "descending"
             }
         ],
         [
             {
-                "path": "/pk",
+                "path": "/_ts",
                 "order": "descending"
             },
             {
-                "path": "/city_name",
-                "order": "descending"
-            }
-        ],
-        [
-            {
-                "path": "/latitude",
-                "order": "descending"
-            },
-            {
-                "path": "/longitude",
+                "path": "/accountNumber",
                 "order": "ascending"
             }
         ]

@@ -1,11 +1,11 @@
 """
 Usage:
     python main.py load_container <db> <container> <infile> <start_idx> <count>
-    python main.py load_container dev postalcodes1 data/postal_codes_us_filtered.csv 1000 99999
-    python main.py load_container dev postalcodes2 data/postal_codes_us_filtered.csv 1000 99999
+    python main.py load_container dev coll1 data/postal_codes_us_filtered.csv 1000 99999
+    python main.py load_container dev coll2 data/postal_codes_us_filtered.csv 1000 99999
     -
-    python main.py named_query dev postalcodes1 nh-us-manchester
-    python main.py named_query dev postalcodes1 nh-us-manchester-ordered-pk
+    python main.py named_query dev coll1 nh-us-manchester
+    python main.py named_query dev coll1 nh-us-manchester-ordered-pk
 """
 
 __author__  = 'Chris Joakim'
@@ -22,8 +22,7 @@ import uuid
 
 from docopt import docopt
 
-from pysrc.cjcc.cosmos import Cosmos
-from pysrc.cjcc.env import Env
+from pysrc.cosmos import Cosmos
 
 # Define Named-Queries here for ease of CLI use:
 named_queries = dict()
@@ -53,8 +52,8 @@ order by c.latitude, c.longitude
 
 def initialize_cosmos():
     opts = dict()
-    opts['url'] = Env.var('AZURE_COSMOSDB_SQLDB_URI')
-    opts['key'] = Env.var('AZURE_COSMOSDB_SQLDB_KEY')
+    opts['url'] = os.environ['AZURE_COSMOSDB_SQLDB_URI']
+    opts['key'] = os.environ['AZURE_COSMOSDB_SQLDB_KEY']
     return Cosmos(opts)
 
 def load_container(dbname, cname, infile, start_idx, count):
@@ -81,19 +80,25 @@ def load_container(dbname, cname, infile, start_idx, count):
                             state_abbrv = tokens[4].strip()
                             doc = dict()
                             doc['pk'] = state_abbrv
-                            doc['original_id'] = int(tokens[0].strip())
+                            doc['seq'] = int(tokens[0].strip())
                             doc['postal_cd'] = postal_cd
                             doc['country_cd'] = tokens[2].strip()
                             doc['city_name'] = tokens[3].strip()
                             doc['state_abbrv'] = state_abbrv
                             doc['latitude'] = float(tokens[5].strip())
                             doc['longitude'] = float(tokens[6].strip())
-                            doc['epoch'] = int(time.time())
-                            print(json.dumps(doc, sort_keys=False, indent=2))
 
-                            if True:
+                            loc = dict()
+                            loc['type'] = 'Point'
+                            loc['coordinates'] = [ doc['longitude'], doc['latitude'] ] 
+                            doc['location'] = loc
+
+                            #doc['epoch'] = int(time.time())
+                            print(json.dumps(doc, sort_keys=False, indent=2))
+                            loaded_count = loaded_count + 1
+
+                            if False:
                                 result = c.upsert_doc(doc)
-                                loaded_count = loaded_count + 1
                                 print(result)
                                 c.print_last_request_charge()
                         except:

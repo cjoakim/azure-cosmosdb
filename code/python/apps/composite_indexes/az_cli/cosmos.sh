@@ -49,7 +49,7 @@ create_db_and_collections() {
         --database-name $cosmos_sql_dbname \
         --name coll1 \
         --subscription $AZURE_SUBSCRIPTION_ID \
-        --partition-key-path /accountNumber \
+        --partition-key-path /pk \
         > tmp/cosmos_sql_db_create_coll1.json
 
     echo 'copying the latest index_policies/compidx.json file to this dir ...'
@@ -62,7 +62,7 @@ create_db_and_collections() {
         --database-name $cosmos_sql_dbname \
         --name coll2 \
         --subscription $AZURE_SUBSCRIPTION_ID \
-        --partition-key-path /accountNumber \
+        --partition-key-path /pk \
         --idx @compidx.json \
         > tmp/cosmos_sql_db_create_coll2.json
 }

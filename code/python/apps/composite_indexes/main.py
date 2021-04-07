@@ -1,11 +1,11 @@
 """
 Usage:
     python main.py load_container <db> <container> <infile> <start_idx> <count>
-    python main.py load_container dev coll1 data/postal_codes_us_filtered.csv 0 99999
-    python main.py load_container dev coll2 data/postal_codes_us_filtered.csv 0 99999
+    python main.py load_container compidx coll1 data/postal_codes_us_filtered.csv 0 99999
+    python main.py load_container compidx coll2 data/postal_codes_us_filtered.csv 0 99999
     -
-    python main.py named_query dev coll1 nh-us-manchester
-    python main.py named_query dev coll1 nh-us-manchester-ordered-pk
+    python main.py named_query compidx coll1 nh-us-manchester
+    python main.py named_query compidx coll1 nh-us-manchester-ordered-pk
 """
 
 __author__  = 'Chris Joakim'

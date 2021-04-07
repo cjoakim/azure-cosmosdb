@@ -5,6 +5,6 @@
 
 infile="data/postal_codes_us_filtered.csv"
 
-python main.py load_container dev coll2 data/postal_codes_us_filtered.csv 0 99999 > tmp/load_coll2.txt
+python main.py load_container compidx coll2 data/postal_codes_us_filtered.csv 0 99999 > tmp/load_coll2.txt
 
 echo 'done'

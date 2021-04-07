@@ -1,8 +1,8 @@
 """
 Usage:
     python main.py load_container <db> <container> <infile> <start_idx> <count>
-    python main.py load_container dev coll1 data/postal_codes_us_filtered.csv 1000 99999
-    python main.py load_container dev coll2 data/postal_codes_us_filtered.csv 1000 99999
+    python main.py load_container dev coll1 data/postal_codes_us_filtered.csv 0 99999
+    python main.py load_container dev coll2 data/postal_codes_us_filtered.csv 0 99999
     -
     python main.py named_query dev coll1 nh-us-manchester
     python main.py named_query dev coll1 nh-us-manchester-ordered-pk
@@ -11,7 +11,7 @@ Usage:
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2021.04.05"
+__version__ = "2021.04.07"
 
 import json
 import os
@@ -97,7 +97,7 @@ def load_container(dbname, cname, infile, start_idx, count):
                             print(json.dumps(doc, sort_keys=False, indent=2))
                             loaded_count = loaded_count + 1
 
-                            if False:
+                            if True:
                                 result = c.upsert_doc(doc)
                                 print(result)
                                 c.print_last_request_charge()

@@ -1,7 +1,7 @@
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2020.06.04"
+__version__ = "2021.04.07"
 
 import json
 import os
@@ -28,7 +28,7 @@ class Cosmos(object):
         self._cname = None
         self._query_metrics = True
         self.reset_record_diagnostics()
-        print(self._opts)
+        #print(self._opts)
         url = opts['url']
         key = opts['key']
         self._client = cosmos_client.CosmosClient(url, {'masterKey': key})

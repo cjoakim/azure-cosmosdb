@@ -24,6 +24,10 @@ code/python/apps/*/pyvenv.cfg
 code/python/apps/*/share
 code/python/apps/*/man
 
+code/python/apps/composite_indexes/loader/.vs/
+code/python/apps/composite_indexes/loader/bin/
+code/python/apps/composite_indexes/loader/obj/
+
 code/python/bin/
 code/python/include/
 code/python/lib64

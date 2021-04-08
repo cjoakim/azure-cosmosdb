@@ -2,11 +2,9 @@
 
 # Bash script with AZ CLI to automate the creation of two similar containers
 # for this project.  Different index policies will be used on each.
-# Chris Joakim, 2021/04/07
+# Chris Joakim, 2021/04/08
 #
 # See https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest
-
-# az login
 
 export cosmos_sql_rg=$AZURE_COSMOSDB_SQLDB_ACCT
 export cosmos_sql_acct_name=$AZURE_COSMOSDB_SQLDB_ACCT
@@ -17,6 +15,11 @@ arg_count=$#
 processed=0
 
 mkdir -p tmp
+
+# echo 'az login and set subscription...'
+# az login
+# az account set --subscription $AZURE_SUBSCRIPTION_ID
+# az account show
 
 delete_db() {
     processed=1

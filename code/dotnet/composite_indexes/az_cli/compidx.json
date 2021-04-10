@@ -24,6 +24,42 @@
         ],
         [
             {
+                "path": "/pk",
+                "order": "descending"
+            },
+            {
+                "path": "/cityName",
+                "order": "descending"
+            },
+            {
+                "path": "/longitude",
+                "order": "descending"
+            },
+            {
+                "path": "/latitude",
+                "order": "descending"
+            }
+        ],
+        [
+            {
+                "path": "/stateAbbrv",
+                "order": "descending"
+            },
+            {
+                "path": "/cityName",
+                "order": "descending"
+            },
+            {
+                "path": "/longitude",
+                "order": "descending"
+            },
+            {
+                "path": "/latitude",
+                "order": "descending"
+            }
+        ],
+        [
+            {
                 "path": "/cityName",
                 "order": "descending"
             },

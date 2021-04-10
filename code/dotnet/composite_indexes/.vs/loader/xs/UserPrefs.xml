@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{A24E65BF-A8F0-4D7B-AE7E-B80CBD82CE78}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+    <Files>
+      <File FileName="Program.cs" Line="74" Column="66" />
+      <File FileName="Location.cs" Line="15" Column="1" />
+      <File FileName="PostalCode.cs" Line="12" Column="79" />
+      <File FileName="readme.md" Line="28" Column="19" />
+      <File FileName="data/postal_codes_us_filtered.csv" Line="1" Column="1" />
+      <File FileName="PostalCodeMap.cs" Line="5" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="loader" expanded="True">
+            <Node name="loader" expanded="True">
+              <Node name="data" expanded="True" />
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.loader PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

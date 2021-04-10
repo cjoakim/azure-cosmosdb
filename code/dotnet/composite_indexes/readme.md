@@ -187,3 +187,27 @@ ExecuteQuery - result count: 354, RU: 24.8
 ```
 
 **This query uses a composite index for both the select and order by clauses.**
+
+### Verify Southern California Results
+
+```
+$ cat data/postal_codes_us_filtered.csv | grep CA | grep "Santa Rosa"
+39565,95401,US,Santa Rosa,CA,38.4533820000,-122.7813620000
+39566,95402,US,Santa Rosa,CA,38.4408000000,-122.7156000000
+39567,95403,US,Santa Rosa,CA,38.5028110000,-122.7535360000
+39568,95404,US,Santa Rosa,CA,38.4525460000,-122.6403340000
+39569,95405,US,Santa Rosa,CA,38.4387240000,-122.6749880000
+39570,95406,US,Santa Rosa,CA,38.4408000000,-122.7136000000
+39571,95407,US,Santa Rosa,CA,38.3916640000,-122.7511240000
+39572,95409,US,Santa Rosa,CA,38.4588400000,-122.6067210000
+
+$ cat tmp/select_four_coll1.txt | grep "Santa Rosa" | wc -l
+       0
+$ cat tmp/select_four_coll1.txt | grep "San Diego" | wc -l
+      79
+
+$ cat tmp/select_four_coll2.txt | grep "Santa Rosa" | wc -l
+       0
+$ cat tmp/select_four_coll2.txt | grep "San Diego" | wc -l
+      79
+```

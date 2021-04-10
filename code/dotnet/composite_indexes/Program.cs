@@ -177,6 +177,7 @@ namespace CJoakim.Cosmos.CompIdx
             namedQueries.Add("select_two",  "SELECT * from c where c.pk = 'CA' and CONTAINS(c.cityName, 'San') order by c.cityName");
             namedQueries.Add("select_four", "SELECT * from c where c.stateAbbrv = 'CA' and CONTAINS(c.cityName, 'San') and c.longitude < 117 and c.latitude < 38.0 order by c.pk");
             namedQueries.Add("select_four_ordered_two", "SELECT * from c where c.stateAbbrv = 'CA' and CONTAINS(c.cityName, 'San') and c.longitude < 117 and c.latitude < 38.0 order by c.pk, c.cityName");
+            namedQueries.Add("davidson_geo", "SELECT * from c WHERE ST_DISTANCE(c.location, {'type': 'Point', 'coordinates':[-80.7978540000,35.4833060000]}) <= 10000");
 
             if (namedQueries.ContainsKey(queryName))
             {

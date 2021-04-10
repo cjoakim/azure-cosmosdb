@@ -16,4 +16,8 @@ dotnet run query compidx coll2 select_four > tmp/select_four_coll2.txt
 echo 'select_four_ordered_two...'
 dotnet run query compidx coll2 select_four_ordered_two > tmp/select_four_ordered_two_coll2.txt
 
+echo 'davidson_geo...'
+dotnet run query compidx coll1 davidson_geo > tmp/davidson_geo_coll1.txt
+dotnet run query compidx coll2 davidson_geo > tmp/davidson_geo_coll2.txt
+
 echo 'done'

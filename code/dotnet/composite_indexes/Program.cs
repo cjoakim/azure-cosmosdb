@@ -14,9 +14,9 @@ using CsvHelper.Configuration;
 
 using Newtonsoft.Json;
 
-// Chris Joakim, Microsoft, 2021/04/08
+// Chris Joakim, Microsoft, 2021/04/10
 
-namespace CJoakim.Cosmos.BulkLoader
+namespace CJoakim.Cosmos.CompIdx
 {
     public class Program
     {
@@ -24,26 +24,82 @@ namespace CJoakim.Cosmos.BulkLoader
         public const string standardPartitionKeyName = "/pk";
 
         // Class variables:
-        private static string[]     programArgs = null;
+        private static string       cliFunction = null;
         private static string       uri = Environment.GetEnvironmentVariable("AZURE_COSMOSDB_SQLDB_URI");
         private static string       key = Environment.GetEnvironmentVariable("AZURE_COSMOSDB_SQLDB_KEY");
         private static string       dbName = "compidx";
         private static string       collName = "coll2";
+        private static string       queryName = null;
         private static CosmosClient client = null;
         private static Database     db = null;
         private static Container    container = null;
 
         static async Task Main(string[] args)
         {
-            programArgs = args;
-            Console.WriteLine($"args:     {args}");
-            Console.WriteLine($"uri:      {uri}");
-            Console.WriteLine($"key:      {key}");
-            Console.WriteLine($"dbName:   {dbName}");
-            Console.WriteLine($"collName: {collName}");
+            if (args.Length > 0) {
+                cliFunction = args[0];
+                Console.WriteLine($"args:        {JsonConvert.SerializeObject(args)}");
+                Console.WriteLine($"cliFunction: {cliFunction}");
+
+                switch (cliFunction) {             
+                    case "read_display_csv": 
+                        await ReadDisplayCsv();
+                        break; 
+                    case "bulk_load": 
+                        dbName = args[1];
+                        collName = args[2];
+                        await BulkLoad();
+                        break; 
+                    case "query": 
+                        dbName = args[1];
+                        collName = args[2];
+                        queryName = args[3];
+                        await Query();
+                        break; 
+                    default: 
+                        DisplayCliOptions($"Unknown cliFunction: {cliFunction}");
+                        break; 
+                }
+                if (client != null) {
+                    client.Dispose();
+                    Console.WriteLine("client disposed");
+                }
+                return;
+            }
+            else {
+                DisplayCliOptions("Invalid command-line args");
+                return;
+            }
+        }
+
+        private static void DisplayCliOptions(string msg)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("DisplayCliOptions:");
+            if (msg != null) {
+                Console.WriteLine($"Error: {msg}");
+            }
+            Console.WriteLine("$ dotnet run read_display_csv");
+            Console.WriteLine("");
+            Console.WriteLine("$ dotnet run <cliFunction> <dbName> <collName> <other args...>");
+            Console.WriteLine("$ dotnet run bulk_load compidx coll1");
+            Console.WriteLine("$ dotnet run bulk_load compidx coll2");
+            Console.WriteLine("");
+            Console.WriteLine("$ dotnet run query compidx coll1 <query_name>");
+            Console.WriteLine("$ dotnet run query compidx coll1 count_docs");
+            Console.WriteLine("");
+        }
+
+        static async Task ConnectToCosmos(bool allowBulk)
+        {
+            Console.WriteLine("ConnectToCosmos...");
+            Console.WriteLine($"uri:         {uri}");
+            Console.WriteLine($"key:         {key}");
+            Console.WriteLine($"dbName:      {dbName}");
+            Console.WriteLine($"collName:    {collName}");
 
             CosmosClientOptions options = new CosmosClientOptions {
-                AllowBulkExecution = true
+                AllowBulkExecution = allowBulk
             };
             client = new CosmosClient(uri, key, options);
             Console.WriteLine("client {0}", client);
@@ -53,15 +109,24 @@ namespace CJoakim.Cosmos.BulkLoader
 
             container = await db.CreateContainerIfNotExistsAsync(collName, standardPartitionKeyName);
             Console.WriteLine("connected to container: {0}", container.Id);
+        }
 
+        static async Task ReadDisplayCsv()
+        {
             List<PostalCode> postalCodes = ReadPostalCodesCsv();
             foreach (var obj in postalCodes)
             {
                 Console.WriteLine(obj.ToJson());
             }
+            await Task.Delay(0);
+        }
 
+        static async Task BulkLoad()
+        {
+            await ConnectToCosmos(true);
+            
+            List<PostalCode> postalCodes = ReadPostalCodesCsv();
             List<Task> tasks = new List<Task>(postalCodes.Count);
-
             int responseCount = 0;
 
             foreach (PostalCode item in postalCodes)
@@ -73,7 +138,11 @@ namespace CJoakim.Cosmos.BulkLoader
 
                         if (itemResponse.IsCompletedSuccessfully)
                         {
-                            Console.WriteLine("successful {0} {1}", responseCount, itemResponse.ToString());
+                            Console.WriteLine("successful {0} {1} {2} {3}",
+                                responseCount,
+                                itemResponse.Result.StatusCode,
+                                itemResponse.Result.RequestCharge,
+                                itemResponse.Result.Resource.ToJson());
                         }
                         else
                         {
@@ -81,14 +150,14 @@ namespace CJoakim.Cosmos.BulkLoader
                         }
                     }));
             }
-
             Console.WriteLine("Tasks created; awaiting completion...");
-            
             await Task.WhenAll(tasks);              // Wait until all are done
             Console.WriteLine("Tasks completed");   // Close the client connection
+        }
 
-            client.Dispose();
-            Console.WriteLine("client disposed");
+        static async Task Query()
+        {
+            await Task.Delay(0);
         }
 
         private static List<PostalCode> ReadPostalCodesCsv()

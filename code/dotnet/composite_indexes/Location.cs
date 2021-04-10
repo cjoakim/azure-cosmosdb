@@ -12,9 +12,9 @@ using Newtonsoft.Json;
 //     ]
 //   }
 //
-// Chris Joakim, Microsoft, 2021/04/08
+// Chris Joakim, Microsoft, 2021/04/10
 
-namespace CJoakim.Cosmos.BulkLoader
+namespace CJoakim.Cosmos.CompIdx
 {
     public class Location
     {

@@ -10,6 +10,10 @@
 
 automation/az/data/output/
 
+code/dotnet/composite_indexes/.vs/
+code/dotnet/composite_indexes/bin/
+code/dotnet/composite_indexes/obj/
+
 code/java_simple_cosmos_sql/sample/.classpath
 code/java_simple_cosmos_sql/sample/.project
 code/java_simple_cosmos_sql/sample/.settings/

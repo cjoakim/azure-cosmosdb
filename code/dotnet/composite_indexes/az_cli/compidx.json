@@ -1,0 +1,46 @@
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "compositeIndexes": [
+        [
+            {
+                "path": "/pk",
+                "order": "descending"
+            },
+            {
+                "path": "/cityName",
+                "order": "descending"
+            }
+        ],
+        [
+            {
+                "path": "/cityName",
+                "order": "descending"
+            },
+            {
+                "path": "/postalCode",
+                "order": "descending"
+            }
+        ],
+        [
+            {
+                "path": "/longitude",
+                "order": "descending"
+            },
+            {
+                "path": "/latitude",
+                "order": "descending"
+            }
+        ]
+    ]
+}

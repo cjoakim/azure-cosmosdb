@@ -146,7 +146,7 @@ ExecuteQuery - result count: 1, RU: 2.89
 
 ### Named Query: select_four
 
-This query uses the first composite index.
+This query uses the first composite index (listed above).
 
 ```
 connected to container: coll1
@@ -176,7 +176,13 @@ ExecuteQuery - result count: 354, RU: 24.06
 
 ```
 connected to container: coll2
-ExecuteQuery - sql: SELECT * from c where c.stateAbbrv = 'CA' and CONTAINS(c.cityName, 'San') and c.longitude < 117 and c.latitude < 38.0 order by c.pk, c.cityName
+ExecuteQuery - sql:
+  SELECT * from c 
+  where c.stateAbbrv = 'CA'
+    and CONTAINS(c.cityName, 'San')
+    and c.longitude < 117
+    and c.latitude < 38.0
+  order by c.pk, c.cityName
 ExecuteQuery - result count: 354, RU: 24.8
 ```
 

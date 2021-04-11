@@ -5,6 +5,7 @@
 - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-manage-indexing-policy
 - https://docs.microsoft.com/en-us/azure/cosmos-db/index-policy#queries-with-a-filter-and-order-by
 - https://devblogs.microsoft.com/cosmosdb/new-ways-to-use-composite-indexes/
+- https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-geospatial-query
 
 - https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk/
 - https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-sql-api-dotnet-bulk-import

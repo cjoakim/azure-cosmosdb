@@ -2,7 +2,16 @@
 
 CosmosDB easily integrates with Azure Data Factory.
 
+## Links
 
+- https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-cosmos-db
+- https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-cosmos-db-mongodb-api
+
+### Bulk Executor SDK for Cosmos/SQL
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/bulk-executor-dot-net
+
+---
 
 ## Load and Backup Example
 

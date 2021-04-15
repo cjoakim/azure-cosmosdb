@@ -8,13 +8,12 @@
 - **Generate** shell scripts and other code from the above metadata
   - Generate mongoexport script(s) from source database
   - Generate shell script to transform the source mongoexport files to target files
-  - Code generation not yet implemented in this repo; pending customer details
   - Python and [Jinja templates](https://palletsprojects.com/p/jinja/) are perfect for this
 
 - **Execute the mongoexport file Transformations**
   - Simple and fast Python code can be used for this
     - Read the source mongoexport file
-    - Add the pk and doctype attributes
+    - Add the **pk** and **doctype** attributes
     - Do other transformations as necessary
     - Produce a mongoexport file in the format for the target database
     - Repeat as necessary for each collection and mongoexport file

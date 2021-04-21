@@ -5,6 +5,7 @@
 - [Azure Cosmos DB's API for MongoDB](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction)
 - [Cosmos/Mongo 4.0 Feature Support](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support-40)
 - [Partitioning Overview](https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview)
+- [Cosmos/Mongo Indexing](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-indexing)
 
 ## Partitioning
 
@@ -16,6 +17,8 @@
 ## Request Units (RU)
 
 - [Request Units](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units)
+- [Request Unit considerations](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units#request-unit-considerations)
+- [x-ms-request-charge](https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 
 ## Design
 
@@ -26,6 +29,7 @@
 - **Point-Reads** are the most efficient and lowest cost
 - Query by partition key as much as possible
 - Use **partition key joins** to aggregate documents efficiently
+- Know the costs of your queries during development; x-ms-request-charge
 - Autoscaled databases - 25 containers/collections max
 
 ### Example - eCommerce Order, Line Items, Deliveries

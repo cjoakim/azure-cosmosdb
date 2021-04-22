@@ -6,13 +6,39 @@
 - [Cosmos/Mongo 4.0 Feature Support](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support-40)
 - [Partitioning Overview](https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview)
 - [Cosmos/Mongo Indexing](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-indexing)
+- [Under the Hood; Replica Sets](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood)
 
-## Partitioning
+## Terminology
 
-- **20GB max** per **Logical Partition** - the documents in a partition key (pk)
-- **50GB max** per **Physical Partition** - CosmosDB automatically manages these
-- CosmosDB **Hashing Algorithm**
+- A **container** in CosmosDB is synonymous with a Mongo **collection**
+
+## Partitioning in CosmosDB
+
+- You define the **Partitition Key Attribute** for each container
+  - This attribute name **can not be changed** after the container has been created
+  - Each document in the container needs to have a value for this attribute
+  - Examples: customerNumber, orderID, deviceID
+  - Best Practice:
+    - Use **pk** and populate it with an appropriate value
+    - Gives you the ability to modify your partition key scheme over time
+    - For example: customerNumber -> customerNumber:year -> customerNumber:year:month
+
+- **20GB max** per **Logical Partition** or for a **Partion Key Value** - (You manage/choose this)
+- **50GB max** per **Physical Partition** - (CosmosDB automatically manages these)
+
+- CosmosDB uses a **Hashing Algorithm** to assign documents to physical partitons
   - determines the physical partition for a given logical partition key value
+
+- Each physical partition is implemented as a **Replica Set**
+  - Four nodes; four copies of your data
+  - Roles: Leader, Follower, Forwarder
+  - This is all managed for you by the CosmosDB PaaS service
+
+<p align="center"><img src="img/resource-partition.png"></p>
+
+---
+
+Global Replication via the **Forwarder** node:
 
 <p align="center"><img src="img/cosmosdb-logical-and-physical-partitions.png"></p>
 
@@ -20,7 +46,8 @@
 
 <p align="center"><img src="img/resource-partition.png"></p>
 
----
+- The design on the left is skewed ( countryCode as partition key? ).  Hot and underused partitions.
+- The design on the right is perfect.
 
 <p align="center"><img src="img/cosmosdbpartitions.jpg"></p>
 
@@ -64,7 +91,7 @@
   - Have 25 or less containers per database to enable **RU autoscale**
   - Store disimilar but related documents in the same container
     - use a **doctype** attribute to distinguish them
-  - 400 RU min per container/collection with Manual Scaling
+  - 400 RU min per container with Manual Scaling
   - Customer example:
     - 1400 containers @ 400 Manual RU vs 20 containers @ Autoscale
     - 560,000 vs 50,000 RU

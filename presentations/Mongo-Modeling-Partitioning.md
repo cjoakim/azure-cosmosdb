@@ -7,6 +7,7 @@
 - [Partitioning Overview](https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview)
 - [Cosmos/Mongo Indexing](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-indexing)
 - [Under the Hood; Replica Sets](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood)
+- [Limits](https://docs.microsoft.com/en-us/azure/cosmos-db/concepts-limits)
 
 ## Terminology
 
@@ -26,6 +27,7 @@
 
 - **20GB max** per **Logical Partition** or for a **Partion Key Value** - (You manage/choose this)
 - **50GB max** per **Physical Partition** - (CosmosDB automatically manages these)
+- **10,000** max RUs per partition (logical & physical); see Limits link above
 
 - CosmosDB uses a **Hashing Algorithm** to assign documents to physical partitons
   - determines the physical partition for a given logical partition key value

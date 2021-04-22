@@ -75,7 +75,9 @@
 
 - [Request Units](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units)
 - [Request Unit Considerations](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units#request-unit-considerations)
-- [x-ms-request-charge](https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
+- [x-ms-request-charge](https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) response header
+
+- [Java, Node, C# - Find the request unit charge](https://docs.microsoft.com/en-us/azure/cosmos-db/find-request-unit-charge-mongodb)
 
 ---
 
@@ -162,7 +164,11 @@
   "deliveryNumber": 1,
   ... delivery attributes ...
 }
+```
 
+In the CosmosDB/SQL API, these documents can be queried like this:
+
+```
 select * from c where c.pk = "XK1123"
 select * from c where c.pk = "XK1123" and c.doctype = "order"
 select * from c where c.pk = "XK1123" and c.doctype in ("order", "lineitem")

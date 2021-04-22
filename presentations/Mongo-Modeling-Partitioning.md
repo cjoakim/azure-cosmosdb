@@ -51,8 +51,6 @@
 
 ## Skewed and Unskewed Containers
 
-<p align="center"><img src="img/resource-partition.png"></p>
-
 - The design on the left is skewed ( countryCode as partition key? ).  Hot and underused partitions.
 - The design on the right is perfect.
 
@@ -71,13 +69,14 @@
 
 - CosmosDB is primarily priced by Request Units
   - Storage costs are a relatively small percentage of the cost
-  - VMs, VM size, Physical Partitions. etc. are **not** a cost factor
+  - There is a small cost of data replication across regions
+  - VMs, VM size, Physical Partitions. etc. are **not** a cost factor, as it's built in to the RU cost
 
 - [Request Units](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units)
 - [Request Unit Considerations](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units#request-unit-considerations)
 - [x-ms-request-charge](https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) response header
 
-- [Java, Node, C# - Find the request unit charge](https://docs.microsoft.com/en-us/azure/cosmos-db/find-request-unit-charge-mongodb)
+- [Find the request unit charge - Portal, Java, Node, C#](https://docs.microsoft.com/en-us/azure/cosmos-db/find-request-unit-charge-mongodb)
 
 ---
 

@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Bash script to open a mongo CLI pointing to either localhost or Azure.
+# Note: db.runCommand({getLastRequestStatistics: 1})
 #
-# Chris Joakim, Microsoft, 2021/01/31
+# Chris Joakim, Microsoft, 2021/04/22
 
 if [ "$1" == 'local' ]
 then 

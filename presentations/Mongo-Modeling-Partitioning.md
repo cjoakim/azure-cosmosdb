@@ -78,12 +78,55 @@
 
 - [Find the request unit charge - Portal, Java, Node, C#](https://docs.microsoft.com/en-us/azure/cosmos-db/find-request-unit-charge-mongodb)
 
+### Mongo Shell - db.runCommand({getLastRequestStatistics: 1})
+
+See the RequestCharge attribute in the result of this runCommand.
+
+```
+globaldb:PRIMARY> use dev
+switched to db dev
+globaldb:PRIMARY> show collections 
+airports
+globaldb:PRIMARY> db.airports.findOne()
+{
+        "_id" : ObjectId("6081be6e24b105653d812998"),
+        "name" : "Putnam County Airport",
+        "city" : "Greencastle",
+        "country" : "United States",
+        "iata_code" : "4I7",
+        "latitude" : "39.6335556",
+        "longitude" : "-86.8138056",
+        "altitude" : "842",
+        "timezone_num" : "-5",
+        "timezone_code" : "America/New_York",
+        "location" : {
+                "type" : "Point",
+                "coordinates" : [
+                        -86.8138056,
+                        39.6335556
+                ]
+        }
+}
+globaldb:PRIMARY> db.runCommand({getLastRequestStatistics: 1})
+{
+        "CommandName" : "find",
+        "RequestCharge" : 5.27,
+        "RequestDurationInMilliSeconds" : NumberLong(161),
+        "EstimatedDelayFromRateLimitingInMilliseconds" : NumberLong(0),
+        "RetriedDueToRateLimiting" : false,
+        "ActivityId" : "535bc56d-9e37-4b4e-8086-fc562846e3bd",
+        "ok" : 1
+}
+```
+
 ---
 
 ## Design
 
 - **Query Driven Design**
   - Focus on your queries, not the shape of your documents
+  - Create **materialized view** documents as necessary
+  - It's OK to duplicate data.  This is NoSQL, not Relational with Third normal form (3NF)
 
 - **Choose the right Partition Key**
   - Use a High Cardinality value
@@ -119,7 +162,7 @@
   - 2MB max doc size
   - Prefer smaller documents
   - Bounded vs Unbounded Arrays
-    - Consider refactoring embedded arrays into separate documents
+    - Consider refactoring large embedded arrays into separate documents
 
 - **Point Reads and Queries**
   - **Point-Reads** are the most efficient and lowest cost
@@ -127,7 +170,7 @@
   - Query by partition key as much as possible
   - Use **Partition Key Joins** to aggregate related documents efficiently
 - Know the costs of your queries during development; x-ms-request-charge
-- Autoscaled databases - 
+
 
 ### Example - eCommerce Order, Line Items, Deliveries
 

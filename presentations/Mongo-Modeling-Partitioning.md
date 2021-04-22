@@ -1,4 +1,4 @@
-# Mongo Modeling and Partitioning in CosmosDB
+# Mongo Partitioning and Modeling in CosmosDB
 
 ## Links
 
@@ -11,6 +11,7 @@
 ## Terminology
 
 - A **container** in CosmosDB is synonymous with a Mongo **collection**
+- A **partition key** in CosmosDB is synonymous with a Mongo **shard key**
 
 ## Partitioning in CosmosDB
 
@@ -20,7 +21,7 @@
   - Examples: customerNumber, orderID, deviceID
   - Best Practice:
     - Use **pk** and populate it with an appropriate value
-    - Gives you the ability to modify your partition key scheme over time
+    - This gives you the ability to modify your partition key scheme over time
     - For example: customerNumber -> customerNumber:year -> customerNumber:year:month
 
 - **20GB max** per **Logical Partition** or for a **Partion Key Value** - (You manage/choose this)
@@ -34,15 +35,21 @@
   - Roles: Leader, Follower, Forwarder
   - This is all managed for you by the CosmosDB PaaS service
 
+---
+
+## Logical and Physical Partitions
+
 <p align="center"><img src="img/resource-partition.png"></p>
 
 ---
 
-Global Replication via the **Forwarder** node:
+## Global Replication via the Forwarder Node
 
 <p align="center"><img src="img/cosmosdb-logical-and-physical-partitions.png"></p>
 
 ---
+
+## Skewed and Unskewed Containers
 
 <p align="center"><img src="img/resource-partition.png"></p>
 
@@ -55,8 +62,19 @@ Global Replication via the **Forwarder** node:
 
 ## Request Units (RU)
 
+- A **Request Unit** is a **Unit of throughput** (memory, cpu, iops) that you choose
+- **1.0 RU is the cost to read a 1KB document by it's id and partition key (i.e. - a "point read")**
+- 5 RU to write a 1K document
+
+- It's a **per second** measure, or budget
+  - Example: 400 RU container allows for 400 x 1K point-reads **in the same second**
+
+- CosmosDB is primarily priced by Request Units
+  - Storage costs are a relatively small percentage of the cost
+  - VMs, VM size, Physical Partitions. etc. are **not** a cost factor
+
 - [Request Units](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units)
-- [Request Unit considerations](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units#request-unit-considerations)
+- [Request Unit Considerations](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units#request-unit-considerations)
 - [x-ms-request-charge](https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 
 ---
@@ -64,7 +82,7 @@ Global Replication via the **Forwarder** node:
 ## Design
 
 - **Query Driven Design**
-  - Focus on the queries, not the shape of your documents
+  - Focus on your queries, not the shape of your documents
 
 - **Choose the right Partition Key**
   - Use a High Cardinality value

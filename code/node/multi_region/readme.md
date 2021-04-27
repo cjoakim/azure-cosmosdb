@@ -1,5 +1,7 @@
 # Azure CosmosDB Node.js Multi-Region Example
 
+<p align="center"><img src="img/replication.png" width="95%"></p>
+
 ## npm libraries
 
 ```

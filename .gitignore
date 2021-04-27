@@ -6,8 +6,10 @@
 **/*.class
 **/*.swp
 
+**/bin/
+**/obj/
+**/tmp/
 **/target/
-
 
 automation/az/data/output/
 

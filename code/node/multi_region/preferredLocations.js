@@ -13,14 +13,19 @@ const format = require('string-format')
 const uri     = process.env.AZURE_COSMOSDB_SQLDB_URI;
 const key     = process.env.AZURE_COSMOSDB_SQLDB_KEY;
 const db      = process.env.AZURE_COSMOSDB_SQLDB_DBNAME;
-const coll    = "airports";
-const region1 = "eastus";
-const region2 = "australiacentral";
+const coll    = process.env.AZURE_COSMOSDB_SQLDB_COLLNAME;
+const regions = process.env.AZURE_COSMOSDB_SQLDB_PREF_REGIONS;  // comma-delim list 'eastus,australiacentral'
+// const region1 = "eastus";
+// const region2 = "australiacentral";
+const region1 = regions.split(',')[0];
+const region2 = regions.split(',')[1];
 
-console.log(format('uri:  {}', uri));
-console.log(format('key:  {}...', key.substring(0, 20)));
-console.log(format('db:   {}', db));
-console.log(format('coll: {}', coll));
+console.log(format('uri:     {}', uri));
+console.log(format('key:     {}...', key.substring(0, 20)));
+console.log(format('db:      {}', db));
+console.log(format('coll:    {}', coll));
+console.log(format('regions: {}', regions));
+console.log(format('regions: {}', regions.split(',')));
 
 const querySpec = {
   query: "SELECT c from c where c.pk = 'SUE'"

@@ -1,10 +1,8 @@
-# Migrations - Miscellaneous Notes
-
-- [Data Migration Tool](https://docs.microsoft.com/en-us/azure/cosmos-db/import-dat)
-- ADF: https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-cosmos-db
-- ADF: https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-cosmos-db#import-and-export-json-documents
+# Ad-Hoc Data Migrations
 
 ## Azure Data Studio
+
+- [Download and Install](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15)
 
 Create a **Notebook** in Azure Data Studio (see red highlight).
 
@@ -26,7 +24,7 @@ File x1.json is an array of 847 documents.
 
 ## Data Migration Tool
 
-- https://docs.microsoft.com/en-us/azure/cosmos-db/import-data
+- [Data Migration Tool](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data)
 
 Choose the above **x1.json** file as the Source of the Migration, and
 setup your Azure CosmosDB as the target of the migration, as shown here.
@@ -48,3 +46,9 @@ x1.json file (right).
 
 <p align="center"><img src="img/side-by-side-comparison.png" width="95%"></p>
 
+---
+
+## Azure Data Factory (ADF)
+
+- https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-cosmos-db
+- https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-cosmos-db#import-and-export-json-documents

@@ -41,3 +41,10 @@ is your database name.
 
 <p align="center"><img src="img/dmt-results.png" width="95%"></p>
 
+---
+
+Side-by-Side comparison of the same document in CosmosDB (left) and in the 
+x1.json file (right).
+
+<p align="center"><img src="img/side-by-side-comparison.png" width="95%"></p>
+

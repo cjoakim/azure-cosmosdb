@@ -22,5 +22,22 @@ See the exported JSON file:
 
 <p align="center"><img src="img/azure-data-studio-notebook-export.png" width="95%"></p>
 
+File x1.json is an array of 847 documents.
+
 ## Data Migration Tool
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/import-data
+
+Choose the above **x1.json** file as the Source of the Migration, and
+setup your Azure CosmosDB as the target of the migration, as shown here.
+Use your CosmosDB connection string, and append "Database=xxx", where xxx 
+is your database name.
+
+<p align="center"><img src="img/dmt-target.png" width="95%"></p>
+
+---
+
+847 documents imported, as expected:
+
+<p align="center"><img src="img/dmt-results.png" width="95%"></p>
 

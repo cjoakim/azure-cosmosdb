@@ -6,6 +6,8 @@
 **/*.class
 **/*.swp
 
+**/.vs/
+
 **/bin/
 **/obj/
 **/node_modules/

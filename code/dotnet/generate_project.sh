@@ -1,9 +1,12 @@
 #!/bin/bash
 
 # Use the dotnet CLI to bootstrap dotnet project(s).
-# Chris Joakim, Microsoft, 2021/05/02
+# Samples:
+# - https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet
+#
+# Chris Joakim, Microsoft, 2021/05/05
 
-project_name="json_loader"
+project_name="storage_client"
 
 echo ''
 echo '=========='
@@ -21,6 +24,7 @@ echo 'generating project: '$project_name
 dotnet new console -o $project_name
 cd $project_name 
 dotnet add package Microsoft.Azure.Cosmos
+dotnet add package Azure.Storage.Blobs
 dotnet add package CsvHelper
 dotnet add package Faker.Net
 cat $project_name.csproj

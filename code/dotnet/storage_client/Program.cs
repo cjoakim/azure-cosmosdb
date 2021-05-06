@@ -23,10 +23,10 @@ namespace storage_client
             switch (config.GetRunType())
             {
                 case Config.CLI_FUNCTION_LIST_CONTAINER:
-                    await listContainer();
+                    await ListContainer();
                     break;
                 case Config.CLI_FUNCTION_STREAM:
-                    await streamBlob();
+                    await StreamBlob();
                     break;
                 default:
                     Console.WriteLine($"Invalid Config: unknown file run type {config.GetRunType()}");
@@ -34,7 +34,7 @@ namespace storage_client
             }
         }
 
-        private static async Task listContainer()
+        private static async Task ListContainer()
         {
             await connectToStorageContainer();
             
@@ -44,25 +44,28 @@ namespace storage_client
             }
         }
         
-        private static async Task streamBlob()
+        private static async Task StreamBlob()
         {
-            connectToStorageContainer();
+            await connectToStorageContainer();
         }
 
-        private static async Task connectToStorageAccount()
+        private static async Task ConnectToStorageAccount()
         {
             string connStr = config.GetStorageConnString();
             Console.WriteLine($"connection string: {connStr}");
             blobServiceClient = new BlobServiceClient(connStr);
             Console.WriteLine($"connected to account: {blobServiceClient.AccountName}");
+            
+            await Task.Delay(0);
         }
         
-        private static async Task listContainers()
+        private static async Task ListContainers()
         {
             foreach (BlobContainerItem container in blobServiceClient.GetBlobContainers())
             {
                 Console.WriteLine($"container: {container.Name}");
             }
+            await Task.Delay(0);
         }
         
         private static async Task connectToStorageContainer()
@@ -79,6 +82,8 @@ namespace storage_client
             Console.WriteLine($"container name: {cName}");
             containerClient = blobServiceClient.GetBlobContainerClient(cName);
             Console.WriteLine($"container uri: {containerClient.Uri}");
+            
+            await Task.Delay(0);
         }
     }
 }

@@ -3,6 +3,7 @@ using Azure.Storage.Blobs.Models;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 // dotnet run list_container --container imdb 
 
@@ -22,10 +23,10 @@ namespace storage_client
             switch (config.GetRunType())
             {
                 case Config.CLI_FUNCTION_LIST_CONTAINER:
-                    listContainer();
+                    await listContainer();
                     break;
                 case Config.CLI_FUNCTION_STREAM:
-                    streamBlob();
+                    await streamBlob();
                     break;
                 default:
                     Console.WriteLine($"Invalid Config: unknown file run type {config.GetRunType()}");
@@ -35,11 +36,11 @@ namespace storage_client
 
         private static async Task listContainer()
         {
-            connectToStorageContainer();
+            await connectToStorageContainer();
             
             await foreach (BlobItem blob in containerClient.GetBlobsAsync())
             {
-                Console.WriteLine($"blob: {blob.Name} {blob.Properties}");
+                Console.WriteLine($"blob: {blob.Name} {JsonConvert.SerializeObject(blob.Properties)}");
             }
         }
         
@@ -48,16 +49,35 @@ namespace storage_client
             connectToStorageContainer();
         }
 
+        private static async Task connectToStorageAccount()
+        {
+            string connStr = config.GetStorageConnString();
+            Console.WriteLine($"connection string: {connStr}");
+            blobServiceClient = new BlobServiceClient(connStr);
+            Console.WriteLine($"connected to account: {blobServiceClient.AccountName}");
+        }
+        
+        private static async Task listContainers()
+        {
+            foreach (BlobContainerItem container in blobServiceClient.GetBlobContainers())
+            {
+                Console.WriteLine($"container: {container.Name}");
+            }
+        }
+        
         private static async Task connectToStorageContainer()
         {
             string connStr = config.GetStorageConnString();
             Console.WriteLine($"connection string: {connStr}");
             blobServiceClient = new BlobServiceClient(connStr);
             Console.WriteLine($"account: {blobServiceClient.AccountName}");
+            
+
+            
 
             string cName = config.GetContainerName();
             Console.WriteLine($"container name: {cName}");
-            containerClient = await blobServiceClient.CreateBlobContainerAsync(cName);
+            containerClient = blobServiceClient.GetBlobContainerClient(cName);
             Console.WriteLine($"container uri: {containerClient.Uri}");
         }
     }

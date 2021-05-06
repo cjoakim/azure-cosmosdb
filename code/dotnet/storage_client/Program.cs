@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 // dotnet run list_containers --containers 
 // dotnet run list_container --container bulkloader
+// dotnet run stream_blob --container bulkloader --blob imdb/person_vertices.csv
 
 namespace storage_client
 {
@@ -29,7 +30,7 @@ namespace storage_client
                 case Config.CLI_FUNCTION_LIST_CONTAINER:
                     await ListContainer();
                     break;
-                case Config.CLI_FUNCTION_STREAM:
+                case Config.CLI_FUNCTION_STREAM_BLOB:
                     await StreamBlob();
                     break;
                 default:
@@ -69,12 +70,24 @@ namespace storage_client
                 }
             }
         }
-        
         private static async Task StreamBlob()
         {
             await ConnectToStorageContainer();
+            BlobClient blobClient = containerClient.GetBlobClient(config.GetBlobName());
+            int lineCount = 0;
+            
+            var response = await blobClient.DownloadAsync();
+            using (var streamReader = new StreamReader(response.Value.Content))
+            {
+                while (!streamReader.EndOfStream)
+                {
+                    var line = await streamReader.ReadLineAsync();
+                    lineCount++;
+                    Console.WriteLine($"{lineCount} -> {line}");
+                }
+            }
         }
-
+        
         private static async Task ConnectToStorageAccount()
         {
             if (blobServiceClient != null)
@@ -93,7 +106,7 @@ namespace storage_client
         
         private static async Task ConnectToStorageContainer()
         {
-            ConnectToStorageAccount();
+            await ConnectToStorageAccount();
             
             string cName = config.GetContainerName();
             Console.WriteLine($"container name: {cName}");

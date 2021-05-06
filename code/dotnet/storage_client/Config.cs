@@ -19,7 +19,7 @@ namespace storage_client
         public const string CLI_ARGS_STRING                 = "CLI_ARGS_STRING";  // for executing in a Docker container
         public const string CLI_FUNCTION_LIST_CONTAINERS    = "list_containers";
         public const string CLI_FUNCTION_LIST_CONTAINER     = "list_container";
-        public const string CLI_FUNCTION_STREAM             = "stream";
+        public const string CLI_FUNCTION_STREAM_BLOB        = "stream_blob";
         public const string CONTAINER_KEYWORD               = "--container";
         public const string BLOB_KEYWORD                    = "--blob";
         public const string VERBOSE_FLAG                    = "--verbose";
@@ -50,17 +50,6 @@ namespace storage_client
                 Console.WriteLine("ERROR: empty command-line args");
                 return false;
             }
-            // switch (fileType)
-            // {
-            //     case FILE_TYPE_VERTEX:
-            //         break;
-            //     case FILE_TYPE_EDGE:
-            //         break;
-            //     default:
-            //         Console.WriteLine("Invalid Config: unknown file type {0}", fileType);
-            //         return false;
-            // }
-
             return true;
         }
 

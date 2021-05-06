@@ -5,7 +5,8 @@ using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-// dotnet run list_container --container imdb 
+// dotnet run list_containers --containers 
+// dotnet run list_container --container bulkloader
 
 namespace storage_client
 {
@@ -22,6 +23,9 @@ namespace storage_client
 
             switch (config.GetRunType())
             {
+                case Config.CLI_FUNCTION_LIST_CONTAINERS:
+                    await ListContainers();
+                    break;
                 case Config.CLI_FUNCTION_LIST_CONTAINER:
                     await ListContainer();
                     break;
@@ -34,50 +38,63 @@ namespace storage_client
             }
         }
 
+        private static async Task ListContainers()
+        {
+            await ConnectToStorageAccount();
+            foreach (BlobContainerItem ci in blobServiceClient.GetBlobContainers())
+            {
+                if (config.IsVerbose())
+                {
+                    Console.WriteLine($"container: {ci.Name} properties: {JsonConvert.SerializeObject(ci.Properties)}");
+                }
+                else
+                {
+                    Console.WriteLine($"container: {ci.Name}");
+                }
+            }
+        }
+
         private static async Task ListContainer()
         {
-            await connectToStorageContainer();
-            
+            await ConnectToStorageContainer();
             await foreach (BlobItem blob in containerClient.GetBlobsAsync())
             {
-                Console.WriteLine($"blob: {blob.Name} {JsonConvert.SerializeObject(blob.Properties)}");
+                if (config.IsVerbose())
+                {
+                    Console.WriteLine($"blob: {blob.Name} {JsonConvert.SerializeObject(blob.Properties)}");
+                }
+                else
+                {
+                    Console.WriteLine($"blob: {blob.Name}");
+                }
             }
         }
         
         private static async Task StreamBlob()
         {
-            await connectToStorageContainer();
+            await ConnectToStorageContainer();
         }
 
         private static async Task ConnectToStorageAccount()
         {
+            if (blobServiceClient != null)
+            {
+                return;  // already initialized
+            }
             string connStr = config.GetStorageConnString();
-            Console.WriteLine($"connection string: {connStr}");
+            if (config.IsVerbose())
+            {
+                Console.WriteLine($"connection string: {connStr}");
+            }
             blobServiceClient = new BlobServiceClient(connStr);
             Console.WriteLine($"connected to account: {blobServiceClient.AccountName}");
-            
             await Task.Delay(0);
         }
         
-        private static async Task ListContainers()
+        private static async Task ConnectToStorageContainer()
         {
-            foreach (BlobContainerItem container in blobServiceClient.GetBlobContainers())
-            {
-                Console.WriteLine($"container: {container.Name}");
-            }
-            await Task.Delay(0);
-        }
-        
-        private static async Task connectToStorageContainer()
-        {
-            string connStr = config.GetStorageConnString();
-            Console.WriteLine($"connection string: {connStr}");
-            blobServiceClient = new BlobServiceClient(connStr);
-            Console.WriteLine($"account: {blobServiceClient.AccountName}");
+            ConnectToStorageAccount();
             
-
-            
-
             string cName = config.GetContainerName();
             Console.WriteLine($"container name: {cName}");
             containerClient = blobServiceClient.GetBlobContainerClient(cName);

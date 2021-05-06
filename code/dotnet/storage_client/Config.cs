@@ -17,6 +17,7 @@ namespace storage_client
 
         // Constants; command-line and keywords:
         public const string CLI_ARGS_STRING                 = "CLI_ARGS_STRING";  // for executing in a Docker container
+        public const string CLI_FUNCTION_LIST_CONTAINERS    = "list_containers";
         public const string CLI_FUNCTION_LIST_CONTAINER     = "list_container";
         public const string CLI_FUNCTION_STREAM             = "stream";
         public const string CONTAINER_KEYWORD               = "--container";

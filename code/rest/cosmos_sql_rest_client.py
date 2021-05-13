@@ -13,6 +13,7 @@ Usage:
     python cosmos_sql_rest_client.py create_container dev airports 500 /pk
     python cosmos_sql_rest_client.py get_container dev airports
     python cosmos_sql_rest_client.py delete_container dev airports 
+    python cosmos_sql_rest_client.py get_pk_ranges dev airports
     - Offers/Throughput:
     python cosmos_sql_rest_client.py list_offers
     python cosmos_sql_rest_client.py get_offer 8jId
@@ -140,6 +141,16 @@ class CosmosRestClient():
         url = 'https://{}.documents.azure.com/dbs/{}/colls/{}'.format(
             self.cosmos_acct, dbname, cname)
         return self.__execute_http_request('get_container', verb, url, headers)
+
+    def get_pk_ranges(self, dbname, cname):
+        # https://docs.microsoft.com/en-us/rest/api/cosmos-db/get-partition-key-ranges
+        # https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-cosmosdb-rest-request-headers
+        print('get_pk_ranges: {} {}'.format(dbname, cname))
+        verb, resource_link = 'get', 'dbs/{}/colls/{}'.format(dbname, cname)
+        headers = self.__rest_headers(verb, 'pkranges', resource_link)
+        url = 'https://{}.documents.azure.com/dbs/{}/colls/{}/pkranges'.format(
+            self.cosmos_acct, dbname, cname)
+        return self.__execute_http_request('get_pk_ranges', verb, url, headers)
 
     def delete_container(self, dbname, cname):
         # See https://docs.microsoft.com/en-us/rest/api/cosmos-db/delete-a-collection
@@ -289,18 +300,25 @@ class CosmosRestClient():
     # private methods 
 
     def __rest_headers(self, verb, resource_type, resource_link):
+        # https://docs.microsoft.com/en-us/rest/api/cosmos-db/access-control-on-cosmosdb-resources
+
         rfc_7231_dt = self.__rfc_7231_date()
         string_to_sign = "{}\n{}\n{}\n{}\n\n".format(
             verb, resource_type, resource_link, rfc_7231_dt).lower()
-        print("string_to_sign:\n---\n{}---".format(string_to_sign))
-        # string_to_sign:
-        # ---
+        print("string_to_sign:\n{}---".format(string_to_sign))
+        
+        # string_to_sign (this works):
         # get
         # colls
-        # dbs/dev2/colls/airports
-        # tue, 09 feb 2021 19:39:00 gmt
+        # dbs/dev/colls/airports
+        # thu, 13 may 2021 14:46:00 gmt
 
-        # ---
+        # string_to_sign (this works):
+        # get
+        # pkranges
+        # dbs/dev/colls/airports
+        # thu, 13 may 2021 14:59:00 gmt
+
 
         decoded_secret = base64.b64decode(self.cosmos_key, validate=True)
         digest = hmac.new(decoded_secret,
@@ -420,6 +438,11 @@ if __name__ == "__main__":
             dbname = sys.argv[2]
             cname  = sys.argv[3]
             client.get_container(dbname, cname)
+
+        elif func == 'get_pk_ranges':
+            dbname = sys.argv[2]
+            cname  = sys.argv[3]
+            client.get_pk_ranges(dbname, cname)
 
         elif func == 'delete_container':
             dbname = sys.argv[2]

@@ -6,6 +6,9 @@
 **/*.class
 **/*.swp
 
+**/.classpath
+**/.project
+**/.settings/
 **/.vs/
 
 **/bin/

@@ -4,9 +4,9 @@
 # Samples:
 # - https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet
 #
-# Chris Joakim, Microsoft, 2021/05/05
+# Chris Joakim, Microsoft, 2021/05/14
 
-project_name="storage_client"
+project_name="account_explorer"
 
 echo ''
 echo '=========='

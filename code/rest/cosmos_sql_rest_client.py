@@ -31,7 +31,7 @@ Usage:
 __author__  = 'Chris Joakim'
 __email__   = "chjoakim@microsoft.com,christopher.joakim@gmail.com"
 __license__ = "MIT"
-__version__ = "2021.02.22"
+__version__ = "2021/05/14"
 
 # Links
 # https://docs.microsoft.com/en-us/rest/api/cosmos-db/

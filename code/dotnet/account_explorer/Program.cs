@@ -53,8 +53,30 @@ namespace account_explorer
             Console.WriteLine("Throughput");
             await ConnectToCosmos(false);
             
-             
-            await Task.Delay(0);
+            RequestOptions requestOptions = new RequestOptions();
+
+            int? dbThroughput = await db.ReadThroughputAsync();
+            if (dbThroughput == null)
+            {
+                Console.WriteLine($"dbThroughput is null");
+            }
+            else
+            {
+                Console.WriteLine($"dbThroughput: {dbThroughput}");
+            }
+
+            int? containerThroughput = await container.ReadThroughputAsync();
+            if (containerThroughput == null)
+            {
+                Console.WriteLine($"containerThroughput is null");
+            }
+            else
+            {
+                Console.WriteLine($"containerThroughput: {containerThroughput}");
+            }
+            
+            
+            //await Task.Delay(0);
         }
         
         private static async Task Tasks()
@@ -80,6 +102,24 @@ namespace account_explorer
                 await Task.WhenAll(tasks.ToArray());
                 long finishTime = EpochMsTime();
                 Console.WriteLine($"batch {b} finished tasks at {finishTime} ({finishTime - startTime})");
+                foreach (Task task in tasks)
+                {
+                    Console.WriteLine($"  task status {task.Id} {task.Status}");
+                    // https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskstatus?view=net-5.0
+
+                    switch (task.Status)
+                    {
+                        case TaskStatus.Canceled:
+                            Console.WriteLine($"  task status cancelled {task.Id} {task.Status}");
+                            break;
+                        case TaskStatus.Faulted:
+                            Console.WriteLine($"  task status faulted {task.Id} {task.Status}");
+                            break;
+                        default:
+                            Console.WriteLine($"  task status ok {task.Id} {task.Status}");
+                            break;      
+                    }
+                }
             }
             await Task.Delay(0);
         }
@@ -107,7 +147,8 @@ namespace account_explorer
             db = await client.CreateDatabaseIfNotExistsAsync(dbName);
             Console.WriteLine("connected to db: {0}", db.Id);
 
-            container = await db.CreateContainerIfNotExistsAsync(collName, standardPartitionKeyName);
+            container = db.GetContainer(collName);
+            //container = await db.CreateContainerIfNotExistsAsync(collName, standardPartitionKeyName);
             Console.WriteLine("connected to container: {0}", container.Id);
         }
         

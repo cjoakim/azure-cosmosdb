@@ -1,0 +1,10 @@
+hosts: [cjoakimcosmosgremlin.gremlin.cosmosdb.azure.com]
+port: 443
+username: /dbs/dev/colls/npm
+password: wXBOR8HML1DiU7mvuC1U3UunOBBKCfohl0rkcn4SBZicaJq4FGZqHd6hN5UmZFsBgJTasYcXKffpNsSSGm5iQA==
+connectionPool: {
+  enableSsl: true}
+serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
+
+# Gremlin Malformed Request: GraphSON v3 IO is not supported
+# org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV3d0

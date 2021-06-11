@@ -16,6 +16,13 @@ def Foo(self, bar):
   self.bar = bar
 ```
 
+```code
+apple
+bear
+coyote
+```
+
+
 ```
 
 

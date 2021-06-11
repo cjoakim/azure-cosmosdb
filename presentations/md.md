@@ -1,3 +1,7 @@
+<style>
+.red {color: red}
+</style>
+
 # Markdown
 
 - https://daringfireball.net/projects/markdown/

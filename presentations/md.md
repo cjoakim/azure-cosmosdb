@@ -9,6 +9,12 @@
 
 ## A
 
+```{.red .numberLines startFrom="1"}
+Here is a paragraph.
+
+And another.
+```
+
 ```
 
 

@@ -7,9 +7,17 @@
 
 <table>
   <tr>
-    <td align="right"> [prev](#A) [next](#fragment) </td>
+    <td align="right"> [prev](#A) [next](#E) </td>
   </tr>
 </table>
+
+[prev](#A) [next](#E)
+
+[prev](#A)
+[next](#E)
+
+# 1 [prev](#A)
+# 2 [next](#E)
 
 <p align="right"><img src="icons/bytesize-icons/dist/icons/arrow-top.svg"></p>
 

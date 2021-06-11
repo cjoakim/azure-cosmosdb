@@ -5,11 +5,13 @@
 - https://google.github.io/styleguide/docguide/style.html
 - https://sindresorhus.com/github-markdown-css/
 
+---
 <table width="100%" border="1">
   <tr>
-    <td> <strong> heading </strong></td>
+    <td font-size="1.8em"> <strong> Heading </strong></td>
     <td align="right">
         <img src="icons/bytesize-icons/dist/icons/arrow-top.svg">
+        &nbsp;&nbsp;&nbsp;
         <img src="icons/bytesize-icons/dist/icons/arrow-bottom.svg">
     </td>
   </tr>

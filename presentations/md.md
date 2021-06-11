@@ -1,10 +1,8 @@
-<style>
-.red {color: red}
-</style>
-
 # Markdown
 
 - https://daringfireball.net/projects/markdown/
+- https://daringfireball.net/projects/markdown/dingus
+- https://google.github.io/styleguide/docguide/style.html
 - https://sindresorhus.com/github-markdown-css/
 
 <p align="right"><img src="icons/bytesize-icons/dist/icons/arrow-top.svg"></p>
@@ -13,10 +11,9 @@
 
 ## A
 
-```{.red .numberLines startFrom="1"}
-Here is a paragraph.
-
-And another.
+```python
+def Foo(self, bar):
+  self.bar = bar
 ```
 
 ```

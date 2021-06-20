@@ -36,7 +36,7 @@ NoSQL is all the other wavelengths; there is tremendous variety.
 
 - [Redis](https://redis.io/)
 - [Apache HBase](https://hbase.apache.org/)
-- [Apache Cassandra](https://hbase.apache.org/)
+- [Apache Cassandra](https://cassandra.apache.org/)
 - [Apache CouchDB](https://couchdb.apache.org/)
 - [Apache TinkerPop / Gremlin](https://tinkerpop.apache.org/)
 - [MongoDB](https://www.mongodb.com/)
@@ -60,6 +60,7 @@ See https://en.wikipedia.org/wiki/CAP_theorem
 
 <p align="center"><img src="img/cap_theorem.jpeg" width="80%"></p>
 
+---
 
 ## What is Isn't
 

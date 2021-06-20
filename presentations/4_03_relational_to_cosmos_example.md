@@ -3,7 +3,7 @@
 
 ## Standard Telephone Design 1960-2006
 
-<p align="center"><img src="img/rotary-phone.jpg" width="90%"></p>
+<p align="center"><img src="img/rotary-phone.jpg" width="75%"></p>
 
 ---
 

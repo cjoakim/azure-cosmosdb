@@ -26,18 +26,6 @@ See https://azure.microsoft.com/en-us/overview/what-is-paas/
 
 ---
 
-## Pets vs Cattle
-
-<p align="center"><img src="img/pets-vs-cattle.png" width="80%"></p>
-
-Pets are your on-prem servers you've know for years.  Lots of care-and-feeding.
-
-Cattle are IaaS resources and PaaS services you quickly consume and dispose of.
-
-See http://cloudscaling.com/blog/cloud-computing/the-history-of-pets-vs-cattle/
-
----
-
 ## Advantages
 
 - On-demand scalability
@@ -61,6 +49,7 @@ Enterprise Agreement
     Subscription 1
         Resource Group 1
            ...resources.
+           ...CosmosDB
         Resource Group 2
            ...resources.
         Resource Group n
@@ -73,9 +62,23 @@ Enterprise Agreement
            ...resources.
         Resource Group n
            ...resources.
+           ...another CosmosDB
+           ...another CosmosDB
 ```
 
 See https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/decision-guides/subscriptions/
+
+---
+
+## Pets vs Cattle
+
+<p align="center"><img src="img/pets-vs-cattle.png" width="80%"></p>
+
+Pets are your on-prem servers you've know for years.  Lots of care-and-feeding.
+
+Cattle are IaaS resources and PaaS services you can quickly consume and dispose of.
+
+See http://cloudscaling.com/blog/cloud-computing/the-history-of-pets-vs-cattle/
 
 ---
 
@@ -86,7 +89,7 @@ See https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/decision-gui
 - [az CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [Azure Resource Manager (ARM) Templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview)
 - [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview)
-- Programming Language SDKs
+- Azure Programming Language SDKs (DotNet, Java, Python, Node.js, etc.)
 - [Terraform](https://docs.microsoft.com/en-us/azure/developer/terraform/overview)
 
 See https://docs.microsoft.com/en-us/azure/developer/python/cloud-development-provisioning
@@ -120,5 +123,6 @@ See Azure Portal.
 
 See https://azure.microsoft.com/en-us/marketplace/
 
+---
 
 [toc](June_2021.md) &nbsp; |  &nbsp; [previous](June_2021.md) &nbsp; | &nbsp; [next](1_02_nosql.md) &nbsp;

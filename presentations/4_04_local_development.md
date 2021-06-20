@@ -1,6 +1,6 @@
 # 4.04 - Local Development
 
-[toc:](June_2021.md) &nbsp; | [previous:](4_03_relational_to_cosmos_example.md) &nbsp; | &nbsp; [next:](June_2021.md)
+[toc](June_2021.md) &nbsp; |  &nbsp; [previous](4_03_relational_to_cosmos_example.md) &nbsp; | &nbsp; [next](June_2021.md) &nbsp;
 
 
 ## Windows Emulator
@@ -24,4 +24,4 @@
 
 
 
-[toc:](June_2021.md) &nbsp; | [previous:](4_03_relational_to_cosmos_example.md) &nbsp; | &nbsp; [next:](June_2021.md)
+[toc](June_2021.md) &nbsp; |  &nbsp; [previous](4_03_relational_to_cosmos_example.md) &nbsp; | &nbsp; [next](June_2021.md) &nbsp;

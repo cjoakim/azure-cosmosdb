@@ -1,6 +1,6 @@
 # {{ section_seq }} - {{ name }}
 
-[toc:]({{toc_url}}) &nbsp; | [previous:]({{prev_url}}) &nbsp; | &nbsp; [next:]({{next_url}})
+[toc]({{toc_url}}) &nbsp; |  &nbsp; [previous]({{prev_url}}) &nbsp; | &nbsp; [next]({{next_url}}) &nbsp;
 
 {% for section in sections %}
 ## {{ section}}
@@ -9,4 +9,5 @@
 
 {% endfor %}
 
-[toc:]({{toc_url}}) &nbsp; | [previous:]({{prev_url}}) &nbsp; | &nbsp; [next:]({{next_url}})
+[toc]({{toc_url}}) &nbsp; |  &nbsp; [previous]({{prev_url}}) &nbsp; | &nbsp; [next]({{next_url}}) &nbsp;
+

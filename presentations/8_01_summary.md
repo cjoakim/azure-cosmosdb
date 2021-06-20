@@ -1,6 +1,6 @@
 # 8.01 - Summary
 
-[toc:](June_2021.md) &nbsp; | [previous:](June_2021.md) &nbsp; | &nbsp; [next:](June_2021.md)
+[toc](June_2021.md) &nbsp; |  &nbsp; [previous](June_2021.md) &nbsp; | &nbsp; [next](June_2021.md) &nbsp;
 
 
 ## Questions
@@ -14,4 +14,4 @@
 
 
 
-[toc:](June_2021.md) &nbsp; | [previous:](June_2021.md) &nbsp; | &nbsp; [next:](June_2021.md)
+[toc](June_2021.md) &nbsp; |  &nbsp; [previous](June_2021.md) &nbsp; | &nbsp; [next](June_2021.md) &nbsp;

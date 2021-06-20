@@ -1,6 +1,6 @@
 # 4.02 - Design Considerations
 
-[toc:](June_2021.md) &nbsp; | [previous:](4_01_design_process.md) &nbsp; | &nbsp; [next:](4_03_relational_to_cosmos_example.md)
+[toc](June_2021.md) &nbsp; |  &nbsp; [previous](4_01_design_process.md) &nbsp; | &nbsp; [next](4_03_relational_to_cosmos_example.md) &nbsp;
 
 
 ## Containers
@@ -24,4 +24,4 @@
 
 
 
-[toc:](June_2021.md) &nbsp; | [previous:](4_01_design_process.md) &nbsp; | &nbsp; [next:](4_03_relational_to_cosmos_example.md)
+[toc](June_2021.md) &nbsp; |  &nbsp; [previous](4_01_design_process.md) &nbsp; | &nbsp; [next](4_03_relational_to_cosmos_example.md) &nbsp;

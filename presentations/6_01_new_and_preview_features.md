@@ -1,6 +1,6 @@
 # 6.01 - New and Preview Features
 
-[toc:](June_2021.md) &nbsp; | [previous:](June_2021.md) &nbsp; | &nbsp; [next:](June_2021.md)
+[toc](June_2021.md) &nbsp; |  &nbsp; [previous](June_2021.md) &nbsp; | &nbsp; [next](June_2021.md) &nbsp;
 
 
 ## Point-in-Time Restore
@@ -19,4 +19,4 @@
 
 
 
-[toc:](June_2021.md) &nbsp; | [previous:](June_2021.md) &nbsp; | &nbsp; [next:](June_2021.md)
+[toc](June_2021.md) &nbsp; |  &nbsp; [previous](June_2021.md) &nbsp; | &nbsp; [next](June_2021.md) &nbsp;

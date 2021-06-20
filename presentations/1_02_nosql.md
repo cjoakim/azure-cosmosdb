@@ -17,20 +17,22 @@ See https://en.wikipedia.org/wiki/NoSQL
 
 Others models pre-dated Relational, such as hierarchical [IMS](https://www.ibm.com/it-infrastructure/z/ims)
 
-<p align="center"><img src="img/spacer-500.png" width="90%"></p>
+<p align="center"><img src="img/spacer-300.png" width="90%"></p>
 
 ---
 
 ## Spectrum
 
-<p align="center"><img src="img/spectrum-800.png" width="90%"></p>
+<p align="center"><img src="img/spectrum-800.png" width="80%"></p>
 
 ## 
 
 Think of relational databases as the narrow (i.e. - ANSI standard) but dense band of 
-wavelengths that is visible light.  NoSQL is all the other wavelengths.
+wavelengths that is visible light.
 
-<p align="center"><img src="img/spacer-500.png" width="90%"></p>
+NoSQL is all the other wavelengths.
+
+<p align="center"><img src="img/spacer-300.png" width="90%"></p>
 
 ---
 

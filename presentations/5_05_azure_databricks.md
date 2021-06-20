@@ -7,4 +7,4 @@
 
 
 
-[toc](June_2021.md) &nbsp; |  &nbsp; [previous](5_04_azure_search.md) &nbsp; | &nbsp; [next](5_06_applications.md) &nbsp;
+[toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](5_04_azure_search.md) &nbsp; | &nbsp; [next](5_06_applications.md) &nbsp;

@@ -9,4 +9,4 @@ https://devblogs.microsoft.com/cosmosdb/seamlessly-transfer-kafka-data-with-the-
 
 
 
-[toc](June_2021.md) &nbsp; |  &nbsp; [previous](5_06_applications.md) &nbsp; | &nbsp; [next](5_08_powerbi.md) &nbsp;
+[toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](5_06_applications.md) &nbsp; | &nbsp; [next](5_08_powerbi.md) &nbsp;

@@ -23,4 +23,4 @@
 
 
 
-[toc](June_2021.md) &nbsp; |  &nbsp; [previous](4_03_relational_to_cosmos_example.md) &nbsp; | &nbsp; [next](June_2021.md) &nbsp;
+[toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](4_03_relational_to_cosmos_example.md) &nbsp; | &nbsp; [next](0_table_of_contents.md) &nbsp;

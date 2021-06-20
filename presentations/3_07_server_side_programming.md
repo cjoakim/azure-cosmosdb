@@ -17,4 +17,4 @@
 
 
 
-[toc](June_2021.md) &nbsp; |  &nbsp; [previous](3_06_sql.md) &nbsp; | &nbsp; [next](3_08_change_feed.md) &nbsp;
+[toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](3_06_sql.md) &nbsp; | &nbsp; [next](3_08_change_feed.md) &nbsp;

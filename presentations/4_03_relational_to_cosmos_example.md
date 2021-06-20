@@ -70,4 +70,4 @@ See GitHub repo https://github.com/cjoakim/azure-adventureworks-to-cosmos
 
 ---
 
-[toc](June_2021.md) &nbsp; |  &nbsp; [previous](4_02_design_considerations.md) &nbsp; | &nbsp; [next](4_04_local_development.md) &nbsp;
+[toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](4_02_design_considerations.md) &nbsp; | &nbsp; [next](4_04_local_development.md) &nbsp;

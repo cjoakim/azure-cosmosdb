@@ -32,8 +32,14 @@
 
 ---
 
-[prev plain](#A)
-[next plain](#E)
+[prev plain](#A) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [next plain](#E)
+
+---
+
+[prev plain2](#A)
+
+[next plain2](#E)
+
 
 ---
 

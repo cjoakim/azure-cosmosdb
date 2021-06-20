@@ -20,9 +20,11 @@ import jinja2
 class Base(object):
 
     def __init__(self, line):
-        self.line = line
+        self.line   = line
         self.tokens = line.split(',')
-
+        self.url      = 'June_2021.md'
+        self.next_url = 'June_2021.md'
+        self.prev_url = 'June_2021.md'
 
 class Section(Base):
 
@@ -31,6 +33,7 @@ class Section(Base):
         self.number = self.tokens[1]
         self.name   = self.tokens[2]
         self.otype  = 'Section'
+        self.url    = 'June_2021.md'
 
     def is_section(self):
         return True
@@ -62,7 +65,7 @@ class Page(Base):
         self.sections = list()
         self.name = None
         self.filename = None
-        self.otype  = 'Page'
+        self.otype = 'Page'
 
         for idx, tok in enumerate(self.tokens):
             if idx > 0:
@@ -73,6 +76,7 @@ class Page(Base):
         self.title = '{} {}'.format(self.section_seq, self.name)
         self.filename = '{}_{}.md'.format(
             self.section_seq.replace('.','_'), self.name).lower().replace(' ','_').replace('-','_')
+        self.url = self.filename 
 
     def is_section(self):
         return False
@@ -91,6 +95,9 @@ class Page(Base):
         data['sections'] = self.sections
         data['title']    = self.title
         data['filename'] = self.filename
+        data['url']      = self.url
+        data['prev_url'] = self.prev_url
+        data['next_url'] = self.next_url
         return data 
 
     def __str__(self):
@@ -104,25 +111,38 @@ class MarkdownGenerator(object):
 
     def generate(self):
         structure = self.documentation_structure()
+
+        # Iterate to set previous and next urls
+        prev_url, last_idx = None, len(structure) - 1
+
+        for obj_idx, obj in enumerate(structure):
+            if prev_url != None:
+                obj.prev_url = prev_url
+            if obj_idx < last_idx:
+                obj.next_url = structure[obj_idx + 1].url
+            prev_url = obj.url
+
         for obj in structure:
             print(obj)
 
-        # Generate the individual markdown pages
-        for page_idx, obj in enumerate(structure):
-            if obj.is_page():
-                template_name = 'doc_page.txt'
-                outfile = 'tmp/{}'.format(obj.filename)
-                self.render_template(template_name, obj.template_data(), outfile)
+        if False:
+            # Generate the individual markdown pages
+            for obj_idx, obj in enumerate(structure):
+                if obj.is_page():
+                    template_name = 'doc_page.txt'
+                    outfile = 'tmp/{}'.format(obj.filename)
+                    self.render_template(template_name, obj.template_data(), outfile)
 
-        # Generate the List of Pages for the main README.md file to copy-and-paste
-        for page_idx, obj in enumerate(structure):
-            if obj.is_section():
-                print('')
-                print('## {}'.format(obj.number_name()))
-                print('')
-            else:
-                # title = '{} - {}'.format(page['num'], page['name'])
-                print('- [{}]({})'.format(obj.title, obj.filename))
+        if False:
+            # Generate the List of Pages for the main README.md file to copy-and-paste
+            for obj_idx, obj in enumerate(structure):
+                if obj.is_section():
+                    print('')
+                    print('## {}'.format(obj.number_name()))
+                    print('')
+                else:
+                    # title = '{} - {}'.format(page['num'], page['name'])
+                    print('- [{}]({})'.format(obj.title, obj.filename))
 
 
     # https://github.com/cjoakim/azure-iot-cosmosdb-synapse/blob/main/presentation.md
@@ -176,9 +196,6 @@ class MarkdownGenerator(object):
         lines.append('MongoDB,Migration')
         lines.append('Cassandra')
         lines.append('Table')
-        lines.append('Future API1')
-        lines.append('Future API2')
-        lines.append('Future API3')
 
         lines.append('Section,8,Summary')
         lines.append('Summary,Questions,Contact Info')

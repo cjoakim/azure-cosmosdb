@@ -7,8 +7,8 @@
 
 ---
 <table width="100%" border="1">
-  <tr>
-    <td font-size="1.8em"> <strong> Heading </strong></td>
+  <tr width="100%">
+    <td font-size="1.8em" width="100%"> <strong> Heading </strong></td>
     <td align="right">
         <img src="icons/bytesize-icons/dist/icons/arrow-top.svg">
         &nbsp;&nbsp;&nbsp;
@@ -16,6 +16,8 @@
     </td>
   </tr>
 </table>
+
+<a href="default.asp"><img src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;"></a>
 
 [prev](#A) [next](#E)
 

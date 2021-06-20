@@ -65,9 +65,9 @@ select * from c where c.pk = "XK1123" and c.doctype in ("order", "lineitem")
 
 <p align="center"><img src="img/AdventureWorksLT-ERD.png" width="70%"></p>
 
-- https://github.com/cjoakim/azure-adventureworks-to-cosmos
+See GitHub repo https://github.com/cjoakim/azure-adventureworks-to-cosmos
 
 
-
+---
 
 [toc](June_2021.md) &nbsp; |  &nbsp; [previous](4_02_design_considerations.md) &nbsp; | &nbsp; [next](4_04_local_development.md) &nbsp;

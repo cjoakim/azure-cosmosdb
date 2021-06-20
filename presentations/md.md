@@ -32,7 +32,7 @@
 
 ---
 
-[prev plain](#A) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [next plain](#E)
+[prev plain](#A) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[next plain](#E)
 
 ---
 

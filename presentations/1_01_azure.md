@@ -26,7 +26,7 @@ See https://azure.microsoft.com/en-us/overview/what-is-paas/
 
 ---
 
-## Advantages
+## Advantages of Cloud
 
 - On-demand scalability
 - No on-site hardware required
@@ -37,6 +37,22 @@ See https://azure.microsoft.com/en-us/overview/what-is-paas/
 - Advanced compliance features
 
 See https://www.actsolution.net/blog/what-are-the-business-benefits-of-microsoft-azure-cloud/
+
+--
+
+## Azure Regions and High-Speed Fibre Network
+
+<p align="center"><img src="img/azure-regions-map.svg" width="90%"></p>
+
+- 
+
+<p align="center"><img src="img/azure-network-map.svg" width="90%"></p>
+
+-
+
+**CosmosDB is a "ring 0" service available in all reqions.**
+
+- https://azure.microsoft.com/en-us/global-infrastructure/
 
 --
 

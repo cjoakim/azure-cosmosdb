@@ -8,7 +8,7 @@
 #### Common Foundation
 
 - Compute, Storage, Request Units, Monitoring, etc.
-- But implements several **wire protocols**, one per DB type
+- But implements several **wire protocols**, one per **API** type
 - **An individual CosmosDB Account is just one of the above APIs** (not all)
 
 ---
@@ -22,7 +22,7 @@
 
 ---
 
-## SQL (Document)
+## SQL API (Document)
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/create-cosmosdb-resources-portal
 - [SQL Queries](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started)
@@ -66,7 +66,7 @@ FROM c
 
 ---
 
-## Mongo
+## Mongo API
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction
 - https://www.mongodb.com/
@@ -79,7 +79,7 @@ TODO
 
 ---
 
-## Cassandra
+## Cassandra API
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-introduction
 - https://cassandra.apache.org/
@@ -89,15 +89,16 @@ TODO
 
 ---
 
-## Gremlin/Graph
+## Gremlin/Graph API
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/graph-introduction
 - https://tinkerpop.apache.org/
 
 <p align="center"><img src="img/sample-graph.png" width="90%"></p>
 
+---
 
-## Table
+## Table API
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction
 

@@ -42,13 +42,13 @@ See https://www.actsolution.net/blog/what-are-the-business-benefits-of-microsoft
 
 ## Azure Regions and High-Speed Fibre Network
 
-<p align="center"><img src="img/azure-regions-map.svg" width="90%"></p>
+<p align="center"><img src="img/azure-regions-map.svg" width="99%"></p>
 
-- 
+--- 
 
-<p align="center"><img src="img/azure-network-map.svg" width="90%"></p>
+<p align="center"><img src="img/azure-network-map.svg" width="99%"></p>
 
--
+---
 
 **CosmosDB is a "ring 0" service available in all reqions.**
 

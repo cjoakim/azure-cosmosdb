@@ -25,7 +25,7 @@
 ## SQL (Document)
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/create-cosmosdb-resources-portal
-- https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started
+- [SQL Queries](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started)
 
 #### Sample Document 
 
@@ -49,6 +49,19 @@
   "creationDate": 1431620472,
   "isRegistered": true
 }
+```
+
+#### Sample Queries 
+
+```
+SELECT *
+FROM Families f
+WHERE f.id = "AndersenFamily"
+```
+
+```
+SELECT COUNT(1)
+FROM c
 ```
 
 ---

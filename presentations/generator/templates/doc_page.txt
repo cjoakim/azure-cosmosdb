@@ -1,4 +1,4 @@
-# {{ num }} - {{ name }}
+# {{ section_seq }} - {{ name }}
 
 {% for section in sections %}
 ## {{ section}}
@@ -6,4 +6,3 @@
 
 
 {% endfor %}
-

@@ -21,49 +21,80 @@ class Base(object):
 
     def __init__(self, line):
         self.line = line
-        self.tokens = tokens.split()
+        self.tokens = line.split(',')
 
 
 class Section(Base):
 
     def __init__(self, line):
         Base.__init__(self, line)  # Section,7,Other CosmosDB APIs
-        self.number = tokens[1]
-        self.name   = tokens[2]
+        self.number = self.tokens[1]
+        self.name   = self.tokens[2]
+        self.otype  = 'Section'
 
     def is_section(self):
         return True
 
     def is_page(self):
         return False
+
+    def is_page(self):
+        return False
+
+    def number_name(self):
+        return '{} - {}'.format(self.number, self.name)
+
+    def __str__(self):
+        obj = dict()
+        obj['type']   = self.otype
+        obj['number'] = self.number
+        obj['name']   = self.name
+        return json.dumps(obj, indent=2)
 
 
 class Page(Base):
 
-    def __init__(self, line, tokens, section_number, seq_number):
+    def __init__(self, line, section_number, seq_number):
         Base.__init__(self, line)
-        self.section_number = section_number
-        self.seq_number = seq_number
+        self.section_number = int(section_number)
+        self.seq_number = int(seq_number)
+        self.section_seq = '{:01d}.{:02d}'.format(self.section_number, self.seq_number)
+        self.sections = list()
+        self.name = None
+        self.filename = None
+        self.otype  = 'Page'
 
-    def page(self, line_idx, csv_line):
-        tokens = csv_line.split(',')
-        page_num = '{:02d}'.format(line_idx)
-        page_name = tokens[0]
-        page = {}
-        page['num'] = page_num
-        page['name'] = page_name
-        page['filename'] = '{}_{}.md'.format(page_num, page_name).lower().replace(' ','_')
-        page['sections'] = list()
-        for idx, tok in enumerate(tokens):
+        for idx, tok in enumerate(self.tokens):
             if idx > 0:
-                page['sections'].append(tok.strip())
-        return page
+                self.sections.append(tok.strip())
+            else:
+                self.name = tok.strip()
+
+        self.title = '{} {}'.format(self.section_seq, self.name)
+        self.filename = '{}_{}.md'.format(
+            self.section_seq.replace('.','_'), self.name).lower().replace(' ','_').replace('-','_')
 
     def is_section(self):
         return False
 
     def is_page(self):
         return True
+
+    def number_name(self):
+        return '{} - {}'.format(self.section_seq, self.name)
+
+    def template_data(self):
+        data = dict()
+        data['type']   = self.otype
+        data['section_seq'] = self.section_seq
+        data['name'] = self.name
+        data['sections'] = self.sections
+        data['title']    = self.title
+        data['filename'] = self.filename
+        return data 
+
+    def __str__(self):
+        return json.dumps(self.template_data(), indent=2)
 
 
 class MarkdownGenerator(object):    
@@ -73,20 +104,26 @@ class MarkdownGenerator(object):
 
     def generate(self):
         structure = self.documentation_structure()
-        print(structure)
+        for obj in structure:
+            print(obj)
 
-        # # Generate the List of Pages for the main README.md file to copy-and-paste
-        # for page_idx, page in enumerate(structure):
-        #     title = '{} - {}'.format(page['num'], page['name'])
-        #     print('- [{}]({})'.format(title, page['filename']))
+        # Generate the individual markdown pages
+        for page_idx, obj in enumerate(structure):
+            if obj.is_page():
+                template_name = 'doc_page.txt'
+                outfile = 'tmp/{}'.format(obj.filename)
+                self.render_template(template_name, obj.template_data(), outfile)
 
-        # # Generate the individual markdown pages
-        # for page_idx, page in enumerate(structure):
-        #     print(json.dumps(page, sort_keys=False, indent=2))
-        #     template_data = page
-        #     template_name = 'doc_page.txt'
-        #     outfile = 'tmp/{}'.format(page['filename'])
-        #     self.render_template(template_name, template_data, outfile)
+        # Generate the List of Pages for the main README.md file to copy-and-paste
+        for page_idx, obj in enumerate(structure):
+            if obj.is_section():
+                print('')
+                print('## {}'.format(obj.number_name()))
+                print('')
+            else:
+                # title = '{} - {}'.format(page['num'], page['name'])
+                print('- [{}]({})'.format(obj.title, obj.filename))
+
 
     # https://github.com/cjoakim/azure-iot-cosmosdb-synapse/blob/main/presentation.md
 
@@ -96,12 +133,12 @@ class MarkdownGenerator(object):
         lines.append('Azure,IaaS,PaaS,Costs,Innovation,Provisioning,Pets vs Cattle,DevOps,Security,Marketplace')
         lines.append('NoSQL,Know SQL,Definition,Spectrum')
 
-        lines.append('Section,2,,CosmosDB Overview')
+        lines.append('Section,2,CosmosDB Overview')
         lines.append('CosmosDB APIs,Family of Databases,SQL(Document),Mongo,Cassandra,Gremlin/Graph,Table')
         lines.append('Cost Model')
 
         lines.append('Section,3,CosmosDB Features')
-        lines.append('CosmosDB Basics,PaaS Service,JSON,Schemaless,')
+        lines.append('CosmosDB Basics,PaaS Service,JSON,Schemaless')
         lines.append('CosmosDB Non-Features,Joins,Referential Integrity,Identity Columns')
         lines.append('Partitioning,Partition Key,Physical Partitions,Limits')
         lines.append('Request Units,Definition,Provisioned,Autoscale,Serverless')
@@ -110,7 +147,7 @@ class MarkdownGenerator(object):
         lines.append('Server Side Programming,Stored Procedures,UDFs,Triggers')
         lines.append('Change-Feed,Azure Functions,Pipelines')
         lines.append('TTL,Benefits,Redis')
-        lines.append('Spatial Support,GeoJson')
+        lines.append('Spatial Support,GeoJson,Query Examples')
         lines.append('Azure Monitor,Kusto')
 
         lines.append('Section,4,Design and Development')
@@ -144,7 +181,7 @@ class MarkdownGenerator(object):
         lines.append('Future API3')
 
         lines.append('Section,8,Summary')
-        lines.append('Thank you,Contact Info')
+        lines.append('Summary,Questions,Contact Info')
 
         curr_section_number, seq_number = 0, 0
 

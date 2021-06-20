@@ -9,17 +9,23 @@
 
 ## Definition
 
-> A NoSQL (originally referring to "non-SQL" or "non-relational") database provides a mechanism for storage and retrieval of data that is modeled in means other than the tabular relations used in relational databases.
+> A NoSQL (originally referring to "non-SQL" or "non-relational") database provides a mechanism for storage and retrieval of data that is modeled in means other than the tabular relations used in relational databases(1).
 
 See https://en.wikipedia.org/wiki/NoSQL
 
+(1) = my footnote, after 1990 and Dr. E.F. Codd
+
 Others models pre-dated Relational, such as hierarchical [IMS](https://www.ibm.com/it-infrastructure/z/ims)
+
+<p align="center"><img src="img/spacer-500.png" width="90%"></p>
 
 ---
 
 ## Spectrum
 
 <p align="center"><img src="img/spectrum-800.png" width="90%"></p>
+
+<p align="center"><img src="img/spacer-500.png" width="90%"></p>
 
 ---
 

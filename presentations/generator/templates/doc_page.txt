@@ -1,8 +1,12 @@
 # {{ section_seq }} - {{ name }}
 
+[toc:]({{toc_url}}) &nbsp; | [previous:]({{prev_url}}) &nbsp; | &nbsp; [next:]({{next_url}})
+
 {% for section in sections %}
 ## {{ section}}
 
 
 
 {% endfor %}
+
+[toc:]({{toc_url}}) &nbsp; | [previous:]({{prev_url}}) &nbsp; | &nbsp; [next:]({{next_url}})

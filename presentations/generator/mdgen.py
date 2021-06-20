@@ -25,6 +25,7 @@ class Base(object):
         self.url      = 'June_2021.md'
         self.next_url = 'June_2021.md'
         self.prev_url = 'June_2021.md'
+        self.toc_url  = 'June_2021.md'
 
 class Section(Base):
 
@@ -98,6 +99,7 @@ class Page(Base):
         data['url']      = self.url
         data['prev_url'] = self.prev_url
         data['next_url'] = self.next_url
+        data['toc_url']  = self.toc_url
         return data 
 
     def __str__(self):
@@ -125,7 +127,7 @@ class MarkdownGenerator(object):
         for obj in structure:
             print(obj)
 
-        if False:
+        if True:
             # Generate the individual markdown pages
             for obj_idx, obj in enumerate(structure):
                 if obj.is_page():
@@ -133,7 +135,7 @@ class MarkdownGenerator(object):
                     outfile = 'tmp/{}'.format(obj.filename)
                     self.render_template(template_name, obj.template_data(), outfile)
 
-        if False:
+        if True:
             # Generate the List of Pages for the main README.md file to copy-and-paste
             for obj_idx, obj in enumerate(structure):
                 if obj.is_section():

@@ -1,7 +1,5 @@
 # 2.01 - CosmosDB APIs
 
-[toc](June_2021.md) &nbsp; |  &nbsp; [previous](June_2021.md) &nbsp; | &nbsp; [next](2_02_cost_model.md) &nbsp;
-
 
 ## Family of Databases
 

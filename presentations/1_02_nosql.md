@@ -25,16 +25,41 @@ Others models pre-dated Relational, such as hierarchical [IMS](https://www.ibm.c
 
 <p align="center"><img src="img/spectrum-800.png" width="80%"></p>
 
-## 
-
 Think of relational databases as the narrow (i.e. - ANSI standard) but dense band of 
 wavelengths that is visible light.
 
-NoSQL is all the other wavelengths.
+NoSQL is all the other wavelengths; there is tremendous variety.
+
+---
+
+## Example NoSQL Databases
+
+- [Redis](https://redis.io/)
+- [Apache HBase](https://hbase.apache.org/)
+- [Apache Cassandra](https://hbase.apache.org/)
+- [Apache CouchDB](https://couchdb.apache.org/)
+- [Apache TinkerPop / Gremlin](https://tinkerpop.apache.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [CosmosDB](https://azure.microsoft.com/en-us/services/cosmos-db/)
+- ...many more...
 
 <p align="center"><img src="img/spacer-300.png" width="90%"></p>
 
 ---
+
+## CAP Theorem
+
+> In theoretical computer science, the CAP theorem, also named Brewer's theorem after computer scientist Eric Brewer,
+> states that it is impossible for a distributed data store to simultaneously provide more than two out of the following
+> three guarantees:
+> 1) Consistency: Every read receives the most recent write or an error
+> 2) Availability: Every request receives a (non-error) response, without the guarantee that it contains the most recent write
+> 3) Partition tolerance: The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes
+
+See https://en.wikipedia.org/wiki/CAP_theorem
+
+<p align="center"><img src="img/cap_theorem.jpeg" width="80%"></p>
+
 
 ## What is Isn't
 

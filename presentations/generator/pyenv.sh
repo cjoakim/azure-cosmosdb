@@ -5,7 +5,7 @@
 # Chris Joakim, 2020/12/17
 
 # These are the only two values that need to change between projects:
-venv_name="presentations"
+venv_name="cosmos_pres_gen"
 python_version="3.8.6"  # 3.7.9
 
 echo '=== creating virtualenv '$venv_name

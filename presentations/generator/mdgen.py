@@ -23,10 +23,13 @@ class Base(object):
         self.line = line
         self.tokens = tokens.split()
 
+
 class Section(Base):
 
     def __init__(self, line):
-        Base.__init__(self, line)
+        Base.__init__(self, line)  # Section,7,Other CosmosDB APIs
+        self.number = tokens[1]
+        self.name   = tokens[2]
 
     def is_section(self):
         return True
@@ -37,8 +40,10 @@ class Section(Base):
 
 class Page(Base):
 
-    def __init__(self, line, tokens):
+    def __init__(self, line, tokens, section_number, seq_number):
         Base.__init__(self, line)
+        self.section_number = section_number
+        self.seq_number = seq_number
 
     def page(self, line_idx, csv_line):
         tokens = csv_line.split(',')
@@ -68,19 +73,20 @@ class MarkdownGenerator(object):
 
     def generate(self):
         structure = self.documentation_structure()
+        print(structure)
 
-        # Generate the List of Pages for the main README.md file to copy-and-paste
-        for page_idx, page in enumerate(structure):
-            title = '{} - {}'.format(page['num'], page['name'])
-            print('- [{}]({})'.format(title, page['filename']))
+        # # Generate the List of Pages for the main README.md file to copy-and-paste
+        # for page_idx, page in enumerate(structure):
+        #     title = '{} - {}'.format(page['num'], page['name'])
+        #     print('- [{}]({})'.format(title, page['filename']))
 
-        # Generate the individual markdown pages
-        for page_idx, page in enumerate(structure):
-            print(json.dumps(page, sort_keys=False, indent=2))
-            template_data = page
-            template_name = 'doc_page.txt'
-            outfile = 'tmp/{}'.format(page['filename'])
-            self.render_template(template_name, template_data, outfile)
+        # # Generate the individual markdown pages
+        # for page_idx, page in enumerate(structure):
+        #     print(json.dumps(page, sort_keys=False, indent=2))
+        #     template_data = page
+        #     template_name = 'doc_page.txt'
+        #     outfile = 'tmp/{}'.format(page['filename'])
+        #     self.render_template(template_name, template_data, outfile)
 
     # https://github.com/cjoakim/azure-iot-cosmosdb-synapse/blob/main/presentation.md
 
@@ -140,11 +146,18 @@ class MarkdownGenerator(object):
         lines.append('Section,8,Summary')
         lines.append('Thank you,Contact Info')
 
+        curr_section_number, seq_number = 0, 0
+
         for line_idx, line in enumerate(lines):
             if line.lower().startswith('section,'):
-                structure.append(Section(line))
+                s = Section(line)
+                curr_section_number = s.number
+                seq_number = 0
+                structure.append(s)
             else:
-                structure.append(Page(line))
+                seq_number = seq_number + 1
+                p = Page(line, curr_section_number, seq_number)
+                structure.append(p)
         return structure
 
     def timestamp(self):

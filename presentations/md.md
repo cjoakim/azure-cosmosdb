@@ -17,6 +17,20 @@
   </tr>
 </table>
 
+---
+<table width="100%" border="1">
+  <tr width="100%">
+    <td align="left">
+        <img src="icons/bytesize-icons/dist/icons/arrow-top.svg">
+    </td>
+    <td align="center" width="80%"> </td>
+    <td align="right">
+        <img src="icons/bytesize-icons/dist/icons/arrow-bottom.svg">
+    </td>
+  </tr>
+</table>
+
+
 <a href="default.asp"><img src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;"></a>
 
 [prev](#A) [next](#E)

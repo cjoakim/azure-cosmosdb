@@ -40,7 +40,7 @@ Think of relational databases as the narrow (i.e. - **ANSI SQL standard**) but d
 - [CosmosDB](https://azure.microsoft.com/en-us/services/cosmos-db/)
 - ...many more...
 
-<p align="center"><img src="img/spacer-300.png" width="90%"></p>
+<p align="center"><img src="img/spacer-100.png" width="90%"></p>
 
 ---
 
@@ -57,6 +57,8 @@ See https://en.wikipedia.org/wiki/CAP_theorem
 
 <p align="center"><img src="img/cap_theorem.jpeg" width="80%"></p>
 
+<p align="center"><img src="img/spacer-100.png" width="90%"></p>
+
 ---
 
 ## Why use NoSQL?
@@ -68,6 +70,8 @@ See https://en.wikipedia.org/wiki/CAP_theorem
 - High Availability.  Your data is stored on multiple nodes
 - Storage is relatively very inexpensive now, vs 1970.  3NF not necessary.
 - New types of applications, such as IoT, Social Networks, Graph
+
+<p align="center"><img src="img/spacer-100.png" width="90%"></p>
 
 ---
 

@@ -74,7 +74,24 @@ FROM c
 #### Sample Document 
 
 ```
-TODO
+{
+	"_id" : ObjectId("60c7a79dd1f7c4fc858b5456"),
+	"airport_id" : "5841",
+	"name" : "Captain Ramon Xatruch Airport",
+	"city" : "La Palma",
+	"country" : "Panama",
+	"iata_code" : "PLP",
+	"icao_code" : "MPLP",
+	"latitude" : "8.406669616699219",
+	"longitude" : "-78.1417007446289",
+	"altitude" : "30",
+	"timezone_num" : "-5",
+	"dst" : "U",
+	"timezone_code" : "America/Panama",
+	"type" : "airport",
+	"source" : "OurAirports",
+	"pk" : "Captain Ramon Xatruch Airport"
+}
 ```
 
 ---

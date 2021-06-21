@@ -15,9 +15,9 @@ See https://en.wikipedia.org/wiki/NoSQL
 
 (1) = my footnote, after 1990 and Dr. E.F. Codd
 
-Others models pre-dated Relational, such as hierarchical [IMS](https://www.ibm.com/it-infrastructure/z/ims)
+Others models pre-dated Relational, such as **hierarchical** [IMS](https://www.ibm.com/it-infrastructure/z/ims)
 
-<p align="center"><img src="img/spacer-300.png" width="90%"></p>
+<p align="center"><img src="img/spacer-100.png" width="90%"></p>
 
 ---
 
@@ -25,14 +25,11 @@ Others models pre-dated Relational, such as hierarchical [IMS](https://www.ibm.c
 
 <p align="center"><img src="img/spectrum-800.png" width="80%"></p>
 
-Think of relational databases as the narrow (i.e. - ANSI standard) but dense band of 
-wavelengths that is visible light.
+Think of relational databases as the narrow (i.e. - **ANSI SQL standard**) but dense band of wavelengths that is visible light.
 
-NoSQL is all the other wavelengths; there is tremendous variety.
+**NoSQL is all the other wavelengths; there is tremendous variety**.
 
----
-
-## Example NoSQL Databases
+## Example NoSQL Databases/Datastores
 
 - [Redis](https://redis.io/)
 - [Apache HBase](https://hbase.apache.org/)
@@ -62,7 +59,19 @@ See https://en.wikipedia.org/wiki/CAP_theorem
 
 ---
 
-## What is Isn't
+## Why use NoSQL?
+
+- Size of data; horizontally distributed
+- Speed of throughput; capable of millions of operations per second
+- Development Speed and Agility.  Schemaless
+- End-to-End JSON applications, reduce transformations, increase speed
+- High Availability.  Your data is stored on multiple nodes
+- Storage is relatively very inexpensive now, vs 1970.  3NF not necessary.
+- New types of applications, such as IoT, Social Networks, Graph
+
+---
+
+## What NoSQL Isn't
 
 <p align="center"><img src="img/AdventureWorksLT-ERD.png" width="70%"></p>
 

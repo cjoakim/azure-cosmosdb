@@ -18,9 +18,10 @@ See https://azure.microsoft.com/en-us/overview/what-is-azure/iaas/
 **Platform-as-a-Service** 
 
 - Completely Managed by the Cloud Provider
-- Serverless
+- "Serverless"
 - Scalable
 - **CosmosDB is PaaS**
+- Azure App Service, Azure Synapse, Azure EventHubs, etc. are PaaS
 
 See https://azure.microsoft.com/en-us/overview/what-is-paas/
 
@@ -28,19 +29,22 @@ See https://azure.microsoft.com/en-us/overview/what-is-paas/
 
 ## Advantages of Cloud
 
-- On-demand scalability
+- Provisioning Model
+- On-demand Scalability
 - No on-site hardware required
-- Cost-effective subscription model
-- High availability
+- Cost-effective Subscription model
+- High availability, SLAs
 - Enterprise-level development tools
-- World-class cybersecurity
-- Advanced compliance features
+- World-class Cybersecurity
+- Advanced Compliance features
 
 See https://www.actsolution.net/blog/what-are-the-business-benefits-of-microsoft-azure-cloud/
 
 --
 
-## Azure Regions and High-Speed Fibre Network
+## Azure Regions and High-Speed Fiber Network
+
+Locate your Azure Services close to your customers.  Replication.
 
 <p align="center"><img src="img/azure-regions-map.svg" width="99%"></p>
 
@@ -98,7 +102,7 @@ See http://cloudscaling.com/blog/cloud-computing/the-history-of-pets-vs-cattle/
 
 ---
 
-## Provisioning
+## Provisioning Azure Resources
 
 - Manually in the Azure Portal Web UI (https://portal.azure.com/)
 - [Azure PowerShell cmdlets](https://docs.microsoft.com/en-us/powershell/azure/?view=azps-6.1.0)
@@ -119,7 +123,7 @@ See https://docs.microsoft.com/en-us/azure/developer/python/cloud-development-pr
 > DevOps is complementary with Agile software development; several DevOps aspects came from the Agile methodology.
 
 - [Wikipedia](https://en.wikipedia.org/wiki/DevOps)
-- [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/)
+- [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/): boards, repos, pipelines, artifacts, testing
 
 ---
 
@@ -127,7 +131,7 @@ See https://docs.microsoft.com/en-us/azure/developer/python/cloud-development-pr
 
 - https://azure.microsoft.com/en-us/overview/trusted-cloud/compliance/
 - https://docs.microsoft.com/en-us/azure/compliance/
-- [ATP](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/introducing-azure-advanced-threat-protection/ba-p/250332)
+- [Advanced Threat Protection (ATP)](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/introducing-azure-advanced-threat-protection/ba-p/250332)
 
 ---
 

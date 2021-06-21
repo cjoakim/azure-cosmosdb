@@ -27,7 +27,7 @@
 - https://docs.microsoft.com/en-us/azure/cosmos-db/create-cosmosdb-resources-portal
 - [SQL Queries](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started)
 
-#### Sample Document 
+#### Sample Document (JSON)
 
 ```
 {
@@ -71,7 +71,7 @@ FROM c
 - https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction
 - https://www.mongodb.com/
 
-#### Sample Document 
+#### Sample Document (JSON)
 
 ```
 {

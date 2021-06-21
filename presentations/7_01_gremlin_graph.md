@@ -2,7 +2,7 @@
 
 ## Sample Graph
 
-<p align="center"><img src="img/sample-graph.png" width="
+<p align="center"><img src="img/sample-graph.png" width="90%"></p>
 
 ## Apache Tinkerpop
 

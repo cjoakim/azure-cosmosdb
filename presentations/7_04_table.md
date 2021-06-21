@@ -8,7 +8,7 @@
 
 ## UI Example
 
-<p align="center"><img src="img/table-api.png" width="
+<p align="center"><img src="img/table-api.png" width="90%"></p>
 
 
 ---

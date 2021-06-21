@@ -13,13 +13,15 @@
 
 #### Integrated Mongo Shell in Azure Portal
 
-<p align="center"><img src="img/mongo-shell-in-azure-portal.png" width="
+<p align="center"><img src="img/mongo-shell-in-azure-portal.png" width="90%"></p>
 
+---
 
 #### Works with your existing UI tools, like Studio 3T
 
-<p align="center"><img src="img/studio-3T.png" width="
+<p align="center"><img src="img/studio-3T.png" width="90%"></p>
 
+---
 
 ## Mongo-to-CosmosDB Migration
 

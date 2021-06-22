@@ -81,7 +81,8 @@ function createHistoryDoc(pk, id) {
 
 ## User Defined Functions (UDFs)
 
-- Enables to extend the SQL language for your app
+- Enables you to **extend the SQL language** for your application
+- Enables your SQL queries to read more fluently
 
 ### Definition of a UDF
 

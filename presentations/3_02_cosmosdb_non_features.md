@@ -2,10 +2,12 @@
 
 ## CosmosDB does not implement these features
 
+- Schema
+- Datatype Enforcement
+- Identity Columns
 - Joins
 - Referential Integrity
-- Datatype enforcement
-- Identity Columns
+- Cascading Deletes
 
 Also, CosmosDB has a limited scope for **transactions**.
 

@@ -31,6 +31,18 @@ CosmosDB uses **partitions** to horizontally distrubute your data across multipl
 - A physical partition will store the data for 1 or more 
 - Each logical partition can store **up to 50GB** of data
 
+## Implementation
+
+- Replica Sets
+- Four copies of your data
+- Partition Sets (multi-region)
+
+<p align="center"><img src="img/cosmosdb-logical-and-physical-partitions.png" width="90%"></p>
+
+See https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood
+
+---
+
 ## Limits
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/concepts-limits

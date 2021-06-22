@@ -37,6 +37,15 @@ TODO
 - You can, and typically will, store disimilar documents in the same container
 - Won't that "break" my SQL queries?  No
 
+
+## Collections
+
+- A **collection** is a group of documents
+- Your **database** can have 1-to-many collections
+- Have **25 or fewer collections pre database to take advantage of Database Level Shared Throughput**
+- Again, there is **no schema**
+
+
 #### Sample Query
 
 ```

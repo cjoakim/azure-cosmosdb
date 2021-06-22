@@ -96,28 +96,51 @@ FROM c
 
 ---
 
+## Gremlin/Graph API
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/graph-introduction
+- https://tinkerpop.apache.org/
+
+### Concepts
+
+- Vertices
+- Edges
+- Properties
+- Traversal
+
+<p align="center"><img src="img/sample-graph.png" width="90%"></p>
+
+---
+
 ## Cassandra API
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-introduction
 - https://cassandra.apache.org/
 - [CQL](https://cassandra.apache.org/doc/latest/cql/index.html)
 
-<p align="center"><img src="img/cassandra-keyspace.png" width="90%"></p>
+### Concepts
 
----
+- Ring, Masterless
+- Keyspace
+- Table
+- Row Key / Primary Key / Composite Key / Clusterung Column
+- Columns are Key-Value pairs, variable, "wide-column"
+- CQL - Cassandra Query Language
 
-## Gremlin/Graph API
-
-- https://docs.microsoft.com/en-us/azure/cosmos-db/graph-introduction
-- https://tinkerpop.apache.org/
-
-<p align="center"><img src="img/sample-graph.png" width="90%"></p>
+<p align="center"><img src="img/cassandra-keyspace2.png" width="90%"></p>
 
 ---
 
 ## Table API
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction
+- https://docs.microsoft.com/en-us/azure/cosmos-db/create-table-dotnet
+
+### Concepts
+
+- Tables/Entities
+- Properties
+- Query with OData, or Linq
 
 <p align="center"><img src="img/table-api.png" width="90%"></p>
 

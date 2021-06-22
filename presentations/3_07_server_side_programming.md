@@ -101,7 +101,7 @@ SELECT c.pk, c.City, c.Name FROM c WHERE udf.southEastUsa(c.pk)
 
 ## Triggers
 
-- They don't work as you might expect like in relational databases
+- They don't work as you might expect as in relational databases
   - They don't run automatically
   - Your client code has to request their invocation
   - Think of them as a remote reusable method

@@ -40,5 +40,6 @@
 - [Request Units](https://docs.microsoft.com/en-us/azure/cosmos-db/request-units)
 - [Serverless](https://docs.microsoft.com/en-us/azure/cosmos-db/serverless)
 
+---
 
 [toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](3_03_partitioning.md) &nbsp; | &nbsp; [next](3_05_multi_region.md) &nbsp;

@@ -3,8 +3,8 @@
 
 ## Monitor From
 
-- Azure Portal
-- Azure Monitor
+- CosmosDB Azure Portal
+- Azure Monitor (aka - LogAnalytics)
 - Programming SDKs
 
 

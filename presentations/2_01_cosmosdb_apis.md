@@ -10,6 +10,7 @@
 - Compute, Storage, Request Units, Monitoring, etc.
 - But implements several **wire protocols**, one per **API** type
 - **An individual CosmosDB Account is just one of the above APIs** (not all)
+- Edge Case: Gremlin and SQL APIs in a Gremlin account
 
 ---
 

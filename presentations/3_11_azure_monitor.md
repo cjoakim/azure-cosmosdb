@@ -1,12 +1,11 @@
 # 3.11 - Azure Monitor
 
 
-## Monitor From
+## Monitor CosmosDB From:
 
 - CosmosDB Azure Portal
 - Azure Monitor (aka - LogAnalytics)
 - Programming SDKs
-
 
 ## Links
 

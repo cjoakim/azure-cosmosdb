@@ -22,7 +22,7 @@ CosmosDB uses **partitions** to horizontally distrubute your data across multipl
 
 ## Logical Partitions
 
-- A logical partition is the set of all of the documents for a given **partition key value**
+- A logical partition is the set of all of the documents with a given **partition key value**
 - Each logical partition can store **up to 20GB** of data
 - 2 MB (UTF-8 length of JSON representation) document size limit
 

@@ -76,7 +76,7 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/concepts-limits
 - https://docs.microsoft.com/en-us/azure/cosmos-db/database-transactions-optimistic-concurrency
 
 
-#### Sample Queries
+## Sample Queries
 
 ```
 SELECT * FROM c where c.pk = 'CLT'

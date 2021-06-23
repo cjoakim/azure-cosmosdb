@@ -77,26 +77,34 @@ SELECT COUNT(1) FROM c
 - https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction
 - https://www.mongodb.com/
 
+#### JSON Query Syntax
+
+```
+db.games.find({"name": "Allyson Michelle Felix"}).limit(1)
+```
+
 #### Sample Document (JSON)
 
 ```
-{
-	"_id" : ObjectId("60c7a79dd1f7c4fc858b5456"),
-	"airport_id" : "5841",
-	"name" : "Captain Ramon Xatruch Airport",
-	"city" : "La Palma",
-	"country" : "Panama",
-	"iata_code" : "PLP",
-	"icao_code" : "MPLP",
-	"latitude" : "8.406669616699219",
-	"longitude" : "-78.1417007446289",
-	"altitude" : "30",
-	"timezone_num" : "-5",
-	"dst" : "U",
-	"timezone_code" : "America/Panama",
-	"type" : "airport",
-	"source" : "OurAirports",
-	"pk" : "Captain Ramon Xatruch Airport"
+{ 
+    "_id" : ObjectId("60c7a7f55a32afd5a4c4245c"), 
+    "name" : "Allyson Michelle Felix", 
+    "sex" : "f", 
+    "age" : "26", 
+    "height" : "168.0", 
+    "weight" : "56.0", 
+    "team" : "united states", 
+    "noc" : "usa", 
+    "games" : "2012_summer", 
+    "year" : "2012", 
+    "season" : "summer", 
+    "city" : "london", 
+    "sport" : "athletics", 
+    "event" : "athletics womens 100 metres", 
+    "medal" : "", 
+    "medal_value" : "0", 
+    "pk" : "2012_summer", 
+    "doctype" : "2012_summer", 
 }
 ```
 

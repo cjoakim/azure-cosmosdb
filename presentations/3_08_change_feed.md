@@ -8,10 +8,12 @@
 
 See https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed
 
-### Notes:
+### Notes
 
 - It **can be replayed**
 - It **can be read from the beginning, or from a given point in time**
+- **Delete operations are not currently in the stream**
+  - Full Fidelity change-feed is in development
 - Uses a **leases container** to maintain state; a pointer into the stream
   - Thus the leases container **incurs RUs** as you read the change feed
 - Is typically read by **Azure Functions**
@@ -46,7 +48,7 @@ etc, etc
 
 ---
 
-## SDKs
+## Examples
 
 Java/Spring example at https://github.com/cjoakim/azure-cosmosdb-changefeed 
 

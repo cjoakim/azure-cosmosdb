@@ -157,6 +157,8 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/index-policy
 - You can specify which parts of your documents to **include/exclude, by path**
 - Best practice is to use indexing to optimize your queries after initial design and development
 
+<p align="center"><img src="img/indexing-settings-in-portal.png" width="90%"></p>
+
 ## Composite Indexes
 
 

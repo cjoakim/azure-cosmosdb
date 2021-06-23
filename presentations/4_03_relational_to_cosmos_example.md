@@ -5,7 +5,7 @@
 
 <p align="center"><img src="img/rotary-phone.jpg" width="75%"></p>
 
-<p align="center"><img src="img/spacer-300.png" width="90%"></p>
+<p align="center"><img src="img/spacer-100.png"></p>
 
 ---
 
@@ -15,7 +15,7 @@ What does the future look like?
 
 <p align="center"><img src="img/steve-jobs-iphone.jpg" width="90%"></p>
 
-<p align="center"><img src="img/spacer-300.png" width="90%"></p>
+<p align="center"><img src="img/spacer-100.png"></p>
 
 ---
 

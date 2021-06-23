@@ -9,6 +9,7 @@ You can choose to replicate your CosmosDB account across 2 or more regions.
 - Enables your data to be locally accessed by your app and customers; reduces latency   
 - Single-master or Multi-Master
 - There is an egress charge
+- You can simulate a regional outage to test business continuity
 
 See https://docs.microsoft.com/en-us/azure/cosmos-db/distribute-data-globally
 
@@ -42,17 +43,19 @@ These define how your data is replicated
 - Last Write Wins (LWW), or Custom
 - https://docs.microsoft.com/en-us/azure/cosmos-db/conflict-resolution-policies
 
-<p align="center"><img src="img/managing-conflicts.jpeg" width="70%"></p>
+<p align="center"><img src="img/managing-conflicts.jpeg" width="40%"></p>
 
 
 #### DotNet example
 
 ```
-// Override consistency at the client level (to Eventual)
+// Override consistency at the SDK client level (to Eventual)
+
 documentClient = new DocumentClient(
     new Uri(endpoint), authKey, connectionPolicy, ConsistencyLevel.Eventual);
 
-// Override consistency at the request level via request options
+// Furthermore, you can override consistency at the Request level via request options
+
 RequestOptions requestOptions = new RequestOptions {
     ConsistencyLevel = ConsistencyLevel.Eventual };
 
@@ -68,23 +71,24 @@ var response = await client.CreateDocumentAsync(
 
 ```
 // Getting endpoints from application settings or other configuration location
+
 Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
 string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
   
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 
-//Setting read region selection preference
+// Setting read region selection preference
 connectionPolicy.PreferredLocations.Add(LocationNames.WestUS);      // first preference
 connectionPolicy.PreferredLocations.Add(LocationNames.EastUS);      // second preference
 connectionPolicy.PreferredLocations.Add(LocationNames.NorthEurope); // third preference
 
-// initialize connection
+// Initialize connection
 DocumentClient docClient = new DocumentClient(
     accountEndPoint,
     accountKey,
     connectionPolicy);
 
-// connect to DocDB
+// Connect to DocDB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
@@ -108,6 +112,7 @@ CosmosAsyncClient client =
 ## Links
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-multi-master?tabs=api-async
+- [Mark Brown Global Distribution Demo](https://github.com/markjbrown/cosmos-global-distribution-demos)
 
 ---
 

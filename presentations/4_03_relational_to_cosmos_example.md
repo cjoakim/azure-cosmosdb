@@ -65,12 +65,12 @@ select * from c where c.pk = "XK1123" and c.doctype in ("order", "lineitem")
 
 ---
 
-## Adventureworks
+## GitHub Examples: Adventureworks, etc
 
 <p align="center"><img src="img/AdventureWorksLT-ERD.png" width="70%"></p>
 
-See GitHub repo https://github.com/cjoakim/azure-adventureworks-to-cosmos
-
+- [cjoakim Adventureworks Azure SQL example](https://github.com/cjoakim/azure-adventureworks-to-cosmos)
+- [Mark Brown CosmicWorks example](https://github.com/markjbrown/CosmicWorks)
 
 ---
 

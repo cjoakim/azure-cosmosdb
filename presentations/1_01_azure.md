@@ -42,15 +42,17 @@ See https://www.actsolution.net/blog/what-are-the-business-benefits-of-microsoft
 
 --
 
-## Azure Regions and High-Speed Fiber Network
+## Azure Regions
 
 Locate your Azure Services close to your customers.  Replication.
 
-<p align="center"><img src="img/azure-regions-map.svg" width="99%"></p>
+<p align="center"><img src="img/azure-regions-map.svg" width="80%"></p>
 
 --- 
 
-<p align="center"><img src="img/azure-network-map.svg" width="99%"></p>
+## Azure High-Speed Fiber Network
+
+<p align="center"><img src="img/azure-network-map.svg" width="80%"></p>
 
 ---
 
@@ -129,6 +131,15 @@ See https://docs.microsoft.com/en-us/azure/developer/python/cloud-development-pr
 
 ## Security & Compliance
 
+### Pervasive Features
+
+- Encryption at Rest
+- Encryption in Flight
+- Azure Active Directory and RBAC
+- AI-driven Monitoring based on our vast history
+
+### Links
+
 - https://azure.microsoft.com/en-us/overview/trusted-cloud/compliance/
 - https://docs.microsoft.com/en-us/azure/compliance/
 - [Advanced Threat Protection (ATP)](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/introducing-azure-advanced-threat-protection/ba-p/250332)
@@ -137,7 +148,7 @@ See https://docs.microsoft.com/en-us/azure/developer/python/cloud-development-pr
 
 ## Marketplace
 
-> Search from a rich catalog of more than 17,000 certified apps and services, deploy seamlessly, and simplify billing with a single bill for all Microsoft and third-party solutions.
+> Search from a rich catalog of more than **17,000 certified apps and services**, deploy seamlessly, and simplify billing with a single bill for all Microsoft and third-party solutions.
 
 See Azure Portal.
 

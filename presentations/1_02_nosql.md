@@ -31,6 +31,8 @@ Think of relational databases as the narrow (i.e. - **ANSI SQL standard**) but d
 
 <p align="center"><img src="img/spacer-100.png"></p>
 
+---
+
 ## Example NoSQL Databases/Datastores
 
 - [Redis](https://redis.io/)
@@ -59,7 +61,7 @@ Think of relational databases as the narrow (i.e. - **ANSI SQL standard**) but d
 
 See https://en.wikipedia.org/wiki/CAP_theorem
 
-<p align="center"><img src="img/cap_theorem.jpeg" width="50%"></p>
+<p align="center"><img src="img/CAP-Theorem.png" width="50%"></p>
 
 <p align="center"><img src="img/spacer-100.png"></p>
 

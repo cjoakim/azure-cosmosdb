@@ -27,7 +27,31 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/concepts-limits
 #### Sample Document
 
 ```
-TODO
+{
+   "altitude": "748",
+   "city": "Charlotte",
+   "country": "United States",
+   "iata_code": "CLT",
+   "id": "4b98b172-2e9e-11ea-a7b6-7fc29890ecb3",
+   "latitude": "35.214",
+   "location": {
+      "coordinates": [
+            -80.943139,
+            35.214
+      ],
+      "type": "Point"
+   },
+   "longitude": "-80.943139",
+   "name": "Charlotte Douglas Intl",
+   "pk": "CLT",
+   "timezone_code": "America/New_York",
+   "timezone_num": "-5",
+   "_rid": "LK8RAJxYN85mAQAAAAAAAA==",
+   "_self": "dbs/LK8RAA==/colls/LK8RAJxYN84=/docs/LK8RAJxYN85mAQAAAAAAAA==/",
+   "_etag": "\"0e028935-0000-0100-0000-60ccf8090000\"",
+   "_attachments": "attachments/",
+   "_ts": 1624045577
+}
 ```
 
 ## Schemaless
@@ -44,6 +68,12 @@ TODO
 - Your **database** can have 1-to-many collections
 - Have **25 or fewer collections pre database to take advantage of Database Level Shared Throughput**
 - Again, there is **no schema**
+
+
+## Optimistic Concurrency Control (OCC)
+
+- Uses the **_etag** system-generated value
+- https://docs.microsoft.com/en-us/azure/cosmos-db/database-transactions-optimistic-concurrency
 
 
 #### Sample Query

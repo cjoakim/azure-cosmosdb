@@ -3,9 +3,9 @@
 
 ## A Family of NOSQL Databases
 
-<p align="center"><img src="img/azure-cosmos-db-intro.png" width="75%"></p>
+<p align="center"><img src="img/azure-cosmos-db-intro.png" width="80%"></p>
 
-#### Common Foundation
+#### CosmosDB Common Foundation
 
 - Compute, Storage, Request Units, Monitoring, etc.
 - But implements several **wire protocols**, one per **API** type
@@ -32,37 +32,42 @@
 
 ```
 {
-  "id": "AndersenFamily",
-  "lastName": "Andersen",
-  "parents": [
-     { "firstName": "Thomas" },
-     { "firstName": "Mary Kay"}
-  ],
-  "children": [
-     {
-         "firstName": "Henriette Thaulow",
-         "gender": "female",
-         "grade": 5,
-         "pets": [{ "givenName": "Fluffy" }]
-     }
-  ],
-  "address": { "state": "WA", "county": "King", "city": "Seattle" },
-  "creationDate": 1431620472,
-  "isRegistered": true
+   "altitude": "748",
+   "city": "Charlotte",
+   "country": "United States",
+   "iata_code": "CLT",
+   "id": "4b98b172-2e9e-11ea-a7b6-7fc29890ecb3",
+   "latitude": "35.214",
+   "location": {
+      "coordinates": [
+            -80.943139,
+            35.214
+      ],
+      "type": "Point"
+   },
+   "longitude": "-80.943139",
+   "name": "Charlotte Douglas Intl",
+   "pk": "CLT",
+   "timezone_code": "America/New_York",
+   "timezone_num": "-5",
+   "_rid": "LK8RAJxYN85mAQAAAAAAAA==",
+   "_self": "dbs/LK8RAA==/colls/LK8RAJxYN84=/docs/LK8RAJxYN85mAQAAAAAAAA==/",
+   "_etag": "\"0e028935-0000-0100-0000-60ccf8090000\"",
+   "_attachments": "attachments/",
+   "_ts": 1624045577
 }
 ```
 
-#### Sample Queries 
+Note the **several system-generated underscored attributes** - such as **_ts**, and **_etag**
+
+#### Sample Queries
 
 ```
-SELECT *
-FROM Families f
-WHERE f.id = "AndersenFamily"
+SELECT * FROM c where c.pk = 'CLT'
 ```
 
 ```
-SELECT COUNT(1)
-FROM c
+SELECT COUNT(1) FROM c
 ```
 
 ---

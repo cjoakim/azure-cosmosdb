@@ -10,6 +10,7 @@ These are **relational concepts**.
 - Joins to other Collections
 - Referential Integrity
 - Cascading Deletes
+- Locking (OCC instead, with _etag)
 
 Also, CosmosDB has a limited scope for **transactions**.
 

@@ -3,7 +3,7 @@
 
 ## Standard Telephone Design 1960-2006
 
-<p align="center"><img src="img/rotary-phone.jpg" width="75%"></p>
+<p align="center"><img src="img/rotary-phone.jpg" width="50%"></p>
 
 <p align="center"><img src="img/spacer-100.png"></p>
 
@@ -13,7 +13,7 @@
 
 What does the future look like?
 
-<p align="center"><img src="img/steve-jobs-iphone.jpg" width="90%"></p>
+<p align="center"><img src="img/steve-jobs-iphone.jpg" width="80%"></p>
 
 <p align="center"><img src="img/spacer-100.png"></p>
 
@@ -67,7 +67,7 @@ select * from c where c.pk = "XK1123" and c.doctype in ("order", "lineitem")
 
 ## GitHub Examples: Adventureworks, etc
 
-<p align="center"><img src="img/AdventureWorksLT-ERD.png" width="70%"></p>
+<p align="center"><img src="img/AdventureWorksLT-ERD.png" width="50%"></p>
 
 - [cjoakim Adventureworks Azure SQL example](https://github.com/cjoakim/azure-adventureworks-to-cosmos)
 - [Mark Brown CosmicWorks example](https://github.com/markjbrown/CosmicWorks)

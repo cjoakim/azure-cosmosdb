@@ -116,6 +116,27 @@ See http://cloudscaling.com/blog/cloud-computing/the-history-of-pets-vs-cattle/
 
 See https://docs.microsoft.com/en-us/azure/developer/python/cloud-development-provisioning
 
+See the **automation/** directory of this repo.
+
+### az CLI example - create a Resource Group, with CosmosDB
+
+```
+    az group create \
+        --location $cosmos_sql_region \
+        --name $cosmos_sql_rg \
+        --subscription $subscription
+
+    az cosmosdb create \
+        --name $cosmos_sql_acct_name \
+        --resource-group $cosmos_sql_rg \
+        --subscription $subscription \
+        --locations regionName=$cosmos_sql_region failoverPriority=0 isZoneRedundant=False \
+        --default-consistency-level $cosmos_sql_acct_consistency \
+        --enable-multiple-write-locations true \
+        --enable-analytical-storage true \
+        --kind $cosmos_sql_acct_kind
+```
+
 ---
 
 ## DevOps
@@ -135,7 +156,7 @@ See https://docs.microsoft.com/en-us/azure/developer/python/cloud-development-pr
 
 - Encryption at Rest
 - Encryption in Flight
-- Azure Active Directory and RBAC
+- Azure Active Directory (AAD) and RBAC
 - AI-driven Monitoring based on our vast history
 
 ### Links

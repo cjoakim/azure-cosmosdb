@@ -69,7 +69,7 @@ See https://en.wikipedia.org/wiki/CAP_theorem
 
 ## Why use NoSQL?
 
-- Size of data; horizontally distributed
+- Size of data; horizontally distributed, storage is inexpensive now
 - Speed of throughput; capable of millions of operations per second
 - Development Speed and Agility.  Schemaless
 - End-to-End JSON applications, reduce transformations, increase speed

@@ -3,7 +3,7 @@
 
 ## A Family of NOSQL Databases
 
-<p align="center"><img src="img/azure-cosmos-db-intro.png" width="99%"></p>
+<p align="center"><img src="img/azure-cosmos-db-intro.png" width="75%"></p>
 
 #### Common Foundation
 
@@ -109,7 +109,7 @@ FROM c
 - Properties
 - Traversal
 
-<p align="center"><img src="img/sample-graph.png" width="90%"></p>
+<p align="center"><img src="img/sample-graph.png" width="70%"></p>
 
 ---
 
@@ -117,7 +117,6 @@ FROM c
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-introduction
 - https://cassandra.apache.org/
-- [CQL](https://cassandra.apache.org/doc/latest/cql/index.html)
 
 ### Concepts
 
@@ -126,9 +125,10 @@ FROM c
 - Table
 - Row Key / Primary Key / Composite Key / Clusterung Column
 - Columns are Key-Value pairs, variable, "wide-column"
-- CQL - Cassandra Query Language
+- [CQL, Cassandra Query Language](https://cassandra.apache.org/doc/latest/cql/index.html)
 
-<p align="center"><img src="img/cassandra-keyspace2.png" width="90%"></p>
+
+<p align="center"><img src="img/cassandra-keyspace2.png" width="80%"></p>
 
 ---
 
@@ -143,7 +143,7 @@ FROM c
 - Properties
 - Query with OData, or Linq
 
-<p align="center"><img src="img/table-api.png" width="90%"></p>
+<p align="center"><img src="img/table-api.png" width="80%"></p>
 
 
 ---

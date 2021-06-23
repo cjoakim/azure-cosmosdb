@@ -47,9 +47,9 @@ These define how your data is replicated
 
 <p align="center"><img src="img/managing-conflicts.jpeg" width="40%"></p>
 
-## Configuration in Azure Portal 
+---
 
-<p align="center"><img src="img/conflict-resolution-in-portal.png" width="80%"></p>
+<p align="center"><img src="img/conflict-resolution-in-portal.png" width="70%"></p>
 
 #### DotNet example
 

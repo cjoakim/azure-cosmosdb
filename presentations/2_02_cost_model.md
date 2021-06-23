@@ -38,7 +38,7 @@ These are the components of CosmosDB pricing:
 
 ## RU Timeframe
 
-- It is a **per second** provisioned throughput, or "budget"
+- It is a **per second** provisioned throughput; think of it as a **"per second budget"**
 - SDK client receives a **HTTP 429 Too many requests** response if you exceed the provisioned throughput
 - The SDKs gracefully handle this and **retry up to 9 times**; ( 9 can be configured )
 

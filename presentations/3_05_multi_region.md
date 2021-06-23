@@ -22,11 +22,13 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/distribute-data-globally
 
 ## Consistency Levels
 
+These define how your data is replicated
+
 ### The Five Levels
 
 - Strong
 - Bounded staleness
-- Session
+- Session  (the default, read your own writes)
 - Consistent prefix
 - Eventual
 
@@ -34,6 +36,14 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/distribute-data-globally
 
 - Each Azure Cosmos **account has a default consistency level**
 - The default consistency level **can be overridden** on a per-operation basis
+
+### Conflict Resolution
+
+- Last Write Wins (LWW), or Custom
+- https://docs.microsoft.com/en-us/azure/cosmos-db/conflict-resolution-policies
+
+<p align="center"><img src="img/managing-conflicts.jpeg" width="70%"></p>
+
 
 #### DotNet example
 

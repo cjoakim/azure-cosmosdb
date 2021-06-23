@@ -17,7 +17,9 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/distribute-data-globally
 
 ---
 
-<p align="center"><img src="img/regional-deployment-and-replication.png" width="90%"></p>
+## Deployment Example
+
+<p align="center"><img src="img/regional-deployment-and-replication.png" width="70%"></p>
 
 ---
 

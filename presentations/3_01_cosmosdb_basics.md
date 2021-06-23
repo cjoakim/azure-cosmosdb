@@ -59,7 +59,7 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/concepts-limits
 - Other than the required **Partition Key** attribute, **there is no schema**
 - Your documents don't need to have the same **shape**
 - You can, and typically will, store disimilar documents in the same container
-- Won't that "break" my SQL queries?  No
+- Won't that "break" my SQL queries?  No!
 
 
 ## Collections
@@ -76,10 +76,14 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/concepts-limits
 - https://docs.microsoft.com/en-us/azure/cosmos-db/database-transactions-optimistic-concurrency
 
 
-#### Sample Query
+#### Sample Queries
 
 ```
-TODO
+SELECT * FROM c where c.pk = 'CLT'
+SELECT * FROM c where c.pk in ('CLT','ATL,'BDL')
+SELECT c.iata_code, c.city, c.name FROM c where c.pk in ('CLT','ATL','BDL')
+SELECT c.iata_code, c.city, c.name FROM c where c.pk in ('CLT','ATL','DEN') order by c.name
+SELECT COUNT(1) FROM c
 ```
 
 ---

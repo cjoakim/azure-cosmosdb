@@ -13,13 +13,13 @@ You can choose to replicate your CosmosDB account across 2 or more regions.
 
 See https://docs.microsoft.com/en-us/azure/cosmos-db/distribute-data-globally
 
-<p align="center"><img src="img/global-replication-in-portal.png" width="90%"></p>
+<p align="center"><img src="img/global-replication-in-portal.png" width="99%"></p>
 
 ---
 
 ## Deployment Example
 
-<p align="center"><img src="img/regional-deployment-and-replication.png" width="70%"></p>
+<p align="center"><img src="img/regional-deployment-and-replication.png" width="60%"></p>
 
 ---
 
@@ -67,7 +67,11 @@ var response = await client.CreateDocumentAsync(
 
 ---
 
-## Set PreferredLocations with SDKs
+## Set Preferred Locations with SDKs
+
+The list of preferred locations is usually configured with **environment variables**
+in your regionally-deployed services, and these values are read by your application
+code, rather than the hard-coding you see below.
 
 ### DotNet
 

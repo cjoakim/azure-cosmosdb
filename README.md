@@ -24,16 +24,7 @@ A collection of CosmosDB related [code](code/), [links](links.md), and [presenta
 │   ├── node                 
 │   └── python               
 │   └── rest                 HTTP REST API examples
-├── data                     Common data files used across this repo
-│   ├── airports
-│   ├── amtrak
-│   ├── graph
-│   │   ├── amtrak  
-│   │       ├── gremlin               
-│   │   └── bom              
-│   │       ├── gremlin      
-│   │       └── libs         
-│   └── postal               
+├── data                     Common data files used across this repo      
 ├── dbs                      CosmosDB DBMS-Specific files
 │   ├── cassandra
 │   ├── graph
@@ -42,7 +33,7 @@ A collection of CosmosDB related [code](code/), [links](links.md), and [presenta
 ├── functions                
 ├── live_data_migrator       
 ├── notebooks                
-├── presentations            
+├── presentations            start with file 0_table_of_contents.md          
 ├── server_side              Stored Prodedures, Triggers, UDF examples in js/ directory
 └── synapse_pyspark          
 ```
@@ -107,7 +98,7 @@ AZURE_COSMOSDB_SQLDB_URI
 
 <p align="center"><img src="presentations/img/azure-spx-20190427a.jpg" width="95%"></p>
 
-- Senior Cloud Solution Architect at Microsoft
+- **NoSQL Technical Specialist Global Black Belt at Microsoft**
 - Specializing in Data & AI, and **CosmosDB**
 - 30+ years of AppDev experience
 - 5-years of Azure Architect experience at Microsoft

@@ -2,14 +2,14 @@
 
 **Event-driven Serverless Compute**
 
-<p align="center"><img src="img/azure-functions.png" width="40%"></p>
+<p align="center"><img src="img/azure-functions.png" width="25%"></p>
 
 ## Features
 
 - PaaS Service
 - Serverless
 - Scalable
-- EventDriven
+- EventDriven, many possible [Triggers](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings?tabs=csharp#supported-bindings)
 - [Multiple Programming Languages](https://docs.microsoft.com/en-us/azure/azure-functions/supported-languages)
 - [Can be Deployed as a Docker Container](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-linux-custom-image?tabs=bash%2Cportal&pivots=programming-language-csharp)
 
@@ -24,7 +24,7 @@
 
 ## CosmosDB use-case: Change Feed
 
-<p align="center"><img src="img/change-feed-functions" width="80%"></p>
+<p align="center"><img src="img/change-feed-.png" width="80%"></p>
 
 ---
 

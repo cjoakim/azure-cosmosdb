@@ -24,7 +24,7 @@
 
 ## CosmosDB use-case: Change Feed
 
-<p align="center"><img src="img/change-feed-.png" width="80%"></p>
+<p align="center"><img src="img/change-feed-functions.png" width="80%"></p>
 
 ---
 

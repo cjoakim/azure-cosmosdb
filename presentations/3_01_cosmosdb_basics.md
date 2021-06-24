@@ -86,6 +86,11 @@ SELECT c.iata_code, c.city, c.name FROM c where c.pk in ('CLT','ATL','DEN') orde
 SELECT COUNT(1) FROM c
 ```
 
+## Role-Based Access Control (RBAC)
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/role-based-access-control
+- https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-setup-rbac
+
 ---
 
 [toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](0_table_of_contents.md) &nbsp; | &nbsp; [next](3_02_cosmosdb_non_features.md) &nbsp;

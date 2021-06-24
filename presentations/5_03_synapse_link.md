@@ -2,7 +2,7 @@
 
 ## Features
 
-- **Free ETL**
+- **Free, Automatic, Fast ETL from CosmosDB to Synapse**
 - **Low Cost Analytical Storage**
 - **"Parquet-like" format - Readable as a PySpark Dataframe**
 - **Readable with T-SQL** (SQL DW)

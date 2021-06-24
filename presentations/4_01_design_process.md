@@ -33,6 +33,8 @@ The simple and recommended best practice is to:
   - Identify your most expensive operations; refactor/improve in the next iteration
 
 
+<p align="center"><img src="img/use-cases-in-excel.png" width="90%"></p>
+
 ---
 
 [toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](0_table_of_contents.md) &nbsp; | &nbsp; [next](4_02_design_considerations.md) &nbsp;

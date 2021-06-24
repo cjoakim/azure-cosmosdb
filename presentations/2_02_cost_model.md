@@ -67,6 +67,11 @@ CosmosDB Account
 - [Capacity Calculator](https://cosmos.azure.com/capacitycalculator/)
 - [General Azure Calculator](https://azure.microsoft.com/en-us/pricing/calculator/)
 
+## Summary
+
+- CosmosDB is "Serverless"
+- Request Units, or Throughput, is the primary cost factor (not storage)
+
 ---
 
 [toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](2_01_cosmosdb_apis.md) &nbsp; | &nbsp; [next](0_table_of_contents.md) &nbsp;

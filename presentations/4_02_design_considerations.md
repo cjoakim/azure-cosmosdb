@@ -45,7 +45,7 @@ What does the future look like?
   - no schema per collection, unlike relational tables
 - You can and often should **store disimilar data in the same container**
 
-### Retail Example
+### Retail Example, Let's Visualize This!
 
 #### Documents in the same Container: order, lineitem, shipment
 

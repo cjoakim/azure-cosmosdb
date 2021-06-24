@@ -90,6 +90,7 @@ SELECT COUNT(1) FROM c
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/role-based-access-control
 - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-setup-rbac
+- https://docs.microsoft.com/en-us/azure/cosmos-db/secure-access-to-data
 
 ---
 

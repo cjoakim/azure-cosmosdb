@@ -13,12 +13,13 @@
 ## Serverless
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/optimize-dev-test
+- Consumption based pricing, not provisioned.  Great for Dev/Test
 
 
 ## Free Tier
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/optimize-dev-test
-
+- first 1000 RUs and 25 GB of storage are free
 
 ---
 

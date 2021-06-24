@@ -19,7 +19,7 @@
 ## Free Tier
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/optimize-dev-test
-- first 1000 RUs and 25 GB of storage are free
+- First 1000 RUs and 25 GB of storage are free
 
 ---
 

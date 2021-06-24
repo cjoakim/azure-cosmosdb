@@ -161,6 +161,7 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/index-policy
 
 ## Composite Indexes
 
+- [Tim Sander Blog](https://devblogs.microsoft.com/cosmosdb/new-ways-to-use-composite-indexes/)
 
 ## Links
 

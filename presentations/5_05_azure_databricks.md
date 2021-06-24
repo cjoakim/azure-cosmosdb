@@ -9,7 +9,7 @@
 
 ### Add the Java Library to your Databricks Cluster
 
-<p align="center"><img src="img/azure-cognitive-search-example.pnadd-maven-library-com.azure.cosmos.spark.png" width="80%"></p>
+<p align="center"><img src="img/add-maven-library-com.azure.cosmos.spark.png" width="80%"></p>
 
 ---
 

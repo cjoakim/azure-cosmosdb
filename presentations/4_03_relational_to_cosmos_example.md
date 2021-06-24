@@ -1,24 +1,5 @@
 # 4.03 - Relational-to-Cosmos Example
 
-
-## Standard Telephone Design 1960-2006
-
-<p align="center"><img src="img/rotary-phone.jpg" width="50%"></p>
-
-<p align="center"><img src="img/spacer-100.png"></p>
-
----
-
-## iPhone Introduced in 2007 
-
-What does the future look like?
-
-<p align="center"><img src="img/steve-jobs-iphone.jpg" width="80%"></p>
-
-<p align="center"><img src="img/spacer-100.png"></p>
-
----
-
 ## Retail Example - eCommerce Order, Line Items, Deliveries
 
 ```

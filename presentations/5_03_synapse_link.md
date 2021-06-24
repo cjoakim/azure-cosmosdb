@@ -37,6 +37,7 @@ display(df.limit(10))
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/synapse-link
 - https://docs.microsoft.com/en-us/azure/synapse-analytics/sql/overview-features
+- [IoT Example](https://github.com/cjoakim/azure-iot-cosmosdb-synapse)
 
 
 [toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](5_02_azure_functions.md) &nbsp; | &nbsp; [next](5_04_azure_search.md) &nbsp;

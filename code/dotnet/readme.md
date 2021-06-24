@@ -1,4 +1,4 @@
-# CosmosDB w/DotNet 5
+# CosmosDB w/DotNet (net5.0)
 
 ## Links
 

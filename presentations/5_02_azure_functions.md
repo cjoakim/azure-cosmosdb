@@ -16,6 +16,7 @@
 ## Links
 
 - https://azure.microsoft.com/en-us/services/functions/
+- https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed
 - https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed-functions
 - https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger
 - https://docs.microsoft.com/en-us/azure/azure-functions/supported-languages
@@ -23,6 +24,12 @@
 ---
 
 ## CosmosDB use-case: Change Feed
+
+> Change feed in Azure Cosmos DB is a **persistent record of changes to a container in the order they occur**.
+> Change feed support in Azure Cosmos DB works by listening to an Azure Cosmos container for any changes. 
+> It then outputs the **sorted** list of documents that were changed in the order in which they were modified.
+> The persisted changes can be processed asynchronously and incrementally, and the output can be 
+> distributed across one or more consumers for **parallel processing**.
 
 <p align="center"><img src="img/change-feed-functions.png" width="80%"></p>
 

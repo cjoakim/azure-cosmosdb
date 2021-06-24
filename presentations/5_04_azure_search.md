@@ -5,7 +5,7 @@
 
 - https://github.com/cjoakim/azure-cognitive-search-example
 
-<p align="center"><img src="img/azure-cognitive-search-example" width="90%"></p>
+<p align="center"><img src="img/azure-cognitive-search-example.png" width="90%"></p>
 
 ---
 

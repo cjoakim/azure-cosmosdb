@@ -1,6 +1,7 @@
 # azure-cosmosdb
 
-A collection of CosmosDB related [code](code/), [links](links.md), and [presentations](presentations/).
+A collection of CosmosDB related [code](code/), [links](links.md), and 
+[presentations](presentations/0_table_of_contents.md).
 
 ## CosmosDB
 

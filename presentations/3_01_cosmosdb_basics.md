@@ -92,6 +92,7 @@ SELECT COUNT(1) FROM c
 - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-setup-rbac
 - https://docs.microsoft.com/en-us/azure/cosmos-db/secure-access-to-data
 - https://docs.microsoft.com/en-us/azure/cosmos-db/access-secrets-from-keyvault
+- https://docs.microsoft.com/en-us/learn/modules/secure-azure-resources-with-rbac/
 - [Azure Cosmos DB Explorer](https://cosmos.azure.com/?feature.enableAadDataPlane=true)
 
 ### Notes

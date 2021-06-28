@@ -2,7 +2,7 @@ package org.cjoakim.cosmos;
 
 /**
  * Hello world!
- *
+ * SELECT DISTINCT VALUE a.pk FROM airports a
  */
 public class App 
 {

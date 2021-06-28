@@ -5,7 +5,7 @@ using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 
 // Program entry point, invoked from the command-line.
-// Chris Joakim, Microsoft, 2021/01/28
+// Chris Joakim, Microsoft, 2021/06/24
 
 namespace CJoakim.Cosmos
 {
@@ -62,9 +62,9 @@ namespace CJoakim.Cosmos
                             await queryAirportsByGPS(lng, lat, meters);
                             break;
 
-                        case "queryAirportsByTimezoneOffset":
-                            string offset = programArgs[1];
-                            await queryAirportsByTimezoneOffset(offset);
+                        case "queryAirportsByTimezoneCode":
+                            string tzCode = programArgs[1];
+                            await queryAirportsByTimezoneCode(tzCode);
                             break;
 
                         case "queryAirportsPaginated":
@@ -206,22 +206,15 @@ namespace CJoakim.Cosmos
             return;
         }
 
-        static async Task queryAirportsByTimezoneOffset(string tzOffset)
+        static async Task queryAirportsByTimezoneCode(string tzCode)
         {
-            // SELECT * FROM c where c.timezone_num = "-5"
-            // SELECT c.pk FROM c where c.timezone_num = "-5" offset 1 limit 2
-            // SELECT COUNT(1) FROM c     <-- 1459
-            // SELECT COUNT(1) FROM c where c.timezone_num = "-5" <-- 522
-
-            // https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-offset-limit
-
-            log("queryAirportsByTimezoneOffset");
+            log("queryAirportsByTimezoneCode");
             CosmosUtil cu = new CosmosUtil();
             string dbname = dbNameEnvVar();
             string cname = "airports";
             await cu.setCurrentDatabase(dbname);
             await cu.setCurrentContainer(cname);
-            string sql = $"select c.name, c.city, c.longitude, c.timezone_num from c where c.timezone_num = '{tzOffset}'";
+            string sql = $"select c.name, c.city, c.longitude, c.timezone_num from c where c.TimezoneCode = '{tzCode}'";
 
             List<dynamic> items = await cu.queryDocuments(sql);
 
@@ -364,7 +357,7 @@ namespace CJoakim.Cosmos
             log("dotnet run queryAirportsByGPS <latitude> <longitude> <meters>");
             log("dotnet run queryAirportsByGPS -80.848481 35.499254 30000.0 Davidson, NC");
             log("dotnet run queryAirportsByGPS -82.648830 27.867174 10000.0 St. Petersburg, FL");
-            log("dotnet run queryAirportsByTimezoneOffset -6");
+            log("dotnet run queryAirportsByTimezoneCode America/New_York");
             log("dotnet run queryAirportsPaginated");
             log("dotnet run queryLatestEvents <limit>");
             log("dotnet run queryLatestEvents 3");

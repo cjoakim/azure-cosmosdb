@@ -91,6 +91,12 @@ SELECT COUNT(1) FROM c
 - https://docs.microsoft.com/en-us/azure/cosmos-db/role-based-access-control
 - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-setup-rbac
 - https://docs.microsoft.com/en-us/azure/cosmos-db/secure-access-to-data
+- [Azure Cosmos DB Explorer](https://cosmos.azure.com/?feature.enableAadDataPlane=true)
+
+### Notes
+
+- You can create up to 100 role definitions and 2,000 role assignments per Azure Cosmos DB account.
+- The Azure AD token is currently passed as a header with each individual request sent to the Azure Cosmos DB service, increasing the overall payload size.
 
 ---
 

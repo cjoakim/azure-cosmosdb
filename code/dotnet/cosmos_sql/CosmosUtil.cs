@@ -150,7 +150,7 @@ namespace CJoakim.Cosmos
                      this.currentContainer.GetItemQueryIterator<dynamic>(
                             queryDefinition,
                             continuationToken: this.continuationToken,
-                            requestOptions: requestOptions);
+                            requestOptions: requestOptions); 
             }
             else
             {
@@ -159,8 +159,7 @@ namespace CJoakim.Cosmos
                             queryDefinition,
                             requestOptions: requestOptions);
             }
-
-
+            
             while (queryResultSetIterator.HasMoreResults)
             {
                 FeedResponse<dynamic> feedResponse =

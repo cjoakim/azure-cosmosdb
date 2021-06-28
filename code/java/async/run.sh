@@ -1,5 +1,10 @@
 #!/bin/bash
 
-uberjar="target/async-1.0-SNAPSHOT.jar"
+# Execute the main Program via "mvn exec:java".
+# Chris Joakim, Microsoft, 2021/06/28
 
-java -cp $uberjar org.cjoakim.cosmos.App
+class="org.cjoakim.cosmos.App"
+
+mvn exec:java -Dexec.mainClass=$class \
+  -Dexec.args="xxx yyy zzz"
+

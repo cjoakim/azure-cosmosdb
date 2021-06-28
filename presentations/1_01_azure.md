@@ -77,6 +77,16 @@ Enterprise Agreement
         Resource Group n
            ...resources.
 
+        Resource Group App XYZ Dev
+           ...resources
+           ...Dev CosmosDB
+        Resource Group App XYZ QA
+           ...resources
+           ...QA CosmosDB
+        Resource Group App XYZ Prod
+           ...resources
+           ...Prod CosmosDB
+
     Subscription n
         Resource Group 1
            ...resources.

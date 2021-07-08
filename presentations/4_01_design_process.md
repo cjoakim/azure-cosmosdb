@@ -15,15 +15,18 @@ The simple and recommended best practice is to:
   - Refactor, improve the design with each iteration
   - Repeat as necessary until the results are acceptable/excellent
   - You will learn with each iteration
+  - It's schemaless/malleable
+
+<p align="center"><img src="img/use-cases-in-excel.png" width="90%"></p>
 
 - For each Iteration: 
   - First **Identify your use-cases**; what is the list of your database operations?
     - If you're implementing a REST API, what are the endpoints and response documents (i.e. - Swagger API definitions)
   - Identify the data that needs to be returned/inserted/upserted for each use-case
   - Identify the SQL for each use case 
-  - Identify the partition key used, if any, for each of these
+  - Identify the **partition key** used, if any, for each of these
   - Strive to use a partition key in most of your queries
-  - Optimize the queries with Indexing (discussed later)
+  - Optimize the queries with **indexing** (discussed later)
   - **Shape your Documents and Containers to fit the use-cases, not vice-versa**
   - Create a Spreadsheet (i.e. - **Excel**) with this information
   - Add a column for the Estimated Number of Operations per Day
@@ -32,8 +35,13 @@ The simple and recommended best practice is to:
   - Sum this column; strive for the lowest sum RU total
   - Identify your most expensive operations; refactor/improve in the next iteration
 
+---
 
-<p align="center"><img src="img/use-cases-in-excel.png" width="90%"></p>
+## Please don't design your CosmosDB like this
+
+It's not relational.
+
+<p align="center"><img src="img/AdventureWorksLT-ERD.png" width="50%"></p>
 
 ---
 

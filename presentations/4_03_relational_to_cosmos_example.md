@@ -53,6 +53,10 @@ select * from c where c.pk = "XK1123" and c.doctype in ("order", "lineitem")
 - [cjoakim Adventureworks Azure SQL example](https://github.com/cjoakim/azure-adventureworks-to-cosmos)
 - [Mark Brown CosmicWorks example](https://github.com/markjbrown/CosmicWorks)
 
+## Links
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/relational-nosql
+
 ---
 
 [toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](4_02_design_considerations.md) &nbsp; | &nbsp; [next](4_04_local_development.md) &nbsp;

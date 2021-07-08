@@ -31,7 +31,8 @@
 - [4.02 Design Considerations](4_02_design_considerations.md)
 - [4.03 Relational-to-Cosmos Example](4_03_relational_to_cosmos_example.md)
 - [4.04 Local Development](4_04_local_development.md)
-- [CosmosDB w/DotNet 5](../code/dotnet/)
+- [4.05 Development with SDKs](4_05_sdks.md)
+- [Examples of CosmosDB SDKs w/DotNet 5](../code/dotnet/)
 
 ## 5 - Integrations
 

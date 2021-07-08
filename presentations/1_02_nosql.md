@@ -79,6 +79,10 @@ See https://en.wikipedia.org/wiki/CAP_theorem
 
 <p align="center"><img src="img/spacer-100.png"></p>
 
+## Differences between NoSQL and relational databases
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/relational-nosql
+
 ---
 
 ## What NoSQL Isn't

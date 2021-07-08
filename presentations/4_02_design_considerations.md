@@ -176,24 +176,6 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/index-policy
 
 <p align="center"><img src="img/indexing-setting-in-portal.png" width="90%"></p>
 
-## Default Indexing Policy
-
-```
-{
-    "indexingMode": "consistent",
-    "automatic": true,
-    "includedPaths": [
-        {
-            "path": "/*"
-        }
-    ],
-    "excludedPaths": [
-        {
-            "path": "/\"_etag\"/?"
-        }
-    ]
-}
-```
 
 ## Composite Indexes
 

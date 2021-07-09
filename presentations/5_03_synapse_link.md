@@ -13,6 +13,12 @@
 
 <p align="center"><img src="img/synapse-analytics-cosmos-db-architecture.png" width="90%"></p>
 
+## Azure Cosmos DB Analytical Data Store
+
+See https://docs.microsoft.com/en-us/azure/cosmos-db/analytical-store-introduction
+
+<p align="center"><img src="img/transactional-analytical-data-stores.png" width="90%"></p>
+
 ---
 
 ## PySpark Notebook in Synapse

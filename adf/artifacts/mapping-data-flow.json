@@ -1,0 +1,33 @@
+{
+    "name": "dataflow1",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "CosmosDevAirports",
+                        "type": "DatasetReference"
+                    },
+                    "name": "source1"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "CosmosDevAirports2",
+                        "type": "DatasetReference"
+                    },
+                    "name": "sink1"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "DerivedColumn1"
+                }
+            ],
+            "script": "source(output(\n\t\tpk as string,\n\t\tAirportId as string,\n\t\tName as string,\n\t\tCity as string,\n\t\tCountry as string,\n\t\tIataCode as string,\n\t\tIcaoCode as string,\n\t\tLatitude as double,\n\t\tLongitude as double,\n\t\tlocation as (type as string, coordinates as double[]),\n\t\tAltitude as double,\n\t\tTimezoneNum as double,\n\t\tDst as string,\n\t\tTimezoneCode as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'document') ~> source1\nsource1 derive(CityCountry = City + Country) ~> DerivedColumn1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'document',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+        }
+    }
+}
+

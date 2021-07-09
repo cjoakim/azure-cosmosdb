@@ -1,0 +1,16 @@
+{
+    "name": "CosmosDevAirports2",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "CosmosSqlDevDB",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "CosmosDbSqlApiCollection",
+        "schema": {},
+        "typeProperties": {
+            "collectionName": "airports2"
+        }
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}

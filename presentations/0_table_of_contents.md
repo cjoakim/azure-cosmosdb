@@ -1,5 +1,12 @@
 # CosmosDB Presentation: Table of Contents
 
+## Contact Info
+
+```
+Chris Joakim
+Azure Cosmos DB Global Black Belt
+chjoakim@microsoft.com
+```
 
 ## 1 - Cloud
 

@@ -52,11 +52,12 @@ Think of relational databases as the narrow (i.e. - **ANSI SQL standard**) but d
 - Storage is relatively very inexpensive now, vs 1970.  3NF not necessary.
 - New types of applications, such as IoT, Social Networks, Graph
 
-<p align="center"><img src="img/spacer-100.png"></p>
 
 ## Differences between NoSQL and relational databases
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/relational-nosql
+
+<p align="center"><img src="img/spacer-100.png"></p>
 
 ---
 

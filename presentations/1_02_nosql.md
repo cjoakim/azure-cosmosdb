@@ -42,25 +42,6 @@ Think of relational databases as the narrow (i.e. - **ANSI SQL standard**) but d
 
 ---
 
-## CAP Theorem
-
-**Consistency, Availability, Partition Tolerance**
-
-> In theoretical computer science, the CAP theorem, also named Brewer's theorem after computer scientist Eric Brewer,
-> states that it is impossible for a distributed data store to simultaneously provide more than two out of the following
-> three guarantees:
-> 1) **Consistency**: Every read receives the most recent write or an error
-> 2) **Availability**: Every request receives a (non-error) response, without the guarantee that it contains the most recent write
-> 3) **Partition Tolerance**: The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes
-
-See https://en.wikipedia.org/wiki/CAP_theorem
-
-<p align="center"><img src="img/CAP-Theorem.png" width="50%"></p>
-
-<p align="center"><img src="img/spacer-100.png"></p>
-
----
-
 ## Why use NoSQL?
 
 - Size of data; horizontally distributed

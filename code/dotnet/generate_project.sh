@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Use the dotnet CLI to bootstrap a dotnet project.
-# Chris Joakim, Microsoft, 2021/06/24
+# Chris Joakim, Microsoft, 2021/07/15
 
-project_name="sample_console_app"
+project_name="mongo_loader"
 
 echo ''
 echo '=========='
@@ -22,13 +22,15 @@ dotnet new console -o $project_name
 
 cd $project_name 
 
-dotnet add package Microsoft.Azure.Cosmos
+dotnet add package MongoDB.Driver
+
+# dotnet add package Microsoft.Azure.Cosmos
 # dotnet add package Microsoft.EntityFrameworkCore.Cosmos
 dotnet add package Azure.Storage.Blobs
-dotnet add package Microsoft.Azure.DataLake.Store
+# dotnet add package Microsoft.Azure.DataLake.Store
 dotnet add package CsvHelper
-dotnet add package DocumentFormat.OpenXml 
-dotnet add package Faker.Net
+# dotnet add package DocumentFormat.OpenXml 
+# dotnet add package Faker.Net
 
 cat $project_name.csproj
 
@@ -39,3 +41,9 @@ dotnet run
 
 echo ''
 echo 'done'
+
+# https://www.nuget.org/packages/MongoDB.Driver/
+# https://docs.mongodb.com/drivers/csharp/
+
+
+

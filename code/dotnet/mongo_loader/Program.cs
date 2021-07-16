@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using MongoDB.Driver;
 using MongoDB.Bson;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+// C# and net5.0 program to load a target Mongo database (including Cosmos/Mongo)
+// from a given file in mongoexport/mongoimport format.
+//
+// Chris Joakim, Microsoft, July 2021
 // See https://mongodb.github.io/mongo-csharp-driver/2.12/getting_started/quick_tour/
 
 namespace mongo_loader {
-    class Program{
+    class Program {
         private static string[] cliArgs = null;
         private static string dbname   = null;
         private static string collname = null;
@@ -31,27 +31,25 @@ namespace mongo_loader {
         static void Main(string[] args) {
             cliArgs = args;
             if (ReadCommandLineArgs()) {
-                Console.WriteLine($"dbname: {dbname} collname: {collname} infile: {infile}");
+                try {
+                    client = CreateMongoClient();
+                    if (client != null) {
+                        Console.WriteLine($"MongoClient created for target: {target}");
+                        databaseObj = client.GetDatabase(dbname);
+                        collectionObj = databaseObj.GetCollection<BsonDocument>(collname);
+                        
+                        ProcessingLoop();  // iterate infile, parse each line, write docs to target DB
+                    }
+                    else {
+                        Console.WriteLine($"MongoClient is null for target: {target}");
+                    }
+                }
+                catch (Exception e) {
+                    Console.WriteLine(e);
+                }
             }
             else {
-                 return;
-            }
-
-            try {
-                client = CreateMongoClient();
-                if (client != null) {
-                    Console.WriteLine($"MongoClient create for target: {target}");
-                    databaseObj = client.GetDatabase(dbname);  //  MongoDB.Driver.MongoDatabaseImpl
-                    collectionObj = databaseObj.GetCollection<BsonDocument>(collname);  // MongoDB.Driver.MongoCollectionImpl
-                }
-                else {
-                    Console.WriteLine($"MongoClient is null for target: {target}");
-                }
-
-                ProcessingLoop();
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
+                 Console.WriteLine("Invalid command-line args; terminating");
             }
         }
 
@@ -103,34 +101,26 @@ namespace mongo_loader {
             else {
                 Console.WriteLine("Invalid command-line args, program exiting:");
                 Console.WriteLine("  source env.sh ; dotnet run <dbname> <collname> <infile> [--targetLocal|--targetCosmos] [--verbose|--quiet] --createNewDocIds --tracerInterval x --rowMaxRetries y");
-                Console.WriteLine("  source env.sh ; dotnet run openflights planes data/openflights__routes.json --targetLocal --createNewDocIds --tracerInterval 1000 --rowMaxRetries 7");
+                Console.WriteLine("  source env.sh ; dotnet run travel airports data/openflights__airports.json --targetCosmos --createNewDocIds --tracerInterval 100 --rowMaxRetries 7");
                 return false;
             }
         }
 
         private static MongoClient CreateMongoClient() {
             if (target.Equals("local")) {
-                return CreateLocalMongoClient();
+                string user = Environment.GetEnvironmentVariable("M2C_SOURCE_MONGODB_USER");
+                string pass = Environment.GetEnvironmentVariable("M2C_SOURCE_MONGODB_PASS");
+                string host = Environment.GetEnvironmentVariable("M2C_SOURCE_MONGODB_HOST");
+                string port = Environment.GetEnvironmentVariable("M2C_SOURCE_MONGODB_PORT");
+                string connStr = $"mongodb://{user}:{pass}@{host}:{port}/admin";
+                Console.WriteLine($"connStr: {connStr}");
+                return new MongoClient(connStr);
             }
             if (target.Equals("cosmos")) {
-                return CreateCosmosMongoClient();
+                string connStr = Environment.GetEnvironmentVariable("M2C_COSMOS_MONGO_CONN_STRING");
+                return new MongoClient(connStr);
             }
             return null;
-        }
-
-        private static MongoClient CreateLocalMongoClient() {
-            string user = Environment.GetEnvironmentVariable("M2C_SOURCE_MONGODB_USER");
-            string pass = Environment.GetEnvironmentVariable("M2C_SOURCE_MONGODB_PASS");
-            string host = Environment.GetEnvironmentVariable("M2C_SOURCE_MONGODB_HOST");
-            string port = Environment.GetEnvironmentVariable("M2C_SOURCE_MONGODB_PORT");
-            string connStr = $"mongodb://{user}:{pass}@{host}:{port}/admin";
-            Console.WriteLine($"connStr: {connStr}");
-            return new MongoClient(connStr);
-        }
-        
-        private static MongoClient CreateCosmosMongoClient() {
-            string connStr = Environment.GetEnvironmentVariable("M2C_COSMOS_MONGO_CONN_STRING");
-            return new MongoClient(connStr);
         }
 
         private static void ProcessingLoop() {

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading;
 using MongoDB.Driver;
 
 // See https://mongodb.github.io/mongo-csharp-driver/2.12/getting_started/quick_tour/
@@ -10,8 +12,14 @@ namespace mongo_loader {
         private static string collname = null;
         private static string infile   = null;
         private static string target   = "none";
+        private static bool   verbose  = false;
+        private static int    lineNumber = 0;
+        private static long   tracerInterval = 10000;
+        private static int    rowMaxRetries = 20;
+        private static long   totalRetryCount = 0;
         private static MongoClient client = null;
 
+        
         static void Main(string[] args) {
             cliArgs = args;
             if (ReadCommandLineArgs()) {
@@ -53,12 +61,18 @@ namespace mongo_loader {
                     if (arg.Equals("--targetCosmos")) {
                         target = "cosmos";
                     }
+                    if (arg.Equals("--verbose")) {
+                        verbose = true;
+                    }
+                    if (arg.Equals("--quiet")) {
+                        verbose = false;
+                    }
                 }
                 return true;
             }
             else {
                 Console.WriteLine("Invalid command-line args, program exiting:");
-                Console.WriteLine("  source env.sh ; dotnet run <dbname> <collname> <infile> [--targetLocal|--targetCosmos]");
+                Console.WriteLine("  source env.sh ; dotnet run <dbname> <collname> <infile> [--targetLocal|--targetCosmos] [--verbose|--quiet]");
                 Console.WriteLine("  source env.sh ; dotnet run openflights planes data/openflights__routes.json --targetLocal");
                 return false;
             }
@@ -90,16 +104,43 @@ namespace mongo_loader {
         }
 
         private static void ProcessingLoop() {
-            // infile
-            
-            System.IO.StreamReader file =new System.IO.StreamReader(infile);
+            long loopStartEpochMs = EpochMsTime();
+            System.IO.StreamReader file = new System.IO.StreamReader(infile);
             string line = null;
             while ((line = file.ReadLine()) != null) {
-                string trimmed = line.Trim();
-                Console.WriteLine($"line: {trimmed}");
+                long lineStartEpochMs = EpochMsTime();
+                lineNumber++;
+                for (int i = 0; i < rowMaxRetries; i++) {
+                    bool successful = ProcessLine(line.Trim());
+                    if (successful) {
+                        long lineElapsedMs = EpochMsTime() - lineStartEpochMs;
+                        if (verbose) {
+                            Console.WriteLine(
+                                $"successfully processed line: {lineNumber} : {line} : {i} : {lineElapsedMs}");
+                        }
+                        break;
+                    }
+                    totalRetryCount++;
+                    Thread.Sleep(1000);
+                }
                 
-
+                if ((lineNumber % tracerInterval) == 0) {
+                    Console.WriteLine($"{lineNumber}");
+                }
             }
+
+            long loopElapsedMs = EpochMsTime() - loopStartEpochMs;
+            Console.WriteLine($"ProcessingLoop elapsed: {loopElapsedMs}");
+        }
+
+        private static bool ProcessLine(string line) {
+
+            return true;
+        }
+        
+        private static long EpochMsTime()
+        {
+            return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
         }
     }
 }

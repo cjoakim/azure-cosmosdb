@@ -140,8 +140,8 @@ namespace CJoakim.Cosmos
                     ItemResponse<Airport> response = await cu.upsertAirportDocument(a);
                     log($"status code:    {response.StatusCode}");
                     log($"request charge: {response.RequestCharge}");
-                    log($"diagnostics:    {response.Diagnostics}");
-                    log($"resource:       {response.Resource}");
+                    //log($"diagnostics:    {response.Diagnostics}");
+                    //log($"resource:       {response.Resource}");
                 }
             }
             return;

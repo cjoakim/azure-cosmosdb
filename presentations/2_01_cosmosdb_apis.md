@@ -1,6 +1,5 @@
 # 2.01 - CosmosDB APIs
 
-
 ## A Family of NOSQL Databases
 
 <p align="center"><img src="img/azure-cosmos-db-intro.png" width="80%"></p>
@@ -20,6 +19,12 @@
 - [Documentation](https://docs.microsoft.com/en-us/azure/cosmos-db/)
 - [NoSQL vs Relational](https://docs.microsoft.com/en-us/azure/cosmos-db/relational-nosql)
 - [Learning Path](https://docs.microsoft.com/en-us/learn/paths/work-with-nosql-data-in-azure-cosmos-db/)
+
+---
+
+## Learning and Growth Mindset
+
+<p align="center"><img src="img/satya-learning-2.jpeg" width="90%"></p>
 
 ---
 

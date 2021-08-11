@@ -98,8 +98,9 @@ namespace CJoakim.Cosmos
             Console.WriteLine("setCurrentContainer: {0}", this.currentDB.Id);
         }
 
-        public async Task<ItemResponse<Airport>> upsertAirportDocument(Airport airport)
-        {
+        public async Task<ItemResponse<Airport>> upsertAirportDocument(Airport airport) {
+            string pk = airport.pk + "#1";
+            airport.pk = pk;
             ItemResponse<Airport> response =
                 await this.currentContainer.UpsertItemAsync<Airport>(
                     airport, new PartitionKey(airport.pk));

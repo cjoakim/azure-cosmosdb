@@ -100,16 +100,6 @@ create_collections() {
         --subscription $subscription \
         --partition-key-path /pk \
         > data/output/cosmos_sql_db_create_airports.json
-
-    echo 'creating cosmos collection: amtrak'
-    az cosmosdb sql container create \
-        --resource-group $cosmos_sql_rg \
-        --account-name $cosmos_sql_acct_name \
-        --database-name $cosmos_sql_dbname \
-        --name amtrak \
-        --subscription $subscription \
-        --partition-key-path /pk \
-        > data/output/cosmos_sql_db_create_amtrak.json
 }
 
 info() {

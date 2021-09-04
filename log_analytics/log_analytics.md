@@ -1,259 +1,177 @@
 # Log Analytics
 
-This page: https://github.com/cjoakim/azure-cosmosdb/blob/main/log_analytics/log_analytics.md
-
 ## Links
 
-### General
+- [Monitor CosmosDB](https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db)
+- [Examples](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/examples)
+- [Basic Queries](https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-logs-basic-queries)
+- [Kusto Query Language quick reference](https://docs.microsoft.com/en-us/azure/data-explorer/kql-quick-reference)
 
-- https://docs.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-tutorial
-- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor
-- https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade
-- https://github.com/microsoft/AzureMonitorCommunity
+### APIs
 
-### CosmosDB
-
-- https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-resource-logs
-- https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-schema#service-specific-schemas
-- https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db
-- https://docs.microsoft.com/en-us/rest/api/cosmos-db/get-partition-key-ranges
-- https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-resource-logs
-
-## CosmosDB/SQL Account Configuration
-
-<p align="center"><img src="img/cosmossql-diagnostic-settings-in-portal.png" width="95%"></p>
-
----
-
-## Schema 
-
-- [Top-Level Common schema](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-schema)
-- [Service-Specific Schemas](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-schema#service-specific-schemas)
-- [Azure CosmosDB Schema]()https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db
-- [Azure PostgreSQL Schema](https://docs.microsoft.com/en-us/azure/postgresql/concepts-server-logs#resource-logs)
-
-### Tables
-
-```
-AzureDiagnostics 
-AzureMetrics
-```
-
-### Categories
-
-- [Microsoft.DocumentDB Categories](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-categories#microsoftdocumentdbdatabaseaccounts)
-
-```
-CassandraRequests
-ControlPlaneRequests
-DataPlaneRequests
-GremlinRequests
-MongoRequests
-PartitionKeyRUConsumption
-PartitionKeyStatistics
-QueryRuntimeStatistics
-```
-
-- [Microsoft.DBforPostgreSQL/servers Categories](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-categories#microsoftdbforpostgresqlservers)
-
-```
-PostgreSQLLogs
-QueryStoreRuntimeStatistics
-QueryStoreWaitStatistics
-```
-
-For example, using the PartitionKeyStatistics Category:
-
-```
-AzureDiagnostics 
-| where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics"
-
-AzureDiagnostics
-| where ResourceProvider =="MICROSOFT.DBFORPOSTGRESQL" 
-```
-
----
-
-## Basic Kusto Syntax
-
-- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor
-- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor
-- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor#date-and-time-operations
-- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor#string-operations
-- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor#aggregations
-- https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/samples?pivots=azuremonitor#joins
-
-### Counting rows
-
-```
-AzureDiagnostics | count 
-AzureMetrics | count 
-```
-
-### Filter by Boolean expression: where
-
-```
-AzureMetrics
-| where TimeGenerated > datetime(03-21-2021) and TimeGenerated < datetime(03-21-2027)
-| where ResourceProvider == 'MICROSOFT.DOCUMENTDB'
-| where Resource == 'CJOAKIMCOSMOSSQL'
-```
-
-### Select a subset of columns: project
-
-```
-AzureMetrics
-| where TimeGenerated > datetime(03-21-2021) and TimeGenerated < datetime(03-21-2027)
-| where ResourceProvider == 'MICROSOFT.DOCUMENTDB'
-| where Resource == 'CJOAKIMCOSMOSSQL'
-| project TimeGenerated, Resource, MetricName
-```
-
-### Show n random rows: take
-
-```
-AzureMetrics
-| where TimeGenerated > datetime(03-21-2021) and TimeGenerated < datetime(03-21-2027)
-| where ResourceProvider == 'MICROSOFT.DOCUMENTDB'
-| where Resource == 'CJOAKIMCOSMOSSQL'
-| project TimeGenerated, Resource, MetricName
-| take 22
-```
-
-### Order results: sort, top
-
-```
-AzureMetrics
-| where TimeGenerated > datetime(03-21-2021) and TimeGenerated < datetime(03-21-2027)
-| where ResourceProvider == 'MICROSOFT.DOCUMENTDB'
-| where Resource == 'CJOAKIMCOSMOSSQL'
-| top 10 by TimeGenerated desc
-| project TimeGenerated, Resource, MetricName
-```
-
-### Compute derived columns: extend
-
-```
-...
-| extend FreeGigabytes = FreeMegabytes / 1000
-```
-
-### Aggregate groups of rows: summarize
-
-```
-AzureMetrics
-| where TimeGenerated > datetime(03-21-2021) and TimeGenerated < datetime(03-21-2027)
-| where ResourceProvider == 'MICROSOFT.DOCUMENTDB'
-| where Resource == 'CJOAKIMCOSMOSSQL'
-| project MetricName
-| summarize count() by MetricName
-```
-
-DataUsage, ServiceAvailability, ServerSideLatency, IndexUsage, DocumentQuota.
-AvailableStorage, DocumentCount, ProvisionedThroughput, TotalRequests, 
-ReplicationLatency
-
-### Summarize by scalar values, bin by time
-
-```
-...
-| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
-```
-
-### Display a chart or table: render
-
-```
-...
-| render timechart
-```
-
-### Work with multiple series
-
-```
-InsightsMetrics
-| where Computer startswith "DC"
-| where Namespace  == "Processor" and Name == "UtilizationPercentage"
-| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
-| render timechart
-```
-
-### Join data from two tables
-
-```
-VMComputer
-| distinct Computer, PhysicalMemoryMB
-| join kind=inner (
-    InsightsMetrics
-    | where Namespace == "Memory" and Name == "AvailableMB"
-    | project TimeGenerated, Computer, AvailableMemoryMB = Val
-) on Computer
-| project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
-```
-
-### Assign a result to a variable: let
-
-```
-let PhysicalComputer = VMComputer
-    | distinct Computer, PhysicalMemoryMB;
-```
-
----
-
-## CosmosDB Examples
-
-```
-AzureDiagnostics 
-| where ResourceProvider=="MICROSOFT.DOCUMENTDB"
-
-
-AzureDiagnostics 
-| where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
-
-AzureDiagnostics 
-| where toint(duration_s) > 10 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-| summarize count() by clientIpAddress_s, TimeGenerated
-
-
-AzureDiagnostics 
-| where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-| project TimeGenerated , duration_s 
-| summarize count() by bin(TimeGenerated, 5s)
-| render timechart
-
-
-AzureDiagnostics
-| where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
-| where TimeGenerated >= ago(2h) 
-| summarize max(responseLength_s), max(requestLength_s), max(requestCharge_s), count = count() by OperationName, requestResourceType_s, userAgent_s, collectionRid_s, bin(TimeGenerated, 1h)
-
-
-AzureDiagnostics
-| where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" and todouble(requestCharge_s) > 100.0
-| project activityId_g, requestCharge_s
-| join kind= inner (
-        AzureDiagnostics
-        | where ResourceProvider =="MICROSOFT.DOCUMENTDB" and Category == "QueryRuntimeStatistics"
-        | project activityId_g, querytext_s
-) on $left.activityId_g == $right.activityId_g
-| order by requestCharge_s desc
-| limit 100
-
-
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| summarize by OperationName
-
-```
-
+- [REST](https://docs.microsoft.com/en-us/rest/api/monitor/)
+- [DotNet SDK on NuGet](https://www.nuget.org/packages/Microsoft.Azure.Insights)
+- [az CLI](https://docs.microsoft.com/en-us/cli/azure/azure-cli-reference-for-monitor)
 
 ---
 
 ## Azure Log Analytics REST API
 
-See https://dev.loganalytics.io/ and AAD setup https://dev.loganalytics.io/documentation/Authorization/AAD-Setup
+- [Azure Log Analytics REST API](https://dev.loganalytics.io/)
+- [AAD setup](https://dev.loganalytics.io/documentation/Authorization/AAD-Setup)
 
 ### curl example
 
 ```
 curl -X POST 'https://api.loganalytics.io/v1/workspaces/DEMO_WORKSPACE/query' -d '{"query": "AzureActivity | summarize count() by Category"}' -H 'x-api-key: DEMO_KEY' -H 'Content-Type: application/json'
+```
+
+---
+
+## Schema 
+
+### Tables
+
+- [Tables](https://docs.microsoft.com/en-us/azure/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db)
+
+```
+AzureActivity
+AzureDiagnostics
+AzureMetrics
+CDBCassandraRequests
+CDBControlPlaneRequests
+CDBDataPlaneRequests
+CDBGremlinRequests
+CDBMongoRequests
+CDBPartitionKeyRUConsumption
+CDBPartitionKeyStatistics
+CDBQueryRuntimeStatistics
+```
+
+### Categories
+
+```
+
+```
+
+---
+
+## Examples
+
+```
+CDBControlPlaneRequests
+| where AccountName contains "csl"
+| project AccountName, TimeGenerated, OperationName, Result, ActivityId, Type
+```
+
+23c10ae8-83c6-4d54-abeb-272871947011
+
+### Azure Metrics
+
+```
+AzureMetrics
+| summarize Count=count() by MetricName
+```
+
+```
+AzureMetrics
+| where MetricName == "DataUsage" and Resource contains "csl"
+```
+
+```
+AzureMetrics
+| where MetricName == "DocumentCount" and Resource contains "CJOAKIMCOSMOSSQL"
+```
+
+### CDBControlPlaneRequests
+
+```
+CDBControlPlaneRequests
+| summarize Count=count() by OperationName
+```
+
+### CDBDataPlaneRequests
+
+```
+CDBDataPlaneRequests
+| summarize Count=count() by RequestResourceType, RequestResourceId
+| order by Count
+```
+
+RequestResourceId is Oww-APYSVS8=
+
+### CDBPartitionKeyRUConsumption
+
+Identify the PK Ranges
+
+```
+CDBPartitionKeyRUConsumption
+| where AccountName contains "csl" and DatabaseName == "demo" and CollectionName == "travel"
+| summarize by PartitionKeyRangeId
+```
+
+RU consumption by time and pk
+
+```
+CDBPartitionKeyRUConsumption 
+| summarize total = sum(todouble(RequestCharge)) by DatabaseName, CollectionName, PartitionKey, TimeGenerated 
+| order by TimeGenerated asc
+```
+
+RU consumption by hottest Logical Partition (partition key)
+
+```
+CDBPartitionKeyRUConsumption 
+| summarize total = sum(todouble(RequestCharge)) by DatabaseName, CollectionName, PartitionKey, TimeGenerated 
+| order by total desc 
+```
+
+
+RU consumption by hottest Physical Partition
+
+```
+CDBPartitionKeyRUConsumption 
+| summarize total = sum(todouble(RequestCharge)) by DatabaseName, CollectionName, PartitionKey, PartitionKeyRangeId
+| order by total desc 
+```
+
+
+### CDBQueryRuntimeStatistics
+
+```
+CDBQueryRuntimeStatistics
+| where AccountName contains "csl" and DatabaseName == "demo" and CollectionName == "travel"
+| project TimeGenerated, PartitionKeyRangeId, QueryText, ActivityId 
+| summarize Count=count() by QueryText
+```
+
+#### Get the request charges for expensive queries
+
+See https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-logs-basic-queries
+
+```
+CDBDataPlaneRequests
+  | where todouble(RequestCharge) > 1.0
+  | project ActivityId, RequestCharge
+  | join kind= inner (
+  CDBQueryRuntimeStatistics
+  | project ActivityId, QueryText
+  ) on $left.ActivityId == $right.ActivityId
+  | order by RequestCharge desc
+  | limit 100
+```
+
+#### Get the request charges for expensive queries for a db/collection
+
+```
+CDBDataPlaneRequests
+  | where todouble(RequestCharge) > 1.0
+  | project ActivityId, RequestCharge
+  | join kind= inner (
+  CDBQueryRuntimeStatistics
+  | project ActivityId, QueryText, DatabaseName, CollectionName
+  ) on $left.ActivityId == $right.ActivityId
+  | where CollectionName == "travel"
+  | order by RequestCharge desc
+  | limit 100
 ```

@@ -1,0 +1,10 @@
+CDBDataPlaneRequests
+  | where todouble(RequestCharge) > 1.0
+  | project ActivityId, RequestCharge
+  | join kind= inner (
+  CDBQueryRuntimeStatistics
+  | project ActivityId, QueryText, DatabaseName, CollectionName
+  ) on $left.ActivityId == $right.ActivityId
+  | where CollectionName == "travel"
+  | order by RequestCharge desc
+  | limit 100

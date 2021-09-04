@@ -1,0 +1,9 @@
+CDBDataPlaneRequests
+  | where todouble(RequestCharge) > 2.0
+  | project ActivityId, RequestCharge
+  | join kind= inner (
+  CDBQueryRuntimeStatistics
+  | project ActivityId, QueryText
+  ) on $left.ActivityId == $right.ActivityId
+  | order by RequestCharge desc
+  | limit 100

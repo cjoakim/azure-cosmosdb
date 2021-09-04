@@ -1,4 +1,4 @@
-# Log Analytics
+# Log Analytics (Azure Monitor)
 
 ## Links
 
@@ -13,18 +13,7 @@
 - [DotNet SDK on NuGet](https://www.nuget.org/packages/Microsoft.Azure.Insights)
 - [az CLI](https://docs.microsoft.com/en-us/cli/azure/azure-cli-reference-for-monitor)
 
----
-
-## Azure Log Analytics REST API
-
-- [Azure Log Analytics REST API](https://dev.loganalytics.io/)
-- [AAD setup](https://dev.loganalytics.io/documentation/Authorization/AAD-Setup)
-
-### curl example
-
-```
-curl -X POST 'https://api.loganalytics.io/v1/workspaces/DEMO_WORKSPACE/query' -d '{"query": "AzureActivity | summarize count() by Category"}' -H 'x-api-key: DEMO_KEY' -H 'Content-Type: application/json'
-```
+This repo has examples of the **az CLI**; it's simple to use.
 
 ---
 
@@ -48,12 +37,6 @@ CDBPartitionKeyStatistics
 CDBQueryRuntimeStatistics
 ```
 
-### Categories
-
-```
-
-```
-
 ---
 
 ## Examples
@@ -64,7 +47,7 @@ CDBControlPlaneRequests
 | project AccountName, TimeGenerated, OperationName, Result, ActivityId, Type
 ```
 
-23c10ae8-83c6-4d54-abeb-272871947011
+See **az_monitor.sh** and **queries/x1.txt**
 
 ### Azure Metrics
 
@@ -138,6 +121,8 @@ CDBPartitionKeyRUConsumption
 
 ### CDBQueryRuntimeStatistics
 
+See **az_monitor.sh** and **queries/x9.txt**
+
 ```
 CDBQueryRuntimeStatistics
 | where AccountName contains "csl" and DatabaseName == "demo" and CollectionName == "travel"
@@ -151,7 +136,7 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-logs-basic
 
 ```
 CDBDataPlaneRequests
-  | where todouble(RequestCharge) > 1.0
+  | where todouble(RequestCharge) > 2.0
   | project ActivityId, RequestCharge
   | join kind= inner (
   CDBQueryRuntimeStatistics
@@ -160,6 +145,8 @@ CDBDataPlaneRequests
   | order by RequestCharge desc
   | limit 100
 ```
+
+See **az_monitor.sh** and **queries/x10.txt**
 
 #### Get the request charges for expensive queries for a db/collection
 
@@ -174,4 +161,39 @@ CDBDataPlaneRequests
   | where CollectionName == "travel"
   | order by RequestCharge desc
   | limit 100
+```
+
+See **az_monitor.sh** and **queries/x11.txt**
+
+---
+
+## az CLI
+
+See **az_monitor.sh** and **queries/** directory.
+
+### Example: az monitor log-analytics query
+
+```
+az monitor log-analytics query \
+    --workspace $la_guid \
+    --analytics-query @queries/x11.txt \
+    > tmp/query_x11.json
+```
+
+### Example script: az_monitor.sh
+
+```
+$ ./az_monitor.sh
+az monitor log-analytics workspace list ...
+az monitor log-analytics workspace show ...
+az monitor log-analytics workspace table list ...
+az monitor log-analytics workspace table show ...
+az monitor log-analytics query 1 (verbose) ...
+INFO: Command ran in 0.864 seconds (init: 0.082, invoke: 0.781)
+az monitor log-analytics query 2 ...
+az monitor log-analytics query x1 ...
+az monitor log-analytics query x9 ...
+az monitor log-analytics query x10 ...
+az monitor log-analytics query x11 ...
+done
 ```

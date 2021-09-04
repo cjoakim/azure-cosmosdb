@@ -1,0 +1,4 @@
+CDBQueryRuntimeStatistics
+| where AccountName contains "csl" and DatabaseName == "demo" and CollectionName == "travel"
+| project TimeGenerated, PartitionKeyRangeId, QueryText, ActivityId 
+| summarize Count=count() by QueryText

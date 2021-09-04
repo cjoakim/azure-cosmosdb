@@ -1,0 +1,3 @@
+CDBControlPlaneRequests
+| where AccountName contains "csl"
+| project AccountName, TimeGenerated, OperationName, Result, ActivityId, Type

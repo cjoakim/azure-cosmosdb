@@ -13,6 +13,8 @@ $ docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
 ## Start the Container
 
 ```
+$ ipaddr="`ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}' | head -n 1`"
+
 $ docker run \
     -p 8081:8081 \
     -p 10251:10251 \
@@ -28,6 +30,8 @@ $ docker run \
     -it mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
 ```
 
+See shell script [cosmos_emulator.sh](cosmos_emulator.sh)
+
 ### Get and install the certificate
 
 ```
@@ -42,6 +46,12 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/linux-emulator?tabs=ssl-net
 
 <p align="center"><img src="../presentations/img/emulator-on-macos.png" width="80%"></p>
 
-## Shell Script
+## Environment Variables
 
-[cosmos_emulator.sh](cosmos_emulator.sh)
+I use the following environment variables in my code for emulator configuration:
+
+```
+AZURE_COSMOSDB_EMULATOR_ACCT=localhost:8081
+AZURE_COSMOSDB_EMULATOR_KEY=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+AZURE_COSMOSDB_EMULATOR_URI=https://localhost:8081/
+```

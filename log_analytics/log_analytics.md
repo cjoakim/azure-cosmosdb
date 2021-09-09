@@ -17,11 +17,19 @@ This repo has examples of the **az CLI**; it's simple to use.
 
 ---
 
+## Enabling Azure Monitor for CosmosDB in Azure Portal
+
+<p align="center"><img src="img/cosmosdb-resource-specific-diagnostic-settings.png" width="90%"></p>
+
+Prefer the new **Resource Specific** tables (i.e - CDB as listed below)
+
+---
+
 ## Schema 
 
 ### Tables
 
-- [Tables](https://docs.microsoft.com/en-us/azure/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db)
+The Azure Monitor data lands in these [Tables](https://docs.microsoft.com/en-us/azure/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db)
 
 ```
 AzureActivity
@@ -39,7 +47,7 @@ CDBQueryRuntimeStatistics
 
 ---
 
-## Examples
+## Query Examples
 
 ```
 CDBControlPlaneRequests
@@ -194,6 +202,9 @@ Returns a JSON response like the following:
 ---
 
 ## az CLI
+
+You can execute Azure Monitor queries with the **az CLI** with 
+**az monitor log-analytics query**.
 
 See **az_monitor.sh** and **queries/** directory.
 

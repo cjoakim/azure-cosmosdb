@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Enable query text in CosmosDB Log Analytics.
+# Chack state of enable query text in CosmosDB Log Analytics.
 # Chris Joakim, Microsoft, 2021/09/09
-
 
 subs=$AZURE_SUBSCRIPTION_ID
 rg="cjoakimcsl" 
@@ -16,16 +15,7 @@ echo 'acct:  '$acct
 echo 'uri:   '$uri 
 echo 'query: '$query 
 
-echo 'initial query...'
-az rest --method GET --uri $uri --query $query
-
-echo 'patching...'
-az rest --method PATCH --uri $uri --body '{"properties": {"diagnosticLogSettings": {"enableFullTextQuery": "True"}}}'
-
-echo 'sleeping...'
-sleep 20
-
-echo 'query after patch...'
+echo 'query...'
 az rest --method GET --uri $uri --query $query
 
 echo 'done'

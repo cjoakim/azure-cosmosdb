@@ -167,6 +167,32 @@ See **az_monitor.sh** and **queries/x11.txt**
 
 ---
 
+## Enable CosmosDB Full Query Text with az rest
+
+See [rest_enable_full_text_query.sh](rest_enable_full_text_query.sh)
+
+
+```
+$ az rest --method PATCH --uri $uri --body '{"properties": {"diagnosticLogSettings": {"enableFullTextQuery": "True"}}}'
+```
+
+### Querying Current State 
+
+See [rest_query_full_text_query.sh](rest_query_full_text_query.sh)
+
+Returns a JSON response like the following:
+
+```
+{
+  "AcctName": "cjoakimcslcosmos",
+  "diagnosticLogSettings": {
+    "enableFullTextQuery": "True"
+  }
+}
+```
+
+---
+
 ## az CLI
 
 See **az_monitor.sh** and **queries/** directory.

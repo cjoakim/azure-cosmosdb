@@ -23,6 +23,33 @@ This repo has examples of the **az CLI**; it's simple to use.
 
 Prefer the new **Resource Specific** tables (i.e - CDB as listed below)
 
+
+---
+
+## Enable CosmosDB "Full Query Text" with az rest
+
+See [rest_enable_full_text_query.sh](rest_enable_full_text_query.sh)
+
+
+```
+$ az rest --method PATCH --uri $uri --body '{"properties": {"diagnosticLogSettings": {"enableFullTextQuery": "True"}}}'
+```
+
+### Querying "Full Query Text" Current State 
+
+See [rest_query_full_text_query.sh](rest_query_full_text_query.sh)
+
+Returns a JSON response like the following:
+
+```
+{
+  "AcctName": "cjoakimcslcosmos",
+  "diagnosticLogSettings": {
+    "enableFullTextQuery": "True"
+  }
+}
+```
+
 ---
 
 ## Schema 
@@ -172,32 +199,6 @@ CDBDataPlaneRequests
 ```
 
 See **az_monitor.sh** and **queries/x11.txt**
-
----
-
-## Enable CosmosDB Full Query Text with az rest
-
-See [rest_enable_full_text_query.sh](rest_enable_full_text_query.sh)
-
-
-```
-$ az rest --method PATCH --uri $uri --body '{"properties": {"diagnosticLogSettings": {"enableFullTextQuery": "True"}}}'
-```
-
-### Querying Current State 
-
-See [rest_query_full_text_query.sh](rest_query_full_text_query.sh)
-
-Returns a JSON response like the following:
-
-```
-{
-  "AcctName": "cjoakimcslcosmos",
-  "diagnosticLogSettings": {
-    "enableFullTextQuery": "True"
-  }
-}
-```
 
 ---
 

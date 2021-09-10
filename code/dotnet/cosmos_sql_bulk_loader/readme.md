@@ -54,6 +54,9 @@ EOJ Totals:
 
 ### Input Files
 
+This implementation requires that the input JSON documents have a **pk**
+attribute (partition key), and that the target CosmosDB container has the
+partition key value of **/pk**.
 
 See data/air_travel_departures_10k.json
 

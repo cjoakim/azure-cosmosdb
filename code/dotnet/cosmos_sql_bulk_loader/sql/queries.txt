@@ -1,0 +1,2 @@
+q0 | SELECT COUNT(1) FROM c
+q1 | SELECT c.id, c.pk, c.doc_time FROM c WHERE c.pk = 'MIA:MAO' order by c.doc_time desc offset 0 limit 5

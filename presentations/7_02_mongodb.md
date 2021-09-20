@@ -32,6 +32,7 @@
 
 ## CosmosDB - Mongo 4.0 API
 
+- GA 
 - [Feature Support](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/feature-support-40)
 - [Upgrade Process](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/upgrade-mongodb-version)
 - [Autoscale Databases, Containers](https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale)

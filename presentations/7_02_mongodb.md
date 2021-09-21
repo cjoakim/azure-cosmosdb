@@ -48,7 +48,7 @@ Upgrading:
 https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/upgrade-mongodb-version
 
 Autoscale:
-https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscatle
+https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale
 
 My Repo:
 https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/7_02_mongodb.md

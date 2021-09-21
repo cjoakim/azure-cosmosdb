@@ -35,8 +35,24 @@
 - GA 
 - [Feature Support](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/feature-support-40)
 - [Upgrade Process](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/upgrade-mongodb-version)
-- [Autoscale Databases, Containers](https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale)
+- [Autoscale Databases, Containers](https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscatle)
 - [Pricing/Capacity Calculator](https://cosmos.azure.com/capacitycalculator/)
+
+
+
+```
+4.0 Features:
+https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/feature-support-40
+
+Upgrading:
+https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/upgrade-mongodb-version
+
+Autoscale:
+https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscatle
+
+My Repo:
+https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/7_02_mongodb.md
+```
 
 ---
 

@@ -8,7 +8,8 @@
 - [Azure Python Docs](https://docs.microsoft.com/en-us/azure/developer/python/)
 - [CosmosDB/SQL Example](https://docs.microsoft.com/en-us/azure/cosmos-db/sql/create-sql-api-python)
 - [Python Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python)
-  - https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python?tabs=azurecli-linux%2Capplication-level#global-variables
+  - [Global Variables in Python Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python?tabs=azurecli-linux%2Capplication-level#global-variables)
+- [Python-Custom-Skills-Toolkit](https://github.com/Rodrigossz/Python-Custom-Skills-Toolkit)
 
 ## Other Links
 

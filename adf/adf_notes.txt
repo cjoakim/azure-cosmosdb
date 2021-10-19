@@ -1,0 +1,21 @@
+
+
+What is Azure Data Factory ?
+
+- "Big Data Orchestration PaaS Service in Azure"
+- The standard "Data Engineering" approach in Azure
+
+Key Concepts:
+
+- Linked Services
+  - Datalakes, Storage, Databricks, CosmosDB, etc
+- Datasets
+- Pipelines
+- Pipeline Scheduling and Triggering
+- Integration Runtimes - on-prem server
+- Mapping Data Flows - Visual ETL 
+- Copy Activity
+- Many Source/Sink Connectors
+- JSON Artifacts for Linked Services, Datasets, Pipelines
+  - Either in-portal editing, or git integration 
+

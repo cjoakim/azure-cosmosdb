@@ -15,13 +15,20 @@ The simple and recommended best practice is to:
   - Refactor, improve the design with each iteration
   - Repeat as necessary until the results are acceptable/excellent
   - You will learn with each iteration
+  - You probably won't get the design right on the first iteration
   - It's schemaless/malleable
+
+- Use of the **CQRS Design Pattern** is recommended
+  - Command and Query Responsibility Segregation (CQRS)
+  - https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs
+
 
 <p align="center"><img src="img/use-cases-in-excel.png" width="90%"></p>
 
 - For each Iteration: 
   - First **Identify your use-cases**; what is the list of your database operations?
-    - If you're implementing a REST API, what are the endpoints and response documents (i.e. - Swagger API definitions)
+    - If you're implementing a REST API, what are the endpoints and response documents
+      (i.e. - **Swagger/Open API** API definitions)
   - Identify the data that needs to be returned/inserted/upserted for each use-case
   - Identify the SQL for each use case 
   - Identify the **partition key** used, if any, for each of these

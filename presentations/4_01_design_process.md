@@ -23,7 +23,7 @@ The simple and recommended best practice is to:
   - https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs
 
 
-<p align="center"><img src="img/use-cases-in-excel.png" width="90%"></p>
+<p align="center"><img src="img/use-cases-in-excel-v2.png" width="99%"></p>
 
 - For each Iteration: 
   - First **Identify your use-cases**; what is the list of your database operations?

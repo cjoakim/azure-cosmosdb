@@ -186,6 +186,7 @@ See https://docs.microsoft.com/en-us/azure/cosmos-db/index-policy
 - [Partial Document Updates](https://azure.microsoft.com/en-us/updates/partial-document-update-for-azure-cosmos-db-in-private-preview/)
 - [Real World NoSQL design patterns](https://channel9.msdn.com/Events/Azure-Cosmos-DB/Azure-Cosmos-DB-Conf/Real-World-NoSQL-design-patterns-with-Azure-Cosmos-DB)
 - [A Sprint through CosmosDB Presentation](https://github.com/cjoakim/azure-cosmos-demo22)
+  - https://github.com/cjoakim/azure-cosmos-demo22/tree/main/az/indexing_policies
 
 
 [toc](0_table_of_contents.md) &nbsp; |  &nbsp; [previous](4_01_design_process.md) &nbsp; | &nbsp; [next](4_03_relational_to_cosmos_example.md) &nbsp;

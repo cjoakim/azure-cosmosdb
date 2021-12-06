@@ -21,9 +21,13 @@ The simple and recommended best practice is to:
 - Use of the **CQRS Design Pattern** is recommended
   - Command and Query Responsibility Segregation (CQRS)
   - https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs
+  - An Excel Spreadsheet can be very useful (shown below)
 
+&nbsp;
 
 <p align="center"><img src="img/use-cases-in-excel-v2.png" width="99%"></p>
+
+&nbsp;
 
 - For each Iteration: 
   - First **Identify your use-cases**; what is the list of your database operations?

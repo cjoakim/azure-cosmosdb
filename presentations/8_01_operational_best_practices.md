@@ -12,8 +12,8 @@
 - See https://docs.microsoft.com/en-us/azure/cosmos-db/high-availability
 
 
->>> The best configuration to achieve high availability in case of region outage
->>> is single write region with service-managed failover.
+> The best configuration to achieve high availability in case of region outage
+> is single write region with service-managed failover.
 
 ## Use Synapse Link for Analytics
 

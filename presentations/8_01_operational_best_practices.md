@@ -65,6 +65,8 @@
 - Strive to use smaller documents (~1K)
 - Create write-only documents where possible
 - Be aware of the cost to read and update **Jumbo Documents**
+- Consider **sibling documents** - one large with metadata, one small with the volatile attributes
+  - Example: Product and ProductOnHand documents
 
 #### Indexing
 
@@ -79,6 +81,7 @@
 #### CosmosDB is not a DataLake
 
 - Discuss Antipatterns
+- See Synapse Link for Analytics, below
 
 #### Batch Processing 
 
@@ -164,7 +167,7 @@ CDBPartitionKeyStatistics
 
 ---
 
-## Use Synapse Link for Analytics
+## Use Synapse Link for Analytics, HTAP
 
 - **HTAP - Hybrid Transactional and Analytical Processing** 
 - Move expensive aggregration queries out of CosmosDB, into Synapse Analytics

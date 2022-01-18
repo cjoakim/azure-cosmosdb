@@ -11,9 +11,11 @@
 - Use **Auto Failover** (not Manual)
 - See https://docs.microsoft.com/en-us/azure/cosmos-db/high-availability
 
-
 > The best configuration to achieve high availability in case of region outage
-> is single write region with service-managed failover.
+> is **single write region with service-managed failover**.
+
+> It is strongly recommended that you configure the Azure Cosmos accounts used
+> for production workloads to enable **automatic failover**. 
 
 ## Use Synapse Link for Analytics
 

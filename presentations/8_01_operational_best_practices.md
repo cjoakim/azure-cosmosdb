@@ -1,5 +1,15 @@
 # 8.01 - Operational Best Practices 
 
+## Growth Mindset
+
+- Please read the CosmosDB documentation
+- It's not just another database; definitely not relational
+- Always be learning
+
+<p align="center"><img src="img/satya-learning-2.jpeg" width="90%"></p>
+
+---
+
 ## Partition Keys, Throughput, Limits, Design
 
 ### Partition Keys
@@ -7,6 +17,7 @@
 #### Costs and Performance
 
 - Choosing an appropriate **partition key is critical to performance and costs**
+- You can't change the partition key attribute after the container has been created
 - Use a **/pk** attribute to enable container evolution
 - Strive to use the partition key in most of your queries 
 
@@ -33,12 +44,12 @@
 
 ### Design 
 
-- CosmosDB is **schemaless**; don't always create **"Entity Containers"**
+- CosmosDB is **schemaless**; don't always create relational-like **"Entity Containers"**
 - It's Ok and often appropriate to store dissimilar documents in the same container
   - Use a **doctype** or **type** attribute to distinguish these
 - This enables efficient **Partition Key Joins**
-- Store related documents in the same partition key
-  - Example: eCommerce order, line item, and delivery documents
+- Store related (dissimilar) documents in the same partition key
+  - Example: an eCommerce order, its line items, and delivery documents
 
 #### Document Size
 
@@ -47,8 +58,10 @@
 
 #### Indexing
 
-- Default wildcard indexing works well for most customers
-- Composite Indices can greatly reduce query costs 
+- **Default wildcard indexing** works well for most customers
+- But you can exclude from indexing the document attributes/paths not searched
+- **Composite Indices** can greatly reduce query costs 
+- Indexing can be updated at any time, unlike the partition key attibute
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/index-policy
 - https://devblogs.microsoft.com/cosmosdb/new-ways-to-use-composite-indexes/ (Tim Sander blog)
@@ -56,6 +69,11 @@
 #### CosmosDB is not a DataLake
 
 - Discuss Antipatterns
+
+#### Batch Processing 
+
+- Discuss sorting
+- Discuss ETL **diff logic**
 
 ---
 
@@ -113,7 +131,6 @@ CDBPartitionKeyStatistics
 - https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-request-unit-usage
 - https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-server-side-latency
 
-
 ---
 
 ## Deploy to Multi-Regions with Auto Failover 
@@ -128,7 +145,11 @@ CDBPartitionKeyStatistics
 > It is strongly recommended that you configure the Azure Cosmos accounts used
 > for production workloads to enable **automatic failover**. 
 
+---
+
 ## Use Synapse Link for Analytics
 
+- **HTAP - Hybrid Transactional and Analytical Processing** 
 - Move expensive aggregration queries out of CosmosDB, into Synapse Analytics
 - See example repo at: https://github.com/cjoakim/azure-cosmosdb-synapse-link 
+- CosmosDB is not a DataLake (mentioned above)

@@ -6,7 +6,7 @@
 - It's not just another database; definitely not relational
 - Always be learning
 
-<p align="center"><img src="img/satya-learning-2.jpeg" width="90%"></p>
+<p align="center"><img src="img/satya-learning-2.jpeg" width="80%"></p>
 
 ---
 
@@ -33,14 +33,23 @@
 
 - **Database-level Shared Throughput, and Autoscale**, is appropriate for most customers 
   - Specify a Maximum Request Units (RU) at the database level
-  - CosmosDB will autoscale between 10% of that max to 100% of the max you specify
-  - Up to 25 containers in the database share this throughput
+  - CosmosDB will autoscale **between 10% of that max to 100% of the max** you specify
+  - **Up to 25 containers in the database** share this throughput
 
 - Physical Partitions can each support 10,000 RUs max
   - See https://docs.microsoft.com/en-us/azure/cosmos-db/concepts-limits
 
+- Be aware of your database operation costs, see **Azure Monitor** below
+  - Refactor your app or queries based on a weekly **top 10 list** 
+
+- Likewise, be aware of your code **429 Too many requests** errors
+  - Code 429 = The collection has exceeded the provisioned throughput limit
+  - Catch and retry these in your application code
+  - Query these in Azure Monitor 
+
 - https://docs.microsoft.com/en-us/azure/cosmos-db/set-throughput
 - https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale
+- https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb
 
 ### Design 
 
@@ -53,7 +62,8 @@
 
 #### Document Size
 
-- Strive to use smaller documents (~1K); create write-only documents where possible
+- Strive to use smaller documents (~1K)
+- Create write-only documents where possible
 - Be aware of the cost to read and update **Jumbo Documents**
 
 #### Indexing
@@ -72,21 +82,28 @@
 
 #### Batch Processing 
 
-- Discuss sorting
+- Discuss inpute sorting and CosmosDB horizontal distribution
 - Discuss ETL **diff logic**
 
 ---
 
-## Application Code
+## Application Code & Development
 
-- Use the latest or recent SDKs.  **DotNet v3**, Java v4
+- Use our latest or recent SDKs.  **DotNet v3**, Java v4
 - Use **Async** functionality for better application performance 
 - Use preferred regions list in your SDK clients
 - Use DotNet **dynamic** object functionality for reading dissimilar documents
   - Then cast to a specific class per the **doctype** attribute
+- Default retry count is 9; can be configured
+- Be aware of your Query/Operation RU costs at development time, before production deployment
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/sql/sql-api-sdk-dotnet-standard
 - https://docs.microsoft.com/en-us/azure/cosmos-db/sql/tutorial-global-distribution-sql-api?tabs=dotnetv3
+
+### Dev and QA Environments
+
+- CosmosDB **Serverless** can reduce your overall Dev costs
+- Seed your QA database with a significant amount of data
 
 ---
 

@@ -4,7 +4,7 @@
 
 - Please read the CosmosDB documentation
 - It's not just another database; definitely not relational
-- Always be learning
+- Always be learning and insatiably curious 
 
 <p align="center"><img src="img/satya-learning-2.jpeg" width="80%"></p>
 

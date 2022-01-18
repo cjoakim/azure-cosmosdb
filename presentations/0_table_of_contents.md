@@ -64,5 +64,5 @@ chjoakim@microsoft.com
 - [7.04 Table](7_04_table.md)
 
 ## 8 - Summary
-
-- [8.01 Summary](8_01_summary.md)
+- [8.01 Operational Best Practices](8_01_operational_best_practices.md)
+- [8.02 Contact Info](8_02_contact.md)

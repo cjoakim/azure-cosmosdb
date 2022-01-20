@@ -63,6 +63,7 @@
 - This enables efficient **Partition Key Joins**
 - Store related (dissimilar) documents in the same partition key
   - Example: an eCommerce order, its line items, and delivery documents
+- Design databases with **25 or fewer containers** for Autoscale
 
 #### Document Size
 
@@ -98,7 +99,7 @@
 ## Application Code & Development
 
 - Use our latest or recent SDKs.  **DotNet v3**, Java v4
-- Use **Async** functionality for better application performance 
+- Use **Async** functionality for better **application** performance 
 - Use preferred regions list in your SDK clients
 - Use DotNet **dynamic** object functionality for reading dissimilar documents
   - Then cast to a specific class per the **doctype** attribute
@@ -107,6 +108,7 @@
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/sql/sql-api-sdk-dotnet-standard
 - https://docs.microsoft.com/en-us/azure/cosmos-db/sql/tutorial-global-distribution-sql-api?tabs=dotnetv3
+- [Chapter 4_05](4_05_sdks.md)
 
 ### Dev and QA Environments
 

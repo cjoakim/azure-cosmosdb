@@ -117,11 +117,11 @@
 
 ---
 
-## Use Azure Monitor
+## Use Azure Monitor!
 
 - Point your several PaaS services, including **CosmosDB** to an **Azure Monitor** instance
 - Provides a single aggregated view of your application
-- Also provides Alerting functionality
+- Also provides **Alerting** functionality
 - https://docs.microsoft.com/en-us/azure/azure-monitor/overview 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db
 

@@ -51,6 +51,8 @@
 - https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale
 - https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb
 
+<p align="center"><img src="img/cosmosdb-logical-and-physical-partitions.png" width="80%"></p>
+
 ### Design 
 
 - CosmosDB is **schemaless**; don't always create relational-like **"Entity Containers"**

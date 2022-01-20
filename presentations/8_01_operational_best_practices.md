@@ -117,6 +117,13 @@
 
 ---
 
+## DevOps
+
+- Dev + Ops != DevOps 
+- Discuss Antipatterns
+
+---
+
 ## Use Azure Monitor!
 
 - Point your several PaaS services, including **CosmosDB** to an **Azure Monitor** instance

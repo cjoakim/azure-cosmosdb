@@ -1,5 +1,34 @@
 # 8.01 - Operational Best Practices 
 
+## Outline
+
+```
+## Growth Mindset
+## Partition Keys, Throughput, Limits, Design
+### Partition Keys
+#### Costs and Performance
+#### Limits
+### Throughput
+### Physical Partitions
+### Design
+#### Document Size
+#### Indexing
+#### CosmosDB is NOT a DataLake
+#### Batch Processing
+## Application Code & Development
+### Dev and QA Environments
+## DevOps
+## Use Azure Monitor!
+### "Resource Specific" Destination Tables
+### Kusto Query Language
+#### Sample Kusto Queries
+#### In-Depth Examples
+## Deploy to Multi-Regions with Auto Failover
+## Use Synapse Link for Analytics, HTAP
+```
+
+---
+
 ## Growth Mindset
 
 - Please read the CosmosDB documentation

@@ -17,7 +17,7 @@
 #### Costs and Performance
 
 - Choosing an appropriate **partition key is critical to performance and costs**
-- You can't change the partition key attribute after the container has been created
+- You **can't** change the partition key attribute after the container has been created
 - Use a **/pk** attribute to enable container evolution
 - Strive to use the partition key in most of your queries 
 
@@ -32,7 +32,7 @@
 ### Throughput
 
 - **Database-level Shared Throughput, and Autoscale**, is appropriate for most customers 
-  - Specify a Maximum Request Units (RU) at the database level
+  - You specify a Maximum Request Units (RU) at the database level
   - CosmosDB will autoscale **between 10% of that max to 100% of the max** you specify
   - **Up to 25 containers in the database** share this throughput
 
@@ -51,6 +51,8 @@
 - https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale
 - https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb
 
+### Physical Partitions
+
 <p align="center"><img src="img/cosmosdb-logical-and-physical-partitions.png" width="80%"></p>
 
 ### Design 
@@ -64,8 +66,8 @@
 
 #### Document Size
 
-- Strive to use smaller documents (~1K)
-- Create write-only documents where possible
+- Strive to use **smaller documents (~1K)**
+- Create **write-once** documents where possible
 - Be aware of the cost to read and update **Jumbo Documents**
 - Consider **sibling documents** - one large with metadata, one small with the volatile attributes
   - Example: Product and ProductOnHand documents
@@ -78,9 +80,10 @@
 - Indexing can be updated at any time, unlike the partition key attibute
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/index-policy
-- https://devblogs.microsoft.com/cosmosdb/new-ways-to-use-composite-indexes/ (Tim Sander blog)
+- https://devblogs.microsoft.com/cosmosdb/new-ways-to-use-composite-indexes/ ( Tim Sander blog )
+- https://github.com/cjoakim/azure-cosmos-demo22 ( A Sprint through CosmosDB )
 
-#### CosmosDB is not a DataLake
+#### CosmosDB is NOT a DataLake
 
 - Discuss Antipatterns
 - See Synapse Link for Analytics, below

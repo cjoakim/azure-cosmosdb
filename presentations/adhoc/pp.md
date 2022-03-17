@@ -1,10 +1,10 @@
 # Agenda - 3/17/2022
 
-### Intro to CosmosDB
-### CosmosDB SQL API 
-### CosmosDB Mongo API
-### MongoDB to CosmosDB Migrations
-### Synapse Link
+### 1. Intro to CosmosDB
+### 2. CosmosDB SQL API 
+### 3. CosmosDB Mongo API
+### 4. MongoDB to CosmosDB Migrations
+### 5. Synapse Link
 
 
 ```
@@ -26,7 +26,7 @@ chjoakim@microsoft.com
 
 ### Global Replication
 
-<p align="center"><img src="../img/azure-portal-replicate-data-globally.png" width="80%"></p>
+<p align="center"><img src="../img/azure-portal-replicate-data-globally.png" width="90%"></p>
 
 ---
 
@@ -74,7 +74,6 @@ Not often used or needed, especially with a Multi-Region account.
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/continuous-backup-restore-introduction
 
-
 ---
 
 ### Synapse Link and HTAP
@@ -83,7 +82,7 @@ Not often used or needed, especially with a Multi-Region account.
 - https://docs.microsoft.com/en-us/azure/cosmos-db/synapse-link
 - https://github.com/cjoakim/azure-cosmosdb-synapse-link
 
-<p align="center"><img src="../img/synapse-analytics-cosmos-db-architecture.png" width="70%"></p>
+<p align="center"><img src="../img/synapse-analytics-cosmos-db-architecture.png" width="80%"></p>
 
 ---
 

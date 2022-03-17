@@ -20,7 +20,7 @@ chjoakim@microsoft.com
 
 ### Multi-Modal - SQL/Core, Mongo, Cassandra, Gremlin, and Table APIs
 
-<p align="center"><img src="../img/azure-cosmos-db-intro.png" width="80%"></p>
+<p align="center"><img src="../img/azure-cosmos-db-intro.png" width="70%"></p>
 
 ---
 
@@ -38,7 +38,7 @@ chjoakim@microsoft.com
 
 ### Partitions/Sharding
 
-<p align="center"><img src="../img/partitions.png" width="70%"></p>
+<p align="center"><img src="../img/partitions.png" width="75%"></p>
 
 ---
 
@@ -52,12 +52,13 @@ chjoakim@microsoft.com
 
 ### Log Analytics
 
-<p align="center"><img src="../img/azure-monitor.png" width="70%"></p>
+<p align="center"><img src="../img/azure-monitor.png" width="60%"></p>
 
 - [Monitor CosmosDB](https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db)
 - [Examples](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/examples)
 - [Basic Queries](https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-logs-basic-queries)
 - [Kusto Query Language quick reference](https://docs.microsoft.com/en-us/azure/data-explorer/kql-quick-reference)
+- [Resource Specific Logging (CDB)](https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-logs-basic-queries#resource-specific-queries)
 
 ---
 

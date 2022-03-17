@@ -18,21 +18,47 @@ chjoakim@microsoft.com
 
 ## Intro to CosmosDB
 
-- Multi-Modal - SQL/Core, Mongo, Cassandra, Gremlin, and Table APIs
+### Multi-Modal - SQL/Core, Mongo, Cassandra, Gremlin, and Table APIs
 
 <p align="center"><img src="../img/azure-cosmos-db-intro.png" width="90%"></p>
 
+### Global Replication
+
+<p align="center"><img src="../img/azure-portal-replicate-data-globally.png" width="90%"></p>
+
+### Request Units and Scaling 
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/request-units
+
+### Partitions/Sharding
+
+<p align="center"><img src="../img/partitions.png" width="90%"></p>
 
 
+### Change Feed
 
-- Global Replication
-- Request Units and Scaling 
-- Partitions/Sharding
-- Change Feed
-- Log Analytics
-- Point-In-Time-Restore (PITR)
-- Synapse Link and HTAP
-  - Hybrid Transactional and Analytical Processing (HTAP)
+-
+
+### Log Analytics
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-resource-logs
+- https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-logs-basic-queries#resource-specific-queries
+
+
+- [Monitor CosmosDB](https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db)
+- [Examples](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/examples)
+- [Basic Queries](https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-logs-basic-queries)
+- [Kusto Query Language quick reference](https://docs.microsoft.com/en-us/azure/data-explorer/kql-quick-reference)
+
+### Point-In-Time-Restore (PITR)
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/continuous-backup-restore-introduction
+
+### Synapse Link and HTAP
+
+- Hybrid Transactional and Analytical Processing (HTAP)
+- https://docs.microsoft.com/en-us/azure/cosmos-db/synapse-link
+- https://github.com/cjoakim/azure-cosmosdb-synapse-link
 
 ---
 

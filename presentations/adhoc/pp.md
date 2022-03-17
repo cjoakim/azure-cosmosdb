@@ -88,15 +88,24 @@ Not often used or needed, especially with a Multi-Region account.
 
 ## CosmosDB SQL API 
 
+- Structure of a CosmosDB Account
+
+```
+  - Account
+    - Database(s)
+      - Collection(s)
+        - Documents
+```
+
 - JSON Document Oriented
 - Our most popular CosmosDB API
-- Native SDKs - DotNet, Java, Python, Node.js 
+- **"CosmosDB-Aware" Native SDKs** - DotNet, Java, Python, Node.js 
   - Great features
   - Auto Homing
   - Preferred Regions
   - Auto Configurable Retries
   - Integrated CosmosDB Metrics - RUs, etc 
-- 
+  - DevOps functionality - Administer Databases, Containers, Throughput
 
 Sample Document, the _ underscored attributes are system generated.
 

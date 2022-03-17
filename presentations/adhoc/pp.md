@@ -33,12 +33,23 @@ chjoakim@microsoft.com
 ### Request Units and Scaling 
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/request-units
+- Manual Scale
+- Auto Scale
+- Database Level Shared Throughput
 
 ---
 
 ### Partitions/Sharding
 
 <p align="center"><img src="../img/partitions.png" width="75%"></p>
+
+- 50GB Physical Partitions
+  - Managed/created by CosmosDB
+  - Automatic Sharding
+
+- 20GB Logical Partition Limit - per your **partition key attribute"
+
+- Strive to specify the partition key attribute in your queries for best performance and costs
 
 ---
 
@@ -86,9 +97,7 @@ Not often used or needed, especially with a Multi-Region account.
 
 ---
 
-## CosmosDB SQL API 
-
-- Structure of a CosmosDB Account
+## Structure of a CosmosDB SQL or Mongo API Account
 
 ```
   - Account
@@ -96,18 +105,17 @@ Not often used or needed, especially with a Multi-Region account.
       - Collection(s)
         - Documents
 ```
+--- 
 
-- JSON Document Oriented
+## CosmosDB SQL API 
+
 - Our most popular CosmosDB API
-- **"CosmosDB-Aware" Native SDKs** - DotNet, Java, Python, Node.js 
-  - Great features
-  - Auto Homing
-  - Preferred Regions
-  - Auto Configurable Retries
-  - Integrated CosmosDB Metrics - RUs, etc 
-  - DevOps functionality - Administer Databases, Containers, Throughput
+- Also known as the **Core** API?
+- Why is it called SQL API if it's NoSQL?
 
-Sample Document, the _ underscored attributes are system generated.
+- **JSON Documents** - very similar to MongoDB
+  - the _ underscored attributes are system generated (ex. - **_etag**)
+  - Can be deeply nested JSON structures
 
 ```
 {
@@ -130,13 +138,51 @@ Sample Document, the _ underscored attributes are system generated.
 }
 ```
 
+- **"CosmosDB-Aware" Native SDKs** - DotNet, Java, Python, Node.js 
+  - Great features
+  - Auto Homing
+  - Preferred Regions
+  - Auto Configurable Retries
+  - Integrated CosmosDB Metrics - RUs, etc 
+  - DevOps functionality - Administer Databases, Containers, Throughput
+
+- **Indexing**
+  - Default policy is to index everything
+  - You can specify Indexing with JSON
+  - Index single attributes
+  - Or multiple attributes with **Composite Indexes**
+    - Applies to SELECT and ORDER BY clauses
+    - https://devblogs.microsoft.com/cosmosdb/new-ways-to-use-composite-indexes/
+
+  - A Sprint Through CosmosDB Presentation, covers indexing
+    - https://github.com/cjoakim/azure-cosmos-demo22
+
+- **GeoJSON**
+  - https://docs.microsoft.com/en-us/azure/cosmos-db/sql/sql-query-geospatial-intro
+
+- **Optimistic Concurrency Control (OCC)**
+  - https://docs.microsoft.com/en-us/azure/cosmos-db/sql/database-transactions-optimistic-concurrency#optimistic-concurrency-control
+
 ---
 
 ## CosmosDB Mongo API
 
+- **"It's just Mongo, it just works as you expect"**
+- **Use the same Tooling** - mongoexport, mongoimport, 3T, etc 
+- **Use the same SDKs** - java driver, pymongo, etc
+- **Use the same Indexing** - partition key is implicitly indexed
 
-- Tooling and SDKs - mongoexport, mongoimport, 3T, etc 
-- Mongo to Cosmos migrations
+- **Design Considerations**
+  - Smaller documents
+  - Consider the RU costs of updating large documents
+  - Consider documents in the same partition key rather than embedding
+  - It's schemaless - containers aren't relational tables
+
+---
+
+## MongoDB to CosmosDB Migrations
+
+- **Mongo to Cosmos migrations**
   - **Data Migration Assistant** (DMA)
   - **Data Migration Service** (DMS) 
   - **Azure Data Factory** (ADF) 
@@ -145,11 +191,6 @@ Sample Document, the _ underscored attributes are system generated.
     - User-specified mappings
     - Multi-modal Code generation
     - https://github.com/Azure-Samples/azure-cosmos-db-mongo-migration
-- Design Considerations
-
----
-
-## MongoDB to CosmosDB Migrations
 
 ---
 

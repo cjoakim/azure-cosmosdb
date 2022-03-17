@@ -19,6 +19,12 @@ chjoakim@microsoft.com
 ## Intro to CosmosDB
 
 - Multi-Modal - SQL/Core, Mongo, Cassandra, Gremlin, and Table APIs
+
+<p align="center"><img src="../img/azure-cosmos-db-intro.png" width="90%"></p>
+
+
+
+
 - Global Replication
 - Request Units and Scaling 
 - Partitions/Sharding

@@ -1,14 +1,50 @@
 # Agenda - 3/17/2022
 
+### Intro to CosmosDB
+### CosmosDB SQL API 
+### CosmosDB Mongo API
+### MongoDB to CosmosDB Migrations
+### Synapse Link
+
+
+```
+Chris Joakim
+Azure CosmosDB Global Black Belt
+chjoakim@microsoft.com
+```
+
+---
+
+
 ## Intro to CosmosDB
 
-- Multi-modal
+- Multi-Modal - SQL/Core, Mongo, Cassandra, Gremlin, and Table APIs
 - Global Replication
 - Request Units and Scaling 
 - Partitions/Sharding
 - Change Feed
 - Log Analytics
 - Synapse Link
+
+---
+
+## CosmosDB SQL API 
+
+---
+
+## CosmosDB Mongo API
+
+---
+
+## MongoDB to CosmosDB Migrations
+
+---
+
+## Synapse Link
+
+
+---
+---
 
 ## MongoDB to CosmosDB Migrations
 
@@ -25,11 +61,7 @@
 - Design Considerations
 
 
-```
-Chris Joakim
-Azure CosmosDB Global Black Belt
-chjoakim@microsoft.com
-```
+
 
 
 ## TODO - update this presentation below 

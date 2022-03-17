@@ -20,45 +20,69 @@ chjoakim@microsoft.com
 
 ### Multi-Modal - SQL/Core, Mongo, Cassandra, Gremlin, and Table APIs
 
-<p align="center"><img src="../img/azure-cosmos-db-intro.png" width="90%"></p>
+<p align="center"><img src="../img/azure-cosmos-db-intro.png" width="80%"></p>
+
+---
 
 ### Global Replication
 
-<p align="center"><img src="../img/azure-portal-replicate-data-globally.png" width="90%"></p>
+<p align="center"><img src="../img/azure-portal-replicate-data-globally.png" width="80%"></p>
+
+---
 
 ### Request Units and Scaling 
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/request-units
 
+---
+
 ### Partitions/Sharding
 
-<p align="center"><img src="../img/partitions.png" width="90%"></p>
+<p align="center"><img src="../img/partitions.png" width="70%"></p>
 
+---
 
 ### Change Feed
 
--
+<p align="center"><img src="../img/change-feed-functions.png" width="70%"></p>
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed
+
+---
 
 ### Log Analytics
 
-- https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-resource-logs
-- https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-logs-basic-queries#resource-specific-queries
-
+<p align="center"><img src="../img/azure-monitor.png" width="70%"></p>
 
 - [Monitor CosmosDB](https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db)
 - [Examples](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/examples)
 - [Basic Queries](https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-logs-basic-queries)
 - [Kusto Query Language quick reference](https://docs.microsoft.com/en-us/azure/data-explorer/kql-quick-reference)
 
-### Point-In-Time-Restore (PITR)
+---
+
+### Restores
+
+Not often used or needed, especially with a Multi-Region account.
+
+#### Original Periodic Backups
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/configure-periodic-backup-restore
+
+#### Point-In-Time-Restore (PITR)
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/continuous-backup-restore-introduction
+
+
+---
 
 ### Synapse Link and HTAP
 
 - Hybrid Transactional and Analytical Processing (HTAP)
 - https://docs.microsoft.com/en-us/azure/cosmos-db/synapse-link
 - https://github.com/cjoakim/azure-cosmosdb-synapse-link
+
+<p align="center"><img src="../img/synapse-analytics-cosmos-db-architecture.png" width="70%"></p>
 
 ---
 

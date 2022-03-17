@@ -24,15 +24,63 @@ chjoakim@microsoft.com
 - Partitions/Sharding
 - Change Feed
 - Log Analytics
-- Synapse Link
+- Point-In-Time-Restore (PITR)
+- Synapse Link and HTAP
+  - Hybrid Transactional and Analytical Processing (HTAP)
 
 ---
 
 ## CosmosDB SQL API 
 
+- JSON Document Oriented
+- Our most popular CosmosDB API
+- Native SDKs - DotNet, Java, Python, Node.js 
+  - Great features
+  - Auto Homing
+  - Preferred Regions
+  - Auto Configurable Retries
+  - Integrated CosmosDB Metrics - RUs, etc 
+- 
+
+Sample Document, the _ underscored attributes are system generated.
+
+```
+{
+    "customer_id": 199,
+    "first_name": "Veronica",
+    "last_name": "Gilbert",
+    "full_name": "Veronica Gilbert",
+    "address": "6292 Cervantes Port",
+    "city": "West Joseph",
+    "state": "IA",
+    "doc_epoch": 1644166252599,
+    "doc_time": "2022/02/06-16:50:52",
+    "id": "2503a58f-0902-4344-8874-7fbe5d2073fb",
+    "pk": 199,
+    "_rid": "OpdUAKTYP9kDAAAAAAAAAA==",
+    "_self": "dbs/OpdUAA==/colls/OpdUAKTYP9k=/docs/OpdUAKTYP9kDAAAAAAAAAA==/",
+    "_etag": "\"940514bd-0000-0100-0000-61fffc6d0000\"",
+    "_attachments": "attachments/",
+    "_ts": 1644166253
+}
+```
+
 ---
 
 ## CosmosDB Mongo API
+
+
+- Tooling and SDKs - mongoexport, mongoimport, 3T, etc 
+- Mongo to Cosmos migrations
+  - **Data Migration Assistant** (DMA)
+  - **Data Migration Service** (DMS) 
+  - **Azure Data Factory** (ADF) 
+  - **Code-based migration process**
+    - Source database metadata
+    - User-specified mappings
+    - Multi-modal Code generation
+    - https://github.com/Azure-Samples/azure-cosmos-db-mongo-migration
+- Design Considerations
 
 ---
 
@@ -48,17 +96,6 @@ chjoakim@microsoft.com
 
 ## MongoDB to CosmosDB Migrations
 
-- Tooling and SDKs - mongoexport, mongoimport, 3T, etc 
-- Mongo to Cosmos migrations
-  - **Data Migration Assistant** (DMA)
-  - **Data Migration Service** (DMS) 
-  - **Azure Data Factory** (ADF) 
-  - **Code-based migration process**
-    - Source database metadata
-    - User-specified mappings
-    - Multi-modal Code generation
-    - https://github.com/Azure-Samples/azure-cosmos-db-mongo-migration
-- Design Considerations
 
 
 

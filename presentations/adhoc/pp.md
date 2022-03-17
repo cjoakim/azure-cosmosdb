@@ -22,6 +22,10 @@ chjoakim@microsoft.com
 
 <p align="center"><img src="../img/azure-cosmos-db-intro.png" width="70%"></p>
 
+- Born in the Cloud; it was never an on-prem database
+- High Performance, High Availability, Infinite Horizontal Scalability, Regional Replication - in it's DNA
+
+
 ---
 
 ### Global Replication

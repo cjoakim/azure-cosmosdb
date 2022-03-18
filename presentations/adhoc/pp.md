@@ -114,7 +114,7 @@ Also: **Availability Zones** within a Region
   - Managed/created by CosmosDB
   - Automatic Sharding
 
-- 20GB Logical Partition Limit - per your **partition key attribute"
+- 20GB Logical Partition Limit - per your **partition key attribute**
 
 - Strive to specify the partition key attribute in your queries for best performance and costs
 

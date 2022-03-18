@@ -238,7 +238,14 @@ Not often used or needed, especially with a Multi-Region account.
 - **Use the same Tooling** - mongoexport, mongoimport, **Studio 3T**, etc 
 - **Use the same SDKs** - java driver, pymongo, etc
   - org.mongodb:mongodb-driver-sync:4.4.1 (Maven coordinates)
-- **Use the same Indexing** - partition key is implicitly indexed
+- **Use the same Indexing** 
+  - Same indexing syntax as MongoDB
+  - The partition key is implicitly indexed
+- **Currently at MongoDB version 4.2**
+  - Version 4.0+ has new storage engine
+  - Update in Azure Portal from one version to another; no migration necessary
+  - https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-api-for-mongodb-v4-2-is-here-three-reasons-to-upgrade-now/
+  - https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/feature-support-42
 
 - **Design Considerations**
   - Smaller documents
@@ -252,12 +259,20 @@ Not often used or needed, especially with a Multi-Region account.
 
 - **Mongo to Cosmos migrations**
   - **Data Migration Assistant** (DMA)
+    - https://github.com/AzureCosmosDB/Cosmos-DB-Migration-Assistant-for-API-for-MongoDB
+    - Reads metadata about your source MongoDB database
+    - Creates four CSV files, and zips these.  Share the zip with Microsoft.
   - **Data Migration Service** (DMS) 
+    - https://docs.microsoft.com/en-us/azure/dms/tutorial-mongodb-cosmos-db
+    - https://docs.microsoft.com/en-us/azure/dms/tutorial-mongodb-cosmos-db-online
   - **Azure Data Factory** (ADF) 
+    - https://azure.microsoft.com/en-us/services/data-factory/
+    - "Copy Activity" from Mongo to Cosmos
   - **Code-based migration process**
     - Source database metadata
     - User-specified mappings
     - Multi-modal Code generation
+    - **Document Transformation**
     - https://github.com/Azure-Samples/azure-cosmos-db-mongo-migration
 
 ---

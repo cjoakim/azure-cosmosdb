@@ -235,8 +235,9 @@ Not often used or needed, especially with a Multi-Region account.
 ## CosmosDB Mongo API
 
 - **"It's just Mongo, it just works as you expect"**
-- **Use the same Tooling** - mongoexport, mongoimport, 3T, etc 
+- **Use the same Tooling** - mongoexport, mongoimport, **Studio 3T**, etc 
 - **Use the same SDKs** - java driver, pymongo, etc
+  - org.mongodb:mongodb-driver-sync:4.4.1 (Maven coordinates)
 - **Use the same Indexing** - partition key is implicitly indexed
 
 - **Design Considerations**

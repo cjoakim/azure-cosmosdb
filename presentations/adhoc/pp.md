@@ -6,6 +6,8 @@
 ### 4. MongoDB to CosmosDB Migrations
 ### 5. Synapse Link
 
+This URL: https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/pp.md 
+
 ```
 
 Chris Joakim
@@ -31,10 +33,20 @@ Answer: Datastores and Databases that are **not relational**.
 <p align="center"><img src="../img/azure-cosmos-db-intro.png" width="70%"></p>
 
 - **Born in the Cloud**; it was never an on-prem database
-- High Performance, High Availability, Infinite Horizontal Scalability, Regional Replication - **in it's DNA**
-- Capable of millions of TPS
-- Guranteed P99 query performance for 10ms for 1KB documents
+- High Performance
+  - Capable of millions of TPS
+  - Guranteed P99 query performance for 10ms for 1KB documents
+- High Availability
+  - 99.99% guranteed uptime for single region
+  - 99.999% guranteed uptime for multi region
+- Infinite Horizontal Scalability
+  - PBs of data
+  - 50GB Physical Partitions
+- The above features are **in it's DNA**
 - But suitable for small worloads, too
+
+#### Foundation and APIs
+
 - Common Database Foundation with multiple APIs
 - Select One API per CosmosDB account
 - **APIs**

@@ -86,9 +86,11 @@ Also: **Availability Zones** within a Region
 
 > The cost to do a **point read** (i.e. fetching a single item by its ID and partition key value)
 > for a 1 KB document is 1 Request Unit (1.0 RU)
+> Approx 5 RU for a 1 KB write
 
 - Think of it as a **per second budget of throughput**
   - For example, what can you do with 400 RU?
+    - 400 1K point reads
 
 - This is the **primary cost component of CosmosDB**; throughput or RUs
   - Throughput cost model, not a licensing model

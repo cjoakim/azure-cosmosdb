@@ -1,4 +1,4 @@
-# Agenda - 3/17/2022
+## Agenda - 3/17/2022
 
 ### 1. Intro to CosmosDB
 ### 2. CosmosDB SQL API 
@@ -7,9 +7,11 @@
 ### 5. Synapse Link
 
 ```
+
 Chris Joakim
 Azure CosmosDB Global Black Belt
 chjoakim@microsoft.com
+
 ```
 
 ---
@@ -24,16 +26,17 @@ Answer: Datastores and Databases that are **not relational**.
 
 ---
 
-### CosmosDB = Multi-Modal NoSQL Databases
+### CosmosDB = a Multi-Modal NoSQL Database with multiple APIs
 
 <p align="center"><img src="../img/azure-cosmos-db-intro.png" width="70%"></p>
 
 - **Born in the Cloud**; it was never an on-prem database
-- Common Database Foundation with multiple APIs
-- Select One API per CosmosDB account
 - High Performance, High Availability, Infinite Horizontal Scalability, Regional Replication - **in it's DNA**
 - Capable of millions of TPS
+- Guranteed P99 query performance for 10ms for 1KB documents
 - But suitable for small worloads, too
+- Common Database Foundation with multiple APIs
+- Select One API per CosmosDB account
 - **APIs**
   - Document Oriented
     - **SQL/Core, Mongo**
@@ -44,7 +47,16 @@ Answer: Datastores and Databases that are **not relational**.
   - Row Oriented 
     - **Table**
 
-Our Mongo API is built upon the (incredible) CosmosDB foundation, not MongoDB (i.e. - Community Edition)
+- Some APIs are open-source, some are Microsoft proprietary
+- Our Mongo API is built upon the (incredible) CosmosDB foundation, not MongoDB (i.e. - Community Edition)
+- CosmosDB conforms to the **over the wire protocols of the open-source APIs**
+
+#### P99 10ms Reads / 15ms Writes
+
+<p align="center"><img src="../img/bell-curve.jpg" width="60%"></p>
+
+- https://azure.microsoft.com/en-us/blog/azure-documentdb-service-level-agreements/
+  > "we will refund you up to 25% of your monthly bill."
 
 ---
 

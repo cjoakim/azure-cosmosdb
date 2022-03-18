@@ -6,10 +6,11 @@
 ### 4. MongoDB to CosmosDB Migrations
 ### 5. Synapse Link
 
-
-> Chris Joakim
-> Azure CosmosDB Global Black Belt
-> chjoakim@microsoft.com
+```
+Chris Joakim
+Azure CosmosDB Global Black Belt
+chjoakim@microsoft.com
+```
 
 ---
 
@@ -42,6 +43,8 @@ Answer: Datastores and Databases that are **not relational**.
     - **Gremlin**
   - Row Oriented 
     - **Table**
+
+Our Mongo API is built upon the (incredible) CosmosDB foundation, not MongoDB (i.e. - Community Edition)
 
 ---
 

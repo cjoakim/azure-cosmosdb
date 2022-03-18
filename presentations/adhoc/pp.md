@@ -23,15 +23,25 @@ Answer: Datastores and Databases that are **not relational**.
 
 ---
 
-### Multi-Modal - SQL/Core, Mongo, Cassandra, Gremlin, and Table APIs
+### CosmosDB = Multi-Modal NoSQL Databases
 
 <p align="center"><img src="../img/azure-cosmos-db-intro.png" width="70%"></p>
 
 - **Born in the Cloud**; it was never an on-prem database
+- Common Database Foundation with multiple APIs
+- Select One API per CosmosDB account
 - High Performance, High Availability, Infinite Horizontal Scalability, Regional Replication - **in it's DNA**
 - Capable of millions of TPS
 - But suitable for small worloads, too
-
+- **APIs**
+  - Document Oriented
+    - **SQL/Core, Mongo**
+  - Column Oriented
+    - **Cassandra**
+  - Graph
+    - **Gremlin**
+  - Row Oriented 
+    - **Table**
 
 ---
 
@@ -41,9 +51,23 @@ Answer: Datastores and Databases that are **not relational**.
 
 ---
 
-### Request Units and Scaling 
+### Request Units
 
 - https://docs.microsoft.com/en-us/azure/cosmos-db/request-units
+
+> The cost to do a **point read** (i.e. fetching a single item by its ID and partition key value)
+> for a 1 KB document is 1 Request Unit (1.0 RU)
+
+- Think of it as a **per second budget of throughput**
+  - For example, what can you do with 400 RU?
+
+- This is the **primary cost component of CosmosDB**; throughput or RUs
+  - Throughput cost model, not a licensing model
+
+---
+
+### Scaling
+
 - Manual Scale
 - Auto Scale
 - Database Level Shared Throughput

@@ -33,13 +33,13 @@ Answer: Datastores and Databases that are **not relational**.
 <p align="center"><img src="../img/azure-cosmos-db-intro.png" width="70%"></p>
 
 - **Born in the Cloud**; it was never an on-prem database
-- High Performance
+- **High Performance**
   - Capable of millions of TPS
-  - Guranteed P99 query performance for 10ms for 1KB documents
-- High Availability
+  - Guranteed performance, see P99 bell curve below
+- **High Availability**
   - 99.99% guranteed uptime for single region
   - 99.999% guranteed uptime for multi region
-- Infinite Horizontal Scalability
+- **Infinite Horizontal Scalability**
   - PBs of data
   - 50GB Physical Partitions
 - The above features are **in it's DNA**
@@ -47,8 +47,8 @@ Answer: Datastores and Databases that are **not relational**.
 
 #### Foundation and APIs
 
-- Common Database Foundation with multiple APIs
-- Select One API per CosmosDB account
+- **Common Database Foundation** with multiple APIs
+- Select **One** API per CosmosDB account
 - **APIs**
   - Document Oriented
     - **SQL/Core, Mongo**
@@ -75,6 +75,8 @@ Answer: Datastores and Databases that are **not relational**.
 ### Global Replication
 
 <p align="center"><img src="../img/azure-portal-replicate-data-globally.png" width="90%"></p>
+
+Also: **Availability Zones** within a Region
 
 ---
 

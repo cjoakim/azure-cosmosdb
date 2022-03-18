@@ -7,16 +7,21 @@
 ### 5. Synapse Link
 
 
-```
-Chris Joakim
-Azure CosmosDB Global Black Belt
-chjoakim@microsoft.com
-```
+> Chris Joakim
+> Azure CosmosDB Global Black Belt
+> chjoakim@microsoft.com
 
 ---
 
-
 ## Intro to CosmosDB
+
+### Wait, what exactly is "NoSQL"?
+
+<p align="center"><img src="../img/spectrum-800..png" width="70%"></p>
+
+Answer: Datastores and Databases that are **not relational**.
+
+---
 
 ### Multi-Modal - SQL/Core, Mongo, Cassandra, Gremlin, and Table APIs
 

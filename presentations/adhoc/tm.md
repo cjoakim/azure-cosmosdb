@@ -166,4 +166,40 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/20220131
 
 https://docs.microsoft.com/en-us/azure/cosmos-db/database-security?tabs=sql-api
 
+- **Encryption**
+  - Encryption at rest 
+  - Encryption in flight
+  - Encryption of backups 
+  - Encryption Key Types:
+    - Service-managed keys - default, created/managed by CosmosDB PaaS service
+    - Customer-managed keys or CMK
+      - aka "BYOK"
+      - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-setup-cmk
+      - You must store customer-managed keys in Azure Key Vault 
+   - Client-side Field Level Encryption in 4.2
+     - https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-api-for-mongodb-v4-2-is-here-three-reasons-to-upgrade-now/
 
+- **Key-based Access**
+  - Primary and secondary read/write keys
+  - Primary and secondary read keys
+
+- **Resource Locks**
+  - https://docs.microsoft.com/en-us/azure/cosmos-db/resource-locks
+  - Prevent accidental deletion
+
+- **Networking**
+  - VNet Service Endpoints
+    - https://azure.microsoft.com/en-us/blog/virtual-network-service-endpoints-for-azure-cosmos-db-is-now-generally-available/
+    - https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview
+    - https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview
+    - https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview
+  - Private Endpoints
+    - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-configure-private-endpoints
+
+- **RBAC**
+  - https://docs.microsoft.com/en-us/azure/cosmos-db/role-based-access-control
+  - Azure RBAC support in Azure Cosmos DB applies to **management plane operations** only
+
+- **Data Plane Operations (Preview)**
+  - **Same as MongoDB - roles and users stored in the database**
+  - Assign roles to users for collection-level CRUD authorization

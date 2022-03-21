@@ -13,7 +13,7 @@ chjoakim@microsoft.com
 
 ### This Presentation URL
 
-https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/20220131.md
+https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
 
 ---
 
@@ -103,6 +103,18 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/20220131
 
 - CosmosDB Costs
 - CosmosDB Security
+
+```
+Chris Joakim
+Azure CosmosDB Global Black Belt
+chjoakim@microsoft.com
+```
+
+### This Presentation URL
+
+https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
+
+---
 
 ## Costs
 

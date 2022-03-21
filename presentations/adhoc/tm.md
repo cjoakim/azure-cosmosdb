@@ -110,20 +110,26 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/20220131
 
 ### Primary Cost Components
 
-0. **There are Zero up-front licensing or initial costs**
-1. Provisioned Throughput
+0. **There are Zero up-front licensing or initial costs for CosmosDB**
+   - Azure PaaS Services: Provision anytime, Change scale anytime, Delete anytime
+1. **Provisioned Throughput**
    - https://docs.microsoft.com/en-us/azure/cosmos-db/set-throughput 
-2. Consumed Storage (Documents, Indexes)
+   - Be aware of multi-write regions vs single-write and multi-read regions
+2. **Consumed Storage (Documents, Indexes)**
 3. Backup storage (additional backups, first 2 are free)
 4. Regional data distribution - replication, egress
-5. Availability zones
-5. Analytical storage transactions (Synapse Link)
-6. Dedicated Gateway - CosmosDB/SQL Integrated Cache
-7. Integrated cache
+5. Availability zones  (1.25x)
+6. Analytical storage transactions (Synapse Link)
+7. Dedicated Gateway & Integrated cache (CosmosDB/SQL Integrated Cache)
 
 ### Reserved Capacity Discount
 
-
+- https://docs.microsoft.com/en-us/azure/cosmos-db/cosmos-db-reserved-capacity
+- Save up to 65% with a three-year upfront commitment
+- Specify the following:
+  - Term (1 year or 3 years)
+  - Billing frequency (Monthly or Upfront)
+  - Throughput Type (RU/s vs multi-region write RU/s)
 
 ### Calculators 
 
@@ -140,9 +146,24 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/20220131
 - Consider Database-Level Shared Throughput
   - eliminates the 400 minimum RU per container issue
   - shares n-number of RUs across the <= 25 containers in a database
-  
+- Be aware of multi-write regions vs single-write and multi-read regions
+- Subtle Design Differences with MongoDB vs CosmosDB/Mongo API 
+  - these are driven by the pricing models of the two databases
+  - prefer smaller documents
+  - prefer 25 or fewer collections per database
 
 ---
 
+## Security and Compliance
+
+## Compliance
+
+- https://docs.microsoft.com/en-us/azure/compliance/
+- https://azure.microsoft.com/en-us/resources/microsoft-azure-compliance-offerings/
+- https://docs.microsoft.com/en-us/azure/cosmos-db/compliance
+
 ## Security
+
+https://docs.microsoft.com/en-us/azure/cosmos-db/database-security?tabs=sql-api
+
 

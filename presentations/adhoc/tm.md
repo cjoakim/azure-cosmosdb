@@ -151,6 +151,7 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/20220131
   - these are driven by the pricing models of the two databases
   - prefer smaller documents
   - prefer 25 or fewer collections per database
+- **Let me help you with your designs**
 
 ---
 

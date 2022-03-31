@@ -169,13 +169,19 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
 
 # Agenda - 3/31/2022
 
-## Security and Compliance
+https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
+
+## Compliance and Security
+
+---
 
 ## Compliance
 
 - https://docs.microsoft.com/en-us/azure/compliance/
 - https://azure.microsoft.com/en-us/resources/microsoft-azure-compliance-offerings/
 - https://docs.microsoft.com/en-us/azure/cosmos-db/compliance
+
+---
 
 ## Security
 

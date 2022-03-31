@@ -167,6 +167,8 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
 
 ---
 
+# Agenda - 3/31/2022
+
 ## Security and Compliance
 
 ## Compliance
@@ -192,6 +194,13 @@ https://docs.microsoft.com/en-us/azure/cosmos-db/database-security?tabs=sql-api
    - Client-side Field Level Encryption in 4.2
      - https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-api-for-mongodb-v4-2-is-here-three-reasons-to-upgrade-now/
 
+- **Connection String - requires ssl**
+
+Example:
+```
+mongodb://account:<secret>@account.mongo.cosmos.azure.com:10255/?ssl=true&....
+```
+
 - **Key-based Access**
   - Primary and secondary read/write keys
   - Primary and secondary read keys
@@ -216,3 +225,6 @@ https://docs.microsoft.com/en-us/azure/cosmos-db/database-security?tabs=sql-api
 - **Data Plane Operations (Preview)**
   - **Same as MongoDB - roles and users stored in the database**
   - Assign roles to users for collection-level CRUD authorization
+
+
+mongodb://cjoakimcosmosmongo:<secret>@cjoakimcosmosmongo.mongo.cosmos.azure.com:10255/?ssl=true&....

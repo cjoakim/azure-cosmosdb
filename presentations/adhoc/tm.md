@@ -169,7 +169,8 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
 
 # Agenda - 3/31/2022
 
-https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
+- https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
+- https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-introduction
 
 ## Compliance and Security
 
@@ -190,7 +191,7 @@ https://docs.microsoft.com/en-us/azure/cosmos-db/database-security?tabs=sql-api
 
 - **Encryption**
   - Encryption in flight
-
+    - ssl=true is required in the connection string
   - Encryption at rest 
   - Encryption of backups 
   - Encryption Key Types:
@@ -201,6 +202,8 @@ https://docs.microsoft.com/en-us/azure/cosmos-db/database-security?tabs=sql-api
       - You must store customer-managed keys in Azure Key Vault 
    - **Client-side Field Level Encryption in 4.2**
      - https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-api-for-mongodb-v4-2-is-here-three-reasons-to-upgrade-now/
+   - Similar feature for the CosmosDB/SQL API
+     - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-always-encrypted?tabs=dotnet
 
 - **Key-based Access**
   - Primary and secondary read/write keys

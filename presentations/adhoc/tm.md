@@ -167,12 +167,16 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
 
 ---
 
-# Agenda - 3/31/2022
+# Compliance and Security - 3/31/2022
 
 - https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
 - https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-introduction
 
-## Compliance and Security
+```
+Chris Joakim
+Azure CosmosDB Global Black Belt
+chjoakim@microsoft.com
+```
 
 ---
 

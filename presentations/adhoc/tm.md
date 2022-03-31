@@ -180,6 +180,7 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
 - https://docs.microsoft.com/en-us/azure/compliance/
 - https://azure.microsoft.com/en-us/resources/microsoft-azure-compliance-offerings/
 - https://docs.microsoft.com/en-us/azure/cosmos-db/compliance
+  - Includes **Azure Government Top Secret**
 
 ---
 
@@ -188,24 +189,18 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
 https://docs.microsoft.com/en-us/azure/cosmos-db/database-security?tabs=sql-api
 
 - **Encryption**
-  - Encryption at rest 
   - Encryption in flight
+
+  - Encryption at rest 
   - Encryption of backups 
   - Encryption Key Types:
-    - Service-managed keys - default, created/managed by CosmosDB PaaS service
-    - Customer-managed keys or CMK
+    - **Service-managed keys** - default, created/managed by CosmosDB PaaS service
+    - **Customer-managed keys** or CMK
       - aka "BYOK"
       - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-setup-cmk
       - You must store customer-managed keys in Azure Key Vault 
-   - Client-side Field Level Encryption in 4.2
+   - **Client-side Field Level Encryption in 4.2**
      - https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-api-for-mongodb-v4-2-is-here-three-reasons-to-upgrade-now/
-
-- **Connection String - requires ssl**
-
-Example:
-```
-mongodb://account:<secret>@account.mongo.cosmos.azure.com:10255/?ssl=true&....
-```
 
 - **Key-based Access**
   - Primary and secondary read/write keys
@@ -233,4 +228,9 @@ mongodb://account:<secret>@account.mongo.cosmos.azure.com:10255/?ssl=true&....
   - Assign roles to users for collection-level CRUD authorization
 
 
-mongodb://cjoakimcosmosmongo:<secret>@cjoakimcosmosmongo.mongo.cosmos.azure.com:10255/?ssl=true&....
+### Connection String - requires ssl
+
+Example:
+```
+mongodb://account:<secret>@account.mongo.cosmos.azure.com:10255/?ssl=true&....
+```

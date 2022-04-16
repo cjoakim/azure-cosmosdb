@@ -20,14 +20,6 @@ import org.cjoakim.azure.EnvVarNames;
  * @see https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-java
  */
 
-//Use the following Java classes to interact with these resources:
-//
-//BlobServiceClient: The BlobServiceClient class allows you to manipulate Azure Storage resources and blob containers. The storage account provides the top-level namespace for the Blob service.
-//BlobServiceClientBuilder: The BlobServiceClientBuilder class provides a fluent builder API to help aid the configuration and instantiation of BlobServiceClient objects.
-//BlobContainerClient: The BlobContainerClient class allows you to manipulate Azure Storage containers and their blobs.
-//BlobClient: The BlobClient class allows you to manipulate Azure Storage blobs.
-//BlobItem: The BlobItem class represents individual blobs returned from a call to listBlobs.
-
 public class BlobUtil implements EnvVarNames {
 
 	// Instance variables:

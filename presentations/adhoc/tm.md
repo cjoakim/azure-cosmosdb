@@ -167,30 +167,47 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
 
 ---
 
-## Security and Compliance
+# Compliance and Security - 3/31/2022
+
+- https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
+- https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/mongodb-introduction
+
+```
+Chris Joakim
+Azure CosmosDB Global Black Belt
+chjoakim@microsoft.com
+```
+
+---
 
 ## Compliance
 
 - https://docs.microsoft.com/en-us/azure/compliance/
 - https://azure.microsoft.com/en-us/resources/microsoft-azure-compliance-offerings/
 - https://docs.microsoft.com/en-us/azure/cosmos-db/compliance
+  - Includes **Azure Government Top Secret**
+
+---
 
 ## Security
 
 https://docs.microsoft.com/en-us/azure/cosmos-db/database-security?tabs=sql-api
 
 - **Encryption**
-  - Encryption at rest 
   - Encryption in flight
+    - ssl=true is required in the connection string
+  - Encryption at rest 
   - Encryption of backups 
   - Encryption Key Types:
-    - Service-managed keys - default, created/managed by CosmosDB PaaS service
-    - Customer-managed keys or CMK
+    - **Service-managed keys** - default, created/managed by CosmosDB PaaS service
+    - **Customer-managed keys** or CMK
       - aka "BYOK"
       - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-setup-cmk
       - You must store customer-managed keys in Azure Key Vault 
-   - Client-side Field Level Encryption in 4.2
+   - **Client-side Field Level Encryption in 4.2**
      - https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-api-for-mongodb-v4-2-is-here-three-reasons-to-upgrade-now/
+   - Similar feature for the CosmosDB/SQL API
+     - https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-always-encrypted?tabs=dotnet
 
 - **Key-based Access**
   - Primary and secondary read/write keys
@@ -216,3 +233,11 @@ https://docs.microsoft.com/en-us/azure/cosmos-db/database-security?tabs=sql-api
 - **Data Plane Operations (Preview)**
   - **Same as MongoDB - roles and users stored in the database**
   - Assign roles to users for collection-level CRUD authorization
+
+
+### Connection String - requires ssl
+
+Example:
+```
+mongodb://account:<secret>@account.mongo.cosmos.azure.com:10255/?ssl=true&....
+```

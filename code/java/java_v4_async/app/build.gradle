@@ -25,10 +25,16 @@ application {
     mainClass = 'org.cjoakim.cosmos.App'
 }
 
-task query(type: JavaExec) {
+task displayAppConfig(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'org.cjoakim.cosmos.App'
-    args 'xxx', 'yyy'
+    args 'display_app_config'
+}
+
+task executeQueries(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.cjoakim.cosmos.App'
+    args 'execute_queries', 'graph', 'graph', 'xxx'
 }
 
 tasks.register('uberJar', Jar) {

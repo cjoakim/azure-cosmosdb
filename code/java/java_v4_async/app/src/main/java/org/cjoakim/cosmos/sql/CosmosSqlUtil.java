@@ -133,6 +133,8 @@ public class CosmosSqlUtil implements AppConstants {
             for (int r = 0; r < results.size(); r++) {
                 qr.addItem(results.get(r));
             }
+            CosmosDiagnostics cd = fluxResponse.getCosmosDiagnostics();
+            logger.error("cd: " + cd.toString());
             return Flux.empty();
         }).blockLast();
 

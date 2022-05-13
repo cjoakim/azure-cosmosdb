@@ -95,6 +95,7 @@ https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/adhoc/tm.md
 >>> account with a single write region and at least a second (read) region and enable Service-Managed failover.
 
 - [Continuous Backup Mode - SQL and Mongo](https://docs.microsoft.com/en-us/azure/cosmos-db/restore-account-continuous-backup)
+- [PITR](https://docs.microsoft.com/en-us/azure/cosmos-db/continuous-backup-restore-permissions)
 - [Periodic Backup](https://docs.microsoft.com/en-us/azure/cosmos-db/configure-periodic-backup-restore)
 
 ---
@@ -241,3 +242,14 @@ Example:
 ```
 mongodb://account:<secret>@account.mongo.cosmos.azure.com:10255/?ssl=true&....
 ```
+
+---
+
+## Logging - Azure Monitor
+
+- https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db
+- https://docs.microsoft.com/en-us/azure/cosmos-db/monitor-cosmos-db-reference
+- https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/monitor-azure-resource
+- https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-monitor-logs-basic-queries
+- https://github.com/cjoakim/azure-cosmosdb/blob/main/presentations/8_01_operational_best_practices.md
+

@@ -1,0 +1,51 @@
+// Gradle build file for this application.
+// Chris Joakim, Microsoft
+
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.azure:azure-cosmos:4.28.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
+    implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+
+    testImplementation 'junit:junit:4.13.2'
+
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:30.1.1-jre'
+}
+
+application {
+    mainClass = 'org.cjoakim.cosmos.App'
+}
+
+task displayAppConfig(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.cjoakim.cosmos.App'
+    args 'display_app_config'
+}
+
+task executeQueries(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.cjoakim.cosmos.App'
+    args 'execute_queries', 'graph', 'graph', 'xxx'
+}
+
+tasks.register('uberJar', Jar) {
+    archiveClassifier = 'java_v4_async'
+    duplicatesStrategy = 'include'
+    manifest {
+        attributes 'Main-Class': "org.cjoakim.cosmos.App"
+    }
+    from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}

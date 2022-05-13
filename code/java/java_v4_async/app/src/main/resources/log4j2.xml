@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <!--
+    Gradle dependencies:
+    implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+
+    Java usage:
+    import org.apache.logging.log4j.LogManager;
+    import org.apache.logging.log4j.Logger;
+    private static Logger logger = LogManager.getLogger(AppConfig.class);
+    logger.warn("getDmaDataRootDir:    " + getDmaDataRootDir());
+
+    Links:
+    https://stackify.com/log4j2-java/
+    https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout
+
+    Notes:
+    %logger{36} vs %logger{1}
+    -->
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

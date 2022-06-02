@@ -11,6 +11,38 @@
 - **An individual CosmosDB Account is just one of the above APIs** (not all)
 - Edge Case: Gremlin and SQL APIs in a Gremlin account
 
+#### Why CosmosDB?
+
+- **Scalability**
+  - very small to huge data size
+  - capable of ingesting millions of documents per second, TBs of data
+- **Scalable Costs**
+  - Costs are primarily based on the throughput you assign
+- **Guranteed High SLA**
+  - 99.99% for single-region
+  - 99.999% for multi-region
+- **Guranteed Fast Performance**
+  - point-reads of 1KB documents in <= 10ms
+- **Fully Managed PaaS service**
+  - Auto "sharding" and physical infrastructure provisioning
+- **Security**
+  - Encryption at rest and in flight
+  - Many Industry Certifications
+  - Azure-managed keys or BYOK
+  - Azure AD Integration
+- **Very Easy to Work With**
+  - Easy to provision and use
+- **SDKs**
+  - Our proprietary CosmosDB SDKs are excellent
+  - Or, use your SDKs and tools for the open-source CosmosDB APIs - Mongo, Cassandra, Gremlin
+- **Integration into the rest of Azure**
+  - Azure Monitor
+  - Azure Cognitive Search
+  - Azure Functions & CosmosDB Change Feed
+  - Data Ingestion with Stream Analytics
+  - Synapse Link & Synapse
+  - etc, etc
+
 ---
 
 ### Links:

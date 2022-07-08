@@ -1,7 +1,8 @@
-# Chris Joakim, Microsoft, 2021/04/04
+# Chris Joakim, Microsoft, 2021/07/08
 # These libraries are sorted alphabetically
 
 Jinja2
 arrow
 azure-cosmos
 docopt
+pymongo

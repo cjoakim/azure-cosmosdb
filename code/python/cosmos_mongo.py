@@ -5,6 +5,7 @@ Usage:
     python cosmos_mongo.py point_read dev countries united_states d3a493ac-4673-4279-ae64-838e4a36d245 10
     python cosmos_mongo.py gather_points_for_reading dev countries
     python cosmos_mongo.py read_points dev countries data/cosmos_mongo_points.json
+    python cosmos_mongo.py query_cosmos_mongo
 """
 
 __author__  = 'Chris Joakim'
@@ -90,11 +91,23 @@ def load_cosmos_mongo(infile):
     print('CLT: {}'.format(clt))
 
 def query_cosmos_mongo():
-    conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
+    #conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
+    
     print('conn_str: {}'.format(conn_str))
-    dbname, collname = 'dev', 'airports'
+    dbname, collname = 'openflights', 'airports'
+    # client = MongoClient(conn_str)
 
-    client = MongoClient(conn_str)
+    # https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-configure-private-endpoints
+    # https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/how-to-setup-rbac#authenticate-using-pymongo
+
+    client = MongoClient(
+        "mongodb://cjoakimcosmosmongo.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000",
+        username="cjoakimcosmosmongo",
+        password="xxx==",
+        authSource='openflights',
+        authMechanism='SCRAM-SHA-256',
+        appName="cjoakimcosmosmongo")
+
     print('client: {}'.format(client))
 
     db = client[dbname]
@@ -118,10 +131,6 @@ def query_cosmos_mongo():
     for idx, result in enumerate(results):
         print('idx: {}  result: {}'.format(idx, result))
 
-    # query = {"location": {"$near": [-84.5718333, 33.35725]}}
-    # results = coll.find(query)
-    # for idx, result in enumerate(results):
-    #     print('idx: {}  result: {}'.format(idx, result))
 
 def point_read(dbname, collname, pk, id, count):
     conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
@@ -155,6 +164,10 @@ def point_read(dbname, collname, pk, id, count):
 def gather_points_for_reading(dbname, collname):
     conn_str = os.environ['AZURE_COSMOSDB_MONGODB_CONN_STRING']
     client = MongoClient(conn_str)
+
+    client = MongoClient(conn_str)
+
+
     db = client[dbname]
     coll = db[collname]
     results = list()
